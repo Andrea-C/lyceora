@@ -40,4 +40,43 @@ describe("graph engine", () => {
     const g = buildGraph(topics, [...deps, dep("a", "d")]);
     expect(() => assertAcyclic(g)).toThrowError(TaxonomyCycleError);
   });
+
+  it("reports a precise cycle, excluding nodes that merely depend on it", () => {
+    // a <-> b is the real cycle; e depends on a but is not itself cyclic.
+    const cycleTopics = ["a", "b", "e"].map(t);
+    const cycleDeps = [dep("a", "b"), dep("b", "a"), dep("e", "a")];
+    const g = buildGraph(cycleTopics, cycleDeps);
+    expect.assertions(5);
+    try {
+      assertAcyclic(g);
+    } catch (err) {
+      expect(err).toBeInstanceOf(TaxonomyCycleError);
+      expect((err as Error).name).toBe("TaxonomyCycleError");
+      // Parse the reported node list (rather than raw substring match) so the
+      // "cycle" prefix's own letters (e.g. the "e" in "cycle") can't confuse the check.
+      const nodes = (err as Error).message.replace(/^cycle:\s*/, "").split(" -> ");
+      expect(nodes).toContain("a");
+      expect(nodes).toContain("b");
+      expect(nodes).not.toContain("e");
+    }
+  });
+
+  it("frontier reaches prerequisites connected only through a soft edge", () => {
+    // e --(hard)--> f --(soft)--> g
+    const softTopics = ["e", "f", "g"].map(t);
+    const softDeps = [dep("e", "f"), dep("f", "g", "soft")];
+    const g = buildGraph(softTopics, softDeps);
+    // e is blocked (its hard prereq f isn't mastered); f and g have no hard
+    // prereqs so both are eligible, ordered with g (f's prereq) first.
+    expect(frontier(g, ["e"], new Map())).toEqual(["g", "f"]);
+  });
+
+  it("handles empty targets, isolated nodes, and unknown ids", () => {
+    const g = buildGraph(topics, deps);
+    expect(frontier(g, [], new Map())).toEqual([]);
+    expect(prerequisiteClosure(g, ["unknown-id"])).toEqual(new Set());
+
+    const isoGraph = buildGraph(["iso"].map(t), []);
+    expect(topoOrder(isoGraph, new Set(["iso"]))).toEqual(["iso"]);
+  });
 });

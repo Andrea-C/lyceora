@@ -9,7 +9,12 @@ export interface TopicGraph {
   dependentsOf: Map<string, Dependency[]>;
 }
 
-export class TaxonomyCycleError extends Error {}
+export class TaxonomyCycleError extends Error {
+  constructor(message?: string) {
+    super(message);
+    this.name = "TaxonomyCycleError";
+  }
+}
 
 export function buildGraph(topics: Topic[], deps: Dependency[]): TopicGraph {
   const g: TopicGraph = { topics: new Map(), prereqsOf: new Map(), dependentsOf: new Map() };
@@ -67,8 +72,35 @@ export function topoOrder(graph: TopicGraph, ids: Set<string>): string[] {
       }
     }
   }
-  if (out.length !== ids.size) throw new TaxonomyCycleError(`cycle among: ${[...ids].filter((i) => !out.includes(i)).join(", ")}`);
+  if (out.length !== ids.size) {
+    const resolved = new Set(out);
+    const residual = new Set([...ids].filter((i) => !resolved.has(i)));
+    const cycle = findCycle(graph, residual);
+    throw new TaxonomyCycleError(`cycle: ${cycle.join(" -> ")}`);
+  }
   return out;
+}
+
+// Given a set of nodes that never reached in-degree 0 (a superset of any real
+// cycle — it also includes nodes that merely depend, transitively, on a cycle),
+// walk prerequisite edges within that set from a deterministic start node until
+// a node repeats, then report only the repeated segment.
+function findCycle(graph: TopicGraph, residual: Set<string>): string[] {
+  const start = [...residual].sort()[0]!;
+  const path: string[] = [start];
+  const visited = new Set<string>([start]);
+  let current = start;
+  for (;;) {
+    const next = (graph.prereqsOf.get(current) ?? [])
+      .map((d) => d.prerequisiteId)
+      .filter((id) => residual.has(id))
+      .sort()[0];
+    if (next === undefined) return path;
+    if (visited.has(next)) return [...path.slice(path.indexOf(next)), next];
+    path.push(next);
+    visited.add(next);
+    current = next;
+  }
 }
 
 export function assertAcyclic(graph: TopicGraph): void {

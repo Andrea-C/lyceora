@@ -2,7 +2,12 @@ import { z } from "zod";
 import { topicSchema, dependencySchema } from "./schema.js";
 import type { Topic, Dependency } from "./types.js";
 
-export class TaxonomyValidationError extends Error {}
+export class TaxonomyValidationError extends Error {
+  constructor(message?: string) {
+    super(message);
+    this.name = "TaxonomyValidationError";
+  }
+}
 
 const topicsFileSchema = z.object({ topics: z.array(z.unknown()) });
 const depsFileSchema = z.object({ dependencies: z.array(z.unknown()) });
