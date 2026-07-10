@@ -1,0 +1,2293 @@
+{
+  "mt_-P1kdZhHbL": {
+    "name": "Misurare massa e peso (4+ anni)",
+    "description": "Confrontare direttamente due oggetti per massa o peso e descrivere la differenza usando termini come pesante, leggero, più pesante di, più leggero di",
+    "evidence": [
+      "Soppesare due oggetti e dire quale è più pesante/più leggero",
+      "Usare una semplice bilancia a due piatti per confrontare il peso di due oggetti",
+      "Descrivere un oggetto come \"più pesante di\" un altro"
+    ],
+    "assessmentPrompt": "Se {{name}} tiene un sacchetto di mele in una mano e una piuma nell'altra, sa dire quale è più pesante e usare espressioni come \"molto più pesante di\" per descrivere la differenza?"
+  },
+  "mt_-V7EnqU7gG": {
+    "name": "Sommare frazioni (denominatori diversi)",
+    "description": "Sommare e sottrarre frazioni con denominatori multipli di uno stesso numero trovando un denominatore comune",
+    "evidence": [
+      "Calcolare 1/3 + 1/6 convertendo in sesti: 2/6 + 1/6 = 3/6 = 1/2",
+      "Calcolare 3/4 − 1/8 convertendo in ottavi",
+      "Sommare 2/5 + 3/10 e semplificare il risultato"
+    ],
+    "assessmentPrompt": "Se {{name}} deve sommare 1/3 e 1/6, sa trovare un denominatore comune e calcolare il totale — mostrando il procedimento?"
+  },
+  "mt_-af65bxfdp": {
+    "name": "Misurare liquidi e masse",
+    "description": "Misurare e stimare volumi di liquidi e masse di oggetti usando grammi, chilogrammi e litri; risolvere problemi a una fase che coinvolgono massa o volume",
+    "evidence": [
+      "Stimare la massa di un libro di testo in grammi o chilogrammi",
+      "Leggere una scala graduata per misurare il volume di un liquido in litri",
+      "Risolvere: 3 sacchetti pesano 250 g ciascuno — qual è la massa totale?"
+    ],
+    "assessmentPrompt": "Se {{name}} sta riempiendo delle bottiglie che contengono 250 ml ciascuna partendo da un contenitore di succo da 2 litri, sa calcolare quante bottiglie riesce a riempire?"
+  },
+  "mt_-hTTat0mBR": {
+    "name": "Che cos'è una metà?",
+    "description": "Riconoscere, trovare e nominare una metà come una delle due parti uguali di un oggetto, una figura o una quantità",
+    "evidence": [
+      "Piegare una figura in due parti uguali e identificare ciascuna come 'una metà'",
+      "Trovare la metà di 8 oggetti dividendoli in 2 gruppi uguali",
+      "Riconoscere se una figura è stata divisa a metà oppure no (parti uguali o disuguali)"
+    ],
+    "assessmentPrompt": "Se {{name}} aiuta a dividere un panino equamente tra due persone, sa tagliarlo in modo che i due pezzi siano della stessa dimensione — e dirti che ogni pezzo si chiama metà?"
+  },
+  "mt_09sySPqM9Z": {
+    "name": "Capire le frazioni (9+ anni)",
+    "description": "Capire una frazione a/b con a > 1 come somma di frazioni 1/b (ad es. 3/5 = 1/5 + 1/5 + 1/5)",
+    "evidence": [
+      "Esprimere 5/8 come somma di cinque copie di 1/8",
+      "Mostrare su una linea dei numeri come 4/3 si costruisce ripetendo 1/3 quattro volte",
+      "Spiegare perché 7/4 = 1/4 + 1/4 + 1/4 + 1/4 + 1/4 + 1/4 + 1/4"
+    ],
+    "assessmentPrompt": "Se chiedi a {{name}} di mostrare 4/5 come somma di frazioni uguali più piccole, sa scriverlo come 1/5 + 1/5 + 1/5 + 1/5?"
+  },
+  "mt_14T5yPXUq_": {
+    "name": "Sommare frazioni (denominatori diversi)",
+    "description": "Sommare e sottrarre frazioni con denominatori diversi (compresi i numeri misti) sostituendo le frazioni date con frazioni equivalenti per ottenere un denominatore comune",
+    "evidence": [
+      "Calcolare 2/3 + 5/4 convertendo in dodicesimi: 8/12 + 15/12 = 23/12",
+      "Sottrarre 1 3/5 da 3 1/4 usando un denominatore comune",
+      "Spiegare la strategia per trovare un denominatore comune e verificarla usando un modello visivo"
+    ],
+    "assessmentPrompt": "Se una ricetta usa 2/3 di tazza di un ingrediente e 3/4 di un altro, {{name}} sa sommare quelle frazioni — anche se i denominatori sono diversi?"
+  },
+  "mt_18fK9sQdIz": {
+    "name": "Moltiplicazione scritta",
+    "description": "Moltiplicare numeri a due e tre cifre per un numero a una cifra usando lo schema scritto formale",
+    "evidence": [
+      "Impostare e risolvere 47 × 6 usando la moltiplicazione in colonna",
+      "Impostare e risolvere 234 × 5 usando la moltiplicazione in colonna con il riporto",
+      "Verificare il risultato usando una stima (es. 234 × 5 ≈ 200 × 5 = 1000)"
+    ],
+    "assessmentPrompt": "{{name}} riesce a calcolare '347 × 6' impostandolo formalmente in colonna — moltiplicando ogni cifra separatamente e riportando dove necessario?"
+  },
+  "mt_1KkvzwYxbR": {
+    "name": "I numeri negativi nel contesto reale",
+    "description": "Interpretare i numeri negativi in contesti reali (temperatura, livello del mare, saldo bancario); contare in avanti e all'indietro con numeri interi positivi e negativi, anche attraverso lo zero",
+    "evidence": [
+      "Collocare –3, –1, 0, 2, 5 su una retta numerica",
+      "La temperatura è di –4°C e sale di 7 gradi — qual è la nuova temperatura?",
+      "Contare all'indietro da 3 di uno in uno: 3, 2, 1, 0, –1, –2"
+    ],
+    "assessmentPrompt": "Se la temperatura scende a −5°C durante la notte e sale a 3°C durante il giorno, {{name}} sa collocare entrambi i valori su una retta numerica e dire di quanti gradi la temperatura diurna sia più calda?"
+  },
+  "mt_2OtRUM_0zW": {
+    "name": "La scala e le figure simili",
+    "description": "Risolvere problemi riguardanti figure simili in cui il fattore di scala è noto o può essere trovato",
+    "evidence": [
+      "Trovare il lato mancante di un rettangolo simile dato un fattore di scala di 3",
+      "Determinare il fattore di scala tra due triangoli simili a partire dalle lunghezze dei lati date",
+      "Usare un fattore di scala per ingrandire o rimpicciolire una figura e verificare che tutti i lati siano nello stesso rapporto"
+    ],
+    "assessmentPrompt": "Se {{name}} ha un disegno in scala dove 1 cm rappresenta 5 m, e una stanza misura 3.5 cm sulla piantina, sa calcolare la lunghezza reale della stanza?"
+  },
+  "mt_2VpdPjvewx": {
+    "name": "Il valore posizionale dei decimali",
+    "description": "Convertire tra unità di misura convenzionali di grandezza diversa all'interno di uno stesso sistema (ad esempio, da 5 cm a 0.05 m) usando la notazione decimale fino a tre cifre decimali; convertire tra unità più piccole e più grandi di lunghezza, massa, volume e tempo",
+    "evidence": [
+      "Convertire 3,250 g in 3.25 kg usando la notazione decimale",
+      "Convertire 0.45 km in 450 m",
+      "Spiegare la relazione tra mm, cm, m e km usando le potenze di 10"
+    ],
+    "assessmentPrompt": "Se {{name}} deve convertire 5 cm in metri e scrivere la risposta come numero decimale, sa farlo — e anche convertire 2.45 kg in grammi?"
+  },
+  "mt_2XDGT5tei1": {
+    "name": "Numero di minuti in un'ora",
+    "description": "Conoscere il numero di minuti in un'ora e il numero di ore in un giorno",
+    "evidence": [
+      "Affermare che ci sono 60 minuti in un'ora",
+      "Affermare che ci sono 24 ore in un giorno",
+      "Usare queste conoscenze per risolvere semplici problemi sul tempo"
+    ],
+    "assessmentPrompt": "Se {{name}} sa che ci sono 60 minuti in un'ora, sa dire quanti minuti ci sono in 2 ore — e quante ore formano un giorno intero?"
+  },
+  "mt_3S10OOGPqu": {
+    "name": "Cos'è un angolo?",
+    "description": "Comprendere che un angolo è una figura geometrica formata da due semirette con un'origine comune (vertice); riconoscere gli angoli in contesti reali e nelle figure piane",
+    "evidence": [
+      "Identificare il vertice e i lati di un angolo in un diagramma",
+      "Trovare esempi di angoli in classe (per esempio una porta aperta, le lancette di un orologio)",
+      "Spiegare perché due semirette che si incontrano in un punto formano un angolo"
+    ],
+    "assessmentPrompt": "Se disegni due linee che partono dallo stesso punto su un foglio, {{name}} riesce a dire che lo spazio tra di esse è un angolo — e a indicare il vertice in cui si incontrano?"
+  },
+  "mt_3y7xKP9MjU": {
+    "name": "Frazioni di quantità (livello avanzato)",
+    "description": "Risolvere problemi con frazioni via via più complesse per calcolare quantità, comprese frazioni non unitarie il cui risultato è un numero intero",
+    "evidence": [
+      "Trovare 3/5 di 20",
+      "Calcolare 2/3 di 18 e spiegare il procedimento in due passaggi (dividere e poi moltiplicare)",
+      "Risolvere: Un sacchetto contiene 24 caramelle, 3/8 sono rosse — quante caramelle rosse ci sono?"
+    ],
+    "assessmentPrompt": "Se 3/4 di una classe di 28 alunni ha portato i compiti, {{name}} sa calcolare esattamente quanti alunni sono?"
+  },
+  "mt_4Km38F4L-6": {
+    "name": "Frazioni di un intero (10+ anni)",
+    "description": "Interpretare una frazione come la divisione del numeratore per il denominatore (a/b = a ÷ b); risolvere problemi che coinvolgono la divisione di numeri interi con risultati frazionari o numeri misti",
+    "evidence": [
+      "Spiegare che 3/4 significa 3 ÷ 4 e verificarlo mostrando che 3/4 × 4 = 3",
+      "Risolvere: '9 persone condividono equamente un sacco di 50 libbre — quante libbre a testa?' ed esprimere il risultato come 5 5/9",
+      "Usare un modello visivo per mostrare che condividendo 3 interi tra 4 persone, ciascuna riceve 3/4"
+    ],
+    "assessmentPrompt": "Se {{name}} condivide 3 pizze equamente tra 4 amici, sa calcolare quale frazione riceve ciascuno — e spiegare perché 3 ÷ 4 dà lo stesso risultato di 3/4?"
+  },
+  "mt_4WaKWECpcv": {
+    "name": "Scrivere espressioni numeriche",
+    "description": "Scrivere semplici espressioni numeriche che registrano calcoli con i numeri, e interpretare espressioni numeriche senza calcolarle (es. riconoscere che 3 × (18932 + 921) è tre volte più grande di 18932 + 921)",
+    "evidence": [
+      "Scrivere un'espressione per 'somma 8 e 7, poi moltiplica per 2' usando le parentesi",
+      "Spiegare cosa rappresenta 4 × (365 − 12) senza calcolarlo",
+      "Confrontare due espressioni e determinare quale sia maggiore senza calcolarle"
+    ],
+    "assessmentPrompt": "{{name}} riesce a guardare '4 × (5 + 3)' e dire 'è 4 volte il risultato della somma di 5 e 3' — leggendo l'espressione come descrizione di un calcolo, senza doverlo prima svolgere?"
+  },
+  "mt_4lp_b5Pzik": {
+    "name": "Capacità e volume",
+    "description": "Misurare e iniziare a registrare capacità e volume usando unità di misura non convenzionali e convenzionali",
+    "evidence": [
+      "Misurare la capacità contando quante tazze servono per riempire un contenitore",
+      "Iniziare a usare il litro come unità di capacità",
+      "Registrare le misure di capacità con un numero e un'unità di misura"
+    ],
+    "assessmentPrompt": "Se {{name}} riempie una brocca usando una tazzina, sa contare quante tazzine servono — e capire che questo indica quanto contiene la brocca?"
+  },
+  "mt_5HV4mbgSGH": {
+    "name": "Le frazioni sulla retta numerica",
+    "description": "Risolvere problemi che coinvolgono distanze, intervalli di tempo, volumi di liquidi, masse e denaro usando le quattro operazioni con frazioni o numeri decimali; rappresentare con diagrammi, incluse le rette numeriche",
+    "evidence": [
+      "Un sacchetto di farina da 2.5 kg viene diviso equamente in 4 porzioni — quanto pesa ciascuna?",
+      "Un viaggio dura 1 h 45 min; a che ora si arriva se si parte alle 09:20?",
+      "Tre nastri di 0.75 m, 1.2 m e 0.95 m — qual è la lunghezza totale?"
+    ],
+    "assessmentPrompt": "Se {{name}} sta pianificando una camminata di 4.5 km e ha già percorso 1.75 km, sa calcolare quanto ne manca — e stimare quanto tempo potrebbe richiedere il tratto rimanente?"
+  },
+  "mt_5TBUFnCy5-": {
+    "name": "Il volume come grandezza additiva",
+    "description": "Riconoscere il volume come grandezza additiva; trovare i volumi di figure solide composte formate da due o più prismi rettangolari retti non sovrapposti",
+    "evidence": [
+      "Scomporre un solido a forma di L in due parallelepipedi e calcolare il volume totale",
+      "Risolvere un problema reale che richiede il volume di una figura composta (ad esempio, una struttura a gradini)",
+      "Spiegare perché scomporre un solido composto in prismi rettangolari permette di calcolare il volume totale"
+    ],
+    "assessmentPrompt": "Se una piscina a forma di L è composta da due sezioni rettangolari, {{name}} sa trovare il volume di ciascuna sezione separatamente e sommarle per ottenere il volume totale della piscina?"
+  },
+  "mt_6J1wmCWf41": {
+    "name": "Addizione e sottrazione con il denaro",
+    "description": "Risolvere semplici problemi con il denaro che coinvolgono addizione e sottrazione, incluso il calcolo del resto",
+    "evidence": [
+      "Calcolare il costo totale di due articoli con prezzi in pence",
+      "Calcolare il resto da 50p dopo aver acquistato un articolo che costa 35p",
+      "Risolvere problemi del tipo \"Di quanto denaro in più ho bisogno?\""
+    ],
+    "assessmentPrompt": "Se {{name}} compra una merenda da 45p e paga con una moneta da £1, sa calcolare quanto resto deve ricevere — e contarlo?"
+  },
+  "mt_6_O6THdEDK": {
+    "name": "Dare il resto",
+    "description": "Sommare e sottrarre importi di denaro per dare il resto, usando sia £ che p in contesti pratici",
+    "evidence": [
+      "Calcolare il costo totale di due o tre articoli con prezzi in sterline e pence",
+      "Calcolare il resto da £5 o £10",
+      "Registrare correttamente i calcoli con il denaro usando la notazione £ e p (ad esempio, £3.47)"
+    ],
+    "assessmentPrompt": "Se {{name}} compra un libro da £3.50 e una matita da £1.25 pagando con una banconota da £5, sa calcolare esattamente quanto resto deve ricevere?"
+  },
+  "mt_6oxQPNLHNv": {
+    "name": "Calcolare con le misure",
+    "description": "Misurare, confrontare, sommare e sottrarre lunghezze (m/cm/mm), masse (kg/g) e volumi/capacità (l/ml) usando unità di misura convenzionali",
+    "evidence": [
+      "Misurare una lunghezza in centimetri e millimetri",
+      "Pesare un oggetto usando grammi e chilogrammi",
+      "Sommare due misure nella stessa unità (ad esempio, 250 ml + 400 ml = 650 ml)"
+    ],
+    "assessmentPrompt": "Se {{name}} versa 350 ml in una brocca e poi ne aggiunge altri 275 ml, sa calcolare il totale — e dire quanto manca per arrivare a 1 litro?"
+  },
+  "mt_6xNmQLzuqm": {
+    "name": "Comprendere l'area",
+    "description": "Capire che un quadrato unitario ha un'area di una unità quadrata e che l'area di una figura piana è il numero di quadrati unitari che la ricoprono senza spazi vuoti né sovrapposizioni",
+    "evidence": [
+      "Individuare un quadrato unitario e affermare che la sua area è 1 unità quadrata",
+      "Spiegare perché una figura ricoperta da 12 quadrati unitari ha area 12 unità quadrate",
+      "Distinguere tra area e perimetro come misure diverse"
+    ],
+    "assessmentPrompt": "Se {{name}} conta i quadratini all'interno di un rettangolo disegnato su carta a quadretti, sa dire l'area — e spiegare cosa significa \"un'unità quadrata\"?"
+  },
+  "mt_7XcCG43ZZW": {
+    "name": "Numeri fino a 10 scomposti in coppie",
+    "description": "Scomporre numeri fino a 10 in coppie in più di un modo (relazione parte-parte-tutto)",
+    "evidence": [
+      "Mostrare che 5 = 1 + 4, 5 = 2 + 3, 5 = 0 + 5 ecc.",
+      "Usare oggetti o disegni per trovare tutte le coppie che formano un numero dato",
+      "Scrivere le scomposizioni come equazioni"
+    ],
+    "assessmentPrompt": "Se {{name}} ha 8 acini d'uva, riesce a dividerli in due gruppi in modi diversi — come 3 e 5, oppure 4 e 4 — e a spiegare che insieme i due gruppi fanno sempre 8?"
+  },
+  "mt_7rJM8eWUfw": {
+    "name": "Contare per 6",
+    "description": "Contare per multipli di 6, 7, 9, 25 e 1000",
+    "evidence": [
+      "Recitare i multipli di 6 da 0 fino ad almeno 72",
+      "Recitare i multipli di 7 da 0 fino ad almeno 84",
+      "Contare a salti di 25 da 0 fino a 1000 e a salti di 1000 fino a 10,000"
+    ],
+    "assessmentPrompt": "{{name}} riesce a contare per 7 — 7, 14, 21, 28 — o per 9, o per 25 quando pensa alle monete, o per 1000 quando parla di distanze come i chilometri?"
+  },
+  "mt_8H2kO4k2B9": {
+    "name": "Poligoni regolari e irregolari",
+    "description": "Distinguere tra poligoni regolari e irregolari ragionando su lati uguali e angoli uguali",
+    "evidence": [
+      "Classificare un insieme di poligoni come regolari o irregolari",
+      "Spiegare che un pentagono regolare ha 5 lati uguali e 5 angoli uguali",
+      "Identificare che un rettangolo è irregolare (angoli uguali ma non tutti i lati uguali) a meno che non sia un quadrato"
+    ],
+    "assessmentPrompt": "Se mostri a {{name}} un segnale di stop (ottagono regolare) e una figura storta a otto lati, riesce a spiegare quale sia regolare e quale irregolare — e perché?"
+  },
+  "mt_8OAGVdeTJ_": {
+    "name": "Comprendere gli angoli",
+    "description": "Riconoscere gli angoli come proprietà di una figura o come descrizione di un giro",
+    "evidence": [
+      "Identificare gli angoli ai vertici delle figure piane",
+      "Descrivere un giro (per esempio un quarto di giro, un mezzo giro) in termini dell'angolo formato",
+      "Spiegare che un angolo misura la quantità di rotazione tra due linee che si incontrano in un punto"
+    ],
+    "assessmentPrompt": "Se chiedi a {{name}} di indicare un angolo nell'angolo di un libro o di una porta, riesce a trovarlo — e a spiegare che anche aprire una porta è un tipo di giro (angolo)?"
+  },
+  "mt_8RmpkDxT9L": {
+    "name": "Leggere i simboli +, − e =",
+    "description": "Leggere, scrivere e interpretare i simboli +, − e = nelle espressioni numeriche",
+    "evidence": [
+      "Leggere ad alta voce 3 + 2 = 5 come 'tre più due uguale cinque'",
+      "Scrivere un'espressione numerica che corrisponda a una situazione concreta di addizione",
+      "Interpretare il simbolo = come 'è uguale a' e non solo come 'il risultato è'"
+    ],
+    "assessmentPrompt": "Se scrivi '4 + 3 = 7' su un foglio, {{name}} sa dirti cosa significano il segno più, il segno meno e il segno uguale?"
+  },
+  "mt_8gy7uxRlF6": {
+    "name": "Un centinaio è dieci decine",
+    "description": "Comprendere che 100 può essere pensato come un gruppo di dieci decine — chiamato 'centinaio'",
+    "evidence": [
+      "Spiegare che 10 gruppi di 10 unità formano 100",
+      "Raggruppare dieci bastoncini da dieci in un centinaio e descrivere ciò che è successo",
+      "Rappresentare 100 usando i blocchi base-dieci mostrando 10 decine"
+    ],
+    "assessmentPrompt": "{{name}} sa spiegare che dieci decine complete impilate insieme formano un centinaio — e che è per questo che 100 ha un 1 al posto delle centinaia e zeri nelle altre posizioni?"
+  },
+  "mt_8jFSnXxqQD": {
+    "name": "Le parentesi nelle espressioni",
+    "description": "Usare parentesi tonde, quadre o graffe nelle espressioni numeriche e calcolare espressioni che contengono questi simboli di raggruppamento",
+    "evidence": [
+      "Calcolare 3 × (4 + 5) risolvendo prima quanto è dentro le parentesi",
+      "Calcolare {2 × [3 + (7 − 1)]} con simboli di raggruppamento annidati",
+      "Inserire le parentesi in un'espressione per farla corrispondere a un valore obiettivo"
+    ],
+    "assessmentPrompt": "{{name}} riesce a guardare '3 × (4 + 5)' e a calcolare prima le parentesi — ottenendo '3 × 9 = 27' — invece di moltiplicare semplicemente da sinistra a destra?"
+  },
+  "mt_933BohS9BH": {
+    "name": "Confrontare numeri decimali",
+    "description": "Confrontare due numeri decimali fino ai centesimi (o fino a tre cifre decimali) ragionando sulla grandezza tramite il valore posizionale; registrare il confronto con >, =, <",
+    "evidence": [
+      "Confrontare 0.45 e 0.405 e spiegare quale sia maggiore",
+      "Ordinare 3.142, 3.14, 3.2 dal più piccolo al più grande",
+      "Motivare che 0.7 = 0.70 = 0.700 ragionando sul valore posizionale"
+    ],
+    "assessmentPrompt": "Se {{name}} confronta 0.45 e 0.54, sa usare il valore posizionale per spiegare quale sia maggiore — senza prendere la calcolatrice?"
+  },
+  "mt_9L3NQqgqRd": {
+    "name": "Rappresentare i numeri",
+    "description": "Identificare, rappresentare e stimare numeri usando diverse rappresentazioni, inclusa la retta numerica",
+    "evidence": [
+      "Collocare un numero a due cifre su una retta numerica da 0 a 100 in una posizione approssimativamente corretta",
+      "Stimare 'all'incirca quanti' oggetti ci sono in un insieme di 30-50 senza contarli",
+      "Rappresentare lo stesso numero usando i blocchi base-dieci, una retta numerica e un disegno",
+      "Rappresentare un numero a tre cifre usando i blocchi base-dieci, una retta numerica o una tabella del valore posizionale",
+      "Stimare dove si colloca un numero su una retta numerica da 0 a 1000",
+      "Abbinare una rappresentazione in base dieci al numero corretto"
+    ],
+    "assessmentPrompt": "{{name}} sa rappresentare un numero come 346 in modi diversi — con i blocchi base-dieci, su una retta numerica o con un disegno — e spiegare cosa mostra ciascuna rappresentazione?"
+  },
+  "mt_9QzSnn8m80": {
+    "name": "Numeri positivi e negativi",
+    "description": "Comprendere i numeri positivi e negativi come descrizione di quantità con direzioni o valori opposti; usarli in contesti come la temperatura, i piani di un edificio e i saldi bancari",
+    "evidence": [
+      "Rappresentare i numeri positivi e negativi su una linea dei numeri e spiegare cosa significa lo zero nel contesto",
+      "Sommare un numero positivo o negativo a qualsiasi numero intero ragionando sulla linea dei numeri",
+      "Sottrarre un numero positivo o negativo da qualsiasi numero intero, comprendendo che sottrarre un numero negativo equivale ad addizionare"
+    ],
+    "assessmentPrompt": "Se {{name}} vede temperature come −3°C e +5°C in un bollettino meteo, riesce a capire di quanto un giorno sia più caldo dell'altro — anche quando il calcolo attraversa lo zero?"
+  },
+  "mt_9Y96vxG_LH": {
+    "name": "Dividere le frazioni",
+    "description": "Dividere una frazione per un'altra frazione usando il metodo 'mantieni-cambia-capovolgi' e modelli visivi; interpretare e risolvere problemi che coinvolgono la divisione tra frazioni",
+    "evidence": [
+      "Dividere una frazione per un'altra frazione usando il metodo del reciproco",
+      "Usare modelli visivi di frazioni per rappresentare e spiegare la divisione tra frazioni",
+      "Creare contesti narrativi per problemi di divisione tra frazioni e risolverli"
+    ],
+    "assessmentPrompt": "Se {{name}} ha 3/4 di litro di succo e ogni bicchiere ne contiene 3/8, sa calcolare quanti bicchieri può riempire — usando la divisione tra frazioni?"
+  },
+  "mt_AF2BeFQwfX": {
+    "name": "Sommare il denaro e dare il resto",
+    "description": "Trovare diverse combinazioni di monete che corrispondono alla stessa cifra",
+    "evidence": [
+      "Mostrare che 50p si può ottenere con 2×20p + 1×10p, oppure con 5×10p, oppure con 1×50p",
+      "Trovare in modo sistematico più combinazioni di monete per un dato totale",
+      "Spiegare perché insiemi diversi di monete danno lo stesso totale"
+    ],
+    "assessmentPrompt": "Se {{name}} deve formare esattamente 30p, sa trovare due o tre modi diversi per farlo usando combinazioni di monete differenti?"
+  },
+  "mt_AQcVRBddko": {
+    "name": "Ordinare i numeri fino a 1000",
+    "description": "Confrontare e ordinare numeri fino a 1000 usando i simboli >, = e <, basandosi sulla comprensione del valore posizionale",
+    "evidence": [
+      "Confrontare due numeri a tre cifre esaminando prima le centinaia, poi le decine, poi le unità",
+      "Usare correttamente >, = e < per registrare confronti tra numeri a tre cifre",
+      "Ordinare un insieme di numeri fino a 1000 dal più piccolo al più grande"
+    ],
+    "assessmentPrompt": "Se dai a {{name}} un insieme di numeri a tre cifre come 456, 231 e 789, riesce a metterli in ordine e a usare correttamente > e <?"
+  },
+  "mt_AQo4u7O4sM": {
+    "name": "L'area e la proprietà distributiva",
+    "description": "Usare la scomposizione in piastrelle per dimostrare la proprietà distributiva: l'area di un rettangolo con lati a e (b+c) è uguale a a×b + a×c; usare modelli ad area per rappresentare la proprietà distributiva",
+    "evidence": [
+      "Ricoprire con piastrelle un rettangolo 3×(4+2) e mostrare che si scompone in 3×4 e 3×2",
+      "Usare un modello ad area per calcolare 6×13 come 6×10 + 6×3",
+      "Disegnare un modello ad area che mostri 5×(7+3) = 5×7 + 5×3"
+    ],
+    "assessmentPrompt": "Se {{name}} vuole calcolare 6 × 13 scomponendolo in 6 × 10 e 6 × 3, sa disegnare un rettangolo diviso in due parti per mostrare perché questo metodo funziona?"
+  },
+  "mt_AR-K72OIIO": {
+    "name": "Problemi di moltiplicazione e addizione",
+    "description": "Risolvere problemi che comportano moltiplicazione e addizione, inclusi l'uso della proprietà distributiva, problemi di scala con numeri interi e problemi di corrispondenza più complessi",
+    "evidence": [
+      "Usare la proprietà distributiva per risolvere 14 × 6 come 10 × 6 + 4 × 6",
+      "Risolvere un problema di scala (es. 'Una torre è 3 volte più alta di un edificio di 15 m')",
+      "Risolvere un problema di corrispondenza (es. '3 tipi di pane, 4 tipi di farcitura — quanti panini diversi si possono fare?')"
+    ],
+    "assessmentPrompt": "Se {{name}} deve calcolare '5 × 23', riesce a scomporlo in '5 × 20 + 5 × 3 = 100 + 15 = 115' — invece di ricorrere subito a un metodo scritto?"
+  },
+  "mt_ATYLKt0je-": {
+    "name": "Il lessico del ragionamento proporzionale",
+    "description": "Conoscere e usare correttamente il lessico avanzato del ragionamento moltiplicativo — proporzionalità diretta, proporzionalità inversa, rapporto, tasso, tasso unitario, unità di misura composta, fattore di scala — in contesti di problem solving",
+    "evidence": [
+      "Distinguere tra 'proporzionalità diretta' e 'proporzionalità inversa' con esempi tratti dalla realtà",
+      "Usare correttamente 'tasso', 'velocità' e 'densità' e spiegare in quali unità di misura si esprimono",
+      "Calcolare usando grandezze composte — ad esempio, calcolare la velocità di un'auto che percorre 120 miglia in 2 ore"
+    ],
+    "assessmentPrompt": "Se {{name}} sta risolvendo un problema su velocità o densità, sa spiegare cosa significa 'unità di misura composta' e distinguere tra proporzionalità diretta (più di una cosa significa più dell'altra) e proporzionalità inversa (più di una cosa significa meno dell'altra)?"
+  },
+  "mt_AYzE1EAvI0": {
+    "name": "Frazioni di un intero (8+ anni)",
+    "description": "Esprimere numeri interi come frazioni (ad es. 3 = 3/1) e riconoscere frazioni equivalenti a numeri interi (ad es. 4/4 = 1, 6/1 = 6)",
+    "evidence": [
+      "Scrivere 5 come 5/1 e spiegare perché",
+      "Collocare 4/4 e 1 nello stesso punto su una linea dei numeri",
+      "Individuare quali frazioni di un elenco equivalgono a un numero intero: 6/3, 8/4, 5/2"
+    ],
+    "assessmentPrompt": "Se chiedi a {{name}} di scrivere il numero 3 come frazione, sa scrivere 3/1 — e anche dirti quale frazione equivale esattamente a 1 intero, come 4/4 o 5/5?"
+  },
+  "mt_AabJisinfi": {
+    "name": "Moltiplicare le frazioni (10+ anni)",
+    "description": "Moltiplicare una frazione o un numero intero per una frazione, comprese frazioni proprie per frazioni proprie; interpretare (a/b) × q come a parti di q suddiviso in b parti uguali; scrivere i risultati in forma minima",
+    "evidence": [
+      "Calcolare (2/3) × (4/5) = 8/15 e mostrarlo con un modello ad area",
+      "Usare un modello visivo per dimostrare che (2/3) × 4 = 8/3 = 2 2/3",
+      "Semplificare il prodotto 3/4 × 2/3 = 6/12 = 1/2"
+    ],
+    "assessmentPrompt": "Se una ricetta usa 2/3 di un sacchetto di farina e {{name}} vuole prepararne solo 3/4, sa moltiplicare quelle frazioni per scoprire quanta farina gli serve?"
+  },
+  "mt_Ac7oMWhyPw": {
+    "name": "Leggere e scrivere i numeri (10+ anni)",
+    "description": "Leggere, scrivere e confrontare numeri decimali fino ai millesimi usando la notazione in base dieci, i nomi dei numeri e la forma estesa; confrontare usando >, =, < in base al significato del valore posizionale",
+    "evidence": [
+      "Scrivere 347.392 in forma estesa: 3×100 + 4×10 + 7×1 + 3×(1/10) + 9×(1/100) + 2×(1/1000)",
+      "Confrontare 0.372 e 0.38 ragionando sul valore posizionale",
+      "Scrivere 'cinque e sessantadue millesimi' come 5.062"
+    ],
+    "assessmentPrompt": "{{name}} sa leggere e scrivere numeri decimali come 3.047 o 0.625, dire cosa significa ciascuna cifra (3 unità, 0 decimi, 4 centesimi, 7 millesimi), e mettere in ordine un insieme di numeri decimali?"
+  },
+  "mt_B1zj1RwQ3a": {
+    "name": "Schieramenti per la moltiplicazione (7+ anni)",
+    "description": "Usare l'addizione per trovare il numero totale di oggetti disposti in schieramenti rettangolari con al massimo 5 righe e 5 colonne; scrivere un'equazione per esprimere il totale come somma di addendi uguali",
+    "evidence": [
+      "Contare gli oggetti in uno schieramento 3×4 e scrivere 4 + 4 + 4 = 12",
+      "Spiegare che ogni riga ha lo stesso numero di oggetti, quindi il totale si può trovare con l'addizione ripetuta",
+      "Disegnare uno schieramento rettangolare per rappresentare una data equazione di addizione ripetuta"
+    ],
+    "assessmentPrompt": "Se {{name}} vede 4 righe da 5 adesivi su un foglio, riesce a usare l'addizione ripetuta — '5 + 5 + 5 + 5' — per trovare il totale, e a scriverla come equazione?"
+  },
+  "mt_BFJ-ch_8QU": {
+    "name": "Confrontare e ordinare le misure",
+    "description": "Confrontare e ordinare lunghezze, masse e capacità e registrare i risultati usando >, < e =",
+    "evidence": [
+      "Misurare due oggetti e scrivere 45cm > 32cm",
+      "Ordinare tre contenitori per capacità dopo averli misurati",
+      "Usare = quando due misure sono uguali"
+    ],
+    "assessmentPrompt": "Se {{name}} misura tre pezzi di spago ottenendo 15 cm, 9 cm e 22 cm, sa metterli in ordine dal più corto al più lungo — e scriverlo usando il simbolo <?"
+  },
+  "mt_C9ZfT-4cgn": {
+    "name": "Proprietà commutativa della moltiplicazione",
+    "description": "Comprendere e applicare la proprietà commutativa della moltiplicazione e riconoscere che la divisione non è commutativa",
+    "evidence": [
+      "Spiegare che 3 × 5 = 5 × 3 e dimostrarlo ruotando uno schieramento",
+      "Usare la commutatività per scegliere il calcolo più semplice",
+      "Dimostrare che 12 ÷ 3 ≠ 3 ÷ 12"
+    ],
+    "assessmentPrompt": "{{name}} sa che 4 × 7 dà lo stesso risultato di 7 × 4 — così da poter scegliere l'ordine più facile da ricordare tra le tabelline?"
+  },
+  "mt_CBHwluE6Lp": {
+    "name": "Sommare frazioni (stesso denominatore)",
+    "description": "Sommare e sottrarre frazioni con lo stesso denominatore, compresi i risultati maggiori di un intero (ad es. 5/8 + 6/8 = 11/8)",
+    "evidence": [
+      "Calcolare 3/5 + 4/5 = 7/5 e spiegare che equivale a 1 2/5",
+      "Sottrarre 2/6 da 5/6",
+      "Risolvere addizioni in cui la somma supera l'intero: 7/8 + 3/8"
+    ],
+    "assessmentPrompt": "Se una ricetta usa 5/8 di un sacchetto di farina e poi altri 6/8, {{name}} sa calcolare il totale e spiegare cosa significa il risultato come numero misto?"
+  },
+  "mt_DNYQLahbfa": {
+    "name": "Proprietà di triangoli e quadrilateri",
+    "description": "Ricavare e illustrare le proprietà di triangoli, quadrilateri e cerchi usando un linguaggio appropriato, inclusi angoli interni, diagonali, simmetria e relazioni tra le lunghezze dei lati",
+    "evidence": [
+      "Elencare e verificare le proprietà di un parallelogramma (lati opposti paralleli/uguali, angoli opposti uguali, le diagonali si bisecano a vicenda)",
+      "Spiegare perché un quadrato è un caso particolare sia di un rettangolo sia di un rombo",
+      "Ricavare la relazione tra raggio, diametro e circonferenza di un cerchio"
+    ],
+    "assessmentPrompt": "Se chiedi a {{name}} perché le diagonali di un rettangolo hanno sempre la stessa lunghezza, riesce a spiegarlo usando le proprietà della figura — invece di limitarsi a misurarle per verificarlo?"
+  },
+  "mt_DOe893F6gN": {
+    "name": "Scegliere le unità di misura",
+    "description": "Scegliere e usare le unità di misura convenzionali più adatte per misurare lunghezza (m/cm), massa (kg/g), temperatura (°C) e capacità (litri/ml), arrotondando all'unità più appropriata",
+    "evidence": [
+      "Misurare la lunghezza di un tavolo in centimetri usando un righello",
+      "Pesare un oggetto in grammi usando una bilancia",
+      "Misurare la capacità di un contenitore in millilitri usando un misurino"
+    ],
+    "assessmentPrompt": "Se chiedi a {{name}} se misurare una piscina o un foglio di carta in cm o in m, sa scegliere l'unità più sensata per ciascuno — e spiegare perché?"
+  },
+  "mt_DyGBW3ZHh3": {
+    "name": "Moltiplicazione e divisione scritte",
+    "description": "Scrivere e calcolare espressioni matematiche di moltiplicazione e divisione usando le tabelline note, incluso il calcolo di numeri a due cifre per numeri a una cifra, procedendo dal calcolo mentale a metodi scritti formali",
+    "evidence": [
+      "Calcolare 23 × 4 scomponendo il numero (20 × 4 + 3 × 4)",
+      "Calcolare 96 ÷ 8 usando i fatti noti delle tabelline",
+      "Iniziare a usare uno schema scritto formale per la moltiplicazione in colonna"
+    ],
+    "assessmentPrompt": "{{name}} riesce a svolgere calcoli come '23 × 4' o '68 ÷ 4' — sia a mente usando la conoscenza delle tabelline, sia scrivendoli passo dopo passo?"
+  },
+  "mt_EDgw64OmfA": {
+    "name": "Il valore posizionale × 10 e ÷ 10",
+    "description": "Riconoscere che, in un numero con più cifre, una cifra in una posizione rappresenta 10 volte tanto quanto nella posizione alla sua destra e 1/10 di ciò che rappresenta nella posizione alla sua sinistra",
+    "evidence": [
+      "Spiegare che il 4 in 0.04 è 1/10 del 4 in 0.4",
+      "Indicare che uno spostamento di una cifra verso sinistra corrisponde a ×10 e verso destra a ÷10",
+      "Confrontare il valore del 6 in 6,000 e in 0.006"
+    ],
+    "assessmentPrompt": "{{name}} sa spiegare che in 4.56 la cifra 5 vale 5 decimi — dieci volte meno del 5 in 54, e dieci volte più del 5 in 0.056?"
+  },
+  "mt_ESgc4YBw-a": {
+    "name": "Le percentuali (9+ anni)",
+    "description": "Conoscere e usare il lessico dei rapporti e delle proporzioni — rapporto, proporzione, percentuale, scala, equivalente, non equo, dimensione relativa, parte-parte, parte-tutto e su un totale di — e comprendere la differenza tra rapporto (confronto tra parti) e proporzione (confronto tra una parte e il tutto)",
+    "evidence": [
+      "Spiegare la differenza tra 'rapporto' e 'proporzione' usando un esempio concreto come la miscelazione di vernici",
+      "Usare correttamente 'per cento' e convertire tra frazioni, decimali e percentuali in contesti reali",
+      "Definire 'fattore di scala' e usarlo per descrivere come una figura è stata ingrandita o rimpicciolita"
+    ],
+    "assessmentPrompt": "Se {{name}} sta condividendo qualcosa in 3 parti e in 2 parti, sa spiegare la differenza tra un rapporto (come 3:2) e una proporzione (come 3 su 5) — dimostrando di conoscere il significato di ciascun termine?"
+  },
+  "mt_EXlmTURK_o": {
+    "name": "Unità di tempo e fatti del calendario",
+    "description": "Conoscere il numero di secondi in un minuto e il numero di giorni in ogni mese, in un anno e in un anno bisestile",
+    "evidence": [
+      "Affermare che ci sono 60 secondi in un minuto",
+      "Nominare i mesi e indicare il numero di giorni di ciascuno",
+      "Spiegare che un anno bisestile ha 366 giorni e ricorre ogni 4 anni"
+    ],
+    "assessmentPrompt": "Se chiedi a {{name}} quanti giorni ha settembre e se quest'anno è bisestile, sa rispondere a entrambe le domande — e dire quanti secondi ci sono in un minuto?"
+  },
+  "mt_EmR5n58jZt": {
+    "name": "Moltiplicazione e divisione a più passaggi",
+    "description": "Risolvere problemi di moltiplicazione e divisione, inclusi problemi di scala e problemi di corrispondenza in cui n oggetti sono associati a m oggetti",
+    "evidence": [
+      "Risolvere un problema di scala (es. 'il nastro è 3 volte più lungo')",
+      "Risolvere un problema di corrispondenza (es. '4 magliette e 3 pantaloni — quanti abbinamenti sono possibili?')",
+      "Risolvere un problema di moltiplicazione o divisione con un numero mancante"
+    ],
+    "assessmentPrompt": "Se una ricetta per 4 persone richiede 3 uova, {{name}} riesce a calcolare quante uova servono per 8 persone — riconoscendolo come un problema di raddoppio o di scala?"
+  },
+  "mt_Ep7TDFuYUa": {
+    "name": "Frazioni equivalenti sulla linea dei numeri",
+    "description": "Capire che due frazioni sono equivalenti se hanno la stessa dimensione o occupano lo stesso punto su una linea dei numeri; riconoscere e mostrare famiglie di frazioni equivalenti comuni usando disegni",
+    "evidence": [
+      "Usare strisce di frazioni per mostrare che 1/2 = 2/4 = 3/6",
+      "Verificare su una linea dei numeri che 2/3 e 4/6 cadono nello stesso punto",
+      "Individuare almeno tre frazioni equivalenti a 1/2 usando disegni"
+    ],
+    "assessmentPrompt": "Se {{name}} vede che 2/4 e 1/2 cadono esattamente nello stesso punto su una linea dei numeri, sa spiegare con parole proprie perché queste due frazioni sono uguali?"
+  },
+  "mt_FHIAv6dfhU": {
+    "name": "Fattori, multipli e numeri primi",
+    "description": "Trovare tutte le coppie di fattori di un numero intero compreso tra 1 e 100; individuare i fattori comuni e i multipli comuni di due numeri; usare questi concetti per risolvere problemi",
+    "evidence": [
+      "Elencare tutte le coppie di fattori di 36: (1,36), (2,18), (3,12), (4,9), (6,6)",
+      "Indicare i primi cinque multipli di 7",
+      "Trovare i fattori comuni di 24 e 36",
+      "Trovare tutti i fattori comuni di 36 e 48",
+      "Individuare i primi tre multipli comuni di 6 e 8",
+      "Determinare se un dato numero (es. 97) è primo e motivare il ragionamento"
+    ],
+    "assessmentPrompt": "{{name}} riesce a elencare tutte le coppie di fattori di un numero come 36 — (1, 36), (2, 18), (3, 12), (4, 9), (6, 6) — e a trovare i fattori comuni a due numeri?"
+  },
+  "mt_FP-mjXaq3B": {
+    "name": "Frazioni equivalenti (8+ anni)",
+    "description": "Generare semplici frazioni equivalenti e spiegare perché sono equivalenti usando modelli visivi di frazioni",
+    "evidence": [
+      "Data la frazione 1/3, generare 2/6 come equivalente e mostrarlo con un modello ad area",
+      "Semplificare 4/8 a 1/2 e motivare la risposta con una striscia di frazioni",
+      "Completare catene di equivalenze: 1/4 = ?/8 = ?/12"
+    ],
+    "assessmentPrompt": "Se a {{name}} viene mostrata una barra di frazioni divisa in 3 parti con 1 colorata (= 1/3), sa disegnare una barra equivalente con 6 parti che mostri colorata esattamente la stessa quantità?"
+  },
+  "mt_FbDKeLfBCo": {
+    "name": "Frazioni equivalenti",
+    "description": "Riconoscere e mostrare, con l'aiuto di disegni, frazioni equivalenti con denominatori piccoli",
+    "evidence": [
+      "Mostrare che 1/2 = 2/4 usando un disegno diviso in parti uguali",
+      "Usare un modello a barre o a scala di frazioni per trovare frazioni equivalenti",
+      "Spiegare perché due frazioni sono equivalenti confrontando le aree colorate"
+    ],
+    "assessmentPrompt": "Se {{name}} vede una barra divisa in 4 parti uguali con 2 colorate, sa dirti che equivale a 1/2 — e disegnare un'altra barra che mostri la stessa quantità in un modo diverso?"
+  },
+  "mt_FnUJMXPUZX": {
+    "name": "Comprendere le frazioni",
+    "description": "Risolvere problemi di ripartizione e raggruppamento non equi usando la conoscenza di frazioni e multipli",
+    "evidence": [
+      "Condividere 40 caramelle tra due bambini nel rapporto 3:5",
+      "Risolvere: 'Tom ne riceve il doppio di Sam e Sam ne riceve tre volte tante quante Jo. Se ce ne sono 30 in totale, quante ne riceve ciascuno?'",
+      "Usare la conoscenza delle frazioni per spiegare perché condividere nel rapporto 2:3 significa che una persona riceve 2/5 del totale"
+    ],
+    "assessmentPrompt": "Se tre amici condividono un sacchetto di 24 caramelle in modo che una persona ne riceva il doppio rispetto a ciascuno degli altri, {{name}} sa calcolare quante ne riceve ciascuno?"
+  },
+  "mt_FspV_imUGK": {
+    "name": "I grafici di proporzionalità",
+    "description": "Rappresentare relazioni di proporzionalità usando doppie rette numeriche (due rette numeriche parallele allineate sullo 0) e tabelle di rapporti; riconoscere che rapporti equivalenti generano rette passanti per l'origine quando rappresentati graficamente",
+    "evidence": [
+      "Rappresentare coppie di valori proporzionali su un piano cartesiano e tracciare la retta passante per l'origine",
+      "Spiegare perché una relazione direttamente proporzionale passa sempre per (0,0)",
+      "Leggere un grafico di proporzionalità per trovare un valore incognito — ad esempio, 'Se 3 kg costano £6, quanto costano 5 kg?'"
+    ],
+    "assessmentPrompt": "Se {{name}} sta confrontando il costo di acquisto di diversi numeri di biglietti del cinema, sa tracciare un grafico di proporzionalità — una retta passante per lo zero — e usarlo per leggere il costo di un numero qualsiasi di biglietti senza dover ricalcolare ogni volta?"
+  },
+  "mt_GDG9_SZmsO": {
+    "name": "La divisione come fattore mancante",
+    "description": "Comprendere la divisione come un problema con un fattore mancante (es. trovare 32 ÷ 8 cercando il numero che, moltiplicato per 8, dà 32)",
+    "evidence": [
+      "Spiegare che 32 ÷ 8 = ? equivale a 8 × ? = 32",
+      "Usare un fatto di moltiplicazione noto per trovare il risultato di una divisione",
+      "Descrivere la relazione tra moltiplicazione e divisione come operazioni inverse"
+    ],
+    "assessmentPrompt": "{{name}} riesce a calcolare '32 ÷ 8' chiedendosi 'per quale numero devo moltiplicare 8 per ottenere 32?' — usando la conoscenza delle tabelline invece di un metodo di divisione separato?"
+  },
+  "mt_GRWwTDZ3wD": {
+    "name": "Schieramenti per la moltiplicazione",
+    "description": "Usare schieramenti (array) per rappresentare situazioni di moltiplicazione e divisione",
+    "evidence": [
+      "Costruire uno schieramento di 3 righe da 4 oggetti per rappresentare 3 × 4",
+      "Leggere uno schieramento e indicare il totale",
+      "Usare uno schieramento per risolvere un semplice problema di divisione (es. 12 oggetti in righe da 4 → 3 righe)"
+    ],
+    "assessmentPrompt": "Se {{name}} vede delle uova disposte in una scatola in 3 righe da 4, riesce a usare quella disposizione a griglia per calcolare sia '3 × 4 = 12' sia '12 ÷ 3 = 4'?"
+  },
+  "mt_Gag_h98jWP": {
+    "name": "Leggere e scrivere i numeri fino a 10,000,000",
+    "description": "Leggere, scrivere, ordinare e confrontare numeri fino a 10,000,000 e determinare il valore di ciascuna cifra",
+    "evidence": [
+      "Scrivere 4,302,561 in lettere",
+      "Ordinare quattro numeri a sette cifre dal più piccolo al più grande",
+      "Indicare che il valore del 7 in 7,045,200 è sette milioni"
+    ],
+    "assessmentPrompt": "{{name}} sa leggere e scrivere numeri fino a 10 milioni — come 4,302,617 — e indicare il valore di qualsiasi cifra del numero?"
+  },
+  "mt_GzcJEVkNRn": {
+    "name": "Comprendere gli angoli (8+ anni)",
+    "description": "Moltiplicare le lunghezze dei lati per trovare l'area dei rettangoli e rappresentare prodotti di numeri interi come aree rettangolari",
+    "evidence": [
+      "Calcolare l'area di un rettangolo 7 cm × 9 cm come 63 cm²",
+      "Disegnare un rettangolo con area 36 unità quadrate ed etichettare le lunghezze dei suoi lati",
+      "Risolvere: un giardino misura 8 m per 5 m — qual è la sua area?"
+    ],
+    "assessmentPrompt": "Se {{name}} deve mettere la moquette in una stanza di 5 m per 4 m, sa calcolare quanta moquette comprare — usando la moltiplicazione anziché contare i quadretti?"
+  },
+  "mt_HLUqHJ9Y7n": {
+    "name": "Le regolarità con le potenze di dieci",
+    "description": "Spiegare le regolarità negli zeri quando si moltiplica per potenze di 10 e nello spostamento della virgola decimale quando si moltiplica/divide per una potenza di 10; usare esponenti interi per indicare le potenze di 10 (ad esempio, 10³ = 1000)",
+    "evidence": [
+      "Scrivere 10⁴ = 10,000 e spiegare che l'esponente indica quattro fattori di 10",
+      "Spiegare perché 3.4 × 10² = 340 descrivendo lo spostamento della virgola",
+      "Prevedere il risultato di 2.56 × 10³ senza calcolarlo e spiegare la regolarità"
+    ],
+    "assessmentPrompt": "{{name}} sa spiegare perché 10² = 100 e 10³ = 1,000, e perché moltiplicare per 10 aggiunge semplicemente uno zero — collegando la regolarità degli zeri al valore posizionale?"
+  },
+  "mt_HhuSDxwDNM": {
+    "name": "Le tabelline",
+    "description": "Ricordare e usare i fatti di moltiplicazione e divisione delle tabelline del 2, del 5 e del 10",
+    "evidence": [
+      "Rispondere rapidamente a memoria 5 × 3 = 15",
+      "Rispondere rapidamente a memoria 20 ÷ 5 = 4",
+      "Recitare con scioltezza le tabelline del 2, del 5 e del 10"
+    ],
+    "assessmentPrompt": "{{name}} riesce a ricordare rapidamente i fatti delle tabelline del 2, del 5 e del 10 — come '5 × 6 = 30' o '20 ÷ 2 = 10' — sia in ordine diretto che inverso?"
+  },
+  "mt_IegHBHERVa": {
+    "name": "Valore posizionale dei numeri decimali (8+ anni)",
+    "description": "Confrontare numeri con lo stesso numero di cifre decimali, fino a due cifre decimali",
+    "evidence": [
+      "Ordinare 0.45, 0.54, 0.39 dal più piccolo al più grande",
+      "Confrontare 3.72 e 3.27 ragionando sul valore posizionale",
+      "Collocare in ordine tre numeri con due cifre decimali su una linea dei numeri"
+    ],
+    "assessmentPrompt": "Se {{name}} confronta due prezzi — £4.75 e £4.57 — sa dirti qual è più caro senza usare la calcolatrice?"
+  },
+  "mt_IuHa5UI5od": {
+    "name": "Misurare la lunghezza (10+ anni)",
+    "description": "Riconoscere il volume come attributo delle figure solide; capire che un cubo unitario (lato di lunghezza 1 unità) ha un volume di \"un'unità cubica\" e può essere usato per misurare il volume; un solido riempito con n cubetti unitari ha volume n unità cubiche",
+    "evidence": [
+      "Spiegare cosa significa \"volume\" per una figura tridimensionale e in cosa differisce dall'area",
+      "Individuare un cubo unitario e spiegare che rappresenta un'unità cubica di volume",
+      "Determinare il volume di un piccolo solido contando i cubetti unitari che lo riempiono"
+    ],
+    "assessmentPrompt": "Se {{name}} costruisce una figura solida usando piccoli cubetti, sa contare i cubetti per trovare il volume — e spiegare cosa significa \"un centimetro cubo\" in termini di tutti i giorni?"
+  },
+  "mt_IzQvs7k_sE": {
+    "name": "Conteggio a salti (per 4, per 8, per 50, per 100)",
+    "description": "Contare da 0 per multipli di 4, 8, 50 e 100",
+    "evidence": [
+      "Recitare i multipli di 4 da 0 fino ad almeno 48",
+      "Recitare i multipli di 8 da 0 fino ad almeno 96",
+      "Contare a salti di 50 e di 100 da 0 fino a 1000"
+    ],
+    "assessmentPrompt": "{{name}} riesce a contare per 4 fino a 48, a contare per 8, oppure a contare per centinaia partendo da un punto qualsiasi — per esempio 350, 450, 550?"
+  },
+  "mt_JH_6RpNWjr": {
+    "name": "Strategie di addizione e sottrazione (10+ anni)",
+    "description": "Addizionare e sottrarre numeri decimali fino ai centesimi usando strategie basate sul valore posizionale, sulle proprietà delle operazioni e sulla relazione tra addizione e sottrazione; collegare le strategie ai metodi scritti e spiegare il ragionamento",
+    "evidence": [
+      "Calcolare correttamente 3.45 + 2.78 e spiegare il riporto tra le cifre decimali",
+      "Usare una linea dei numeri o i blocchi base dieci per rappresentare 5.03 − 2.67",
+      "Spiegare perché l'algoritmo standard funziona per l'addizione di numeri decimali, collegandolo alla comprensione del valore posizionale"
+    ],
+    "assessmentPrompt": "{{name}} riesce ad addizionare o sottrarre numeri decimali come '4.73 + 2.68' o '10.00 − 3.47', allineando la virgola decimale e svolgendo correttamente i calcoli in colonna?"
+  },
+  "mt_Jvg8X0N5u0": {
+    "name": "Usare formule semplici",
+    "description": "Usare formule semplici espresse a parole o con simboli per calcolare dei valori (ad es. perimetro = 2 × (lunghezza + larghezza))",
+    "evidence": [
+      "Sostituire i valori nella formula P = 2(l + w) per trovare il perimetro di un rettangolo",
+      "Usare la formula dell'area di un triangolo (A = 1/2 × b × h) dati i valori di base e altezza",
+      "Interpretare una formula espressa a parole e usarla per calcolare un risultato"
+    ],
+    "assessmentPrompt": "Se a {{name}} viene detto che il perimetro di un rettangolo si calcola con la formula perimetro = 2 × (lunghezza + larghezza), riesce a sostituire le misure e calcolare il risultato?"
+  },
+  "mt_Jvvh5P06NV": {
+    "name": "L'area tramite piastrellatura",
+    "description": "Trovare l'area di un rettangolo ricoprendolo con quadratini unitari e mostrare che il risultato è uguale al prodotto delle lunghezze dei lati",
+    "evidence": [
+      "Ricoprire con piastrelle un rettangolo 4×6, contare 24 quadratini e verificare che 4×6=24",
+      "Spiegare perché il numero di righe moltiplicato per il numero di quadratini in ogni riga dà l'area",
+      "Disegnare un rettangolo su carta a quadretti, ricoprirlo con piastrelle e scrivere la moltiplicazione corrispondente"
+    ],
+    "assessmentPrompt": "Se una stanza rettangolare è lunga 4 m e larga 3 m, {{name}} sa calcolarne l'area immaginando di ricoprirla con quadrati di 1 metro — e spiegare perché ciò equivale a 4 × 3?"
+  },
+  "mt_JwP9QFv6gQ": {
+    "name": "Leggere e scrivere i numeri (9+ anni)",
+    "description": "Leggere, scrivere, ordinare e confrontare numeri interi fino ad almeno 1,000,000 usando la notazione in base dieci, i nomi dei numeri, la forma estesa e la comprensione del valore posizionale",
+    "evidence": [
+      "Scrivere 403,072 in lettere e in forma estesa",
+      "Confrontare 548,301 e 543,801 usando < e spiegare il ragionamento",
+      "Ordinare quattro numeri a sei cifre dal più piccolo al più grande"
+    ],
+    "assessmentPrompt": "{{name}} sa leggere e scrivere numeri fino ai milioni — come 1,340,000 — e mettere correttamente in ordine un insieme di numeri grandi?"
+  },
+  "mt_K0Y15w48SY": {
+    "name": "Trasformazioni di coordinate",
+    "description": "Identificare le proprietà di traslazioni, rotazioni e riflessioni; descrivere ed eseguire queste trasformazioni su date figure, e comprendere che l'immagine è congruente all'originale",
+    "evidence": [
+      "Riflettere una figura rispetto a una data linea speculare (incluse le linee diagonali) e indicare le coordinate dell'immagine",
+      "Ruotare una figura attorno a un dato centro di 90° o 180° e descrivere il risultato",
+      "Traslare una figura secondo un dato vettore e verificare che lunghezze e angoli siano conservati"
+    ],
+    "assessmentPrompt": "Se a {{name}} viene chiesto di ruotare un triangolo di 90° in senso orario attorno a un punto fisso, riesce a determinare dove finisce ciascun vertice — e a confermare che il triangolo ha ancora la stessa dimensione e forma?"
+  },
+  "mt_K5jM7vlVhA": {
+    "name": "Tutte le tabelline fino a 12×12",
+    "description": "Ricordare i fatti di moltiplicazione e divisione delle tabelline fino a 12 × 12",
+    "evidence": [
+      "Ricordare rapidamente qualsiasi fatto delle tabelline da 1 a 12",
+      "Ricordare il corrispondente fatto di divisione per qualsiasi fatto di moltiplicazione",
+      "Usare fatti noti per verificare o ricavare risultati nei calcoli"
+    ],
+    "assessmentPrompt": "{{name}} riesce a ricordare qualsiasi fatto di moltiplicazione o divisione tra tutte le tabelline fino al 12 — come '9 × 8 = 72' o '132 ÷ 12 = 11' — in modo rapido e preciso?"
+  },
+  "mt_KJeEeTutJI": {
+    "name": "Figure piane",
+    "description": "Riconoscere e nominare le comuni figure piane (cerchi, triangoli, rettangoli inclusi i quadrati)",
+    "evidence": [
+      "Nominare un triangolo, un cerchio, un rettangolo e un quadrato quando vengono mostrati",
+      "Identificare correttamente una forma indipendentemente dalle sue dimensioni o dal suo orientamento",
+      "Individuare tutti i triangoli in un insieme misto di forme"
+    ],
+    "assessmentPrompt": "{{name}} riesce a indicare le forme in giro per casa — come un orologio, una finestra o una pizza — e a dire correttamente se ciascuna è un cerchio, un triangolo, un rettangolo o un quadrato?"
+  },
+  "mt_KaF0SQvaiu": {
+    "name": "Misurare lunghezza e altezza (5+ anni)",
+    "description": "Misurare e iniziare a registrare lunghezze e altezze usando unità di misura non convenzionali e convenzionali",
+    "evidence": [
+      "Misurare la lunghezza di un tavolo usando dei cubetti e registrare il risultato",
+      "Iniziare a usare un righello per misurare in centimetri",
+      "Registrare una misura come numero seguito dall'unità di misura"
+    ],
+    "assessmentPrompt": "Se {{name}} misura la lunghezza di un libro usando dei cubetti allineati uno dopo l'altro, sa contare quanti cubetti servono — e poi provare a misurare lo stesso libro con un righello?"
+  },
+  "mt_Kr3IyA6m-O": {
+    "name": "Le frazioni sulla linea dei numeri",
+    "description": "Riconoscere e usare le frazioni come numeri: collocare frazioni unitarie e non unitarie con denominatori piccoli su una linea dei numeri",
+    "evidence": [
+      "Collocare 1/2, 1/4, 3/4 su una linea dei numeri da 0 a 1",
+      "Riconoscere che 1/3 si trova tra 0 e 1/2 sulla linea dei numeri",
+      "Capire che una frazione è un numero a sé stante, non solo 'parte di una figura'"
+    ],
+    "assessmentPrompt": "Se disegni una linea dei numeri da 0 a 1, {{name}} sa segnare dove vanno 1/4, 1/2 e 3/4 — senza alcun aiuto extra?"
+  },
+  "mt_Lb2ZnMdkYR": {
+    "name": "Proprietà delle operazioni",
+    "description": "Applicare le proprietà delle operazioni (commutativa, associativa, distributiva) come strategie per moltiplicare e dividere",
+    "evidence": [
+      "Usare la commutatività: se 6 × 4 = 24 allora 4 × 6 = 24",
+      "Usare la proprietà distributiva: 8 × 7 = 8 × 5 + 8 × 2 = 40 + 16 = 56",
+      "Usare la proprietà associativa per moltiplicare tre numeri: 2 × 3 × 5 = 6 × 5 = 30"
+    ],
+    "assessmentPrompt": "{{name}} riesce a usare strategie come la scomposizione di un numero — calcolando '6 × 14' come '6 × 10 + 6 × 4 = 60 + 24 = 84' — per rendere più semplice la moltiplicazione?"
+  },
+  "mt_LlMl2PbaZe": {
+    "name": "Moltiplicare e dividere",
+    "description": "Moltiplicare e dividere numeri interi e numeri decimali per 10, 100 e 1000",
+    "evidence": [
+      "Calcolare 3.45 × 100 = 345",
+      "Calcolare 72 ÷ 1000 = 0.072",
+      "Spiegare che moltiplicare per 10 sposta ogni cifra di una posizione verso sinistra"
+    ],
+    "assessmentPrompt": "{{name}} riesce a calcolare rapidamente '4.7 × 100' o '3,600 ÷ 1,000' — sapendo che le cifre si spostano a sinistra o a destra nella tabella del valore posizionale a seconda che si stia moltiplicando o dividendo?"
+  },
+  "mt_LpSuPgL31x": {
+    "name": "La divisione come suddivisione in parti uguali",
+    "description": "Comprendere la divisione come suddivisione equa in gruppi o come raggruppamento (quanti gruppi di una data dimensione si possono formare)",
+    "evidence": [
+      "Dividere 10 gettoni in parti uguali tra 2 piatti",
+      "Raggruppare 12 oggetti in insiemi di 3 e contare 4 gruppi",
+      "Usare oggetti concreti per risolvere 'Quanti gruppi di 2 ci sono in 8?'"
+    ],
+    "assessmentPrompt": "Se {{name}} ha 12 chicchi d'uva da dividere equamente tra 3 amici, riesce a capire che ogni amico ne riceve 4 — e a spiegare come ha fatto?"
+  },
+  "mt_M2v1A9OEuM": {
+    "name": "Contare entro 1,000",
+    "description": "Contare entro il 1000, incluso il conteggio a salti per 5, per 10 e per 100",
+    "evidence": [
+      "Contare in avanti e all'indietro entro il 1000 partendo da un numero qualsiasi",
+      "Contare a salti di 5 partendo da un multiplo di 5 qualsiasi fino a 1000",
+      "Contare a salti di 100 partendo da un numero qualsiasi (ad es. 150, 250, 350 …)"
+    ],
+    "assessmentPrompt": "{{name}} riesce a contare con sicurezza fino a 1000 — e se gli chiedi di contare per centinaia da 200, o per decine da 650, riesce a farlo senza perdere il conto?"
+  },
+  "mt_M5PPDJStGm": {
+    "name": "Conteggio meccanico fino a 100",
+    "description": "Contare meccanicamente in avanti e all'indietro da 0 a 100, partendo da 0, 1 o da un numero qualsiasi, contando per uno",
+    "evidence": [
+      "Recitare la sequenza numerica da 1 a 100 senza saltare o ripetere numeri",
+      "Contare all'indietro da 20 a 0",
+      "Contare in avanti partendo da un numero diverso da 1 (ad es. 'inizia da 23')"
+    ],
+    "assessmentPrompt": "{{name}} riesce a contare ad alta voce da 0 a 100 — e se dici \"inizia da 47\", riesce a continuare da lì senza tornare all'inizio?"
+  },
+  "mt_MCu_SNg_OW": {
+    "name": "Schieramenti per la moltiplicazione (9+ anni)",
+    "description": "Dividere numeri fino a quattro cifre per un numero a una cifra usando la divisione in colonna (e strategie basate su valore posizionale/schieramenti); interpretare i resti in modo appropriato al contesto",
+    "evidence": [
+      "Calcolare 4,932 ÷ 6 usando la divisione in colonna",
+      "Risolvere 125 ÷ 8 e interpretare: 15 resto 5 significa 15 sacchetti pieni con 5 elementi avanzati",
+      "Usare la relazione tra moltiplicazione e divisione per verificare il risultato di una divisione"
+    ],
+    "assessmentPrompt": "{{name}} riesce a usare il metodo della divisione in colonna per calcolare qualcosa come '2,457 ÷ 6', e a decidere cosa fare con un eventuale resto?"
+  },
+  "mt_MFfYcnv6Tv": {
+    "name": "Angoli retti e giri",
+    "description": "Identificare gli angoli retti; riconoscere che due angoli retti formano un mezzo giro, tre formano tre quarti di giro e quattro formano un giro completo",
+    "evidence": [
+      "Usare un misuratore di angoli retti per identificare gli angoli retti nelle figure e nell'ambiente",
+      "Classificare gli angoli come retti, minori di un angolo retto o maggiori di un angolo retto",
+      "Spiegare che 4 angoli retti formano un giro completo (360°)"
+    ],
+    "assessmentPrompt": "Se {{name}} osserva l'angolo di un foglio di carta, riesce a dire che si tratta di un angolo retto — e che per girare completamente su se stessi servono quattro angoli retti?"
+  },
+  "mt_MHaiUd2FLA": {
+    "name": "Confrontare numeri grandi",
+    "description": "Ordinare e confrontare numeri oltre il 1000",
+    "evidence": [
+      "Confrontare due numeri a quattro cifre usando >, < e = esaminando le cifre a partire dal valore posizionale più alto",
+      "Ordinare un insieme di numeri fino a 10,000 dal più piccolo al più grande",
+      "Giustificare l'ordinamento ragionando sul valore posizionale"
+    ],
+    "assessmentPrompt": "{{name}} sa mettere in ordine dal più piccolo al più grande un insieme di numeri a quattro cifre come 4,321, 1,876 e 9,045 — confrontandoli cifra per cifra?"
+  },
+  "mt_MJZA90uc6H": {
+    "name": "Perimetro (10+ anni)",
+    "description": "Riconoscere che figure con la stessa area possono avere perimetri diversi e viceversa; esplorare questa relazione in modo sistematico",
+    "evidence": [
+      "Disegnare due rettangoli con area 24 cm² ma perimetri diversi",
+      "Trovare due figure con perimetro 20 cm ma aree diverse",
+      "Spiegare perché un rettangolo lungo e stretto e un quadrato possono avere la stessa area ma perimetri diversi"
+    ],
+    "assessmentPrompt": "Se {{name}} ha 12 piastrelle quadrate da disporre, sa formare rettangoli di forme diverse e notare che l'area resta la stessa (12 piastrelle) ma i perimetri sono tutti diversi?"
+  },
+  "mt_ML5t7n2-U8": {
+    "name": "Area di triangoli e parallelogrammi",
+    "description": "Calcolare l'area di parallelogrammi e triangoli usando le formule (A = b × h per i parallelogrammi, A = ½ × b × h per i triangoli)",
+    "evidence": [
+      "Calcolare l'area di un parallelogramma con base 8 cm e altezza 5 cm",
+      "Calcolare l'area di un triangolo con base 12 cm e altezza 7 cm",
+      "Spiegare perché l'area di un triangolo è la metà dell'area del parallelogramma corrispondente"
+    ],
+    "assessmentPrompt": "Se {{name}} sta tagliando pezzi triangolari di stoffa con base 8 cm e altezza 5 cm, sa usare una formula per calcolare l'area di ciascun pezzo?"
+  },
+  "mt_MyGblah2yY": {
+    "name": "Capire le frazioni",
+    "description": "Scrivere frazioni semplici (ad es. 1/2 di 6 = 3) e riconoscere l'equivalenza tra 2/4 e 1/2",
+    "evidence": [
+      "Scrivere 1/2 di 10 = 5",
+      "Spiegare, con l'aiuto di un disegno, che 2/4 equivale a 1/2",
+      "Calcolare semplici frazioni unitarie di quantità e scrivere il risultato"
+    ],
+    "assessmentPrompt": "Se {{name}} ha 6 fragole e ne mangia la metà, sa scriverlo come \"1/2 di 6 = 3\" — e spiegare perché 2/4 e 1/2 rappresentano la stessa quantità?"
+  },
+  "mt_NSC3LT_-ch": {
+    "name": "Stimare il volume",
+    "description": "Stimare il volume di parallelepipedi usando cubetti da 1 cm³; stimare la capacità di contenitori usando l'acqua",
+    "evidence": [
+      "Costruire un parallelepipedo con cubetti da 1 cm³ e indicarne il volume",
+      "Stimare quanti cubetti da 1 cm³ servirebbero per riempire una data scatola",
+      "Stimare la capacità di una brocca confrontandola con misure note in litri"
+    ],
+    "assessmentPrompt": "Se {{name}} ha una piccola scatola di cartone, sa stimare quanti cubetti da 1 cm³ ci starebbero dentro — e poi riempirla con delle zollette di zucchero per verificare?"
+  },
+  "mt_NaqEP8xDhZ": {
+    "name": "Convertire decimi in centesimi",
+    "description": "Esprimere una frazione con denominatore 10 come frazione equivalente con denominatore 100 e usare questo procedimento per sommare frazioni con denominatore 10 e 100 (ad es. 3/10 + 4/100 = 34/100)",
+    "evidence": [
+      "Riscrivere 7/10 come 70/100",
+      "Calcolare 3/10 + 4/100 = 34/100",
+      "Spiegare perché 5/10 = 50/100 usando una griglia dei centesimi"
+    ],
+    "assessmentPrompt": "Se {{name}} deve sommare 3/10 e 17/100, sa prima riscrivere 3/10 in centesimi — e poi sommare le due frazioni?"
+  },
+  "mt_NoB20kVa4w": {
+    "name": "Frazioni sulla linea dei numeri (8+ anni)",
+    "description": "Rappresentare le frazioni su una linea dei numeri: suddividere l'intervallo da 0 a 1 in b parti uguali per individuare 1/b, poi contare a lunghezze di 1/b a partire da 0 per individuare a/b",
+    "evidence": [
+      "Suddividere una linea dei numeri da 0 a 1 in 4 parti uguali e segnare 1/4",
+      "Spiegare che ogni parte della linea ha dimensione 1/b",
+      "Collocare 1/3 e 1/6 su linee dei numeri separate",
+      "Collocare 3/4 su una linea dei numeri contando tre salti di 1/4 a partire da 0",
+      "Collocare 5/6 su una linea dei numeri e spiegare il procedimento",
+      "Individuare la frazione indicata da un punto su una linea dei numeri già suddivisa"
+    ],
+    "assessmentPrompt": "Se {{name}} disegna una linea dei numeri da 0 a 1 divisa in 5 parti uguali, sa indicare dove vanno 2/5 e 4/5 — e spiegare come ha fatto a capirlo?"
+  },
+  "mt_NtJYlJdUe9": {
+    "name": "Attributi misurabili degli oggetti",
+    "description": "Descrivere e individuare attributi misurabili degli oggetti come lunghezza, altezza, peso e capacità; usare termini comparativi (più lungo, più corto, più pesante, più leggero, di più, di meno)",
+    "evidence": [
+      "Riconoscere che una matita ha una lunghezza e può essere misurata",
+      "Descrivere più attributi di uno stesso oggetto (ad esempio, una bottiglia ha altezza, peso e capacità)",
+      "Usare parole come \"lungo\", \"pesante\", \"pieno\" per descrivere gli oggetti"
+    ],
+    "assessmentPrompt": "Se {{name}} prende in mano una bottiglia d'acqua e un libro, sa dire quale dei due è più pesante e quale è più alto — senza usare strumenti di misura?"
+  },
+  "mt_OvyoRo47K-": {
+    "name": "L'addizione come unire o mettere insieme due gruppi",
+    "description": "Comprendere l'addizione come l'unione o la messa insieme di due gruppi per trovare il totale",
+    "evidence": [
+      "Rappresentare il 'mettere insieme' con oggetti concreti e dire il totale",
+      "Drammatizzare una situazione di 'aggiunta' (ad es. arrivano 3 bambini, poi se ne aggiungono altri 2)",
+      "Spiegare che l'addizione significa trovare quanti ce ne sono in tutto"
+    ],
+    "assessmentPrompt": "Se {{name}} ha 4 macchinine giocattolo e un amico ne porta altre 3, capisce che addizionare significa unire i due gruppi — e sa dirti che ora ci sono 7 macchinine in tutto?"
+  },
+  "mt_PZ909yPrEC": {
+    "name": "La moltiplicazione come addizione ripetuta",
+    "description": "Comprendere la moltiplicazione come addizione ripetuta e raggruppamento di insiemi uguali",
+    "evidence": [
+      "Spiegare che 3 gruppi da 2 equivalgono a 2 + 2 + 2",
+      "Usare oggetti per formare gruppi uguali e contare il totale",
+      "Riconoscere che uno schieramento mostra righe uguali"
+    ],
+    "assessmentPrompt": "Se {{name}} deve contare 4 sacchetti con 3 mele ciascuno, riesce a capire che invece di contarle tutte una per una fino a 12, potrebbe sommare 3 + 3 + 3 + 3 — oppure dire '4 gruppi da 3'?"
+  },
+  "mt_PsylzZ9lHW": {
+    "name": "Le frazioni sulla retta numerica",
+    "description": "Comprendere e usare il valore posizionale per numeri decimali, misure e numeri interi di qualsiasi grandezza; estendere il sistema numerico includendo tutti i numeri interi positivi e negativi, i decimali e le frazioni su un'unica retta numerica",
+    "evidence": [
+      "Identificare il valore di qualsiasi cifra in numeri di qualsiasi grandezza, compresi i decimali",
+      "Collocare numeri interi positivi e negativi, decimali e frazioni su una retta numerica",
+      "Usare il valore posizionale per confrontare e ordinare numeri in tutto il sistema numerico"
+    ],
+    "assessmentPrompt": "{{name}} sa collocare un insieme misto di numeri — come 3, −2, 0.5, −1.75 e ¼ — tutti sulla stessa retta numerica, nell'ordine corretto?"
+  },
+  "mt_Qcp2d_kuta": {
+    "name": "Solidi",
+    "description": "Riconoscere e nominare i comuni solidi (cubi, parallelepipedi, piramidi, sfere, cilindri, coni)",
+    "evidence": [
+      "Nominare un cubo, una sfera, un cilindro e un cono quando vengono mostrati",
+      "Identificare i solidi nell'ambiente circostante (per esempio, una lattina è un cilindro)",
+      "Riconoscere un parallelepipedo e una piramide tra un insieme di solidi"
+    ],
+    "assessmentPrompt": "{{name}} riesce a nominare i solidi comuni che trova intorno a sé — come una lattina di fagioli (cilindro), una palla (sfera) o un dado (cubo)?"
+  },
+  "mt_QqG6IdmTSE": {
+    "name": "Il modello del valore posizionale × 10",
+    "description": "Riconoscere che, in un numero intero con più cifre, una cifra in una posizione rappresenta dieci volte ciò che rappresenta nella posizione alla sua destra (ad esempio, 700 ÷ 70 = 10)",
+    "evidence": [
+      "Spiegare che il 3 in 3,000 vale dieci volte il 3 in 300",
+      "Completare: 700 ÷ 70 = __ e spiegare ragionando sul valore posizionale",
+      "Indicare quante volte il valore del 5 in 50,000 è maggiore del valore del 5 in 5,000"
+    ],
+    "assessmentPrompt": "{{name}} sa spiegare che in 700 il 7 vale 10 volte di più che in 70 — perché spostarsi di una posizione verso sinistra moltiplica il valore per 10?"
+  },
+  "mt_QysgF57dxh": {
+    "name": "Rette, semirette e angoli",
+    "description": "Disegnare e identificare punti, rette, segmenti, semirette, angoli (retti, acuti, ottusi) e rette perpendicolari e parallele; identificarli nelle figure bidimensionali",
+    "evidence": [
+      "Disegnare una coppia di rette perpendicolari e una coppia di rette parallele",
+      "Identificare tutte le coppie di lati paralleli in un trapezio",
+      "Contrassegnare un angolo retto, un angolo acuto e un angolo ottuso in una data figura"
+    ],
+    "assessmentPrompt": "Se a {{name}} vengono dati un foglio di carta e un righello, riesce a disegnare un segmento, segnare un punto e poi disegnare un'altra retta passante per quel punto perfettamente parallela alla prima?"
+  },
+  "mt_R2ccrI-nKD": {
+    "name": "I multipli di 100",
+    "description": "Comprendere che i multipli di 100 (100-900) rappresentano ciascuno un numero di centinaia con 0 decine e 0 unità",
+    "evidence": [
+      "Identificare che 300 significa 3 centinaia, 0 decine, 0 unità",
+      "Collocare i multipli di 100 su una retta numerica fino a 1000",
+      "Leggere e scrivere i multipli di 100 e spiegarne la struttura in termini di valore posizionale"
+    ],
+    "assessmentPrompt": "{{name}} sa spiegare che 700 significa 7 centinaia senza decine e senza unità — e mostrare come si presenta usando i blocchi base-dieci o un disegno?"
+  },
+  "mt_R4AY0LKxfl": {
+    "name": "Coordinate (10+ anni)",
+    "description": "Descrivere posizioni sull'intera griglia cartesiana (tutti e quattro i quadranti); usare coordinate con valori negativi",
+    "evidence": [
+      "Rappresentare punti con coordinate negative come (−3, 4) e (2, −5) su una griglia a quattro quadranti",
+      "Identificare il quadrante in cui si trova un dato punto",
+      "Descrivere la posizione di una figura usando coordinate in tutti e quattro i quadranti"
+    ],
+    "assessmentPrompt": "Se {{name}} sta giocando a un gioco in cui le navi possono trovarsi anche in coordinate negative, riesce a rappresentare e leggere correttamente posizioni come (−3, 2) o (1, −4) su una griglia?"
+  },
+  "mt_RVK655t391": {
+    "name": "Misurare la temperatura",
+    "description": "Usare i numeri negativi in contesti reali (temperatura, finanza, livello del mare); calcolare intervalli che attraversano lo zero",
+    "evidence": [
+      "La temperatura scende da 3°C a −5°C — di quanto è calata? (8 gradi)",
+      "Calcolare la differenza tra un saldo bancario di −£120 e £350",
+      "Ordinare −7, −3, 0, 2, 5 su una retta numerica e trovare l'intervallo da −7 a 5"
+    ],
+    "assessmentPrompt": "Se un conto bancario passa da −£45 a +£120, {{name}} sa calcolare la variazione totale — contando attraverso lo zero per arrivare a £165?"
+  },
+  "mt_SH7QgFl8-v": {
+    "name": "Trasformazioni su una griglia",
+    "description": "Rappresentare ed eseguire trasformazioni geometriche su carta quadrettata o su una griglia cartesiana: riflessioni (rispetto a linee speculari orizzontali, verticali e diagonali, inclusi gli assi), traslazioni (descritte come vettore o come spostamenti a sinistra/destra/su/giù) e rotazioni (di 90° o 180° attorno a un centro indicato); descrivere ogni trasformazione con precisione usando il linguaggio corretto; identificare quale trasformazione fa corrispondere una figura alla sua immagine confrontando posizione, orientamento e dimensione",
+    "evidence": [
+      "Riflettere una figura rispetto a una data linea speculare su una griglia ed etichettare le nuove coordinate",
+      "Traslare una figura di un dato numero di caselle in orizzontale e in verticale e descrivere il movimento",
+      "Ruotare una figura di 90° o 180° attorno a un dato centro su una griglia e verificare che l'immagine sia congruente all'originale"
+    ],
+    "assessmentPrompt": "Se {{name}} osserva una figura e la sua immagine speculare su carta quadrettata, riesce a disegnare l'esatta linea speculare e a descrivere la riflessione con precisione — indicando anche dove si trova la linea di riflessione — senza limitarsi a dire che \"si è ribaltata\"?"
+  },
+  "mt_SqhXQhAEUf": {
+    "name": "Conversioni di misura",
+    "description": "Risolvere problemi che coinvolgono il calcolo e la conversione di unità di misura, usando la notazione decimale e un ragionamento a più fasi in contesti reali",
+    "evidence": [
+      "Risolvere: \"Una ricetta usa 0.75 kg di farina. Quanti grammi servono per 3 dosi?\"",
+      "Confrontare 2.5 litri e 2,450 ml convertendoli nella stessa unità",
+      "Risolvere un problema a più fasi che coinvolge tempo, distanza e conversione di unità"
+    ],
+    "assessmentPrompt": "Se {{name}} sta riempiendo un acquario che contiene 60 litri e il rubinetto lo riempie a 3.5 litri al minuto, sa calcolare quanto tempo ci vorrà per riempirlo?"
+  },
+  "mt_SrrsLiJkr3": {
+    "name": "Addizionare e sottrarre (7+ anni)",
+    "description": "Addizionare e sottrarre numeri fino a tre cifre usando i metodi scritti formali dell'addizione e sottrazione in colonna",
+    "evidence": [
+      "Impostare correttamente un'addizione in colonna con le cifre allineate secondo il valore posizionale",
+      "Eseguire una sottrazione in colonna con il prestito quando necessario",
+      "Verificare il risultato usando l'operazione inversa o una stima"
+    ],
+    "assessmentPrompt": "{{name}} riesce a impostare in colonna un'operazione come '347 + 265' o '512 − 278' e a svolgerla passo dopo passo, riportando o prendendo in prestito quando necessario?"
+  },
+  "mt_THl9GLxwoL": {
+    "name": "Le due cifre di un numero a due cifre",
+    "description": "Comprendere che le due cifre di un numero a due cifre rappresentano quantità di decine e unità",
+    "evidence": [
+      "Spiegare che in 47 il 4 rappresenta 4 decine (40) e il 7 rappresenta 7 unità",
+      "Usare i blocchi base-dieci per mostrare un numero a due cifre come decine e unità",
+      "Identificare la cifra delle decine e la cifra delle unità in un qualsiasi numero a due cifre"
+    ],
+    "assessmentPrompt": "Se {{name}} vede il numero 47, sa dirti che ci sono 4 decine (quaranta) e 7 unità — invece di limitarsi a leggere le cifre come 'quattro sette'?"
+  },
+  "mt_TcG90kS8nu": {
+    "name": "Confrontare le durate",
+    "description": "Usare termini comparativi per il tempo: più veloce, più lento, prima, dopo",
+    "evidence": [
+      "Confrontare due eventi e dire quale è stato più veloce/più lento",
+      "Usare correttamente \"prima\" e \"dopo\" per descrivere eventi quotidiani",
+      "Risolvere problemi pratici come \"Chi ha finito per primo?\""
+    ],
+    "assessmentPrompt": "Se {{name}} finisce la cena prima di un fratello o una sorella, sa dire chi ha finito prima — e chi è stato più veloce?"
+  },
+  "mt_TdV9YGJEoY": {
+    "name": "Posizione, direzione e movimento",
+    "description": "Usare il vocabolario matematico per descrivere posizione, direzione e movimento, incluse le linee rette e distinguendo la rotazione come un giro in termini di angoli retti (un quarto di giro, mezzo giro, tre quarti di giro, in senso orario e antiorario)",
+    "evidence": [
+      "Usare termini come senso orario, senso antiorario, un quarto di giro, mezzo giro, tre quarti di giro",
+      "Descrivere un angolo retto come un quarto di giro",
+      "Dare e seguire indicazioni che comportano movimenti in linea retta e giri"
+    ],
+    "assessmentPrompt": "{{name}} riesce a seguire indicazioni come \"gira in senso orario di un quarto di giro\" o \"spostati di tre caselle a destra\" su una griglia o in un semplice gioco di orientamento?"
+  },
+  "mt_TgHxujL81r": {
+    "name": "Moltiplicare le frazioni",
+    "description": "Capire a/b come un multiplo di 1/b; moltiplicare frazioni proprie e numeri misti per numeri interi, con il supporto di modelli visivi (ad es. 3 × 2/5 = 6/5 = 1 1/5)",
+    "evidence": [
+      "Calcolare 4 × 3/8 usando l'addizione ripetuta o la regola n × a/b = (n×a)/b",
+      "Moltiplicare 2 1/3 × 3 ed esprimere il risultato come numero misto",
+      "Usare un modello visivo per mostrare perché 5 × 1/4 = 5/4"
+    ],
+    "assessmentPrompt": "Se una ricetta usa 2/3 di tazza di burro e {{name}} vuole farla tre volte, sa calcolare quanto burro gli serve in totale?"
+  },
+  "mt_TqDq6jyOmL": {
+    "name": "Equivalenti decimali di decimi e centesimi",
+    "description": "Riconoscere e scrivere gli equivalenti decimali di un numero qualsiasi di decimi o centesimi (ad es. 3/10 = 0.3, 27/100 = 0.27)",
+    "evidence": [
+      "Scrivere 7/10 come 0.7 e viceversa",
+      "Convertire 45/100 in 0.45",
+      "Collocare 0.3 e 3/10 nello stesso punto di una linea dei numeri"
+    ],
+    "assessmentPrompt": "Se {{name}} vede 7/10 su un'etichetta di prezzo, sa riscriverlo come numero decimale — e fare lo stesso con 43/100?"
+  },
+  "mt_U0waNfD8PB": {
+    "name": "Confrontare e ordinare i numeri",
+    "description": "Confrontare e ordinare numeri a due cifre usando i simboli >, = e <, basandosi sulla comprensione del valore posizionale",
+    "evidence": [
+      "Inserire correttamente > o < tra 34 e 43",
+      "Ordinare un insieme di numeri a due cifre dal più piccolo al più grande",
+      "Spiegare un confronto facendo riferimento prima alla cifra delle decine, poi a quella delle unità"
+    ],
+    "assessmentPrompt": "Se mostri a {{name}} i numeri 34, 67 e 21, riesce a metterli in ordine dal più piccolo al più grande — e a usare correttamente i simboli > o <?"
+  },
+  "mt_U4cIBXVug4": {
+    "name": "Confronto moltiplicativo",
+    "description": "Interpretare un'equazione di moltiplicazione come un confronto (es. 35 = 5 × 7 significa che 35 è 5 volte tanto quanto 7); rappresentare enunciati verbali di confronti moltiplicativi come equazioni",
+    "evidence": [
+      "Spiegare che '4 volte tanto' significa moltiplicare per 4",
+      "Scrivere un'equazione per: Sara ha 3 volte tanti adesivi quanti ne ha Tommaso, che ne ha 8",
+      "Distinguere il confronto moltiplicativo dal confronto additivo nei problemi verbali"
+    ],
+    "assessmentPrompt": "{{name}} riesce a guardare '35 = 5 × 7' e spiegarlo come '35 è cinque volte tanto quanto 7' — comprendendolo come un confronto, non solo come un fatto di moltiplicazione?"
+  },
+  "mt_Uq5vYqboCR": {
+    "name": "Descrivere i movimenti",
+    "description": "Descrivere i movimenti tra posizioni come traslazioni di una data unità verso sinistra/destra e verso l'alto/il basso",
+    "evidence": [
+      "Descrivere lo spostamento da (2,3) a (5,3) come 3 unità verso destra",
+      "Traslare una figura di 4 unità a destra e 2 unità verso l'alto e indicare le nuove coordinate",
+      "Prevedere dove si troverà un punto dopo una data traslazione"
+    ],
+    "assessmentPrompt": "Se una figura si trova nella posizione (2, 3) su una griglia e dici a {{name}} di spostarla di quattro caselle a destra e due caselle verso l'alto, riesce a calcolare la nuova posizione senza doverla prima disegnare?"
+  },
+  "mt_VgOePicFYK": {
+    "name": "Concetti di addizione tra frazioni",
+    "description": "Capire l'addizione e la sottrazione di frazioni come unione e separazione di parti; scomporre una frazione in una somma di frazioni con lo stesso denominatore in più di un modo",
+    "evidence": [
+      "Mostrare che 3/8 = 1/8 + 1/8 + 1/8 e anche che 3/8 = 1/8 + 2/8",
+      "Scrivere due diverse scomposizioni di 5/6",
+      "Usare un modello visivo per motivare una scomposizione di 2 1/8 in parte intera e parte frazionaria"
+    ],
+    "assessmentPrompt": "Se {{name}} ha 7/8 di una tavoletta di cioccolato e ne regala 3/8, sa calcolare quale frazione resta — e poi mostrare due modi diversi di dividere 7/8 in due parti?"
+  },
+  "mt_Vi4Vo5xs_g": {
+    "name": "Numeri decimali per decimi e centesimi",
+    "description": "Usare la notazione decimale per frazioni con denominatore 10 o 100; leggere e scrivere numeri decimali come frazioni (ad es. 0.62 = 62/100, 0.71 = 71/100)",
+    "evidence": [
+      "Riscrivere 0.62 come 62/100",
+      "Scrivere 3/10 come 0.3 e collocarlo su una linea dei numeri",
+      "Leggere 0.07 ed esprimerlo come 7/100"
+    ],
+    "assessmentPrompt": "Se {{name}} vede un'etichetta di prezzo con £0.65, sa riscriverla come frazione — e fare il percorso inverso, trasformando 47/100 in un numero decimale?"
+  },
+  "mt_W17Kbwm0-u": {
+    "name": "Notazione decimale e percentuale",
+    "description": "Leggere, scrivere e usare correttamente la notazione decimale e percentuale — numero decimale, virgola decimale, decimi, centesimi, millesimi, percentuale, per cento, simbolo %, convertire, decimale finito — e capire le relazioni tra frazioni, numeri decimali e percentuali come tre modi diversi di esprimere lo stesso valore",
+    "evidence": [
+      "Leggere e scrivere correttamente i numeri decimali, individuando il valore di ogni cifra (unità, decimi, centesimi)",
+      "Usare correttamente il simbolo % e spiegare che percentuale significa 'su 100'",
+      "Convertire tra frazioni semplici, numeri decimali e percentuali (ad es. 1/2 = 0.5 = 50%) e spiegare perché sono equivalenti"
+    ],
+    "assessmentPrompt": "Se {{name}} vedesse scritti '0.5' e '50%', saprebbe spiegare che rappresentano la stessa quantità — e scriverli anche come frazione?"
+  },
+  "mt_WX30dzi4dt": {
+    "name": "Padronanza dei fatti di moltiplicazione e divisione",
+    "description": "Moltiplicare e dividere con scioltezza entro il 100 usando strategie come la relazione tra moltiplicazione e divisione",
+    "evidence": [
+      "Rispondere a qualsiasi fatto di moltiplicazione a una cifra entro 3 secondi",
+      "Rispondere al corrispondente fatto di divisione entro 3 secondi",
+      "Usare fatti noti per ricavare fatti sconosciuti (es. 9 × 7 da 10 × 7 − 7)"
+    ],
+    "assessmentPrompt": "{{name}} riesce a rispondere rapidamente a qualsiasi fatto delle tabelline fino a 10 × 10 — e a fornire anche i corrispondenti fatti di divisione, come '63 ÷ 9 = 7' sapendo che '9 × 7 = 63'?"
+  },
+  "mt_WcfaSfVT33": {
+    "name": "Conteggio uno a uno",
+    "description": "Corrispondenza uno a uno nel conteggio degli oggetti: ogni oggetto è abbinato a un solo numero",
+    "evidence": [
+      "Indicare o toccare ogni oggetto esattamente una volta mentre si pronunciano i numeri",
+      "Non saltare oggetti né contarli due volte quando si conta un insieme",
+      "Riconoscere l'errore quando qualcuno conta un oggetto due volte"
+    ],
+    "assessmentPrompt": "Se {{name}} sta contando un mucchio di acini d'uva, tocca o indica ognuno esattamente una volta mentre pronuncia ogni numero — senza saltarne nessuno o contare lo stesso due volte?"
+  },
+  "mt_WsM4EmdOLe": {
+    "name": "La divisione con resto (10+ anni)",
+    "description": "Dividere numeri fino a 4 cifre per un divisore a due cifre usando la divisione scritta in colonna estesa, interpretando i resti come numeri interi, frazioni o arrotondandoli in modo appropriato",
+    "evidence": [
+      "Calcolare 4,752 ÷ 13 usando la divisione in colonna estesa ed esprimere il resto come frazione",
+      "Decidere se arrotondare per eccesso o per difetto il resto di una divisione in un contesto reale (es. numero di autobus necessari)",
+      "Spiegare ogni passaggio dell'algoritmo della divisione in colonna estesa per un calcolo a 4 cifre ÷ 2 cifre"
+    ],
+    "assessmentPrompt": "{{name}} riesce a usare la divisione in colonna estesa per calcolare qualcosa come '1,848 ÷ 24' — seguendo i passaggi di dividere, moltiplicare, sottrarre e abbassare la cifra successiva fino ad arrivare al risultato?"
+  },
+  "mt_WtIFJSCQIT": {
+    "name": "Tipi di angoli (11+ anni)",
+    "description": "Usare termini e notazioni geometriche convenzionali per descrivere, abbozzare e disegnare punti, rette, rette parallele e perpendicolari, angoli retti, poligoni regolari e poligoni con simmetria di riflessione/rotazione",
+    "evidence": [
+      "Usare la notazione corretta per i segmenti (AB), gli angoli (∠ABC) e le rette parallele (AB ∥ CD)",
+      "Abbozzare un esagono regolare e descrivere la sua simmetria rotazionale e di riflessione",
+      "Identificare ed etichettare rette perpendicolari e parallele in una data figura usando i simboli standard"
+    ],
+    "assessmentPrompt": "Se chiedi a {{name}} di descrivere un triangolo usando la corretta notazione geometrica — nominando i suoi angoli e lati con delle lettere — riesce a farlo in modo abbastanza chiaro perché qualcun altro possa disegnarlo?"
+  },
+  "mt_WtcFrxGOgw": {
+    "name": "Perimetri dei poligoni",
+    "description": "Risolvere problemi sui perimetri dei poligoni: trovare il perimetro dalle lunghezze dei lati, trovare la lunghezza di un lato incognito ed esplorare rettangoli con lo stesso perimetro ma aree diverse (o viceversa)",
+    "evidence": [
+      "Calcolare il perimetro di un rettangolo con lati 8 cm e 5 cm",
+      "Trovare il lato mancante di un pentagono con perimetro 30 cm e quattro lati noti",
+      "Disegnare due rettangoli entrambi con perimetro 24 cm ma con aree diverse"
+    ],
+    "assessmentPrompt": "Se un rettangolo ha un perimetro di 24 cm e un lato misura 8 cm, {{name}} sa calcolare la lunghezza dell'altro lato — senza disegnarlo?"
+  },
+  "mt_X5cypSGoGU": {
+    "name": "Rapporti (11+ anni)",
+    "description": "Usare la notazione convenzionale per la priorità delle operazioni, incluse parentesi, potenze, radici e reciproci; applicare in modo coerente BIDMAS/BODMAS per calcolare espressioni numeriche complesse",
+    "evidence": [
+      "Calcolare espressioni che coinvolgono parentesi, potenze e tutte e quattro le operazioni nell'ordine corretto",
+      "Spiegare perché l'ordine delle operazioni è necessario per evitare ambiguità",
+      "Usare il reciproco di un numero e comprendere che un numero moltiplicato per il proprio reciproco dà 1"
+    ],
+    "assessmentPrompt": "{{name}} riesce a calcolare correttamente un'espressione complessa come '5 + 2³ ÷ 4' — applicando il giusto ordine delle operazioni, gestendo la potenza prima della divisione e la divisione prima dell'addizione?"
+  },
+  "mt_XLP1IM3Qbb": {
+    "name": "Moltiplicazione in colonna estesa (10+ anni)",
+    "description": "Moltiplicare con scioltezza numeri interi a più cifre (fino a 4 cifre per 2 cifre) usando il metodo scritto formale della moltiplicazione in colonna estesa",
+    "evidence": [
+      "Calcolare correttamente 2,463 × 37 usando la moltiplicazione in colonna estesa",
+      "Spiegare ogni prodotto parziale in una moltiplicazione in colonna estesa e perché vengono sommati",
+      "Moltiplicare un numero a quattro cifre per un numero a due cifre senza errori procedurali"
+    ],
+    "assessmentPrompt": "{{name}} riesce a usare la moltiplicazione in colonna estesa per calcolare qualcosa come '2,347 × 24' — impostandola su due righe, una per le unità e una per le decine, e poi sommando i risultati?"
+  },
+  "mt_XWSGuFW7It": {
+    "name": "La notazione dei rapporti",
+    "description": "Usare la notazione dei rapporti per descrivere la relazione tra due o più quantità, semplificare i rapporti nella loro forma più semplice e convertire tra rappresentazioni in rapporto e in frazione",
+    "evidence": [
+      "Scrivere un rapporto a partire da un problema testuale e semplificarlo (ad esempio, 12:8 = 3:2)",
+      "Convertire un rapporto in frazioni equivalenti di un intero (ad esempio, 3:2 significa 3/5 e 2/5)",
+      "Semplificare rapporti che coinvolgono decimali o frazioni trovando un moltiplicatore comune"
+    ],
+    "assessmentPrompt": "Se una ricetta di frullato usa succo d'arancia e succo di mango nel rapporto 3:2, {{name}} sa semplificare quel rapporto, esprimerlo come frazione e calcolare quanto ne serve di ciascuno per una data quantità totale?"
+  },
+  "mt_Xp-rj46S2w": {
+    "name": "Dividere figure in parti uguali (7+ anni)",
+    "description": "Suddividere cerchi e rettangoli in due, tre o quattro parti uguali; descrivere le parti come metà, terzi e quarti; riconoscere che parti uguali di interi identici non devono necessariamente avere la stessa forma",
+    "evidence": [
+      "Suddividere un cerchio in 3 parti uguali ed etichettare ciascuna come 'un terzo'",
+      "Suddividere un rettangolo in 4 parti uguali in più di un modo",
+      "Spiegare che due parti dall'aspetto diverso possono comunque avere la stessa dimensione"
+    ],
+    "assessmentPrompt": "Se tagli un rettangolo in terzi in due modi diversi (tre strisce oppure tre quadrati), {{name}} riconosce che entrambi danno terzi uguali — anche se i pezzi sembrano diversi?"
+  },
+  "mt_Xt1cRqaBOW": {
+    "name": "Comprendere gli angoli (8+ anni)",
+    "description": "Comprendere che figure appartenenti a categorie diverse possono condividere attributi che definiscono una categoria più ampia; classificare i quadrilateri (rombi, rettangoli, quadrati) e disegnare esempi di quadrilateri che non rientrano in queste sottocategorie",
+    "evidence": [
+      "Spiegare che un quadrato è un rettangolo speciale ed è anche un rombo speciale",
+      "Ordinare le figure in un diagramma di Venn: quadrilateri contro rettangoli contro quadrati",
+      "Disegnare un quadrilatero che non sia un rettangolo, un rombo o un quadrato"
+    ],
+    "assessmentPrompt": "Se mostri a {{name}} un quadrato, un rettangolo e un rombo, riesce a spiegare cosa li rende tutti quadrilateri — e cosa distingue ciascuno dagli altri?"
+  },
+  "mt_Y9XKzLrUAZ": {
+    "name": "Giri e direzioni",
+    "description": "Descrivere il movimento e la direzione, inclusi i giri completi, mezzi giri, un quarto di giro e tre quarti di giro",
+    "evidence": [
+      "Seguire istruzioni per muoversi avanti, indietro, girare a sinistra/destra",
+      "Dimostrare con il corpo un giro completo, mezzo giro e un quarto di giro",
+      "Descrivere un percorso usando un linguaggio di direzione"
+    ],
+    "assessmentPrompt": "Se {{name}} sta giocando a un gioco in cui deve girare a sinistra o a destra, capisce cosa significano un quarto di giro, mezzo giro e un giro completo?"
+  },
+  "mt_YUJ5pwalqL": {
+    "name": "Stimare gli angoli",
+    "description": "Stimare e confrontare angoli acuti, ottusi e concavi in gradi; classificare gli angoli per tipo e ordinarli in base all'ampiezza",
+    "evidence": [
+      "Stimare un angolo come circa 130° e classificarlo come ottuso",
+      "Identificare un angolo concavo in un diagramma e stimarlo come circa 270°",
+      "Ordinare quattro angoli dal più piccolo al più grande per stima, prima di misurarli"
+    ],
+    "assessmentPrompt": "Se mostri a {{name}} tre angoli diversi disegnati su carta, riesce a stimare quale sia il più grande, a etichettare ciascuno come acuto, ottuso o concavo — e poi a verificare con un goniometro?"
+  },
+  "mt_Yw1_4Nfsql": {
+    "name": "Addizione e sottrazione fluente (9+ anni)",
+    "description": "Addizionare e sottrarre con sicurezza e velocità numeri interi con più di quattro cifre usando l'algoritmo standard in colonna",
+    "evidence": [
+      "Calcolare 34,567 + 28,945 usando l'addizione in colonna",
+      "Calcolare 500,000 − 234,178 usando la sottrazione in colonna con più prestiti",
+      "Sommare tre numeri di cinque cifre in un unico schema in colonna"
+    ],
+    "assessmentPrompt": "{{name}} riesce ad addizionare o sottrarre correttamente numeri grandi — come '23,846 + 14,579' — usando il metodo in colonna, riportando e prendendo in prestito correttamente su tutte le colonne necessarie?"
+  },
+  "mt_YzM5goBctT": {
+    "name": "I decimi",
+    "description": "Contare in avanti e all'indietro per decimi; riconoscere che i decimi si ottengono dividendo un oggetto in 10 parti uguali e dividendo numeri o quantità a una cifra per 10",
+    "evidence": [
+      "Contare: un decimo, due decimi, tre decimi … fino a dieci decimi (un intero)",
+      "Mostrare che dividendo una figura in 10 parti uguali si ottengono i decimi",
+      "Spiegare che 3 ÷ 10 = 3/10"
+    ],
+    "assessmentPrompt": "Se {{name}} divide una tavoletta di cioccolato in 10 pezzi uguali, sa dirti che ogni pezzo è un decimo — e contare in ordine da 1/10 a 10/10?"
+  },
+  "mt_Zks8xyInSG": {
+    "name": "Convertire le unità di misura (9+ anni)",
+    "description": "Conoscere le dimensioni relative delle unità di misura all'interno di uno stesso sistema (km/m/cm/mm, kg/g, l/ml, h/min/s); convertire tra diverse unità del sistema metrico decimale ed esprimere le misure in un'unità più piccola; registrare le equivalenze in tabelle di conversione",
+    "evidence": [
+      "Convertire 3.5 km in 3,500 m",
+      "Completare una tabella di conversione per cm e mm: (1,10), (2,20), (3,30)...",
+      "Esprimere 2 kg 350 g come 2,350 g"
+    ],
+    "assessmentPrompt": "Se {{name}} deve convertire 3.5 kg in grammi, sa farlo con sicurezza — e anche completare una semplice tabella a due colonne che mostri le stesse misure in kg e g?"
+  },
+  "mt__N55B7u7HD": {
+    "name": "Leggere l'ora al minuto",
+    "description": "Misurare e iniziare a registrare il tempo in ore, minuti e secondi",
+    "evidence": [
+      "Usare una clessidra o un cronometro per cronometrare un'attività",
+      "Iniziare a capire che 1 minuto = 60 secondi",
+      "Registrare una durata in termini semplici (ad esempio, \"ci sono voluti circa 2 minuti\")"
+    ],
+    "assessmentPrompt": "Se {{name}} osserva la lancetta dei secondi fare un giro completo dell'orologio, sa contarlo come un minuto — e stimare all'incirca quanti minuti dura il suo programma TV preferito?"
+  },
+  "mt__YRJ23GuIK": {
+    "name": "Due numeri scritti tra 1 e 10",
+    "description": "Confrontare due numeri scritti tra 1 e 10 per stabilire quale sia maggiore o minore",
+    "evidence": [
+      "Dati due numeri scritti (ad es. 4 e 7), individuare quale sia maggiore",
+      "Usare correttamente > e < oppure 'maggiore di' / 'minore di' per confrontare numeri a una cifra"
+    ],
+    "assessmentPrompt": "Se scrivi \"3\" e \"8\" su due fogli e chiedi a {{name}} quale numero è più grande, riesce a rispondere correttamente — e sa spiegarti perché?"
+  },
+  "mt__h7hvT4tEb": {
+    "name": "Confrontare gruppi: di più o di meno",
+    "description": "Confrontare due gruppi di oggetti per stabilire quale ne abbia di più, di meno, o se sono uguali, usando strategie di corrispondenza e conteggio",
+    "evidence": [
+      "Usare la corrispondenza uno a uno per confrontare due gruppi",
+      "Dire quale gruppo ne ha di più/di meno dopo averli contati entrambi",
+      "Usare espressioni come 'uguale a', 'più di', 'meno di', 'di meno', 'il maggior numero', 'il minor numero'"
+    ],
+    "assessmentPrompt": "Se metti 6 uvette in una mano e 4 nell'altra e chiedi a {{name}} quale mano ne ha di più, riesce a capirlo — contando oppure semplicemente guardando?"
+  },
+  "mt__t4afSyZRm": {
+    "name": "Addizionare e sottrarre entro il 20 in modo fluente",
+    "description": "Addizionare e sottrarre entro il 20 con sicurezza e velocità usando strategie mentali; conoscere a memoria tutte le somme di due numeri a una cifra",
+    "evidence": [
+      "Rispondere a qualsiasi addizione tra numeri a una cifra entro 3 secondi",
+      "Ricordare a memoria le sottrazioni entro il 20 (ad es. 15 − 8 = 7)",
+      "Usare le addizioni note per ricavare rapidamente le sottrazioni corrispondenti"
+    ],
+    "assessmentPrompt": "{{name}} riesce a ricordare istantaneamente tutte le addizioni tra numeri a una cifra — come '7 + 8 = 15' — senza bisogno di contare o pensarci più di un secondo?"
+  },
+  "mt__we2TDqnJx": {
+    "name": "Addizionare e sottrarre entro il 10 in modo fluente",
+    "description": "Addizionare e sottrarre entro il 10 con sicurezza e velocità",
+    "evidence": [
+      "Rispondere velocemente a memoria a qualsiasi addizione entro il 10",
+      "Rispondere velocemente a memoria a qualsiasi sottrazione entro il 10",
+      "Completare a tempo una serie di operazioni entro il 10 con alta precisione"
+    ],
+    "assessmentPrompt": "{{name}} sa rispondere a operazioni come '7 + 3' o '9 − 4' quasi istantaneamente, senza fermarsi a contare sulle dita?"
+  },
+  "mt_a1FdAsRKOF": {
+    "name": "Semplici somme di frazioni",
+    "description": "Sommare e sottrarre frazioni con lo stesso denominatore entro un intero (ad es. 5/7 + 1/7 = 6/7)",
+    "evidence": [
+      "Calcolare 2/5 + 2/5 = 4/5",
+      "Calcolare 6/8 − 3/8 = 3/8",
+      "Spiegare che, quando i denominatori sono uguali, si sommano o sottraggono i numeratori"
+    ],
+    "assessmentPrompt": "Se una ricetta richiede 2/8 di tazza di latte e poi altri 3/8 di tazza, {{name}} sa calcolare il totale senza calcolatrice?"
+  },
+  "mt_aPBzD28_mT": {
+    "name": "Le tre cifre di un numero a tre cifre",
+    "description": "Comprendere che le tre cifre di un numero a tre cifre rappresentano quantità di centinaia, decine e unità",
+    "evidence": [
+      "Indicare il valore di ciascuna cifra in un numero a tre cifre (ad esempio, in 362 il 3 rappresenta 3 centinaia)",
+      "Scomporre un numero a tre cifre in centinaia, decine e unità (ad esempio, 485 = 400 + 80 + 5)",
+      "Spiegare perché 706 ha 7 centinaia, 0 decine e 6 unità"
+    ],
+    "assessmentPrompt": "Se {{name}} vede il numero 348, sa dirti che ci sono 3 centinaia, 4 decine e 8 unità — invece di limitarsi a leggere le cifre come 'tre quattro otto'?"
+  },
+  "mt_b7T-CjOYUR": {
+    "name": "Semplificare le frazioni",
+    "description": "Usare i fattori comuni per ridurre le frazioni alla forma minima; usare i multipli comuni per esprimere le frazioni con un denominatore comune",
+    "evidence": [
+      "Semplificare 18/24 a 3/4 individuando il MCD di 18 e 24",
+      "Esprimere 2/3 e 5/8 con un denominatore comune pari a 24",
+      "Spiegare perché dividere numeratore e denominatore per un fattore comune produce una frazione equivalente"
+    ],
+    "assessmentPrompt": "Se {{name}} ha la frazione 12/16, sa semplificarla ai minimi termini — e spiegare per cosa ha diviso numeratore e denominatore?"
+  },
+  "mt_bO-njVOige": {
+    "name": "La notazione con le potenze di dieci",
+    "description": "Interpretare e confrontare numeri in notazione standard A × 10ⁿ, dove 1 ≤ A < 10 e n è un numero intero; convertire tra numeri ordinari e notazione standard",
+    "evidence": [
+      "Convertire numeri grandi e piccoli in notazione standard A × 10ⁿ",
+      "Convertire numeri dalla notazione standard alla notazione ordinaria",
+      "Confrontare e ordinare numeri dati in notazione standard"
+    ],
+    "assessmentPrompt": "{{name}} sa scrivere 3,400,000 come 3.4 × 10⁶ e riconvertirlo — capendo che la notazione standard è un modo abbreviato per esprimere numeri molto grandi o molto piccoli?"
+  },
+  "mt_bfhng6mOuy": {
+    "name": "Angoli nei triangoli (6+ anni)",
+    "description": "Distinguere gli attributi caratterizzanti delle figure (per esempio, i triangoli sono chiusi e hanno tre lati) dagli attributi non caratterizzanti (per esempio, il colore, l'orientamento, la dimensione complessiva)",
+    "evidence": [
+      "Costruire e disegnare figure che possiedono attributi caratterizzanti",
+      "Identificare che una figura rimane un triangolo indipendentemente dalla sua dimensione, colore o orientamento",
+      "Spiegare perché una data figura è o non è di un certo tipo in base alle sue proprietà caratterizzanti"
+    ],
+    "assessmentPrompt": "{{name}} capisce che ciò che rende un triangolo tale è avere 3 lati e 3 angoli — non il suo colore o la direzione verso cui punta?"
+  },
+  "mt_cChv2j_-Da": {
+    "name": "Addizionare e sottrarre entro il 100 in modo fluente",
+    "description": "Addizionare e sottrarre entro il 100 con sicurezza e velocità, usando strategie basate sul valore posizionale, sulle proprietà delle operazioni e sulla relazione tra addizione e sottrazione",
+    "evidence": [
+      "Sommare numeri di due cifre entro il 100 in modo efficiente (ad es. 46 + 37 scomponendo per valore posizionale)",
+      "Sottrarre numeri di due cifre entro il 100 con fluidità (ad es. 83 − 25)",
+      "Scegliere tra diverse strategie (scomposizione, compensazione, uso di fatti noti) in base ai numeri coinvolti"
+    ],
+    "assessmentPrompt": "{{name}} riesce ad addizionare o sottrarre in modo affidabile numeri di due cifre come '68 + 27' o '91 − 45', scegliendo la strategia migliore per ogni problema?"
+  },
+  "mt_cFltwUQi-d": {
+    "name": "Frazioni di quantità",
+    "description": "Riconoscere, trovare, nominare e scrivere le frazioni 1/3, 1/4, 2/4 e 3/4 di una lunghezza, una figura, un insieme di oggetti o una quantità",
+    "evidence": [
+      "Trovare 1/3 di 12 oggetti dividendoli in 3 gruppi uguali",
+      "Colorare 3/4 di un rettangolo diviso in 4 parti uguali",
+      "Individuare 1/4 di una lunghezza su una linea dei numeri o un righello"
+    ],
+    "assessmentPrompt": "Se metti 12 acini d'uva sul tavolo, {{name}} sa contarne un quarto — e poi mostrarti come si presentano tre quarti dell'uva?"
+  },
+  "mt_cPZwlUk8Nd": {
+    "name": "Valore delle monete",
+    "description": "Riconoscere e conoscere il valore di monete e banconote diverse",
+    "evidence": [
+      "Riconoscere le monete da 1p, 2p, 5p, 10p, 20p, 50p, £1 e £2",
+      "Sapere che una moneta da £2 vale più di una da 50p",
+      "Riconoscere le banconote da £5 e £10"
+    ],
+    "assessmentPrompt": "Se a {{name}} viene data una manciata di monete, sa nominare ciascuna — come 2p, 5p, 20p — e ordinarle dal valore più basso al più alto?"
+  },
+  "mt_cqSf213hSa": {
+    "name": "Misurare la lunghezza (6+ anni)",
+    "description": "Misurare la lunghezza di un oggetto usando unità di lunghezza uguali, allineate una dopo l'altra senza spazi vuoti né sovrapposizioni",
+    "evidence": [
+      "Misurare un libro allineando delle graffette una dopo l'altra e contandole",
+      "Capire che la misura della lunghezza corrisponde al numero di unità che coprono l'oggetto",
+      "Evitare spazi vuoti e sovrapposizioni quando si posizionano le unità"
+    ],
+    "assessmentPrompt": "Se {{name}} sta misurando la lunghezza di un tavolo usando dei mattoncini giocattolo identici, sa allinearli uno dopo l'altro senza spazi vuoti — e dire quanti mattoncini è lungo il tavolo?"
+  },
+  "mt_d7XktBQPxm": {
+    "name": "Contare i cubetti unitari",
+    "description": "Misurare volumi contando cubetti unitari usando centimetri cubi, pollici cubi, piedi cubi e altre unità",
+    "evidence": [
+      "Contare i cubetti unitari in un diagramma tridimensionale per determinare il volume in cm³",
+      "Misurare il volume di un piccolo contenitore riempiendolo con cubetti da un centimetro",
+      "Esprimere un volume misurato usando la corretta notazione dell'unità cubica"
+    ],
+    "assessmentPrompt": "Se {{name}} vede in un diagramma una figura tridimensionale costruita con piccoli cubetti, sa contare quanti cubetti contiene — anche quelli nascosti dietro — per trovare il volume?"
+  },
+  "mt_d8al9JcajP": {
+    "name": "Convertire le unità di misura",
+    "description": "Convertire tra diverse unità di misura (ad esempio, da chilometro a metro, da ora a minuto, da minuto a secondo, da anno a mese, da settimana a giorno)",
+    "evidence": [
+      "Convertire 3 km in 3000 m",
+      "Affermare che 2 ore = 120 minuti",
+      "Convertire 5 settimane in 35 giorni"
+    ],
+    "assessmentPrompt": "Se a {{name}} viene detto che un viaggio è lungo 3.5 km, sa convertirlo in metri — e anche trasformare 2 ore e 15 minuti in soli minuti?"
+  },
+  "mt_dmNvjroCPT": {
+    "name": "Quanti in tutto?",
+    "description": "Principio di cardinalità: l'ultimo numero pronunciato contando un insieme indica quanti oggetti ci sono in quell'insieme, indipendentemente dalla disposizione o dall'ordine di conteggio",
+    "evidence": [
+      "Dopo aver contato un insieme, rispondere a 'quanti sono?' con l'ultimo numero pronunciato",
+      "Comprendere che riordinare gli oggetti non cambia il conteggio",
+      "Comprendere che contare in un ordine diverso dà lo stesso totale"
+    ],
+    "assessmentPrompt": "Se {{name}} conta 7 macchinine e tu chiedi \"quindi quante macchinine ci sono?\", risponde subito \"7\" — oppure le riconta tutte da capo?"
+  },
+  "mt_doX1BhmFgk": {
+    "name": "I decimi (8+ anni)",
+    "description": "Contare in avanti e all'indietro per centesimi; riconoscere che i centesimi si ottengono dividendo un oggetto per 100 o dividendo i decimi per 10",
+    "evidence": [
+      "Contare da 3/100 a 12/100 per centesimi",
+      "Spiegare che 1/10 ÷ 10 = 1/100",
+      "Collocare diversi centesimi su una linea dei numeri tra 0 e 1/10"
+    ],
+    "assessmentPrompt": "Se {{name}} ha £1 e ne spende 37p, sa dire che 37p corrisponde a 37/100 di sterlina — e contare in avanti per centesimi da 0/100 a 100/100?"
+  },
+  "mt_e4V6hvcuEJ": {
+    "name": "Tipi di angoli (8+ anni)",
+    "description": "Usare e interpretare le convenzioni standard dei diagrammi geometrici: contrassegnare gli angoli retti con un piccolo quadrato, le lunghezze uguali con uno o due trattini e gli angoli uguali con archi; indicare gli angoli con la notazione a tre lettere (∠ABC) e i singoli angoli con una lettera o un numero; disegnare diagrammi che mostrano angoli in un punto, angoli su una retta e angoli all'interno di poligoni usando queste convenzioni; leggere diagrammi con questi simboli per individuare le informazioni date e trovare i valori incogniti",
+    "evidence": [
+      "Contrassegnare un angolo retto con il simbolo del piccolo quadrato in un diagramma e spiegarne il significato",
+      "Usare i trattini per indicare lunghezze uguali in una figura e i doppi trattini per una seconda coppia di lati uguali",
+      "Leggere e interpretare la notazione degli angoli (per esempio angolo ABC) e identificare l'angolo a cui ci si riferisce in un diagramma"
+    ],
+    "assessmentPrompt": "Se nel diagramma di matematica di {{name}} compare un piccolo quadrato in un angolo e degli archi corrispondenti su altri due angoli, riesce a dire cosa significa ciascun simbolo — e a usarli per trovare un angolo mancante senza doverlo rimisurare?"
+  },
+  "mt_e4x3l2JeLI": {
+    "name": "Misurare la lunghezza (7+ anni)",
+    "description": "Misurare la lunghezza di un oggetto scegliendo e usando strumenti adeguati come righelli, aste di misura, metri e nastri metrici",
+    "evidence": [
+      "Scegliere lo strumento più adatto per misurare un dato oggetto",
+      "Allineare lo zero del righello con l'estremità dell'oggetto e leggere la misura",
+      "Misurare lunghezze in pollici, piedi, centimetri e metri usando lo strumento corretto"
+    ],
+    "assessmentPrompt": "Se {{name}} deve misurare un pezzo di stoffa lungo circa 80 cm, sa scegliere lo strumento giusto — un righello corto o un metro a nastro — e usarlo con precisione?"
+  },
+  "mt_e8CZ7E5qW7": {
+    "name": "Complementi a 9",
+    "description": "Trovare il numero che, sommato a un numero dato da 1 a 9, dà come risultato 10 (complementi a 10)",
+    "evidence": [
+      "Dato il numero 7, rispondere '3' per arrivare a 10",
+      "Usare una tabella dei dieci (ten-frame) per trovare il complemento a 10",
+      "Scrivere le coppie che formano 10 come equazioni (ad es. 6 + 4 = 10)"
+    ],
+    "assessmentPrompt": "Se {{name}} ha 6 fragole e gliene servono 10 per una ricetta, sa dirti velocemente che gliene servono altre 4 — senza contare da 1 in poi?"
+  },
+  "mt_eMtV6tBSJm": {
+    "name": "Area di figure composte",
+    "description": "Riconoscere l'area come grandezza additiva; trovare l'area di figure rettilinee scomponendole in rettangoli non sovrapposti e sommando le loro aree",
+    "evidence": [
+      "Scomporre una figura a L in due rettangoli, trovare l'area di ciascuno e sommarle",
+      "Trovare l'area di una piantina a forma di T scomponendola in rettangoli",
+      "Risolvere: una stanza ha forma a L (3m×5m più 2m×4m) — qual è l'area totale?"
+    ],
+    "assessmentPrompt": "Se a {{name}} viene data una stanza a forma di L su carta a quadretti, sa scomporla in due rettangoli, trovare l'area di ciascuna parte e sommarle per ottenere l'area totale?"
+  },
+  "mt_ePXg_XyCKU": {
+    "name": "I modelli a barre per i rapporti",
+    "description": "Rappresentare problemi di rapporti e proporzioni usando modelli a barre (strisce rettangolari divise in parti uguali etichettate con le quantità) e diagrammi a nastro (strisce segmentate che mostrano le relazioni parte-parte e parte-tutto); usare questi modelli visivi per impostare e risolvere problemi di ripartizione non equa, scala e percentuali — disegnando prima il diagramma, poi leggendo la risposta",
+    "evidence": [
+      "Disegnare un modello a barre per rappresentare un problema di rapporti — ad esempio, ripartire £20 nel rapporto 3:2 disegnando 5 blocchi uguali",
+      "Usare un modello a barre per risolvere un problema di proporzioni e spiegare ogni passaggio",
+      "Confrontare i modelli a barre con altre rappresentazioni (tabelle, doppie rette numeriche) e spiegare quando ciascuna è più utile"
+    ],
+    "assessmentPrompt": "Se {{name}} deve condividere 30 adesivi tra due amici nel rapporto 2:3, sa disegnare un modello a barre — dividendo una striscia in 5 caselle uguali — e usarlo per calcolare ciascuna parte senza limitarsi a indovinare?"
+  },
+  "mt_ebPelt-qAl": {
+    "name": "Frazioni equivalenti (9+ anni)",
+    "description": "Spiegare, usando modelli visivi, perché una frazione a/b è equivalente a (n×a)/(n×b); usare questo principio per riconoscere e generare frazioni equivalenti, compresi decimi e centesimi",
+    "evidence": [
+      "Usare una striscia di frazioni per mostrare che 2/3 = 4/6 = 6/9",
+      "Spiegare che moltiplicare numeratore e denominatore per lo stesso numero dà una frazione equivalente perché la dimensione dell'intero non cambia",
+      "Generare tre frazioni equivalenti a 3/5 e verificarle con disegni"
+    ],
+    "assessmentPrompt": "Se {{name}} deve far apparire 2/3 in modo diverso senza cambiarne il valore, sa moltiplicare numeratore e denominatore per lo stesso numero e spiegare perché la frazione resta invariata?"
+  },
+  "mt_efOeaGFyGM": {
+    "name": "Trasformazioni su una griglia",
+    "description": "Identificare, descrivere e rappresentare la posizione di una figura dopo una riflessione o una traslazione usando un linguaggio appropriato; sapere che la figura non è cambiata",
+    "evidence": [
+      "Riflettere un triangolo rispetto a una linea speculare verticale su una griglia cartesiana e indicare le nuove coordinate",
+      "Traslare una figura di 3 unità a destra e 2 unità verso l'alto e descrivere il movimento",
+      "Spiegare che una figura riflessa/traslata è congruente all'originale"
+    ],
+    "assessmentPrompt": "Se {{name}} fa scorrere o ribalta una figura su carta quadrettata, riesce a descrivere esattamente dove finisce e a confermare che la figura stessa non ha cambiato dimensione o angoli?"
+  },
+  "mt_eiB3-6pu6a": {
+    "name": "Stimare le risposte (9+ anni)",
+    "description": "Applicare la formula dell'area (l × w) e la formula del perimetro (2l + 2w) per i rettangoli, compresi i quadrati, in problemi reali e matematici; calcolare e confrontare aree usando unità di misura convenzionali (cm², m²) e stimare aree di figure irregolari",
+    "evidence": [
+      "Trovare la larghezza di una stanza data l'area = 48 m² e la lunghezza = 8 m",
+      "Calcolare l'area di un quadrato con lato 7.5 cm",
+      "Stimare l'area di uno stagno irregolare disegnato su una griglia in cm²"
+    ],
+    "assessmentPrompt": "Se {{name}} vuole mettere la moquette in una stanza di 6.5 m × 4 m, sa calcolare l'area — e anche quanti metri di battiscopa servono lungo il bordo?"
+  },
+  "mt_ewmuMMPAzP": {
+    "name": "Addizione e sottrazione entro il 1000",
+    "description": "Addizionare e sottrarre entro il 1000 usando modelli concreti, disegni e strategie basate sul valore posizionale; comprendere come comporre e scomporre decine e centinaia",
+    "evidence": [
+      "Sommare due numeri di tre cifre usando i blocchi base dieci o disegni, componendo una decina o un centinaio quando necessario",
+      "Sottrarre numeri di tre cifre, scomponendo una decina o un centinaio quando necessario",
+      "Collegare la strategia concreta/disegnata a un metodo scritto e spiegare perché funziona"
+    ],
+    "assessmentPrompt": "{{name}} riesce ad addizionare o sottrarre numeri nell'ordine delle centinaia — come '347 + 256' — pensando separatamente a centinaia, decine e unità, o disegnando uno schema di supporto?"
+  },
+  "mt_fR0UtsSREU": {
+    "name": "Leggere e scrivere i numeri fino a 20",
+    "description": "Leggere e scrivere i numeri da 0 a 20",
+    "evidence": [
+      "Leggere un numero qualsiasi da 0 a 20 quando viene mostrato",
+      "Scrivere in modo leggibile i numeri da 0 a 20 sotto dettatura",
+      "Rappresentare una quantità di oggetti con il numero scritto corretto"
+    ],
+    "assessmentPrompt": "{{name}} sa leggere un numero come '17' scritto su un foglio e sa scriverlo da solo/a — e sa cosa significa ogni cifra?"
+  },
+  "mt_g3W0mdADVu": {
+    "name": "Trovare metà e quarti (5+ anni)",
+    "description": "Riconoscere, trovare e nominare un quarto come una delle quattro parti uguali di un oggetto, una figura o una quantità",
+    "evidence": [
+      "Piegare una figura in quattro parti uguali e identificare ciascuna come 'un quarto'",
+      "Trovare un quarto di 12 oggetti dividendoli in 4 gruppi uguali",
+      "Riconoscere se una figura è stata divisa in quarti (quattro parti uguali)"
+    ],
+    "assessmentPrompt": "Se pieghi un foglio di carta quadrato in quattro parti uguali, {{name}} sa dirti che ogni parte è un quarto — e indicarne solo una?"
+  },
+  "mt_ghF3Vv6taM": {
+    "name": "Addizionare e sottrarre entro il 5 in modo fluente",
+    "description": "Addizionare e sottrarre entro il 5 con sicurezza e velocità",
+    "evidence": [
+      "Rispondere a 2 + 3 velocemente senza contare sulle dita",
+      "Rispondere a 5 − 2 a memoria o con un conteggio minimo",
+      "Completare una serie di addizioni/sottrazioni entro il 5 in modo accurato e veloce"
+    ],
+    "assessmentPrompt": "{{name}} sa darti subito la risposta a operazioni come '2 + 3' o '5 − 2', senza dover contare sulle dita ogni volta?"
+  },
+  "mt_glPPG-kTQY": {
+    "name": "Addizionare entro il 100",
+    "description": "Addizionare entro il 100 usando strategie basate sul valore posizionale, incluso sommare un numero di due cifre e uno di una cifra, e un numero di due cifre e un multiplo di 10",
+    "evidence": [
+      "Calcolare 46 + 7 usando il valore posizionale (46 + 4 + 3 = 53)",
+      "Calcolare 38 + 40 = 78 usando la comprensione delle decine",
+      "Collegare la strategia a un metodo scritto e spiegare il ragionamento"
+    ],
+    "assessmentPrompt": "{{name}} riesce a calcolare operazioni come '47 + 8' o '35 + 50' pensando separatamente a decine e unità, invece di contare uno alla volta?"
+  },
+  "mt_gtTl3R5buH": {
+    "name": "Il significato della moltiplicazione",
+    "description": "Interpretare i prodotti tra numeri interi (es. 5 × 7 come numero totale di oggetti in 5 gruppi da 7)",
+    "evidence": [
+      "Spiegare che 4 × 6 significa 4 gruppi da 6 oggetti",
+      "Disegnare un'immagine o uno schieramento per rappresentare un'espressione di moltiplicazione",
+      "Abbinare un'espressione di moltiplicazione a un problema che coinvolge gruppi uguali"
+    ],
+    "assessmentPrompt": "Se {{name}} vede scritto '5 × 7', riesce a spiegare che significa 5 gruppi da 7 elementi ciascuno — e non si limita a recitare la risposta '35'?"
+  },
+  "mt_gxCIASSezX": {
+    "name": "Numeri quadrati e cubi",
+    "description": "Riconoscere e usare i numeri quadrati e i numeri cubi, e la notazione per elevato al quadrato (²) ed elevato al cubo (³)",
+    "evidence": [
+      "Riconoscere 49 come 7² e spiegare che 7 × 7 = 49",
+      "Calcolare 4³ = 64 e spiegare che significa 4 × 4 × 4",
+      "Elencare i primi dieci numeri quadrati"
+    ],
+    "assessmentPrompt": "{{name}} sa che '5²' significa 5 × 5 = 25 e '3³' significa 3 × 3 × 3 = 27 — e riesce a calcolare altri numeri elevati al quadrato e al cubo?"
+  },
+  "mt_h0CVtqI2xo": {
+    "name": "Tipi di angoli",
+    "description": "Identificare angoli acuti e ottusi; confrontare e ordinare angoli fino a due angoli retti in base alla loro ampiezza",
+    "evidence": [
+      "Classificare gli angoli dati come acuti, retti o ottusi",
+      "Ordinare quattro angoli dal più piccolo al più grande mediante confronto visivo",
+      "Identificare tutti gli angoli acuti e ottusi in un dato triangolo o quadrilatero"
+    ],
+    "assessmentPrompt": "Se {{name}} osserva le lancette di un orologio che segna orari diversi, riesce a dire quale angolo tra le lancette è acuto (più stretto di un angolo retto) e quale è ottuso (più ampio)?"
+  },
+  "mt_h0gJcSuwdL": {
+    "name": "Problemi con i rapporti",
+    "description": "Risolvere problemi riguardanti le dimensioni relative di due quantità, in cui i valori mancanti si trovano usando fatti di moltiplicazione e divisione tra numeri interi",
+    "evidence": [
+      "Se il rapporto tra perline rosse e blu è 3:5 e ci sono 15 perline blu, trovare il numero di perline rosse",
+      "Usare fatti di moltiplicazione per trovare il valore mancante: 'Per ogni 2 mele ci sono 5 arance; se ci sono 20 arance, quante mele ci sono?'",
+      "Spiegare la relazione moltiplicativa tra due quantità in un contesto di rapporti"
+    ],
+    "assessmentPrompt": "Se una ricetta usa 3 uova ogni 200g di farina, {{name}} sa calcolare quante uova servirebbero per 600g di farina?"
+  },
+  "mt_hCVPYlF-7Y": {
+    "name": "I numeri quadrati e cubici",
+    "description": "Usare le potenze intere e le rispettive radici reali (quadrata, cubica e successive); riconoscere le potenze di 2, 3, 4 e 5; distinguere tra le rappresentazioni esatte delle radici e le loro approssimazioni decimali",
+    "evidence": [
+      "Calcolare quadrati, cubi e potenze intere successive di numeri interi",
+      "Trovare le radici quadrate e le radici cubiche di quadrati perfetti e cubi perfetti",
+      "Riconoscere le potenze principali (potenze di 2 fino a 2¹⁰, potenze di 3 fino a 3⁵, ecc.) e distinguere le radici esatte dalle approssimazioni"
+    ],
+    "assessmentPrompt": "{{name}} sa calcolare che √25 = 5 e ∛27 = 3 — sapendo che sono le operazioni inverse dell'elevamento al quadrato e al cubo — e dire se √50 è più vicino a 7 o a 8?"
+  },
+  "mt_hR2Y7NhMSY": {
+    "name": "Assi di simmetria",
+    "description": "Completare una semplice figura simmetrica rispetto a uno specifico asse di simmetria",
+    "evidence": [
+      "Data metà di una figura a forma di farfalla e una linea speculare, completare l'altra metà su una griglia",
+      "Completare uno schema simmetrico su carta quadrettata con un asse di simmetria verticale",
+      "Verificare una figura completata piegandola lungo la linea speculare"
+    ],
+    "assessmentPrompt": "Se mostri a {{name}} metà di una figura disegnata su carta quadrettata con una linea speculare segnata, riesce a disegnare la metà mancante in modo che l'intera figura sia perfettamente simmetrica?"
+  },
+  "mt_hRZyKvz1KN": {
+    "name": "Figure piane (8+ anni)",
+    "description": "Identificare gli assi di simmetria nelle figure piane presentate in orientamenti diversi; riconoscere le figure simmetriche rispetto a un asse e disegnare gli assi di simmetria",
+    "evidence": [
+      "Trovare tutti gli assi di simmetria di un rettangolo, un quadrato e un triangolo equilatero",
+      "Determinare se una data figura ha un asse di simmetria quando viene ruotata",
+      "Identificare quali figure in un insieme hanno esattamente un asse di simmetria",
+      "Determinare quanti assi di simmetria ha un esagono regolare",
+      "Disegnare tutti gli assi di simmetria di una data figura",
+      "Identificare quali figure in un insieme non sono simmetriche rispetto a un asse"
+    ],
+    "assessmentPrompt": "Se a {{name}} viene mostrata l'immagine di una farfalla o di una stella, riesce a disegnare la linea (o le linee) lungo cui si potrebbe piegarla esattamente a metà in modo che le due parti coincidano?"
+  },
+  "mt_hVpGOEz2kG": {
+    "name": "Coordinate (11+ anni)",
+    "description": "Rappresentare e leggere le coordinate in tutti e quattro i quadranti del piano cartesiano, usando valori positivi e negativi di x e y per descrivere le posizioni con precisione",
+    "evidence": [
+      "Rappresentare con precisione punti con coordinate negative in tutti e quattro i quadranti",
+      "Individuare il quadrante a cui appartiene un punto in base al segno delle sue coordinate",
+      "Leggere le coordinate da un grafico, inclusi valori frazionari e negativi"
+    ],
+    "assessmentPrompt": "{{name}} riesce a rappresentare correttamente un punto come (−3, 4) su un piano cartesiano e a leggere le coordinate di punti in tutti e quattro i quadranti, compresi i numeri negativi?"
+  },
+  "mt_hyvHv2BCwb": {
+    "name": "Scomporre una figura in più parti uguali",
+    "description": "Capire che scomporre una figura in un numero maggiore di parti uguali crea parti più piccole",
+    "evidence": [
+      "Spiegare che un quarto di una pizza è più piccolo della metà della stessa pizza",
+      "Dimostrare che i quarti sono pezzi più piccoli delle metà",
+      "Confrontare la dimensione delle metà e dei quarti della stessa figura"
+    ],
+    "assessmentPrompt": "Se una pizza viene divisa tra 2 persone e poi la stessa pizza viene divisa tra 8 persone, {{name}} sa spiegare perché ogni fetta è più piccola quando la condividono più persone?"
+  },
+  "mt_i5_HnoFOYw": {
+    "name": "Coordinate (8+ anni)",
+    "description": "Rappresentare i punti indicati su una griglia cartesiana e disegnare i lati per completare un dato poligono",
+    "evidence": [
+      "Rappresentare i punti (1,1), (1,4), (5,4), (5,1) e unirli per formare un rettangolo",
+      "Dati tre vertici di un quadrato, rappresentare il quarto vertice",
+      "Completare un triangolo rappresentando il terzo vertice alle coordinate date e disegnando i lati"
+    ],
+    "assessmentPrompt": "Se a {{name}} vengono date tre coppie di coordinate su una griglia, riesce a rappresentare ogni punto e poi a collegarli per disegnare il triangolo o il rettangolo corretto?"
+  },
+  "mt_iNdrM2-oJf": {
+    "name": "Il significato della divisione",
+    "description": "Interpretare i quozienti tra numeri interi (es. 56 ÷ 8 come numero di oggetti in ogni parte o come numero di gruppi uguali)",
+    "evidence": [
+      "Spiegare che 56 ÷ 8 può significare dividere 56 in 8 gruppi uguali oppure formare gruppi da 8",
+      "Disegnare un'immagine per rappresentare un'espressione di divisione",
+      "Abbinare un'espressione di divisione a un problema che coinvolge suddivisione equa o raggruppamento"
+    ],
+    "assessmentPrompt": "{{name}} riesce a spiegare che '56 ÷ 8' può significare 'se 56 oggetti vengono divisi tra 8 persone, quanti ne riceve ciascuna?' — e non si limita a recitare la risposta '7'?"
+  },
+  "mt_ifPDOYvUqm": {
+    "name": "Dividere frazioni (frazioni unitarie)",
+    "description": "Interpretare e calcolare la divisione di una frazione unitaria per un numero intero diverso da zero (ad es. 1/3 ÷ 4 = 1/12); usare modelli visivi e la relazione tra moltiplicazione e divisione per spiegare il risultato",
+    "evidence": [
+      "Calcolare (1/3) ÷ 4 = 1/12 e spiegare usando un modello visivo che divide 1/3 in 4 parti uguali",
+      "Creare un contesto narrativo per (1/6) ÷ 3 e risolverlo",
+      "Verificare che (1/3) ÷ 4 = 1/12 mostrando che (1/12) × 4 = 1/3"
+    ],
+    "assessmentPrompt": "Se {{name}} ha 1/3 di un sacchetto di riso e lo divide in 4 porzioni uguali, sa calcolare quale frazione dell'intero sacchetto rappresenta ogni porzione — e spiegare perché il risultato è più piccolo di 1/3?"
+  },
+  "mt_jBQS-CicNn": {
+    "name": "Coordinate nel primo quadrante",
+    "description": "Descrivere posizioni su una griglia 2D come coordinate nel primo quadrante",
+    "evidence": [
+      "Leggere le coordinate di un punto su una griglia come (3, 5)",
+      "Spiegare che il primo numero è la distanza orizzontale e il secondo è la distanza verticale",
+      "Identificare le coordinate di tutti i vertici di una figura rappresentata su una griglia"
+    ],
+    "assessmentPrompt": "Se {{name}} sta giocando a un gioco di caccia al tesoro su una griglia, riesce a dire correttamente dove si trova il tesoro usando due numeri — come \"tre a destra e quattro in su\" — a partire dall'angolo?"
+  },
+  "mt_jHgRQ4hR0g": {
+    "name": "Ordine delle operazioni",
+    "description": "Comprendere e applicare il convenzionale ordine delle operazioni (PEMDAS/BODMAS) per eseguire calcoli con le quattro operazioni",
+    "evidence": [
+      "Spiegare perché 8 + 2 × 5 = 18 (e non 50) facendo riferimento alla precedenza della moltiplicazione sull'addizione",
+      "Calcolare correttamente un'espressione a più passaggi come 12 ÷ 3 + 4 × 2, ottenendo 12",
+      "Indicare l'ordine corretto: parentesi, poi potenze/esponenti, poi moltiplicazione/divisione (da sinistra a destra), poi addizione/sottrazione (da sinistra a destra)"
+    ],
+    "assessmentPrompt": "Se {{name}} vede '8 + 4 × 3', ottiene 20 — non 36 — perché sa che deve eseguire la moltiplicazione prima dell'addizione?"
+  },
+  "mt_jY7uf0Cb7o": {
+    "name": "Il valore posizionale di ogni cifra",
+    "description": "Riconoscere il valore posizionale di ogni cifra in un numero a quattro cifre (migliaia, centinaia, decine e unità)",
+    "evidence": [
+      "Indicare il valore di ciascuna cifra in un numero a quattro cifre (ad esempio, in 7,345 il 7 rappresenta 7 migliaia)",
+      "Scomporre un numero a quattro cifre in migliaia, centinaia, decine e unità",
+      "Comporre un numero a quattro cifre a partire da parti date del valore posizionale (ad esempio, 3000 + 400 + 50 + 2 = 3,452)"
+    ],
+    "assessmentPrompt": "Se {{name}} vede il numero 5,347, sa dirti il valore di ciascuna cifra — che il 5 significa 5,000, il 3 significa 300, il 4 significa 40 e il 7 significa 7?"
+  },
+  "mt_k2WE0-22-4": {
+    "name": "Frazioni unitarie",
+    "description": "Riconoscere, trovare e scrivere frazioni di un insieme discreto di oggetti: frazioni unitarie e non unitarie con denominatori piccoli",
+    "evidence": [
+      "Trovare 1/4 di 12 oggetti dividendoli in 4 gruppi uguali",
+      "Trovare 3/4 di 12 oggetti",
+      "Scrivere la frazione di un insieme che risulta colorata o selezionata"
+    ],
+    "assessmentPrompt": "Se ci sono 15 libri su uno scaffale, {{name}} sa calcolare quanti sono i due terzi di essi — e verificarlo raggruppando i libri in tre pile uguali?"
+  },
+  "mt_kDMKJ5Ztt6": {
+    "name": "Dividere per 10 e per 100",
+    "description": "Individuare l'effetto della divisione di un numero a una o due cifre per 10 e per 100, riconoscendo il valore delle cifre come unità, decimi e centesimi",
+    "evidence": [
+      "Calcolare 37 ÷ 10 = 3.7 e riconoscere 3 come unità e 7 come decimi",
+      "Calcolare 4 ÷ 100 = 0.04 e riconoscere 4 come centesimi",
+      "Spiegare che dividere per 10 sposta ogni cifra di una posizione verso destra"
+    ],
+    "assessmentPrompt": "Se {{name}} parte dal numero 48 e lo divide per 10, sa dirti il risultato — e spiegare cosa è successo al valore posizionale di ogni cifra?"
+  },
+  "mt_kdWoAel3Zl": {
+    "name": "I decimi (9+ anni)",
+    "description": "Riconoscere e usare i millesimi; metterli in relazione con decimi, centesimi e i loro equivalenti decimali (ad es. 1/1000 = 0.001, 35/1000 = 0.035)",
+    "evidence": [
+      "Scrivere 0.025 come 25/1000",
+      "Spiegare che 1 decimo = 100 millesimi",
+      "Collocare 0.345 su una linea dei numeri tra 0.34 e 0.35"
+    ],
+    "assessmentPrompt": "Se {{name}} vede il numero decimale 0.003, sa scriverlo come frazione e dirti all'incirca dove si trova su una linea dei numeri tra 0 e 0.01?"
+  },
+  "mt_lC_Q5mSL_I": {
+    "name": "I numeri fino a 10,000",
+    "description": "Identificare, rappresentare e stimare numeri fino a 10,000 usando diverse rappresentazioni",
+    "evidence": [
+      "Rappresentare un numero a quattro cifre su una tabella del valore posizionale o con materiale in base dieci",
+      "Stimare dove si colloca un numero su una retta numerica da 0 a 10,000",
+      "Abbinare diverse rappresentazioni dello stesso numero (ad esempio, la forma estesa, i gettoni del valore posizionale, il numero scritto)"
+    ],
+    "assessmentPrompt": "{{name}} sa segnare un numero come 6,400 all'incirca nel punto giusto su una retta numerica che va da 0 a 10,000 — e spiegare come ha deciso dove metterlo?"
+  },
+  "mt_lNGpnILM5C": {
+    "name": "Leggere le cifre decimali",
+    "description": "Identificare il valore di ciascuna cifra in numeri con tre cifre decimali (ad esempio, in 4.378 il 7 rappresenta 7 centesimi)",
+    "evidence": [
+      "Indicare il valore di ciascuna cifra in 2.635 (2 unità, 6 decimi, 3 centesimi, 5 millesimi)",
+      "Spiegare la relazione tra posizioni decimali adiacenti (ogni posizione vale dieci volte meno della precedente)",
+      "Scrivere un numero dati i valori delle cifre (ad esempio, 4 unità, 0 decimi, 7 centesimi, 3 millesimi = 4.073)"
+    ],
+    "assessmentPrompt": "Nel numero 4.378, {{name}} sa dirti che il 7 rappresenta 7 centesimi — non 7 decimi o 7 millesimi?"
+  },
+  "mt_liIW336odh": {
+    "name": "Classificare le figure in base alle proprietà",
+    "description": "Confrontare e classificare le figure geometriche in base alle loro proprietà e dimensioni; comprendere che gli attributi appartenenti a una categoria appartengono anche a tutte le sottocategorie; classificare le figure bidimensionali in una gerarchia basata sulle proprietà",
+    "evidence": [
+      "Spiegare perché tutti i quadrati sono rettangoli ma non tutti i rettangoli sono quadrati",
+      "Collocare i quadrilateri in un diagramma gerarchico che mostra le relazioni di inclusione",
+      "Identificare le proprietà condivise da tutti i parallelogrammi e spiegare perché i rombi e i rettangoli sono casi particolari"
+    ],
+    "assessmentPrompt": "Se qualcuno chiede a {{name}} \"un quadrato è anche un rettangolo?\", riesce a spiegare perché la risposta è sì — perché un quadrato ha tutte le proprietà di un rettangolo più i lati uguali?"
+  },
+  "mt_lxaM6iVpdr": {
+    "name": "Traslare e riflettere le figure",
+    "description": "Disegnare e traslare semplici figure sul piano cartesiano; riflettere le figure rispetto agli assi",
+    "evidence": [
+      "Traslare un triangolo di 3 unità a destra e 2 unità verso il basso su una griglia cartesiana e indicare le nuove coordinate",
+      "Riflettere una figura rispetto all'asse x ed elencare le coordinate dei vertici riflessi",
+      "Spiegare come la traslazione cambia le coordinate (addizione/sottrazione) mentre la riflessione cambia il segno di una coordinata"
+    ],
+    "assessmentPrompt": "Se {{name}} disegna un triangolo con vertici alle coordinate (1, 2), (3, 2) e (2, 4) su una griglia, riesce poi a rifletterlo rispetto all'asse x e a dirti le nuove coordinate di ciascun vertice?"
+  },
+  "mt_m1W6nTQJ2b": {
+    "name": "Addizione e sottrazione entro il 20",
+    "description": "Addizionare e sottrarre entro il 20 usando strategie come il 'fare dieci', la scomposizione di un numero per arrivare a dieci, e l'uso di fatti numerici già noti",
+    "evidence": [
+      "Risolvere 8 + 6 usando la strategia del 'fare dieci': 8 + 2 + 4 = 14",
+      "Risolvere 13 − 4 scomponendo: 13 − 3 − 1 = 9",
+      "Usare un fatto noto (8 + 4 = 12) per ricavare 12 − 8 = 4"
+    ],
+    "assessmentPrompt": "Se {{name}} deve calcolare '8 + 6', riesce a scomporre il 6 in 2 + 4, usare il 2 per arrivare a 10 e poi aggiungere il restante 4 per ottenere 14?"
+  },
+  "mt_mFJ-2ZF6Tk": {
+    "name": "Stimare e confrontare il denaro",
+    "description": "Stimare, confrontare e calcolare diverse misure, incluso il denaro in sterline e pence",
+    "evidence": [
+      "Stimare la lunghezza dell'aula in metri",
+      "Confrontare 1.5 kg e 1200 g e individuare quale pesa di più",
+      "Calcolare il costo totale di 3 articoli a £2.45, £1.30 e £0.75"
+    ],
+    "assessmentPrompt": "Se {{name}} confronta tre articoli che costano £2.85, £3.10 e £2.50, sa metterli in ordine dal più economico al più costoso — e calcolare il costo totale?"
+  },
+  "mt_mpS-JK_p_m": {
+    "name": "Addizionare e sottrarre (8+ anni)",
+    "description": "Addizionare e sottrarre numeri fino a quattro cifre usando i metodi scritti formali dell'addizione e sottrazione in colonna",
+    "evidence": [
+      "Impostare e risolvere un'addizione in colonna con numeri fino a quattro cifre",
+      "Impostare e risolvere una sottrazione in colonna con prestiti su più colonne",
+      "Verificare il risultato usando una stima o le operazioni inverse"
+    ],
+    "assessmentPrompt": "{{name}} riesce a impostare in colonna un'operazione come '3,842 + 1,765' o '4,301 − 2,658' e a svolgerla correttamente, riportando e prendendo in prestito su più colonne?"
+  },
+  "mt_nTL-owFJTF": {
+    "name": "Stimare le risposte (10+ anni)",
+    "description": "Trovare il volume di prismi rettangolari retti riempiendoli con cubetti unitari e mostrare che è uguale a l × w × h (o area di base × altezza); applicare V = l × w × h e V = B × h per risolvere problemi reali; calcolare, stimare e confrontare volumi di cubi e parallelepipedi in unità di misura convenzionali (cm³, m³)",
+    "evidence": [
+      "Usare V = l × w × h per trovare il volume di un parallelepipedo 4 cm × 3 cm × 5 cm = 60 cm³",
+      "Spiegare perché riempire un prisma con cubetti unitari dà lo stesso risultato di moltiplicare le lunghezze degli spigoli",
+      "Confrontare i volumi di due parallelepipedi e individuare quale ha capacità maggiore"
+    ],
+    "assessmentPrompt": "Se {{name}} vuole calcolare quanta terra entra in una fioriera lunga 40 cm, larga 20 cm e profonda 15 cm, sa usare una formula per calcolare il volume?"
+  },
+  "mt_nZkL5-XjRX": {
+    "name": "Coppie di fattori e commutatività",
+    "description": "Riconoscere e usare le coppie di fattori e la commutatività nel calcolo mentale",
+    "evidence": [
+      "Elencare tutte le coppie di fattori di un numero dato (es. 24: 1×24, 2×12, 3×8, 4×6)",
+      "Usare la commutatività per riordinare una moltiplicazione e rendere più semplice il calcolo mentale",
+      "Spiegare cos'è una coppia di fattori e come la commutatività può essere utile"
+    ],
+    "assessmentPrompt": "Se {{name}} deve moltiplicare '4 × 15', riesce a notare che scomporlo in '4 × 5 × 3 = 20 × 3 = 60' è una scorciatoia efficace — usando le coppie di fattori per semplificare il calcolo?"
+  },
+  "mt_ndGqFPWyen": {
+    "name": "Frazioni di un intero",
+    "description": "Capire la frazione 1/b come la quantità formata da 1 parte quando un intero viene suddiviso in b parti uguali; capire a/b come a parti di dimensione 1/b",
+    "evidence": [
+      "Data una figura divisa in 5 parti uguali, riconoscere una parte colorata come 1/5",
+      "Spiegare che 3/4 significa 3 parti, ciascuna di dimensione 1/4",
+      "Disegnare un modello che mostri 2/6 come 2 pezzi di un intero diviso in 6"
+    ],
+    "assessmentPrompt": "Se tagli una pizza in 6 fette uguali, {{name}} sa spiegare cosa significa 1/6 — e poi capire come si presentano 4/6 della pizza?"
+  },
+  "mt_nvdpxAJTBG": {
+    "name": "Contare per 2",
+    "description": "Contare per multipli di 2, 5 e 10 (conteggio a salti)",
+    "evidence": [
+      "Contare 2, 4, 6, 8 … fino ad almeno 20",
+      "Contare 5, 10, 15, 20 … fino ad almeno 50",
+      "Contare 10, 20, 30 … fino a 100"
+    ],
+    "assessmentPrompt": "Se {{name}} sta contando calzini abbinati a coppie, riesce a contare per 2 — 2, 4, 6, 8 — fino a 20? Riesce anche a contare per 5 quando conta monete, o per 10 su una linea dei numeri?"
+  },
+  "mt_oDlduFnemk": {
+    "name": "Numeri sulla retta numerica",
+    "description": "Comprendere un sistema di coordinate definito da due rette numeriche perpendicolari (assi) con origine in (0,0); sapere che una coppia ordinata (x, y) individua un unico punto in cui il primo numero indica la distanza orizzontale e il secondo la distanza verticale dall'origine",
+    "evidence": [
+      "Identificare l'asse x, l'asse y e l'origine su una griglia cartesiana",
+      "Spiegare che (3, 5) significa spostarsi di 3 lungo l'asse x e di 5 verso l'alto lungo l'asse y",
+      "Distinguere (2, 4) da (4, 2) spiegando il significato di ciascuna coordinata"
+    ],
+    "assessmentPrompt": "Se {{name}} osserva una mappa con una griglia e tu descrivi una posizione come \"3 a destra e 5 in su rispetto all'origine\", riesce a trovare il punto esatto — e a spiegare cosa indica ciascuno dei due numeri?"
+  },
+  "mt_o_p-3tCxiM": {
+    "name": "Numeri misti e frazioni improprie",
+    "description": "Riconoscere numeri misti e frazioni improprie; convertire da una forma all'altra (ad es. 2/5 + 4/5 = 6/5 = 1 1/5)",
+    "evidence": [
+      "Convertire 11/4 in 2 3/4",
+      "Convertire 3 2/5 in 17/5",
+      "Scrivere 6/5 + 4/5 = 10/5 = 2 sia come frazione impropria sia come numero intero"
+    ],
+    "assessmentPrompt": "Se {{name}} vede la frazione 9/4, sa convertirla in un numero misto — e poi trasformare 2 e 3/5 di nuovo in una frazione impropria?"
+  },
+  "mt_p-nbe0w_lf": {
+    "name": "La divisione con resto",
+    "description": "Risolvere problemi a più passaggi usando le quattro operazioni con numeri interi, incluso interpretare i resti nel contesto; rappresentare con equazioni usando una lettera per l'incognita; verificare con la stima",
+    "evidence": [
+      "52 bambini vanno in gita su minibus che ne contengono 9 ciascuno — quanti minibus servono? (interpretare il resto)",
+      "Un negozio vende confezioni da 6 matite a £1.50 ciascuna — quanto costano 5 confezioni?",
+      "Rappresentare un problema a due passaggi con un'equazione usando n per l'incognita"
+    ],
+    "assessmentPrompt": "Se {{name}} legge 'una scuola acquista 7 scatole da 24 penne e le divide equamente tra 8 classi', riesce a seguire tutti i passaggi e a decidere in modo sensato cosa fare con un eventuale resto?"
+  },
+  "mt_pAcaehday5": {
+    "name": "Rappresentare i numeri con oggetti",
+    "description": "Rappresentare i numeri usando oggetti, rappresentazioni grafiche e la linea dei numeri",
+    "evidence": [
+      "Mostrare un numero dato usando gettoni, cubetti o le dita",
+      "Disegnare una rappresentazione grafica di una quantità (ad es. tacche, pallini)",
+      "Individuare un numero sulla linea dei numeri"
+    ],
+    "assessmentPrompt": "Se chiedi a {{name}} di mostrarti come si rappresenta il numero 5, riesce a farlo in più di un modo — ad esempio disegnando cinque pallini, alzando cinque dita, o indicando il 5 sulla linea dei numeri?"
+  },
+  "mt_pbuhUQJjtt": {
+    "name": "Notazione di sterline e pence",
+    "description": "Riconoscere e usare i simboli per sterline (£) e pence (p) e combinare importi per formare un determinato valore",
+    "evidence": [
+      "Scrivere correttamente £1.50 oppure 150p",
+      "Combinare monete per ottenere un totale dato, ad esempio 50p + 20p + 5p = 75p",
+      "Leggere prezzi scritti con i simboli £ e p"
+    ],
+    "assessmentPrompt": "Se {{name}} prende monete da 50p, 20p e 10p, sa scrivere il totale usando il simbolo p — e dire se è sufficiente per comprare qualcosa che costa 75p?"
+  },
+  "mt_q9EaJc2FP8": {
+    "name": "Moltiplicazione in colonna estesa",
+    "description": "Moltiplicare un numero intero fino a quattro cifre per un numero a una cifra, e moltiplicare due numeri a due cifre, usando metodi scritti formali inclusa la moltiplicazione in colonna estesa; illustrare con modelli ad area",
+    "evidence": [
+      "Calcolare 2,347 × 6 usando lo schema scritto formale",
+      "Calcolare 34 × 27 usando la moltiplicazione in colonna estesa",
+      "Disegnare un modello ad area per 45 × 23 e collegarlo al metodo scritto"
+    ],
+    "assessmentPrompt": "{{name}} riesce a calcolare qualcosa come '2,346 × 7' o '43 × 28' usando il metodo formale in colonna — impostandolo con attenzione e seguendo tutti i passaggi?"
+  },
+  "mt_qUGMyMYn9m": {
+    "name": "Gradi e giri",
+    "description": "Sapere che gli angoli si misurano in gradi, dove un grado corrisponde a 1/360 di un giro completo; comprendere che un angolo che ruota attraverso n angoli di un grado ha un'ampiezza di n gradi",
+    "evidence": [
+      "Spiegare che un giro completo è 360° e un angolo retto è 90°",
+      "Descrivere cosa significa 'un grado' in termini di frazione di un cerchio",
+      "Affermare che un angolo di 45° ha ruotato attraverso 45 angoli di un grado"
+    ],
+    "assessmentPrompt": "Se {{name}} sa che un cerchio completo misura 360 gradi, riesce a dire quanti gradi misura un quarto di giro — e a spiegare all'incirca come appare un singolo grado?"
+  },
+  "mt_qeZYF6HZ4o": {
+    "name": "Linguaggio posizionale",
+    "description": "Descrivere la posizione degli oggetti usando termini come sopra, sotto, accanto, davanti, dietro, vicino",
+    "evidence": [
+      "Descrivere un giocattolo come posizionato 'sopra' il tavolo",
+      "Seguire istruzioni come 'metti il cubo dietro la scatola'",
+      "Usare 'sinistra' e 'destra' in contesti semplici"
+    ],
+    "assessmentPrompt": "{{name}} riesce a dare indicazioni per trovare qualcosa in casa usando parole come \"sopra\", \"sotto\", \"accanto\", \"davanti\" o \"dietro\"?"
+  },
+  "mt_r0VXbfAmsH": {
+    "name": "Una decina è dieci unità",
+    "description": "Comprendere che 10 può essere pensato come un gruppo di dieci unità — chiamato 'decina'",
+    "evidence": [
+      "Raggruppare 10 cubetti singoli in una barretta da 10 e spiegare perché",
+      "Spiegare che 10 unità equivalgono a 1 decina",
+      "Scambiare 10 unità con un unico blocco delle decine"
+    ],
+    "assessmentPrompt": "{{name}} sa spiegare che dieci oggetti singoli raggruppati insieme formano 'una decina' — e che è per questo che scriviamo 10 con un 1 al posto delle decine e uno 0 al posto delle unità?"
+  },
+  "mt_r8c43QB6wx": {
+    "name": "Classificare le figure in base alle proprietà delle linee",
+    "description": "Classificare figure bidimensionali in base alla presenza o assenza di linee parallele o perpendicolari, o di angoli di una data ampiezza; riconoscere i triangoli rettangoli come categoria",
+    "evidence": [
+      "Ordinare un insieme di quadrilateri in quelli con lati paralleli e quelli senza",
+      "Identificare quali triangoli in un insieme sono triangoli rettangoli",
+      "Classificare figure che hanno sia lati perpendicolari sia lati paralleli"
+    ],
+    "assessmentPrompt": "Se mostri a {{name}} un insieme misto di triangoli e quadrilateri, riesce a ordinarli in gruppi — come \"figure con almeno un angolo retto\" o \"figure con lati paralleli\" — e a spiegare il suo ragionamento?"
+  },
+  "mt_rxInpOQ74w": {
+    "name": "Regole dei segni nella moltiplicazione",
+    "description": "Moltiplicare e dividere numeri interi e razionali positivi e negativi, comprendendo le regole per il segno del prodotto o del quoziente",
+    "evidence": [
+      "Applicare le regole dei segni nella moltiplicazione di due numeri interi (positivo × negativo, negativo × negativo)",
+      "Applicare le regole dei segni nella divisione di due numeri interi",
+      "Risolvere problemi reali a più passaggi che coinvolgono tutte e quattro le operazioni con numeri razionali positivi e negativi"
+    ],
+    "assessmentPrompt": "Se {{name}} sa che un numero negativo moltiplicato per un numero negativo dà un numero positivo, riesce a usare questa regola per calcolare espressioni come '−3 × −4 = 12' — e a spiegare perché ha senso?"
+  },
+  "mt_sBcRdUfAzV": {
+    "name": "Figure piane (6+ anni)",
+    "description": "Identificare e descrivere le proprietà delle figure piane, incluso il numero di lati e la simmetria assiale rispetto a una linea verticale",
+    "evidence": [
+      "Contare il numero di lati di una data figura piana",
+      "Identificare se una figura piana ha un asse di simmetria verticale",
+      "Usare le proprietà (numero di lati, simmetria) per descrivere e distinguere le figure"
+    ],
+    "assessmentPrompt": "{{name}} riesce a contare i lati di una figura e dire se ha un asse di simmetria — per esempio, sapendo che un rettangolo è simmetrico ma un triangolo scaleno non lo è?"
+  },
+  "mt_skYly2Qm01": {
+    "name": "Misurare la lunghezza",
+    "description": "Ordinare tre oggetti per lunghezza e confrontare indirettamente le lunghezze di due oggetti usando un terzo oggetto",
+    "evidence": [
+      "Mettere tre nastri in ordine dal più corto al più lungo",
+      "Usare un pezzo di spago per confrontare le altezze di due oggetti che non possono essere messi uno accanto all'altro",
+      "Spiegare che se A è più lungo di B e B è più lungo di C, allora A è più lungo di C"
+    ],
+    "assessmentPrompt": "Se {{name}} ha tre matite di lunghezza diversa ma può confrontarne solo due alla volta, riesce a capire qual è la più lunga — usando una terza matita come tramite?"
+  },
+  "mt_snlqRCiA1R": {
+    "name": "Rappresentare punti nel primo quadrante",
+    "description": "Rappresentare e leggere coppie ordinate nel primo quadrante del piano cartesiano; rappresentare problemi reali e matematici tramite grafici di punti e interpretare i valori delle coordinate nel contesto",
+    "evidence": [
+      "Rappresentare con precisione il punto (4, 7) su una griglia nel primo quadrante",
+      "Rappresentare un insieme di coppie di dati (per esempio tempo e distanza) come punti sul piano cartesiano",
+      "Leggere le coordinate di un punto rappresentato e spiegare cosa rappresentano in un dato scenario"
+    ],
+    "assessmentPrompt": "Se dici a {{name}} che un viaggio in auto passa per i punti della griglia (2, 3), (5, 7) e (8, 4) su una mappa, riesce a rappresentare quei punti e a descrivere come appare il percorso?"
+  },
+  "mt_svFa6_mjO_": {
+    "name": "Cerchi: circonferenza e area",
+    "description": "Calcolare la circonferenza e l'area dei cerchi usando le formule C = πd (o 2πr) e A = πr², e risolvere problemi che riguardano perimetri e aree di figure composte che includono parti circolari",
+    "evidence": [
+      "Calcolare la circonferenza e l'area di un cerchio dati il raggio o il diametro",
+      "Trovare il perimetro o l'area di una figura composta formata da rettangoli e semicerchi",
+      "Spiegare in modo informale la relazione tra π, il diametro e la circonferenza"
+    ],
+    "assessmentPrompt": "Se {{name}} vuole sapere quanta strada percorre la ruota di una bicicletta in un giro completo, riesce a usare il diametro della ruota e π (pi greco) per calcolare la circonferenza?"
+  },
+  "mt_tAJH5BrpOx": {
+    "name": "Angoli nei triangoli (11+ anni)",
+    "description": "Ricavare e applicare le formule per l'area di triangoli, parallelogrammi e trapezi, e per il volume di parallelepipedi e altri prismi (compresi i cilindri), collegando ogni formula al suo ragionamento geometrico",
+    "evidence": [
+      "Calcolare l'area di un trapezio usando A = ½(a + b) × h e spiegare perché la formula funziona",
+      "Trovare il volume di un prisma triangolare calcolando area della base × lunghezza",
+      "Ricavare la formula del volume di un cilindro come π × r² × h ragionando a partire dalla formula del prisma"
+    ],
+    "assessmentPrompt": "Se {{name}} deve piastrellare una sezione triangolare di un patio con base di 4 m e altezza di 3 m, riesce a calcolare l'area per sapere quante piastrelle acquistare?"
+  },
+  "mt_u23IGDxOpk": {
+    "name": "Rette parallele e perpendicolari",
+    "description": "Identificare rette orizzontali e verticali e coppie di rette perpendicolari e parallele",
+    "evidence": [
+      "Individuare rette orizzontali e verticali nelle figure e in contesti reali",
+      "Identificare una coppia di rette parallele (rette che non si incontrano mai e sono sempre alla stessa distanza)",
+      "Identificare rette perpendicolari (rette che si incontrano formando un angolo retto)"
+    ],
+    "assessmentPrompt": "Se {{name}} osserva dei binari ferroviari o il telaio di una finestra, riesce a indicare quali linee sono parallele (non si incrociano mai) e quali sono perpendicolari (si incontrano formando un angolo retto)?"
+  },
+  "mt_uDJY0X0hgo": {
+    "name": "Le frazioni sulla retta numerica (11+ anni)",
+    "description": "Ordinare numeri interi positivi e negativi, decimali e frazioni su una retta numerica; usare i simboli =, ≠, <, >, ≤, ≥ per confrontare valori, compresi numeri negativi e rappresentazioni miste",
+    "evidence": [
+      "Ordinare un insieme misto di numeri interi positivi e negativi, decimali e frazioni",
+      "Usare correttamente i simboli =, ≠, <, >, ≤, ≥ in espressioni matematiche",
+      "Confrontare numeri presentati in forme diverse, come 0.75 e 3/4"
+    ],
+    "assessmentPrompt": "Se a {{name}} viene data una lista mista come 2.5, −3, ¾, 0 e −0.5, riesce a metterli in ordine dal più piccolo al più grande, usando una retta numerica se necessario?"
+  },
+  "mt_uhuxX8sg9f": {
+    "name": "Confrontare lunghezze e altezze",
+    "description": "Confrontare direttamente due oggetti per lunghezza o altezza e descrivere la differenza usando termini come lungo, corto, alto, più lungo, più corto, più alto, doppio, metà",
+    "evidence": [
+      "Mettere due bambini schiena contro schiena e dire chi è più alto/più basso",
+      "Confrontare direttamente le altezze di due torri e descrivere una come più alta",
+      "Usare \"più lungo\" e \"più corto\" per confrontare due nastri messi uno accanto all'altro"
+    ],
+    "assessmentPrompt": "Se {{name}} si mette accanto al tavolo della cucina e alla porta d'ingresso, sa dire quale dei due è più alto — e se lui/lei è più basso o più alto di ciascuno?"
+  },
+  "mt_vKcxX6iNOA": {
+    "name": "Notazione delle frazioni",
+    "description": "Leggere, scrivere e usare correttamente la notazione delle frazioni — frazione, numeratore, denominatore, frazione unitaria, frazione non unitaria, frazione propria, frazione impropria, numero misto, frazione equivalente, forma minima — e capire cosa descrive ciascun termine, compreso il ruolo del numeratore e del denominatore nell'esprimere le parti di un intero",
+    "evidence": [
+      "Indicare e nominare il numeratore e il denominatore in una frazione data e spiegare cosa indica ciascuno",
+      "Classificare correttamente le frazioni come unitarie, proprie, improprie o numeri misti, con un esempio per ciascuna categoria",
+      "Spiegare con parole proprie perché 2/4 e 1/2 sono frazioni equivalenti"
+    ],
+    "assessmentPrompt": "Se {{name}} vedesse scritta la frazione 3/4, saprebbe indicare il numeratore e il denominatore — e spiegare cosa significa davvero ciascun numero?"
+  },
+  "mt_vXRzMbiPff": {
+    "name": "I numeri negativi",
+    "description": "Contare all'indietro attraverso lo zero includendo i numeri negativi",
+    "evidence": [
+      "Contare all'indietro da 5 attraverso lo zero: 5, 4, 3, 2, 1, 0, −1, −2 …",
+      "Collocare i numeri negativi su una retta numerica",
+      "Comprendere che i numeri negativi sono minori di zero e usarli in contesti reali (ad esempio la temperatura)"
+    ],
+    "assessmentPrompt": "{{name}} sa contare all'indietro oltre lo zero fino ai numeri negativi — come 3, 2, 1, 0, −1, −2, −3 — senza esitare allo zero?"
+  },
+  "mt_wB-GBDkoNr": {
+    "name": "Numeri decimali e frazioni",
+    "description": "Risolvere semplici problemi di misura e di denaro che coinvolgono frazioni e numeri decimali fino a due cifre decimali",
+    "evidence": [
+      "Calcolare 1/4 di £3.20",
+      "Una corda è lunga 2.5 m; quanto ne rimane dopo averne tagliati 0.75 m?",
+      "Trovare 3/10 di 1 kg ed esprimere il risultato in grammi e come numero decimale di kg"
+    ],
+    "assessmentPrompt": "Se una bottiglia contiene 1.5 litri e {{name}} ne beve 0.75, sa calcolare quanti ne rimangono — e scriverlo sia come numero decimale sia come frazione?"
+  },
+  "mt_wE7-Gs9ENL": {
+    "name": "Misurare i perimetri",
+    "description": "Misurare il perimetro di semplici figure piane",
+    "evidence": [
+      "Misurare ogni lato di un rettangolo e sommare le lunghezze per trovare il perimetro",
+      "Calcolare il perimetro di una figura regolare conoscendo la lunghezza del lato",
+      "Spiegare che il perimetro è la distanza totale intorno a una figura"
+    ],
+    "assessmentPrompt": "Se {{name}} vuole mettere una cornice decorativa intorno a una cornice rettangolare larga 20 cm e alta 30 cm, sa calcolare la lunghezza totale di bordo necessaria?"
+  },
+  "mt_wPgpMJ0-PA": {
+    "name": "Moltiplicare e dividere (10+ anni)",
+    "description": "Moltiplicare e dividere numeri per 10, 100 e 1000 ottenendo risultati fino a tre cifre decimali, comprendendo che le cifre cambiano posizione nella tabella del valore posizionale",
+    "evidence": [
+      "Calcolare correttamente 3.456 × 100 = 345.6",
+      "Calcolare correttamente 45.2 ÷ 1000 = 0.0452",
+      "Spiegare perché moltiplicare per 10 sposta ogni cifra di una posizione verso sinistra"
+    ],
+    "assessmentPrompt": "{{name}} riesce a calcolare '4.6 ÷ 1,000 = 0.0046' — sapendo che ogni divisione per 10 sposta le cifre di una posizione verso destra, anche oltre la virgola decimale?"
+  },
+  "mt_wQ89AEXhz3": {
+    "name": "Le tabelline (7+ anni)",
+    "description": "Ricordare e usare i fatti di moltiplicazione e divisione delle tabelline del 3, del 4 e dell'8",
+    "evidence": [
+      "Ricordare da 3 × 1 a 3 × 12 e i corrispondenti fatti di divisione",
+      "Ricordare da 4 × 1 a 4 × 12 e i corrispondenti fatti di divisione",
+      "Ricordare da 8 × 1 a 8 × 12 e i corrispondenti fatti di divisione"
+    ],
+    "assessmentPrompt": "{{name}} riesce a ricordare rapidamente i fatti delle tabelline del 3, del 4 e dell'8 — come '8 × 7 = 56' o '36 ÷ 4 = 9' — senza doverli calcolare ogni volta?"
+  },
+  "mt_wh3UqnWsa7": {
+    "name": "La moltiplicazione come addizione ripetuta (6+ anni)",
+    "description": "Risolvere problemi di moltiplicazione e divisione usando schieramenti, addizione ripetuta, calcolo mentale e fatti numerici noti",
+    "evidence": [
+      "Risolvere 'Ci sono 5 sacchetti con 2 mele ciascuno. Quante mele in totale?' usando l'addizione ripetuta o un fatto numerico noto",
+      "Risolvere 'Dividi 15 caramelle equamente tra 3 bambini' usando il raggruppamento",
+      "Disegnare uno schieramento per risolvere un problema di moltiplicazione contestualizzato"
+    ],
+    "assessmentPrompt": "Se dici a {{name}} 'hai 5 sacchetti con 4 biglie ciascuno — quante ce ne sono in tutto?', riesce a capirlo usando oggetti, un disegno o il calcolo mentale?"
+  },
+  "mt_xACS3rWWDp": {
+    "name": "Metà e quarti di figure",
+    "description": "Suddividere cerchi e rettangoli in due e quattro parti uguali e descriverle usando i termini metà e quarti",
+    "evidence": [
+      "Dividere un cerchio in due metà uguali",
+      "Dividere un rettangolo in quattro quarti uguali",
+      "Descrivere l'intero come 'due metà' o 'quattro quarti'"
+    ],
+    "assessmentPrompt": "Se dai a {{name}} una pizza rotonda o una tavoletta di cioccolato rettangolare, sa dividerla in quattro pezzi uguali e dirti che ogni pezzo si chiama un quarto?"
+  },
+  "mt_xmmgAzxe5j": {
+    "name": "I numeri da undici a diciannove",
+    "description": "Comprendere che i numeri da 11 a 19 sono composti da una decina e altre unità (primo approccio al valore posizionale)",
+    "evidence": [
+      "Comporre 14 come un gruppo di dieci più quattro unità usando degli oggetti",
+      "Scomporre 17 in 10 + 7 e scriverlo come uguaglianza",
+      "Spiegare che 13 è 'una decina e tre unità'"
+    ],
+    "assessmentPrompt": "Se {{name}} ha 14 mattoncini da costruzione, riesce a vederli come una torre intera di 10 più 4 avanzati — capendo i numeri da undici a diciannove come 'una decina e qualcosa in più'?"
+  },
+  "mt_xq3YHZ2zeR": {
+    "name": "Le parti del cerchio",
+    "description": "Illustrare e nominare le parti del cerchio, tra cui raggio, diametro e circonferenza; sapere che il diametro è il doppio del raggio",
+    "evidence": [
+      "Etichettare il raggio, il diametro e la circonferenza in un diagramma di un cerchio",
+      "Calcolare il diametro dato un raggio di 4,5 cm (diametro = 9 cm)",
+      "Spiegare con parole proprie la relazione tra raggio e diametro"
+    ],
+    "assessmentPrompt": "Se dai a {{name}} un piatto rotondo e un righello, riesce a misurare il diametro — e a spiegare come il raggio si relaziona al diametro?"
+  },
+  "mt_y-BuQAfw4B": {
+    "name": "Coordinate (12+ anni)",
+    "description": "Comprendere la similitudine come una relazione in cui una figura è l'ingrandimento di un'altra; costruire figure simili tramite un ingrandimento con un dato fattore di scala e centro, con e senza griglie di coordinate",
+    "evidence": [
+      "Ingrandire una figura secondo un dato fattore di scala a partire da un centro di ingrandimento specificato",
+      "Determinare il fattore di scala tra due figure simili confrontando i lati corrispondenti",
+      "Spiegare perché gli angoli corrispondenti nelle figure simili sono uguali mentre i lati sono in proporzione"
+    ],
+    "assessmentPrompt": "Se {{name}} vuole ingrandire una foto in modo che sia tre volte più grande, riesce a calcolare le nuove dimensioni — e a spiegare che la forma rimane la stessa ma tutte le lunghezze aumentano dello stesso fattore?"
+  },
+  "mt_y1XCVsIelg": {
+    "name": "I numeri primi",
+    "description": "Conoscere e usare il vocabolario dei numeri primi, dei fattori primi e dei numeri composti; stabilire se un numero fino a 100 è primo; ricordare i numeri primi fino a 19",
+    "evidence": [
+      "Spiegare che un numero primo ha esattamente due fattori: 1 e se stesso",
+      "Determinare se 51 è primo o composto e motivare la risposta",
+      "Elencare a memoria tutti i numeri primi fino a 19"
+    ],
+    "assessmentPrompt": "{{name}} sa spiegarti cosa rende un numero 'primo' — che è divisibile esattamente solo per 1 e per se stesso — e fare qualche esempio come 7, 11 e 13?"
+  },
+  "mt_y1n0Zwhoca": {
+    "name": "Area (8+ anni)",
+    "description": "Misurare aree contando i quadratini unitari (centimetri quadrati, metri quadrati, pollici quadrati, piedi quadrati)",
+    "evidence": [
+      "Contare i quadratini unitari per trovare l'area di una figura a forma di L",
+      "Misurare l'area della copertina di un libro usando piastrelle di un centimetro quadrato",
+      "Confrontare le aree di due figure contando i loro quadratini unitari"
+    ],
+    "assessmentPrompt": "Se {{name}} disegna una figura su carta a quadretti di un centimetro, sa trovarne l'area contando i quadretti — includendo una stima ragionevole per i quadretti parziali?"
+  },
+  "mt_yGv8doDAmp": {
+    "name": "Solidi (5+ anni)",
+    "description": "Analizzare e confrontare figure piane e solide usando un linguaggio informale per descrivere lati, vertici e altre caratteristiche",
+    "evidence": [
+      "Contare i lati e gli angoli di una figura",
+      "Confrontare un triangolo e un rettangolo in base al numero di lati",
+      "Descrivere un cubo come avente 'facce quadrate' e 'angoli'"
+    ],
+    "assessmentPrompt": "{{name}} riesce a descrivere cosa rende diverse due forme — per esempio, spiegando che un triangolo ha 3 angoli e 3 lati mentre un quadrato ne ha 4 di ciascuno?"
+  },
+  "mt_yqAL6O5i_v": {
+    "name": "Contare oggetti fino a 20",
+    "description": "Contare un insieme di oggetti per rispondere a 'quanti sono?' per insiemi fino a 20 (disposti in fila, in schieramenti, in cerchio o sparsi)",
+    "evidence": [
+      "Contare con precisione fino a 20 oggetti disposti in fila",
+      "Contare fino a 10 oggetti sparsi senza perdere il conto",
+      "Dato un numero da 1 a 20, prendere quel numero di oggetti da un insieme più grande"
+    ],
+    "assessmentPrompt": "Se sparpagli 15 bottoni sul tavolo in modo casuale e chiedi a {{name}} quanti sono, riesce a contarli tutti con attenzione e a darti la risposta giusta?"
+  },
+  "mt_zOWwLxa77y": {
+    "name": "Leggere i simboli ×, ÷ e =",
+    "description": "Leggere, scrivere e interpretare i simboli ×, ÷ e = nelle espressioni numeriche di moltiplicazione e divisione",
+    "evidence": [
+      "Leggere ad alta voce 3 × 4 = 12 come 'tre per quattro uguale dodici'",
+      "Scrivere un'espressione di moltiplicazione corrispondente a uno schieramento",
+      "Leggere correttamente ad alta voce 12 ÷ 3 = 4"
+    ],
+    "assessmentPrompt": "Se scrivi su un foglio '6 × 4 = 24' oppure '15 ÷ 3 = 5', {{name}} sa dirti cosa significano il segno di moltiplicazione, quello di divisione e quello di uguale?"
+  },
+  "mt_zd0YkB3xNj": {
+    "name": "Misurare massa e peso",
+    "description": "Misurare e iniziare a registrare massa/peso usando unità di misura non convenzionali e convenzionali",
+    "evidence": [
+      "Usare una bilancia a due piatti per confrontare le masse di due oggetti",
+      "Misurare la massa usando unità non convenzionali (ad esempio, \"questo libro pesa 5 cubetti\")",
+      "Iniziare a leggere una semplice bilancia per la massa"
+    ],
+    "assessmentPrompt": "Se {{name}} usa una bilancia a due piatti per confrontare due oggetti, sa dire quale è più pesante — e, dati dei pesi come 100g, sa bilanciare un oggetto sulla bilancia?"
+  },
+  "mt_zkFbMLpu3U": {
+    "name": "Confrontare la capacità",
+    "description": "Confrontare e descrivere la capacità e il volume usando termini come pieno, vuoto, più di, meno di, mezzo pieno",
+    "evidence": [
+      "Confrontare due contenitori e dire quale contiene di più/di meno",
+      "Usare le espressioni \"mezzo pieno\" e \"un quarto pieno\" per descrivere un contenitore",
+      "Risolvere problemi pratici come \"Quale tazza ha più acqua?\""
+    ],
+    "assessmentPrompt": "Se {{name}} ha due tazze di dimensioni diverse, sa dire quale contiene più acqua — e descrivere una come \"più piena\" o \"meno piena\" dell'altra?"
+  },
+  "mt_zuKAX6lcYR": {
+    "name": "La sottrazione come togliere o separare",
+    "description": "Comprendere la sottrazione come il togliere o separare da un gruppo per trovare quanti ne rimangono",
+    "evidence": [
+      "Rappresentare il 'togliere' con oggetti concreti e dire quanti ne rimangono",
+      "Drammatizzare una situazione di 'togliere da' (ad es. 5 biscotti, ne mangio 2, quanti ne restano?)",
+      "Spiegare che la sottrazione significa trovare quanti ne restano"
+    ],
+    "assessmentPrompt": "Se {{name}} ha 9 biscotti e ne mangia 3, capisce che sottrarre significa toglierne alcuni — e sa dirti che ne restano 6?"
+  },
+  "mt_zuOGOGFAKb": {
+    "name": "Angoli nei triangoli (7+ anni)",
+    "description": "Riconoscere e disegnare figure con attributi specifici (per esempio, un dato numero di angoli o lati uguali); identificare triangoli, quadrilateri, pentagoni, esagoni e cubi",
+    "evidence": [
+      "Disegnare una figura con esattamente 5 lati (pentagono)",
+      "Identificare tutti i quadrilateri in un insieme di figure miste",
+      "Nominare e disegnare un esagono, spiegando che ha 6 lati e 6 angoli"
+    ],
+    "assessmentPrompt": "Se a {{name}} vengono date istruzioni come \"disegna una figura con 5 lati\" o \"disegna una figura con tutti gli angoli uguali\", riesce a disegnarla correttamente?"
+  }
+}
