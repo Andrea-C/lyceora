@@ -1,0 +1,1371 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Guida didattica interattiva per il recupero estivo di matematica per studenti delle scuole medie (13 anni) — Estate 2026. Cronoprogramma in 8 settimane con video equivalenti, esercizi e quiz.">
+    <title>Matematica Attiva - Guida al Recupero Estivo 2026</title>
+    
+    <!-- Preconnessione e Font di Google -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,700;1,9..40,400&family=Outfit:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap" rel="stylesheet">
+    
+    <!-- Configurazione MathJax per formule scientifiche -->
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']]
+            },
+            options: { skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre'] }
+        };
+    </script>
+    <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    
+    <!-- CSS di design system premium -->
+    <style>
+        :root {
+            /* Palette HSL - Toni di Blu Editoriale, Teal ed Ambra Caldo */
+            --color-bg: #f8fafc;
+            --color-surface: #ffffff;
+            --color-primary: #1e3a8a;
+            --color-primary-dark: #0f172a;
+            --color-primary-light: #3b82f6;
+            --color-accent: #0f766e;
+            --color-accent-light: #14b8a6;
+            --color-accent-soft: #f0fdfa;
+            --color-warning: #b45309;
+            --color-warning-soft: #fef3c7;
+            --color-border: #e2e8f0;
+            --color-text: #1e293b;
+            --color-text-muted: #64748b;
+            
+            /* Ombre e smussature */
+            --shadow-sm: 0 2px 4px rgba(15, 23, 42, 0.04);
+            --shadow-md: 0 8px 24px rgba(15, 23, 42, 0.06);
+            --shadow-lg: 0 16px 48px rgba(15, 23, 42, 0.1);
+            --radius-lg: 16px;
+            --radius-md: 12px;
+            --radius-sm: 8px;
+            --max-width: 960px;
+            
+            /* Animazioni */
+            --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 5.5rem;
+        }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            font-size: 1.05rem;
+            line-height: 1.7;
+            color: var(--color-text);
+            background-color: var(--color-bg);
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* ── Intestazione Principale (Glassmorphic & Gradient) ── */
+        .header-hero {
+            background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 100%);
+            color: #ffffff;
+            padding: 4.5rem 1.5rem 4rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            border-bottom: 4px solid var(--color-accent-light);
+        }
+
+        .header-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 10% 20%, rgba(20, 184, 166, 0.15) 0%, transparent 40%),
+                        radial-gradient(circle at 90% 80%, rgba(59, 130, 246, 0.15) 0%, transparent 45%);
+            pointer-events: none;
+        }
+
+        .header-hero .inner {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        .header-hero .badge {
+            display: inline-block;
+            background: rgba(20, 184, 166, 0.15);
+            border: 1px solid rgba(20, 184, 166, 0.3);
+            color: var(--color-accent-light);
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            padding: 0.4rem 1rem;
+            border-radius: 999px;
+            margin-bottom: 1.5rem;
+        }
+
+        .header-hero h1 {
+            font-family: 'Outfit', sans-serif;
+            font-size: clamp(2rem, 5vw, 3rem);
+            font-weight: 800;
+            line-height: 1.2;
+            letter-spacing: -0.03em;
+            margin-bottom: 1rem;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        }
+
+        .header-hero .subtitle {
+            font-size: 1.15rem;
+            color: #cbd5e1;
+            max-width: 38rem;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        /* ── Navigazione Indice Fissa ── */
+        .site-nav {
+            background-color: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--color-border);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .site-nav .inner {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 0.85rem 1.5rem;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 0.5rem 1rem;
+        }
+
+        .site-nav a {
+            font-family: 'Outfit', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--color-primary-dark);
+            text-decoration: none;
+            padding: 0.35rem 0.85rem;
+            border-radius: 999px;
+            transition: var(--transition-smooth);
+        }
+
+        .site-nav a:hover {
+            background-color: var(--color-accent-soft);
+            color: var(--color-accent);
+        }
+
+        /* ── Contenitore Principale ── */
+        .main-container {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 3rem 1.5rem 5rem;
+        }
+
+        section {
+            background: var(--color-surface);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-lg);
+            padding: 2.5rem;
+            margin-bottom: 3rem;
+            box-shadow: var(--shadow-sm);
+        }
+
+        h2 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: var(--color-primary-dark);
+            margin-bottom: 1.25rem;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 4px;
+            background: var(--color-accent);
+            border-radius: 2px;
+        }
+
+        h3 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--color-primary);
+            margin: 1.75rem 0 1rem;
+        }
+
+        p {
+            margin-bottom: 1.25rem;
+            color: var(--color-text);
+        }
+
+        em {
+            font-style: italic;
+            font-weight: 500;
+        }
+
+        /* ── Box Informativi ed Emotivi (Coping) ── */
+        .info-card {
+            background-color: var(--color-accent-soft);
+            border-left: 5px solid var(--color-accent-light);
+            padding: 1.5rem;
+            border-radius: 0 var(--radius-md) var(--radius-md) 0;
+            margin: 1.5rem 0;
+        }
+
+        .info-card h4 {
+            font-family: 'Outfit', sans-serif;
+            color: var(--color-accent);
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .alert-card {
+            background-color: var(--color-warning-soft);
+            border-left: 5px solid var(--color-warning);
+            padding: 1.5rem;
+            border-radius: 0 var(--radius-md) var(--radius-md) 0;
+            margin: 1.5rem 0;
+        }
+
+        .alert-card h4 {
+            font-family: 'Outfit', sans-serif;
+            color: var(--color-warning);
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        /* ── Cronoprogramma: Accordion Cards (Riduzione Carico Cognitivo) ── */
+        .week-accordion {
+            background: var(--color-surface);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-lg);
+            margin-bottom: 1.25rem;
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition-smooth);
+        }
+
+        .week-accordion:hover {
+            box-shadow: var(--shadow-md);
+            border-color: var(--color-primary-light);
+        }
+
+        .week-accordion summary {
+            padding: 1.5rem 2rem;
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--color-primary-dark);
+            cursor: pointer;
+            list-style: none;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: linear-gradient(to right, #ffffff, #f8fafc);
+            user-select: none;
+        }
+
+        .week-accordion summary::-webkit-details-marker {
+            display: none;
+        }
+
+        .week-accordion summary::after {
+            content: '+';
+            font-size: 1.5rem;
+            font-weight: 400;
+            color: var(--color-accent);
+            transition: transform 0.2s;
+        }
+
+        .week-accordion[open] summary::after {
+            content: '−';
+            transform: rotate(180deg);
+        }
+
+        .week-content {
+            padding: 2rem;
+            border-top: 1px solid var(--color-border);
+            background: #ffffff;
+        }
+
+        .week-focus {
+            font-size: 1.05rem;
+            background: var(--color-bg);
+            padding: 1rem 1.25rem;
+            border-radius: var(--radius-md);
+            margin-bottom: 1.5rem;
+            border-left: 4px solid var(--color-primary);
+        }
+
+        /* Liste di Risorse in Tre Colonne Verticali */
+        .resources-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        @media (min-width: 768px) {
+            .resources-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        .resource-col {
+            background: var(--color-bg);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-md);
+            padding: 1.25rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .resource-col h5 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--color-primary-dark);
+            border-bottom: 2px solid var(--color-border);
+            padding-bottom: 0.5rem;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        /* ── Bottoni d'Azione e Link Esterni ── */
+        .btn-action {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Outfit', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: #ffffff;
+            background-color: var(--color-primary);
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border-radius: var(--radius-sm);
+            transition: var(--transition-smooth);
+            text-align: center;
+            box-shadow: 0 2px 4px rgba(30, 58, 138, 0.2);
+        }
+
+        .btn-action:hover {
+            background-color: var(--color-primary-light);
+            transform: translateY(-1px);
+            box-shadow: 0 4px 8px rgba(30, 58, 138, 0.3);
+        }
+
+        .btn-teal {
+            background-color: var(--color-accent);
+            box-shadow: 0 2px 4px rgba(15, 118, 110, 0.2);
+        }
+
+        .btn-teal:hover {
+            background-color: var(--color-accent-light);
+            box-shadow: 0 4px 8px rgba(15, 118, 110, 0.3);
+        }
+
+        .btn-amber {
+            background-color: var(--color-warning);
+            box-shadow: 0 2px 4px rgba(180, 83, 9, 0.2);
+        }
+
+        .btn-amber:hover {
+            background-color: #d97706;
+            box-shadow: 0 4px 8px rgba(180, 83, 9, 0.3);
+        }
+
+        .resource-col .link-item {
+            display: flex;
+            flex-direction: column;
+            gap: 0.35rem;
+            background: #ffffff;
+            padding: 0.85rem;
+            border-radius: var(--radius-sm);
+            border: 1px solid var(--color-border);
+            font-size: 0.9rem;
+        }
+
+        .link-title {
+            font-weight: 700;
+            color: var(--color-primary-dark);
+        }
+
+        .link-desc {
+            font-size: 0.8rem;
+            color: var(--color-text-muted);
+            line-height: 1.4;
+        }
+
+        /* ── Tabelle di Confronto ── */
+        .table-wrapper {
+            overflow-x: auto;
+            margin: 1.5rem 0;
+            border-radius: var(--radius-md);
+            border: 1px solid var(--color-border);
+            box-shadow: var(--shadow-sm);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.95rem;
+            text-align: left;
+        }
+
+        th {
+            font-family: 'Outfit', sans-serif;
+            font-weight: 700;
+            background-color: var(--color-primary-dark);
+            color: #ffffff;
+            padding: 1rem 1.25rem;
+        }
+
+        td {
+            padding: 1rem 1.25rem;
+            border-bottom: 1px solid var(--color-border);
+            background-color: #ffffff;
+            vertical-align: top;
+        }
+
+        tr:last-child td {
+            border-bottom: none;
+        }
+
+        tr:nth-child(even) td {
+            background-color: #f8fafc;
+        }
+
+        /* Badge di Classificazione Tabella IA */
+        .ia-badge {
+            display: inline-block;
+            font-family: 'Outfit', sans-serif;
+            font-size: 0.75rem;
+            font-weight: 700;
+            padding: 0.25rem 0.75rem;
+            border-radius: 999px;
+            text-transform: uppercase;
+        }
+
+        .ia-badge-active {
+            background-color: #dcfce7;
+            color: #166534;
+        }
+
+        .ia-badge-passive {
+            background-color: #fef3c7;
+            color: #92400e;
+        }
+
+        .ia-badge-free {
+            background-color: #e0f2fe;
+            color: #0369a1;
+        }
+
+        /* ── Grid Piattaforme Ripetizioni ── */
+        .tutor-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        @media (min-width: 768px) {
+            .tutor-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        .tutor-card {
+            background: #ffffff;
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-md);
+            padding: 1.5rem;
+            box-shadow: var(--shadow-sm);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: var(--transition-smooth);
+        }
+
+        .tutor-card:hover {
+            box-shadow: var(--shadow-md);
+            transform: translateY(-2px);
+        }
+
+        .tutor-card h4 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.2rem;
+            color: var(--color-primary-dark);
+            margin-bottom: 0.5rem;
+        }
+
+        .tutor-card p {
+            font-size: 0.9rem;
+            color: var(--color-text);
+            margin-bottom: 1.25rem;
+        }
+
+        .tutor-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-top: 1px solid var(--color-border);
+            padding-top: 1rem;
+            margin-top: auto;
+        }
+
+        .tutor-price {
+            font-family: 'Outfit', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 700;
+            color: var(--color-accent);
+        }
+
+        /* ── Footer del Sito ── */
+        footer {
+            background-color: var(--color-primary-dark);
+            color: #94a3b8;
+            padding: 3rem 1.5rem;
+            text-align: center;
+            font-size: 0.9rem;
+            border-top: 4px solid var(--color-accent);
+        }
+
+        footer p {
+            color: #94a3b8;
+            margin-bottom: 0.5rem;
+        }
+
+        footer a {
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* ── Responsive Styling per Mobile ── */
+        @media (max-width: 640px) {
+            .header-hero {
+                padding: 3rem 1rem 2.5rem;
+            }
+            .main-container {
+                padding: 1.5rem 1rem 3rem;
+            }
+            section {
+                padding: 1.5rem;
+            }
+            .week-accordion summary {
+                padding: 1.25rem 1rem;
+                font-size: 1.1rem;
+            }
+            .week-content {
+                padding: 1rem;
+            }
+            th, td {
+                padding: 0.75rem 0.5rem;
+                font-size: 0.85rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Intestazione Principale -->
+    <header class="header-hero">
+        <div class="inner">
+            <span class="badge">Programma di Consolidamento · Estate 2026</span>
+            <h1>Matematica Attiva</h1>
+            <p class="subtitle">La guida didattica completa per il recupero estivo, progettata per superare l'ansia e potenziare le abilità degli studenti di 13 anni.</p>
+        </div>
+    </header>
+
+    <!-- Navigazione Fisso (Indice) -->
+    <nav class="site-nav" aria-label="Indice rapido">
+        <div class="inner">
+            <a href="#pedagogia">1. Psicopedagogia</a>
+            <a href="#cronoprogramma">2. Il Programma delle 8 Settimane</a>
+            <a href="#tutor-ia">3. Studio Assistito da IA</a>
+            <a href="#ripetizioni">4. Lezioni Private</a>
+            <a href="#raccomandazioni">5. Consigli per i Genitori</a>
+        </div>
+    </nav>
+
+    <!-- Contenuto Principale -->
+    <main class="main-container">
+
+        <!-- SEZIONE 1: pedagogia e ansia da prestazione -->
+        <section id="pedagogia">
+            <h2>1. Fondamenti psicopedagogici e gestione dell'ansia da matematica</h2>
+            <p>
+                Il passaggio dal secondo al terzo anno della scuola secondaria di primo grado rappresenta un momento critico nell'evoluzione del pensiero matematico di uno studente di tredici anni. In questa fase evolutiva si consolida la transizione dal pensiero concreto a quello astratto, un processo che richiede un'assoluta padronanza delle strutture aritmetiche e geometriche elementari per evitare che le lacune pregresse si trasformino in ostacoli insormontabili durante lo studio dell'algebra e della geometria analitica del terzo anno.
+            </p>
+            <p>
+                La ricerca neuroscientifica evidenzia che le difficoltà nell'apprendimento della matematica non derivano esclusivamente da deficit cognitivi, ma sono spesso correlate a fattori emotivi noti come <strong>ansia per la matematica</strong>. Questa reazione emotiva attiva l'amigdala e riduce contestualmente il flusso di attivazione nella corteccia prefrontale dorsolaterale, l'area cerebrale deputata alla gestione della memoria di lavoro e del ragionamento logico-astratto. Di conseguenza, lo studente sperimenta un vero e proprio blocco cognitivo che ne limita le prestazioni, alimentando un circolo vizioso di frustrazione e abbandono.
+            </p>
+            
+            <div class="info-card">
+                <h4>Il nostro Approccio: Mastery Learning e Coping Positivo</h4>
+                <p>
+                    Per spezzare questo meccanismo, questa guida adotta i principi del <strong>Mastery Learning</strong> (apprendimento per la padronanza) e del <em>coping</em> positivo. La scomposizione delle difficoltà in piccoli passi operativi settimanali, l'uso di spiegazioni visivo-dinamiche e la personalizzazione dei ritmi di studio permettono di promuovere la regolazione emotiva, potenziando la resilienza e la fiducia dell'alunno nelle proprie capacità computazionali. L'errore non viene sanzionato, ma analizzato come risorsa logica da cui partire per comprendere il concetto.
+                </p>
+            </div>
+        </section>
+
+        <!-- SEZIONE 2: il programma di 8 settimane -->
+        <section id="cronoprogramma">
+            <h2>2. Il Cronoprogramma di Studio delle 8 Settimane</h2>
+            <p>
+                La ripartizione del carico di studio è strutturata in 8 passaggi pedagogici sequenziali. Per ogni settimana, lo studente ha a disposizione <strong>lezioni spiegate in modi differenti</strong>, <strong>eserciziari graduati</strong> per fare pratica autonoma e <strong>quiz di autovalutazione istantanea</strong>.
+            </p>
+            
+            <div class="alert-card" style="margin-bottom: 2rem;">
+                <strong>Consiglio anti-ansia:</strong> Clicca sul titolo di ciascuna settimana per aprirla ed esaminare solo le attività da fare in quel periodo. Evita di guardare l'intero programma tutto in una volta!
+            </div>
+
+            <!-- SETTIMANA 1 -->
+            <details class="week-accordion">
+                <summary>Settimana 1: Aritmetica delle Potenze e Proprietà</summary>
+                <div class="week-content">
+                    <div class="week-focus">
+                        <strong>Focus didattico:</strong> Comprendere il significato di esponente e base, applicare le proprietà fondamentali delle potenze (con stessa base o stesso esponente) e gestire il calcolo algebrico con frazioni ed esponenti negativi.
+                        $$\left( \frac{a}{b} \right)^{-n} = \left( \frac{b}{a} \right)^n$$
+                    </div>
+                    
+                    <div class="resources-grid">
+                        <!-- TEORIA -->
+                        <div class="resource-col">
+                            <h5>Teoria (Video)</h5>
+                            
+                            <div class="link-item">
+                                <span class="link-title">Proprietà fondamentali</span>
+                                <span class="link-desc">Spiegazione delle proprietà principali con esponenti naturali. (Elia Bombardelli)</span>
+                                <a class="btn-action" href="https://www.youtube.com/watch?v=1oemXllOByE" target="_blank" rel="noopener noreferrer">Guarda la Lezione</a>
+                            </div>
+
+                            <div class="link-item">
+                                <span class="link-title">Esponenti Negativi</span>
+                                <span class="link-desc">Come si risolvono le potenze con basi frazionarie ed esponenti negativi. (Elia Bombardelli)</span>
+                                <a class="btn-action" href="https://www.youtube.com/watch?v=A8rWyJ3KEiE" target="_blank" rel="noopener noreferrer">Guarda la Lezione</a>
+                            </div>
+
+                            <div class="link-item">
+                                <span class="link-title">Ripasso Generale</span>
+                                <span class="link-desc">Introduzione teorica interattiva alle proprietà. (WeSchool)</span>
+                                <a class="btn-action" href="https://library.weschool.com/lezione/proprieta-potenze-potenza-di-potenza-matematica-12977.html" target="_blank" rel="noopener noreferrer">Leggi la Lezione</a>
+                            </div>
+                        </div>
+
+                        <!-- PRATICA -->
+                        <div class="resource-col">
+                            <h5>Esercitazione Pratica</h5>
+
+                            <div class="link-item">
+                                <span class="link-title">Espressioni & Proprietà</span>
+                                <span class="link-desc">Eserciziari ragionati in PDF con passaggi completi. (UbiMath)</span>
+                                <a class="btn-action btn-teal" href="https://www.ubimath.org/potenze/ElevamentoAPotenza_Espressioni_ConProprietaIntermediate_UbiMath.pdf" target="_blank" rel="noopener noreferrer">Scarica Esercizi (PDF)</a>
+                            </div>
+
+                            <div class="link-item">
+                                <span class="link-title">Potenze con Decimali</span>
+                                <span class="link-desc">Espressioni complesse con numeri decimali e potenze. (UbiMath)</span>
+                                <a class="btn-action btn-teal" href="http://www.ubimath.org/potenze/ElevamentoAPotenza_Espressioni_ConQuattroOperazioniNDecimali_UbiMath.pdf" target="_blank" rel="noopener noreferrer">Scarica Esercizi (PDF)</a>
+                            </div>
+                        </div>
+
+                        <!-- VERIFICA -->
+                        <div class="resource-col">
+                            <h5>Autovalutazione</h5>
+
+                            <div class="link-item">
+                                <span class="link-title">Gioco-Quiz Wordwall</span>
+                                <span class="link-desc">Un test divertente a tempo per verificare le regole delle potenze.</span>
+                                <a class="btn-action btn-amber" href="https://wordwall.net/it/resource/7123861/matematica/quiz-sulle-potenze" target="_blank" rel="noopener noreferrer">Inizia il Quiz</a>
+                            </div>
+
+                            <div class="link-item">
+                                <span class="link-title">Test di Ripasso Generale</span>
+                                <span class="link-desc">Modulo gratuito per valutare le conoscenze di base. (Redooc)</span>
+                                <a class="btn-action btn-amber" href="https://scuola.redooc.com" target="_blank" rel="noopener noreferrer">Accedi a Redooc</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </details>
+
+            <!-- SETTIMANA 2 -->
+            <details class="week-accordion">
+                <summary>Settimana 2: Teoria della Divisibilità e Fattorizzazione</summary>
+                <div class="week-content">
+                    <div class="week-focus">
+                        <strong>Focus didattico:</strong> Comprendere la differenza tra multipli e divisori, riconoscere i numeri primi, eseguire la scomposizione in fattori primi e calcolare il Massimo Comune Divisore (MCD) e il minimo comune multiplo (mcm).
+                    </div>
+                    
+                    <div class="resources-grid">
+                        <!-- TEORIA -->
+                        <div class="resource-col">
+                            <h5>Teoria (Video)</h5>
+                            
+                            <div class="link-item">
+                                <span class="link-title">Numeri Primi</span>
+                                <span class="link-desc">Spiegazione intuitiva dei numeri primi e composti. (Khan Academy)</span>
+                                <a class="btn-action" href="https://it.khanacademy.org/math/pre-algebra/pre-algebra-factors-multiples/pre-algebra-prime-numbers/v/prime-numbers" target="_blank" rel="noopener noreferrer">Guarda la Lezione</a>
+                            </div>
+
+                            <div class="link-item">
+                                <span class="link-title">Regola della divisibilità per 9</span>
+                                <span class="link-desc">La logica matematica dietro il criterio di divisibilità. (Khan Academy)</span>
+                                <a class="btn-action" href="https://it.khanacademy.org/math/pre-algebra/pre-algebra-factors-multiples/pre-algebra-divisibility-tests/v/the-why-of-the-9-divisibility-rule" target="_blank" rel="noopener noreferrer">Guarda la Lezione</a>
+                            </div>
+
+                            <div class="link-item">
+                                <span class="link-title">Riconoscere la Divisibilità</span>
+                                <span class="link-desc">Esempi pratici per identificare divisori e multipli. (Khan Academy)</span>
+                                <a class="btn-action" href="https://it.khanacademy.org/math/pre-algebra/pre-algebra-factors-multiples/pre-algebra-divisibility-tests/v/recognizing-divisibility" target="_blank" rel="noopener noreferrer">Guarda la Lezione</a>
+                            </div>
+                        </div>
+
+                        <!-- PRATICA -->
+                        <div class="resource-col">
+                            <h5>Esercitazione Pratica</h5>
+
+                            <div class="link-item">
+                                <span class="link-title">Criterio Generale</span>
+                                <span class="link-desc">Come scomporre in fattori primi per semplificare le divisioni. (UbiMath)</span>
+                                <a class="btn-action btn-teal" href="https://www.ubimath.org/divisibility/Divisibility_CriterioGeneraleDivisibilita_UbiMath.pdf" target="_blank" rel="noopener noreferrer">Scarica Esercizi (PDF)</a>
+                            </div>
+
+                            <div class="link-item">
+                                <span class="link-title">Criterio del 7</span>
+                                <span class="link-desc">Esercizi guidati sul calcolo e regole per il numero 7. (UbiMath)</span>
+                                <a class="btn-action btn-teal" href="https://www.ubimath.org/divisibility/Divisibility_Schede_7_UbiMath.pdf" target="_blank" rel="noopener noreferrer">Scarica Esercizi (PDF)</a>
+                            </div>
+
+                            <div class="link-item">
+                                <span class="link-title">Pre-Algebra Modulo</span>
+                                <span class="link-desc">Unità interattiva su divisori, multipli e scomposizione. (Khan Academy)</span>
+                                <a class="btn-action btn-teal" href="https://it.khanacademy.org/math/pre-algebra/" target="_blank" rel="noopener noreferrer">Esercitati Online</a>
+                            </div>
+                        </div>
+
+                        <!-- VERIFICA -->
+                        <div class="resource-col">
+                            <h5>Autovalutazione</h5>
+
+                            <div class="link-item">
+                                <span class="link-title">Test di Divisibilità</span>
+                                <span class="link-desc">Quiz online interattivo sulla divisibilità e fattori. (UbiMath)</span>
+                                <a class="btn-action btn-amber" href="https://www.ubimath.org/ripasso/" target="_blank" rel="noopener noreferrer">Esegui il Test</a>
+                            </div>
+
+                            <div class="link-item">
+                                <span class="link-title">MCD e mcm Quiz</span>
+                                <span class="link-desc">Test diagnostici immediati con feedback. (Khan Academy)</span>
+                                <a class="btn-action btn-amber" href="https://it.khanacademy.org/math/pre-algebra/" target="_blank" rel="noopener noreferrer">Fai il Quiz</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </details>
+
+            <!-- SETTIMANA 3 -->
+            <details class="week-accordion">
+                <summary>Settimana 3: Frazioni e Numeri Razionali</summary>
+                <div class="week-content">
+                    <div class="week-focus">
+                        <strong>Focus didattico:</strong> Semplificare le frazioni, confrontare rapporti numerici, comprendere l'insieme dei numeri razionali $\mathbb{Q}$ ed eseguire espressioni complesse con le quattro operazioni fondamentali e parentesi.
+                    </div>
+                    
+                    <div class="resources-grid">
+                        <!-- TEORIA -->
+                        <div class="resource-col">
+                            <h5>Teoria (Video)</h5>
+                            
+                            <div class="link-item">
+                                <span class="link-title">Classificazione Frazioni</span>
+                                <span class="link-desc">Capire le frazioni proprie, improprie e apparenti. (Schooltoon)</span>
+                                <a class="btn-action" href="https://www.youtube.com/watch?v=L0H_cCO8_jA" target="_blank" rel="noopener noreferrer">Guarda la Lezione</a>
+                            </div>
+
+                            <div class="link-item">
+                                <span class="link-title">Somma di Frazioni</span>
+                                <span class="link-desc">Perché si usa il minimo comune denominatore? Spiegazione visiva. (Matematica delle Medie)</span>
+                                <a class="btn-action" href="https://www.youtube.com/watch?v=5sHMQh7NcjA" target="_blank" rel="noopener noreferrer">Guarda la Lezione</a>
+                            </div>
+
+                            <div class="link-item">
+                                <span class="link-title">Operazioni & Regole</span>
+                                <span class="link-desc">Moltiplicazione, divisione e semplificazione a croce. (Matematicale)</span>
+                                <a class="btn-action" href="https://www.youtube.com/watch?v=gm7Y4Kzy_qs" target="_blank" rel="noopener noreferrer">Guarda la Lezione</a>
+                            </div>
+                        </div>
+
+                        <!-- PRATICA -->
+                        <div class="resource-col">
+                            <h5>Esercitazione Pratica</h5>
+
+                            <div class="link-item">
+                                <span class="link-title">Somme e Sottrazioni</span>
+                                <span class="link-desc">Espressioni di base svolte passo-passo. (UbiMath)</span>
+                                <a class="btn-action btn-teal" href="https://www.ubimath.org/frazione/Frazioni_Espressioni_AddizioniSottrazioni_Base_UbiMath.pdf" target="_blank" rel="noopener noreferrer">Scarica Esercizi (PDF)</a>
+                            </div>
+
+                            <div class="link-item">
+                                <span class="link-title">Moltiplicazioni & Divisioni</span>
+                                <span class="link-desc">Eserciziari con soluzioni per imparare la semplificazione. (UbiMath)</span>
+                                <a class="btn-action btn-teal" href="https://www.ubimath.org/frazione/Frazioni_CalcoloMoltiplicazioniDivisioni_UbiMath.pdf" target="_blank" rel="noopener noreferrer">Scarica Esercizi (PDF)</a>
+                            </div>
+
+                            <div class="link-item">
+                                <span class="link-title">Frazioni e Potenze</span>
+                                <span class="link-desc">Esercizi di livello intermedio che uniscono le due regole. (UbiMath)</span>
+                                <a class="btn-action btn-teal" href="https://www.ubimath.org/frazione/Frazioni_Espressioni_Potenze_Intermediate_UNO_UbiMath.pdf" target="_blank" rel="noopener noreferrer">Scarica Esercizi (PDF)</a>
+                            </div>
+                        </div>
+
+                        <!-- VERIFICA -->
+                        <div class="resource-col">
+                            <h5>Autovalutazione</h5>
+
+                            <div class="link-item">
+                                <span class="link-title">Unit Test Frazioni</span>
+                                <span class="link-desc">Verifica le tue abilità di calcolo interattivo. (Khan Academy)</span>
+                                <a class="btn-action btn-amber" href="https://it.khanacademy.org/math/arithmetic" target="_blank" rel="noopener noreferrer">Inizia il Test</a>
+                            </div>
+
+                            <div class="link-item">
+                                <span class="link-title">Singapore Method Quiz</span>
+                                <span class="link-desc">Approccio visivo alla risoluzione dei problemi con frazioni. (Schooltoon)</span>
+                                <a class="btn-action btn-amber" href="https://www.youtube.com/watch?v=ZXJb7XCRfv0" target="_blank" rel="noopener noreferrer">Guarda ed Esercitati</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </details>
+
+            <!-- SETTIMANA 4 -->
+            <details class="week-accordion">
+                <summary>Settimana 4: Radicali e Operazioni Inverse</summary>
+                <div class="week-content">
+                    <div class="week-focus">
+                        <strong>Focus didattico:</strong> Comprendere la radice quadrata come operazione inversa dell'elevamento al quadrato, usare le tavole numeriche e connettere le radici alle potenze con esponente frazionario:
+                        $$\sqrt{a} = b \iff b^2 = a \quad \text{e} \quad \sqrt[q]{a^p} = a^{\frac{p}{q}}$$
+                    </div>
+                    
+                    <div class="resources-grid">
+                        <!-- TEORIA -->
+                        <div class="resource-col">
+                            <h5>Teoria (Video)</h5>
+                            
+                            <div class="link-item">
+                                <span class="link-title">Intro ai Radicali</span>
+                                <span class="link-desc">Definizione di radice e proprietà invariantiva fondamentale. (Matematicale)</span>
+                                <a class="btn-action" href="https://www.youtube.com/watch?v=VBFoV-RqZLc" target="_blank" rel="noopener noreferrer">Guarda la Lezione</a>
+                            </div>
+
+                            <div class="link-item">
+                                <span class="link-title">Prodotto tra Radicali</span>
+                                <span class="link-desc">Come moltiplicare tra loro radici diverse. (Matematicale)</span>
+                                <a class="btn-action" href="https://www.youtube.com/watch?v=SlRy-fBMq5c" target="_blank" rel="noopener noreferrer">Guarda la Lezione</a>
+                            </div>
+
+                            <div class="link-item">
+                                <span class="link-title">Esponenti Frazionari</span>
+                                <span class="link-desc">La connessione teorica tra radici e potenze. (WeSchool)</span>
+                                <a class="btn-action" href="https://library.weschool.com/lezione/potenze-con-esponente-frazionario-definizione-ed-esercizi-2397.html" target="_blank" rel="noopener noreferrer">Leggi la Lezione</a>
+                            </div>
+                        </div>
+
+                        <!-- PRATICA -->
+                        <div class="resource-col">
+                            <h5>Esercitazione Pratica</h5>
+
+                            <div class="link-item">
+                                <span class="link-title">Radici e Frazioni</span>
+                                <span class="link-desc">Espressioni aritmetiche sotto radice quadrata con soluzioni. (UbiMath)</span>
+                                <a class="btn-action btn-teal" href="https://www.ubimath.org/estrazionediradice/EstrazioneDiRadice_EspressioniFrazioni_UbiMath.pdf" target="_blank" rel="noopener noreferrer">Scarica Esercizi (PDF)</a>
+                            </div>
+
+                            <div class="link-item">
+                                <span class="link-title">Schede Graduate</span>
+                                <span class="link-desc">Raccolta di problemi di calcolo sui radicali. (YouMath)</span>
+                                <a class="btn-action btn-teal" href="https://www.youmath.it/esercizi.html" target="_blank" rel="noopener noreferrer">Vedi Schede YouMath</a>
+                            </div>
+                        </div>
+
+                        <!-- VERIFICA -->
+                        <div class="resource-col">
+                            <h5>Autovalutazione</h5>
+
+                            <div class="link-item">
+                                <span class="link-title">Test Estrazione Radice</span>
+                                <span class="link-desc">Verifica rapida del calcolo delle radici perfette e non. (UbiMath)</span>
+                                <a class="btn-action btn-amber" href="https://www.ubimath.org/ripasso/" target="_blank" rel="noopener noreferrer">Esegui Autoverifica</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </details>
+
+            <!-- SETTIMANA 5 -->
+            <details class="week-accordion">
+                <summary>Settimana 5: Sistemi di Misura ed Equivalenze</summary>
+                <div class="week-content">
+                    <div class="week-focus">
+                        <strong>Focus didattico:</strong> Saper convertire le unità di misura lineari (lunghezza), bidimensionali (superficie), tridimensionali (volume, capacità) e di massa, comprendendo l'uso delle potenze di dieci per gli spostamenti della virgola decimale.
+                    </div>
+                    
+                    <div class="resources-grid">
+                        <!-- TEORIA -->
+                        <div class="resource-col">
+                            <h5>Teoria (Video)</h5>
+                            
+                            <div class="link-item">
+                                <span class="link-title">Sistema Decimale</span>
+                                <span class="link-desc">Come convertire unità, decine, centesimi e millesimi. (YouTube)</span>
+                                <a class="btn-action" href="https://www.youtube.com/watch?v=bWWMazf75R8" target="_blank" rel="noopener noreferrer">Guarda la Lezione</a>
+                            </div>
+
+                            <div class="link-item">
+                                <span class="link-title">Misure di Lunghezza</span>
+                                <span class="link-desc">Spiegazione dei metri, centimetri e chilometri con le equivalenze. (YouTube)</span>
+                                <a class="btn-action" href="https://www.youtube.com/watch?v=noDZYTUCcCg" target="_blank" rel="noopener noreferrer">Guarda la Lezione</a>
+                            </div>
+                        </div>
+
+                        <!-- PRATICA -->
+                        <div class="resource-col">
+                            <h5>Esercitazione Pratica</h5>
+
+                            <div class="link-item">
+                                <span class="link-title">Misure e Scale grafiche</span>
+                                <span class="link-desc">Esercizi pratici su scale di riduzione e unità temporali. (UbiMath)</span>
+                                <a class="btn-action btn-teal" href="https://www.ubimath.org/ripasso/" target="_blank" rel="noopener noreferrer">Scarica Esercizi (PDF)</a>
+                            </div>
+
+                            <div class="link-item">
+                                <span class="link-title">Lavagna Interattiva</span>
+                                <span class="link-desc">Giochi interattivi basati sul trascinamento visivo degli elementi. (Sieteprontianavigare)</span>
+                                <a class="btn-action btn-teal" href="https://www.sieteprontianavigare.it/PORTOMATE/giochi_di_matematica.htm" target="_blank" rel="noopener noreferrer">Gioca Online</a>
+                            </div>
+                        </div>
+
+                        <!-- VERIFICA -->
+                        <div class="resource-col">
+                            <h5>Autovalutazione</h5>
+
+                            <div class="link-item">
+                                <span class="link-title">Test d'Ingresso Misure</span>
+                                <span class="link-desc">Verifica delle competenze pratiche in contesti reali. (Redooc)</span>
+                                <a class="btn-action btn-amber" href="https://scuola.redooc.com" target="_blank" rel="noopener noreferrer">Fai il Test su Redooc</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </details>
+
+            <!-- SETTIMANA 6 -->
+            <details class="week-accordion">
+                <summary>Settimana 6: Geometria Analitica e Piano Cartesiano</summary>
+                <div class="week-content">
+                    <div class="week-focus">
+                        <strong>Focus didattico:</strong> Rappresentare coppie ordinate di punti $(x, y)$ nei quattro quadranti, calcolare la lunghezza del segmento (distanza tra due punti) e individuare le coordinate del punto medio.
+                        $$d = \sqrt{(x_2 - x_1)^2 + (y_2 - y_1)^2}$$
+                    </div>
+                    
+                    <div class="resources-grid">
+                        <!-- TEORIA -->
+                        <div class="resource-col">
+                            <h5>Teoria (Video)</h5>
+                            
+                            <div class="link-item">
+                                <span class="link-title">Intro al Piano Cartesiano</span>
+                                <span class="link-desc">I quattro quadranti, l'origine degli assi e la disposizione dei punti. (Matematicale)</span>
+                                <a class="btn-action" href="https://www.youtube.com/watch?v=XBkDtbJ23pc" target="_blank" rel="noopener noreferrer">Guarda la Lezione</a>
+                            </div>
+
+                            <div class="link-item">
+                                <span class="link-title">Formula della Distanza</span>
+                                <span class="link-desc">Dimostrazione ed uso della formula derivata da Pitagora. (Matematicale)</span>
+                                <a class="btn-action" href="https://www.youtube.com/watch?v=Qe9z8SLkHdM" target="_blank" rel="noopener noreferrer">Guarda la Lezione</a>
+                            </div>
+
+                            <div class="link-item">
+                                <span class="link-title">Tracciamento punti</span>
+                                <span class="link-desc">Video tutorial sull'esercitazione visiva dei punti cartesiani. (Khan Academy)</span>
+                                <a class="btn-action" href="https://it.khanacademy.org/math/cc-fifth-grade-math/cc-5th-geometry-topic/cc-5th-coordinate-plane/v/graphing-points-exercise" target="_blank" rel="noopener noreferrer">Guarda la Lezione</a>
+                            </div>
+                        </div>
+
+                        <!-- PRATICA -->
+                        <div class="resource-col">
+                            <h5>Esercitazione Pratica</h5>
+
+                            <div class="link-item">
+                                <span class="link-title">Piano Dinamico GeoGebra</span>
+                                <span class="link-desc">Software interattivo per muovere i punti e tracciare segmenti.</span>
+                                <a class="btn-action btn-teal" href="https://www.geogebra.org/m/PEbgagas" target="_blank" rel="noopener noreferrer">Usa GeoGebra</a>
+                            </div>
+
+                            <div class="link-item">
+                                <span class="link-title">La Magia Saracena</span>
+                                <span class="link-desc">Esercitazione basata su trame narrative e coordinate cartesiane. (Redooc)</span>
+                                <a class="btn-action btn-teal" href="https://scuola.redooc.com" target="_blank" rel="noopener noreferrer">Accedi a Redooc</a>
+                            </div>
+                        </div>
+
+                        <!-- VERIFICA -->
+                        <div class="resource-col">
+                            <h5>Autovalutazione</h5>
+
+                            <div class="link-item">
+                                <span class="link-title">Test Coordinate & segmenti</span>
+                                <span class="link-desc">Verifica interattiva immediata sul disegno cartesiano. (Khan Academy)</span>
+                                <a class="btn-action btn-amber" href="https://it.khanacademy.org/math/cc-fifth-grade-math/cc-5th-geometry-topic/cc-5th-coordinate-plane" target="_blank" rel="noopener noreferrer">Esegui il Test</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </details>
+
+            <!-- SETTIMANA 7 -->
+            <details class="week-accordion">
+                <summary>Settimana 7: Geometria Piana: Perimetro e Aree dei Poligoni</summary>
+                <div class="week-content">
+                    <div class="week-focus">
+                        <strong>Focus didattico:</strong> Riconoscere le figure geometriche piane, memorizzare le formule dirette e inverse di perimetro ed area di rettangoli, quadrati, trapezi e cerchi.
+                        $$A_{\text{trapezio}} = \frac{(B + b) \cdot h}{2} \quad \text{e} \quad A_{\text{cerchio}} = \pi r^2$$
+                    </div>
+                    
+                    <div class="resources-grid">
+                        <!-- TEORIA -->
+                        <div class="resource-col">
+                            <h5>Teoria (Video)</h5>
+                            
+                            <div class="link-item">
+                                <span class="link-title">Classificazione Poligoni</span>
+                                <span class="link-desc">Lati, vertici, angoli interni e diagonali delle figure piane. (YouTube)</span>
+                                <a class="btn-action" href="https://www.youtube.com/watch?v=3jOpGb1QQYE" target="_blank" rel="noopener noreferrer">Guarda la Lezione</a>
+                            </div>
+
+                            <div class="link-item">
+                                <span class="link-title">Aree dei Quadrilateri</span>
+                                <span class="link-desc">Concetti base e formule di area per quadrato e rettangolo. (YouTube)</span>
+                                <a class="btn-action" href="https://www.youtube.com/watch?v=23RYnW_UC7k" target="_blank" rel="noopener noreferrer">Guarda la Lezione</a>
+                            </div>
+
+                            <div class="link-item">
+                                <span class="link-title">Area del Rettangolo</span>
+                                <span class="link-desc">Dimostrazione visiva e applicazione delle formule inverse. (Ginevra Sonetti)</span>
+                                <a class="btn-action" href="https://www.youtube.com/watch?v=BdvFEeU9a2s" target="_blank" rel="noopener noreferrer">Guarda la Lezione</a>
+                            </div>
+                        </div>
+
+                        <!-- PRATICA -->
+                        <div class="resource-col">
+                            <h5>Esercitazione Pratica</h5>
+
+                            <div class="link-item">
+                                <span class="link-title">Problemi Svolti Medie</span>
+                                <span class="link-desc">Archivio ordinato di problemi geometrici risolti passo-passo. (Matematicamente)</span>
+                                <a class="btn-action btn-teal" href="https://www.matematicamente.it/esercizi-svolti/problemi-di-ii-media/" target="_blank" rel="noopener noreferrer">Vedi Esercizi Svolti</a>
+                            </div>
+
+                            <div class="link-item">
+                                <span class="link-title">Circonferenza & Area Cerchio</span>
+                                <span class="link-desc">Esercitazione online con calcoli sul pi greco. (Khan Academy)</span>
+                                <a class="btn-action btn-teal" href="https://it.khanacademy.org/math/algebra-basics/basic-alg-foundations" target="_blank" rel="noopener noreferrer">Esercitati Online</a>
+                            </div>
+                        </div>
+
+                        <!-- VERIFICA -->
+                        <div class="resource-col">
+                            <h5>Autovalutazione</h5>
+
+                            <div class="link-item">
+                                <span class="link-title">Quiz Interattivo Aree</span>
+                                <span class="link-desc">Test dinamico a risposta multipla su formule e perimetri. (Didattica.live)</span>
+                                <a class="btn-action btn-amber" href="https://didattica.live/medie/seconda/matematica/esercizi" target="_blank" rel="noopener noreferrer">Avvia il Test</a>
+                            </div>
+
+                            <div class="link-item">
+                                <span class="link-title">Mappe Mentali & Formule</span>
+                                <span class="link-desc">Verifica delle formule con le schede e quiz scaricabili. (Redooc)</span>
+                                <a class="btn-action btn-amber" href="https://scuola.redooc.com" target="_blank" rel="noopener noreferrer">Accedi a Redooc</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </details>
+
+            <!-- SETTIMANA 8 -->
+            <details class="week-accordion">
+                <summary>Settimana 8: Teorema di Pitagora e Applicazioni</summary>
+                <div class="week-content">
+                    <div class="week-focus">
+                        <strong>Focus didattico:</strong> Comprendere la relazione fondamentale del teorema di Pitagora applicata al triangolo rettangolo, saper ricavare le formule inverse per cateti e ipotenusa, e saperle applicare alle altre figure geometriche (diagonali dei rettangoli, altezze dei triangoli equilateri o isosceli).
+                        $$a^2 + b^2 = c^2 \implies c = \sqrt{a^2 + b^2}$$
+                    </div>
+                    
+                    <div class="resources-grid">
+                        <!-- TEORIA -->
+                        <div class="resource-col">
+                            <h5>Teoria (Video)</h5>
+                            
+                            <div class="link-item">
+                                <span class="link-title">Enunciato e Formule</span>
+                                <span class="link-desc">Spiegazione animata ed intuitiva del teorema. (Schooltoon)</span>
+                                <a class="btn-action" href="https://www.youtube.com/watch?v=cjg-fg-LvLg" target="_blank" rel="noopener noreferrer">Guarda la Lezione</a>
+                            </div>
+
+                            <div class="link-item">
+                                <span class="link-title">Le Origini Storiche</span>
+                                <span class="link-desc">Un viaggio affascinante alla scoperta della storia di Pitagora. (Schooltoon)</span>
+                                <a class="btn-action" href="https://www.youtube.com/watch?v=uyfCEJnYd5U" target="_blank" rel="noopener noreferrer">Guarda la Lezione</a>
+                            </div>
+
+                            <div class="link-item">
+                                <span class="link-title">Dimostrazione Grafica</span>
+                                <span class="link-desc">Visualizzare i quadrati costruiti sui lati con GeoGebra. (YouTube)</span>
+                                <a class="btn-action" href="https://www.youtube.com/watch?v=v6FxkFK0JvI" target="_blank" rel="noopener noreferrer">Guarda la Lezione</a>
+                            </div>
+                        </div>
+
+                        <!-- PRATICA -->
+                        <div class="resource-col">
+                            <h5>Esercitazione Pratica</h5>
+
+                            <div class="link-item">
+                                <span class="link-title">Problemi sul Triangolo</span>
+                                <span class="link-desc">Eserciziario in PDF con soluzioni graduate. (UbiMath)</span>
+                                <a class="btn-action btn-teal" href="http://www.ubimath.org/teoremapitagora/TeoremaPitagora_TriangoloRettangolo_Intermediate_UbiMath.pdf" target="_blank" rel="noopener noreferrer">Scarica Esercizi (PDF)</a>
+                            </div>
+
+                            <div class="link-item">
+                                <span class="link-title">Laboratorio GeoGebra</span>
+                                <span class="link-desc">Scheda di geometria dinamica per muovere i triangoli e testare le aree. (Zanichelli)</span>
+                                <a class="btn-action btn-teal" href="https://online.scuola.zanichelli.it/contaci-files/Geogebra/Misure_spazio%20e%20figure2_cap02.pdf" target="_blank" rel="noopener noreferrer">Scarica Laboratorio (PDF)</a>
+                            </div>
+                        </div>
+
+                        <!-- VERIFICA -->
+                        <div class="resource-col">
+                            <h5>Autovalutazione</h5>
+
+                            <div class="link-item">
+                                <span class="link-title">Abbinamento Formule</span>
+                                <span class="link-desc">Un gioco interattivo per memorizzare la relazione tra i lati. (Wordwall)</span>
+                                <a class="btn-action btn-amber" href="https://wordwall.net/it/resource/2802352/teorema-di-pitagora" target="_blank" rel="noopener noreferrer">Gioca al Quiz</a>
+                            </div>
+
+                            <div class="link-item">
+                                <span class="link-title">Quiz Pitagora & Quadrilateri</span>
+                                <span class="link-desc">Test interattivo completo per valutare l'applicazione teorica. (Wordwall)</span>
+                                <a class="btn-action btn-amber" href="https://wordwall.net/resource/61167823/ripasso-teorema-pitagora-e-quadrilateri" target="_blank" rel="noopener noreferrer">Fai il Quiz</a>
+                            </div>
+
+                            <div class="link-item">
+                                <span class="link-title">Prova Finale Pitagora</span>
+                                <span class="link-desc">Test finale per chiudere il programma estivo. (UbiMath)</span>
+                                <a class="btn-action btn-amber" href="https://www.ubimath.org/ripasso/" target="_blank" rel="noopener noreferrer">Fai la Prova Finale</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </details>
+        </section>
+
+        <!-- SEZIONE 3: sistemi di tutoraggio IA -->
+        <section id="tutor-ia">
+            <h2>3. Analisi dei Sistemi di Tutoraggio basati sull'Intelligenza Artificiale</h2>
+            <p>
+                L'utilizzo di assistenti intelligenti a casa è uno strumento prezioso, ma occorre distinguere gli strumenti di <strong>apprendimento attivo</strong> da quelli di <strong>risoluzione passiva</strong>.
+            </p>
+            
+            <div class="info-card">
+                <h4>Consiglio Didattico</h4>
+                <p>
+                    I risolutori passivi (come Photomath o Symbolab) forniscono la risposta pronta scansionando l'esercizio. Sono utili esclusivamente per verificare se il risultato ottenuto autonomamente sia esatto o per sbloccare un calcolo serale. Per lo studio, si consiglia vivamente l'uso di tutor socratici attivi (come Khanmigo) che guidano il ragionamento ponendo domande logiche senza svelare subito la soluzione.
+                </p>
+            </div>
+
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Strumento IA</th>
+                            <th>Interazione</th>
+                            <th>Punti di Forza Didattici</th>
+                            <th>Limitazioni STEM</th>
+                            <th>Costo & Accesso</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Khanmigo</strong></td>
+                            <td><span class="ia-badge ia-badge-active">Attivo-Socratica</span></td>
+                            <td>Guida il ragionamento passo-passo ponendo domande aperte; si integra con i corsi Khan.</td>
+                            <td>Nessuna per le scuole medie.</td>
+                            <td><span class="ia-badge ia-badge-free">Gratuito</span> con registrazione su <a href="https://it.khanacademy.org/" target="_blank" rel="noopener noreferrer">Khan Academy</a>.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Astra AI</strong></td>
+                            <td><span class="ia-badge ia-badge-active">Attivo-Socratica</span></td>
+                            <td>Molto efficace nell'individuare gli errori logici e suggerire la regola corretta.</td>
+                            <td>Adatto a matematica di base.</td>
+                            <td>Versione di base gratuita su <a href="https://astra-ai.co/" target="_blank" rel="noopener noreferrer">Astra AI</a>.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Socratic by Google</strong></td>
+                            <td><span class="ia-badge ia-badge-passive">Passivo-Guidata</span></td>
+                            <td>Riconosce la foto del problema e mostra grafici, video tutorial e concetti chiave.</td>
+                            <td>Risoluzione non interattiva.</td>
+                            <td><span class="ia-badge ia-badge-free">Gratuito</span> (App per iOS ed Android).</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Microsoft Math Solver</strong></td>
+                            <td><span class="ia-badge ia-badge-passive">Passivo-Guidata</span></td>
+                            <td>Riconosce la scrittura a mano su schermo; mostra grafici ed equazioni passo-passo.</td>
+                            <td>Meno efficace su problemi geometrici testuali.</td>
+                            <td><span class="ia-badge ia-badge-free">Gratuito</span> su portale ed App Microsoft.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Photomath</strong></td>
+                            <td><span class="ia-badge ia-badge-passive">Passivo-Risolutiva</span></td>
+                            <td>Scanner OCR ultra-rapido; scompone l'espressione in passaggi dettagliati.</td>
+                            <td>Inibisce l'autonomia se usato per copiare i compiti.</td>
+                            <td>Base gratis; versione Plus con spiegazioni avanzate a pagamento.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Symbolab</strong></td>
+                            <td><span class="ia-badge ia-badge-passive">Passivo-Risolutiva</span></td>
+                            <td>Calcolatrice scientifica e di algebra estremamente potente con passaggi logici.</td>
+                            <td>Presenza di pubblicità nella versione non a pagamento.</td>
+                            <td>Funzioni base gratis; abbonamento Premium a pagamento.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- SEZIONE 4: lezioni personalizzate e tutor umani -->
+        <section id="ripetizioni">
+            <h2>4. Integrazione Didattica e Ruolo delle Lezioni Personalizzate</h2>
+            <p>
+                Sebbene gli strumenti digitali e l'IA siano eccellenti alleati dello studio autonomo, la presenza empatica e la guida di un insegnante umano rimangono determinanti per rimuovere blocchi emotivi complessi e consolidare il metodo di studio. Per le famiglie che desiderano affiancare un tutor privato, ecco le migliori piattaforme online operanti in Italia:
+            </p>
+            
+            <div class="tutor-grid">
+                <!-- LE TUE LEZIONI -->
+                <div class="tutor-card">
+                    <div>
+                        <h4>LeTueLezioni</h4>
+                        <p>La più grande rete in Italia per trovare docenti privati sia online sia in presenza. Consente di consultare profili dettagliati con recensioni verificate, e molti insegnanti offrono la prima lezione di prova gratuita.</p>
+                    </div>
+                    <div class="tutor-footer">
+                        <span class="tutor-price">Da 10-15 € / ora</span>
+                        <a class="btn-action" href="https://www.letuelezioni.it" target="_blank" rel="noopener noreferrer">Trova un Tutor</a>
+                    </div>
+                </div>
+
+                <!-- GO STUDENT -->
+                <div class="tutor-card">
+                    <div>
+                        <h4>GoStudent</h4>
+                        <p>Struttura organizzata con aula virtuale multimediale (lavagne digitali e grafici interattivi) e tutor selezionati con test d'ingresso. Ideale per percorsi continui e costanti durante l'estate.</p>
+                    </div>
+                    <div class="tutor-footer">
+                        <span class="tutor-price">Tariffe in abbonamento</span>
+                        <a class="btn-action" href="https://www.gostudent.org/it-it" target="_blank" rel="noopener noreferrer">Prenota Prova</a>
+                    </div>
+                </div>
+
+                <!-- TUTOR NOW -->
+                <div class="tutor-card">
+                    <div>
+                        <h4>Tutornow</h4>
+                        <p>Piattaforma italiana con oltre 5.000 docenti e una forte specializzazione nel supporto a studenti con Disturbi Specifici dell'Apprendimento (DSA) e Bisogni Educativi Speciali (BES).</p>
+                    </div>
+                    <div class="tutor-footer">
+                        <span class="tutor-price">Preventivi personalizzati</span>
+                        <a class="btn-action" href="https://tutornow.it" target="_blank" rel="noopener noreferrer">Contatta Referente</a>
+                    </div>
+                </div>
+
+                <!-- SUPERPROF -->
+                <div class="tutor-card">
+                    <div>
+                        <h4>Superprof</h4>
+                        <p>Vasto database che raccoglie studenti universitari, docenti di ruolo ed esperti in discipline STEM. Altissima flessibilità e possibilità di pianificare lezioni a domicilio.</p>
+                    </div>
+                    <div class="tutor-footer">
+                        <span class="tutor-price">Tariffe variabili</span>
+                        <a class="btn-action" href="https://www.superprof.it" target="_blank" rel="noopener noreferrer">Sfoglia Docenti</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SEZIONE 5: raccomandazioni e consigli per i genitori -->
+        <section id="raccomandazioni">
+            <h2>5. Raccomandazioni Operative e Ruolo dei Genitori</h2>
+            <div class="alert-card">
+                <p>
+                    Per garantire il successo del recupero estivo evitando il rifiuto o il sovraccarico emotivo del ragazzo, si raccomanda l'applicazione delle seguenti linee guida operative:
+                </p>
+                <ul style="padding-left: 1.5rem; margin-top: 0.75rem;">
+                    <li style="margin-bottom: 0.5rem;"><strong>Gestione del Tempo:</strong> Limita lo studio a sessioni giornaliere di massimo 45 minuti (30 minuti di studio attivo ed esercitazione, 15 minuti dedicati all'autovalutazione o al gioco didattico).</li>
+                    <li style="margin-bottom: 0.5rem;"><strong>Ambiente Non Giudicante:</strong> Non focalizzarsi sul voto o sul tempo impiegato, ma sui piccoli miglioramenti quotidiani e sull'acquisizione della logica aritmetica.</li>
+                    <li style="margin-bottom: 0.5rem;"><strong>Uso delle Dashboard:</strong> Genitori e studenti possono monitorare i progressi registrandosi gratuitamente su Khan Academy o Redooc, visualizzando graficamente le lacune colmate senza ricorrere a verifiche stressanti.</li>
+                    <li style="margin-bottom: 0.5rem;"><strong>Configurazione Assistita:</strong> Aiuta lo studente a configurare l'account di studio e incoraggialo ad interagire in modo socratico con l'IA per stimolare la sua capacità di problem solving.</li>
+                </ul>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Piè di Pagina -->
+    <footer>
+        <p>&copy; 2026 Matematica Attiva. Guida didattica per studenti delle Scuole Medie.</p>
+        <p>Progetto realizzato per la pubblicazione e il supporto scolastico online. <a href="#">Torna in cima</a></p>
+    </footer>
+
+</body>
+</html>

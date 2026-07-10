@@ -1,0 +1,104 @@
+# models.yaml — model routing for a self-improving agent system
+#
+# RESOLUTION ORDER (most specific wins):
+#   1. spawn-time override (argument on subagent/session spawn)
+#   2. agents.<role>.model   (explicit "provider/model" ref)
+#   3. agents.<role>.tier    (named chain below)
+#   4. task_slots.<slot>     (background utility jobs only)
+#   5. defaults
+#
+# MODEL REFS are "provider/model" strings split on the FIRST slash, so
+# "openrouter/moonshotai/kimi-k2" → provider=openrouter, model=moonshotai/kimi-k2.
+#
+# FAILOVER: walk down the tier chain on auth failure, rate limit, timeout,
+# or billing errors (with per-provider cooldowns). Do NOT fail over on
+# context overflow, user aborts, or safety refusals — fix the request instead.
+# Stay on the resolved model for the rest of a session once it works
+# (session stickiness prevents thrash).
+#
+# SECRETS: never inline. Providers name an env var; the runtime reads it.
+
+version: 1
+
+providers:
+  anthropic:
+    api_mode: anthropic_messages       # anthropic_messages | chat_completions | openai_responses | gemini
+    base_url: https://api.anthropic.com
+    api_key_env: ANTHROPIC_API_KEY
+  openai:
+    api_mode: openai_responses
+    base_url: https://api.openai.com/v1
+    api_key_env: OPENAI_API_KEY
+  google:
+    api_mode: gemini
+    base_url: https://generativelanguage.googleapis.com
+    api_key_env: GEMINI_API_KEY
+  openrouter:
+    api_mode: chat_completions
+    base_url: https://openrouter.ai/api/v1
+    api_key_env: OPENROUTER_API_KEY
+    extras: { routing: { sort: price } }     # provider-specific knobs allowed here
+  ollama:                                    # local
+    api_mode: chat_completions
+    base_url: http://localhost:11434/v1
+    api_key_env: null
+    default_context_length: 32768            # Ollama defaults tiny — always set explicitly
+  vllm:                                      # local / self-hosted
+    api_mode: chat_completions
+    base_url: http://localhost:8000/v1
+    api_key_env: VLLM_API_KEY                # often unused locally; needed for remote vLLM
+
+# Named cost/capability tiers. Each is an ordered fallback chain.
+# NOTE: model IDs rot — verify current names for each provider before use.
+tiers:
+  strong:        # deep reasoning: planning, orchestration, final user-facing answers
+    - anthropic/claude-opus-4-8
+    - openai/gpt-5.4
+    - openrouter/anthropic/claude-opus-4-8
+  standard:      # general chat, medium-complexity tasks
+    - anthropic/claude-sonnet-5
+    - google/gemini-2.5-pro
+    - openrouter/deepseek/deepseek-v3.2
+  cheap:         # classification, summarization, background learning passes
+    - anthropic/claude-haiku-4-5
+    - google/gemini-2.5-flash
+    - openrouter/qwen/qwen3-30b-a3b
+  local:         # air-gapped / privacy-sensitive deployments
+    - ollama/qwen3:32b
+    - vllm/meta-llama/Llama-3.1-70B-Instruct
+
+defaults:
+  tier: standard
+  last_resort: { tier: local }         # if every remote chain is exhausted
+
+model_params:                          # optional per-ref overrides
+  "anthropic/claude-opus-4-8":  { max_tokens: 32000 }
+  "ollama/qwen3:32b":           { context_length: 32768, temperature: 0.4 }
+
+# Role → tier assignments. Strong models where reasoning compounds;
+# cheap models everywhere work is narrow, repetitive, or background.
+agents:
+  orchestrator:                        # main user-facing agent
+    tier: strong
+    # model: anthropic/claude-opus-4-8   # uncomment to pin an explicit ref
+  planner:
+    tier: strong
+  researcher:
+    tier: standard
+  distiller:                           # background learning pass (see learning-loop/)
+    tier: cheap                        # never the orchestrator's model: cost + cache stability
+  curator:                             # staleness review / memory consolidation ("dreaming")
+    tier: cheap
+  subagents:                           # default for spawned children; spawn-time arg wins
+    tier: cheap
+    max_concurrent: 4
+    max_spawn_depth: 1
+
+# Auxiliary slots: narrow single-purpose background jobs, each independently
+# routable so they never disturb the main model's prompt cache.
+task_slots:
+  vision:           { tier: standard, require_capability: vision }
+  compression:      { tier: cheap }    # context summarization above threshold
+  title_generation: { tier: cheap }
+  safety_scan:      { tier: cheap }    # scans agent self-writes before staging
+  embedding:        { provider: openai, model: text-embedding-3-small }

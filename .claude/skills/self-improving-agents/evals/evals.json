@@ -1,0 +1,65 @@
+{
+  "skill_name": "self-improving-agents",
+  "evals": [
+    {
+      "id": 1,
+      "name": "greenfield-support-agent-full-loop",
+      "prompt": "Hey — I run support engineering at a mid-size e-commerce company (~2k tickets/week). We want to build an AI support agent that actually gets better over time instead of making the same mistakes forever. Real example from last month: our old bot refused a $5,000 refund because policy caps refunds at $2k, but the account manager overrode it by hand because the customer was a VIP on an enterprise contract — and the bot learned nothing. That's the thing I want fixed.\n\nOur frontend team is already on React + CopilotKit, so the backend needs to speak AG-UI — they were very insistent about that. My requirements:\n\n- Python backend (FastAPI is fine). No UI needed, the frontend team handles that side.\n- It must stream its work to the frontend as AG-UI events so agents can see tool calls live and approve/override actions.\n- When a human overrides or corrects the agent, capture that and turn it into a lesson for next time. BUT: I do not want it silently rewriting its own brain. A human must review and approve every lesson before it takes effect, and I want to be able to reject one too.\n- We're not married to one LLM vendor. Compliance wants the option to run on our own vLLM box, and finance keeps flip-flopping between Anthropic and OpenAI depending on pricing. Make the model configurable, ideally per component — the background learning stuff doesn't need the expensive model.\n- I can't hand you API keys today, so wire everything to run end-to-end in a dry-run/mock mode. I want ONE documented command that demos the whole loop with zero network calls: ticket comes in -> agent works and streams events -> human corrects it -> lesson gets proposed -> I approve it -> memory updated -> show me the next ticket benefiting from it.\n\nInclude a README explaining the repo layout, the config, and that demo command. Keep it lean — this is a prototype to convince my VP, not a platform.",
+      "expected_output": "A lean Python/FastAPI agent backend that streams AG-UI events (RUN_STARTED/RUN_FINISHED lifecycle, TOOL_CALL_* and TEXT_MESSAGE_* events), separates episodic case memory from procedural lessons, captures a human override as a staged lesson proposal, gates activation behind an explicit human approve/reject step, supports at least three configurable providers including a local/OpenAI-compatible one with per-component model assignment, and ships a single documented offline demo command that exercises the full learn-approve-benefit loop with no API keys and no network calls.",
+      "files": [],
+      "assertions": [
+        "The backend source emits AG-UI RUN_STARTED and RUN_FINISHED events (via the ag-ui SDK or equivalent hand-rolled event objects) and has a RUN_ERROR error path",
+        "The backend emits AG-UI tool-call events (TOOL_CALL_START/TOOL_CALL_ARGS/TOOL_CALL_END or TOOL_CALL_CHUNK) and text-message events (TEXT_MESSAGE_START/CONTENT/END or TEXT_MESSAGE_CHUNK)",
+        "Memory is stored in clearly separated stores for episodic case records and procedural lessons/rules, not a single undifferentiated store",
+        "Running the documented demo produces a lesson proposal derived from the human correction/override, staged in a pending/proposals area rather than written directly to active memory",
+        "A human approval step gates lesson activation: the lesson is not in active memory before approval and is present after an explicit approve action, and a reject path exists or is documented",
+        "The model configuration supports at least three providers, at least one of which is a local or OpenAI-compatible endpoint (e.g. vLLM, Ollama, or a custom base_url)",
+        "Model assignment is per component: the main agent and the background lesson-drafting/reflection task have independently configurable model slots rather than one global model constant",
+        "The single documented demo command runs end-to-end offline with exit code 0, with no API keys set, no live network calls, and no literal secret values anywhere in the repository"
+      ]
+    },
+    {
+      "id": 2,
+      "name": "retrofit-self-improvement-into-existing-agent",
+      "prompt": "We have a little internal support-bot script one of our engineers wrote before he left (attached, support_agent/). It works, but it's dumb: every session starts from zero, and it's welded to OpenAI gpt-4o right at the call site — our OpenAI bill is getting ugly and we literally have an Ollama box sitting idle. I've also attached two real session transcripts. In session-002 you can see a human agent correcting the bot twice — once about the CC-the-billing-team rule, and once where a supervisor manually approved a refund the bot refused.\n\nWhat I want is to retrofit self-improvement into this thing WITHOUT rewriting it from scratch — keep the existing structure recognizable:\n\n1. It should remember past cases and be able to consult them in future sessions.\n2. Recurring corrections like the ones in session-002 should get distilled into reusable how-to rules the agent follows going forward. That distillation is a background job, so it should run on a cheap or local model, not the main one.\n3. Nothing it learns goes live until I approve it. Give me a simple approve/reject step.\n4. Un-hardcode the model: config-driven, and it needs to support at least Anthropic, OpenAI, and our local Ollama, so we can move workloads around.\n\nKeep it Python. I have no API keys to give you, so everything I need to test must run in a mock/offline mode — and actually process the two attached transcripts as the first learning batch so I can see real proposed lessons come out the other end. Update the README: what changed, how to run the offline demo, how to approve a lesson.",
+      "expected_output": "The existing support_agent codebase retrofitted (not rewritten) with: config-driven multi-provider model routing (Anthropic, OpenAI, local Ollama) replacing the hardcoded gpt-4o call; episodic memory populated by actually mining the two shipped transcripts; procedural how-to rules distilled from the session-002 corrections by a background job assigned to a cheaper/local model slot; a pending-then-approve gate before any learned rule goes live; a mock/offline mode in which the agent and the learning batch run with no keys and no network; and an updated README documenting the changes, the offline demo, and the approval step.",
+      "files": [
+        "files/retrofit/support_agent/agent.py",
+        "files/retrofit/support_agent/tools.py",
+        "files/retrofit/support_agent/prompts.py",
+        "files/retrofit/support_agent/requirements.txt",
+        "files/retrofit/support_agent/README.md",
+        "files/retrofit/support_agent/transcripts/session-001.json",
+        "files/retrofit/support_agent/transcripts/session-002.json"
+      ],
+      "assertions": [
+        "The retrofitted agent entry point and the learning batch job both run to completion in the documented mock/offline mode with no API keys and exit code 0",
+        "No hardcoded 'gpt-4o' model literal remains at LLM call sites; model selection is read from a config that supports at least three providers including a local one (Ollama or an OpenAI-compatible base_url)",
+        "After the learning batch runs on the shipped transcripts, episodic memory contains case entries traceable to session-001 and/or session-002 (by session id or recognizable content)",
+        "At least one drafted procedural rule generalizes a correction from session-002 (the CC-billing-team-on-refunds-over-$200 rule and/or the supervisor refund-override exception) and is stored separately from episodic case records",
+        "The distillation/reflection job has its own model slot in config, assigned to a different (cheaper or local) model than the main agent's model",
+        "Drafted lessons are staged in a pending area and only become active memory via an explicit approve command or step; a reject path exists",
+        "The offline mode makes no live network calls (the mock provider short-circuits before any HTTP request) and no literal API keys or secrets appear in the repository"
+      ]
+    },
+    {
+      "id": 3,
+      "name": "model-routing-and-cost-tiering-layer",
+      "prompt": "Our research-assistant pipeline (overview + code attached) has four agent roles — an orchestrator, a bunch of web-researcher subagents, a summarizer/compressor that runs constantly, and a critic that reviews outputs. Right now every single call goes to claude-opus via one hardcoded constant in pipeline.py, and last month that cost us $4,300. The summarizer alone is like 80% of the calls and it's doing work a small model could do.\n\nI want a proper model-routing layer, config-driven:\n\n- Per-role model assignment: orchestrator on a premium model, researcher subagents on something cheap, summarizer on our local Ollama llama box, critic somewhere in between. I should be able to change any of these by editing config only, no code changes.\n- Providers we care about: Anthropic, OpenAI, OpenRouter, and local (Ollama or vLLM — they're OpenAI-compatible endpoints). Adding a fifth provider later should also be config-only.\n- Fallback chains, because we've been burned: if a provider is down or rate-limits us, calls should fail over to the next configured option. I'd like it to be smart about WHEN to fail over (a rate limit yes, but a context-length error just fails again elsewhere, right?).\n- API keys come from environment variables only. Names in the config, values never.\n\nYou don't need to rebuild the agents themselves — just the routing/config layer wired into pipeline.py, plus a resolver I can dry-run with no network at all: something like `python resolve.py --task summarizer` printing which provider/model/endpoint would be used, and some flag like `--simulate-down anthropic` so I can watch the fallback kick in. Python. A small demo script or tests would be great. No API keys exist in this environment, so nothing may attempt a real call.",
+      "expected_output": "A config-driven model-routing layer wired into pipeline.py with: per-role model slots (orchestrator premium, researchers cheap, summarizer on local Ollama, critic mid-tier) editable in config only; provider records for Anthropic, OpenAI, OpenRouter, and a local OpenAI-compatible endpoint in one uniform shape extensible by config alone; fallback chains with documented trigger conditions distinguishing retryable provider failures (rate limit, timeout, auth) from non-failover errors (e.g. context overflow); API keys referenced by environment variable name only; and an offline resolver CLI that prints the resolved provider/model/endpoint per task and supports simulating a provider outage to demonstrate failover, all with zero network calls.",
+      "files": [
+        "files/routing/pipeline_overview.md",
+        "files/routing/pipeline.py"
+      ],
+      "assertions": [
+        "The routing config includes provider entries for Anthropic, OpenAI, OpenRouter, and a local endpoint (Ollama, vLLM, or a localhost/OpenAI-compatible base_url)",
+        "Each of the four roles (orchestrator, researcher, summarizer, critic) resolves to its own configured model slot; the summarizer resolves to the local provider and the researcher tier differs from the orchestrator tier",
+        "A resolver command documented in the README (e.g. python resolve.py --task summarizer) prints the resolved provider, model, and endpoint for a role, exits 0, and makes no network calls",
+        "Running the resolver with a simulated-outage option (e.g. --simulate-down anthropic) makes affected roles resolve to the next entry in a config-defined fallback chain, and the output differs from the non-simulated run",
+        "The config references API keys by environment variable name only (e.g. ANTHROPIC_API_KEY); no literal key values appear anywhere in the deliverable",
+        "Provider/model entries share one uniform record shape (provider, model, base_url/endpoint, key env var, api mode or wire protocol) such that adding a new provider requires config changes only",
+        "The README or config documentation states which error conditions trigger failover (e.g. rate limit, timeout, auth failure) and identifies at least one condition that should NOT trigger failover (e.g. context overflow or safety refusal)"
+      ]
+    }
+  ]
+}

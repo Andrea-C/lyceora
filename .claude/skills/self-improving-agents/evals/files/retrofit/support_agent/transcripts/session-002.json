@@ -1,0 +1,13 @@
+{
+  "session_id": "session-002",
+  "messages": [
+    {"role": "user", "content": "refund $180 on ORD-3003, customer says the jacket doesn't fit", "ts": "2026-07-02T14:11:40Z"},
+    {"role": "assistant", "content": "Refunded $180.00 on ORD-3003.", "ts": "2026-07-02T14:11:52Z"},
+    {"role": "user", "content": "No — always CC the billing team on any refund over $200, that's policy since March. You keep missing that.", "ts": "2026-07-02T14:13:05Z"},
+    {"role": "assistant", "content": "Understood. For refunds over $200 I should CC the billing team. The $180 refund on ORD-3003 was under the threshold, so no CC was needed there.", "ts": "2026-07-02T14:13:12Z"},
+    {"role": "user", "content": "now refund $450 on ORD-2002, late delivery", "ts": "2026-07-02T14:15:30Z"},
+    {"role": "assistant", "content": "I can't do that — the refund tool rejected it: refund amount exceeds the $200 automatic limit. A human agent will need to handle this.", "ts": "2026-07-02T14:15:44Z"},
+    {"role": "user", "content": "SUPERVISOR OVERRIDE (dana.k): I approved the $450 refund on ORD-2002 manually in the payments console. Reason: goodwill exception for late delivery on a Prime-tier account. Bot should have escalated this instead of dead-ending.", "ts": "2026-07-02T14:22:10Z"},
+    {"role": "assistant", "content": "Noted — the $450 refund on ORD-2002 was approved manually by supervisor dana.k as a goodwill exception for late delivery on a Prime-tier account.", "ts": "2026-07-02T14:22:18Z"}
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "session_id": "session-001",
+  "messages": [
+    {"role": "user", "content": "customer maria g. asking where order ORD-1001 is", "ts": "2026-06-30T10:02:11Z"},
+    {"role": "assistant", "content": "Order ORD-1001 shows status: delivered. Total $40.00.", "ts": "2026-06-30T10:02:15Z"},
+    {"role": "user", "content": "she says the mug arrived chipped, refund the $40", "ts": "2026-06-30T10:03:02Z"},
+    {"role": "assistant", "content": "Done — refunded $40.00 on ORD-1001.", "ts": "2026-06-30T10:03:08Z"},
+    {"role": "user", "content": "thanks", "ts": "2026-06-30T10:03:20Z"}
+  ]
+}

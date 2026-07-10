@@ -1,0 +1,13 @@
+# Machine-local Claude Code settings
+.claude/settings.local.json
+
+# Node
+node_modules/
+.next/
+dist/
+*.log
+
+# Env
+.env
+.env.*
+!.env.example

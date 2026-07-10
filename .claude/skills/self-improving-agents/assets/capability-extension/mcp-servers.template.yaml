@@ -1,0 +1,14 @@
+# MCP client configuration. Tools surface as <server>__<tool>.
+# Treat third-party servers as untrusted code: filter tools, scope per agent.
+mcp_servers:
+  github:                          # stdio transport
+    command: npx
+    args: ["-y", "@modelcontextprotocol/server-github"]
+    env: { GITHUB_TOKEN: "${GITHUB_TOKEN}" }     # env substitution, never inline
+    tools: { include: [search_repositories, get_issue] }   # allowlist > default-all
+    agents: [researcher]           # projection: only these roles see this server
+  internal-api:                    # streamable-http transport
+    url: https://mcp.internal.example.com/mcp
+    auth: oauth
+    timeouts: { idle_s: 300, lifetime_s: 3600 }
+    agents: [orchestrator]

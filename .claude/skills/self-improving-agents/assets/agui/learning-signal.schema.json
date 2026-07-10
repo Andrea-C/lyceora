@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "LearningSignal",
+  "description": "One normalized learning event, appended as a JSON line to learning/inbox/signals-YYYY-MM-DD.jsonl. Produced by the frontend (user actions) and the server (agent trace); consumed by the distiller.",
+  "type": "object",
+  "required": ["ts", "thread_id", "run_id", "signal", "actor"],
+  "properties": {
+    "ts":        { "type": "string", "format": "date-time" },
+    "thread_id": { "type": "string" },
+    "run_id":    { "type": "string" },
+    "actor":     { "enum": ["user", "agent", "system"] },
+    "signal":    { "enum": ["correction", "approval", "rejection", "override",
+                            "edit_after_output", "tool_result", "run_error", "explicit_teach"] },
+    "scope_hint": { "type": "string", "description": "app | team/<id> | user/<id>" },
+    "before":    { "description": "agent-produced value, if the user changed it" },
+    "after":     { "description": "user's final value" },
+    "context":   { "type": "string", "description": "short free-text: what was being done" },
+    "event_refs": { "type": "array", "items": { "type": "string" },
+                    "description": "AG-UI event types/ids this signal derives from" }
+  }
+}
