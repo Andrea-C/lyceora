@@ -17,7 +17,11 @@ export function loadTaxonomy(topicsJson: unknown, depsJson: unknown): { topics: 
     }
     return r.data as Topic;
   });
-  const ids = new Set(topics.map((t) => t.id));
+  const ids = new Set<string>();
+  for (const t of topics) {
+    if (ids.has(t.id)) throw new TaxonomyValidationError(`Duplicate topic id ${t.id}`);
+    ids.add(t.id);
+  }
   const rawDeps = depsFileSchema.parse(depsJson).dependencies;
   const dependencies = rawDeps.map((d) => {
     const r = dependencySchema.safeParse(d);

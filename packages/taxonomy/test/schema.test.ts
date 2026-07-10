@@ -38,4 +38,11 @@ describe("loadTaxonomy", () => {
     expect(() => loadTaxonomy({ topics: [goodTopic] }, { dependencies: [goodDep] }))
       .toThrowError(/lyc_x/);
   });
+
+  it("rejects duplicate topic ids", () => {
+    expect(() => loadTaxonomy({ topics: [goodTopic, { ...goodTopic }] }, { dependencies: [] }))
+      .toThrowError(TaxonomyValidationError);
+    expect(() => loadTaxonomy({ topics: [goodTopic, { ...goodTopic }] }, { dependencies: [] }))
+      .toThrowError(/lyc_potenze_def/);
+  });
 });
