@@ -1,7 +1,7 @@
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 import { revalidatePath } from "next/cache";
-import { eq } from "drizzle-orm";
+import { and, eq } from "drizzle-orm";
 import { getTranslations } from "next-intl/server";
 import { db } from "@/lib/db";
 import { profile } from "@lyceora/db";
@@ -23,7 +23,8 @@ export default async function ProfilesPage({
     const displayName = String(formData.get("displayName") ?? "").trim();
     if (!displayName) return;
     const birthYearRaw = formData.get("birthYear");
-    const birthYear = birthYearRaw ? Number(birthYearRaw) : undefined;
+    const n = Number(birthYearRaw);
+    const birthYear = birthYearRaw && Number.isInteger(n) && n >= 2005 && n <= 2022 ? n : undefined;
 
     const parentSession = await getSessionOrRedirect(locale);
     await db.insert(profile).values({
@@ -39,6 +40,14 @@ export default async function ProfilesPage({
     "use server";
     const profileId = String(formData.get("profileId") ?? "");
     if (!profileId) return;
+
+    const parentSession = await getSessionOrRedirect(locale);
+    const [owned] = await db
+      .select()
+      .from(profile)
+      .where(and(eq(profile.id, profileId), eq(profile.ownerUserId, parentSession.user.id)));
+    if (!owned) return;
+
     const cookieStore = await cookies();
     cookieStore.set("lyceora_profile", profileId, { httpOnly: true, path: "/", sameSite: "lax" });
     redirect(`/${locale}/app`);
