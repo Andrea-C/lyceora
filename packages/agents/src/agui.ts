@@ -20,7 +20,7 @@ export function aguiSSE(
         controller.enqueue(frame({ type: "TEXT_MESSAGE_END", messageId }));
         controller.enqueue(frame({ type: "RUN_FINISHED", threadId, runId }));
       } catch (err) {
-        controller.enqueue(frame({ type: "RUN_ERROR", message: String(err) }));
+        controller.enqueue(frame({ type: "RUN_ERROR", message: err instanceof Error ? err.message : String(err) }));
       } finally {
         controller.close();
       }

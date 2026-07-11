@@ -1,9 +1,9 @@
-import { streamText } from "ai";
+import { streamText, type ModelMessage } from "ai";
 import type { Registry } from "./registry.js";
 import { buildTeacherSystemPrompt, type TeacherContext } from "./prompts/teacher.js";
 
 export async function streamTeacher(
-  reg: Registry, ctx: TeacherContext, messages: any[],
+  reg: Registry, ctx: TeacherContext, messages: ModelMessage[],
   opts: { maxOutputTokens?: number } = {}
 ): Promise<{ textStream: AsyncIterable<string> }> {
   return reg.withFallback("teacher", async ({ model }) => {
