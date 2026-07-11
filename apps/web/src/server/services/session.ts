@@ -4,7 +4,7 @@ import { and, eq, sql } from "drizzle-orm";
 import type { TopicGraph, Locale } from "@lyceora/taxonomy";
 import {
   applyEvidence, composeSessionPlan, routeNext, applyReviewOutcome, enterReviewRotation,
-  XP_AMOUNTS, nextStreak, EMPTY_MASTERY_STATE,
+  XP_AMOUNTS, nextStreak,
   type SessionPlan, type SessionItem, type AssessmentOutcome
 } from "@lyceora/engine";
 import type { Exercise } from "@lyceora/agents";
@@ -36,9 +36,12 @@ export async function startSession(db: Db, graph: TopicGraph, userId: string, pr
 
 export async function completeActivity(
   db: Db, graph: TopicGraph, assessor: AssessorPort, userId: string,
-  args: { profileId: string; sessionId: string; item: SessionItem; exercise?: Exercise; answer?: string }
+  args: { profileId: string; sessionId: string; item: SessionItem; servedExerciseId?: string; answer?: string }
 ) {
   const p = await repo.getOwnedProfile(db, userId, args.profileId);
+  // IMPORTANT: gates every write below keyed by sessionId. Nothing in this function or in
+  // awardXp may touch learning_session/xp_event/daily_activity for this sessionId before this.
+  await repo.assertSessionOwnership(db, p.id, args.sessionId);
   const today = localToday(p.timezone);
   const { item } = args;
 
@@ -52,13 +55,20 @@ export async function completeActivity(
   const candidateConcepts = source === "assessment"
     ? (graph.prereqsOf.get(item.topicId) ?? []).filter((d) => d.strength === "hard").map((d) => d.prerequisiteId)
     : [];
-  const graded = await assessor.grade(args.exercise!, args.answer!, p.locale, { candidateConcepts });
+
+  // server-side custody: grade the exercise this profile/session/topic was actually served,
+  // never a client-echoed blob, and mark it single-use so it can't be replayed.
+  const { exercise } = await repo.loadServedExerciseForGrading(db, {
+    servedExerciseId: args.servedExerciseId!, profileId: p.id, sessionId: args.sessionId, topicId: item.topicId
+  });
+  const graded = await assessor.grade(exercise, args.answer!, p.locale, { candidateConcepts });
   const difficulty = "difficulty" in item ? item.difficulty : (2 as const);
   await db.insert(evidenceRecord).values({
     profileId: p.id, topicId: item.topicId, sessionId: args.sessionId, source,
-    isCorrect: graded.correct, difficulty, question: args.exercise!.prompt,
-    studentAnswer: args.answer, rubricNotes: graded.feedback, promptRef: args.exercise!.id
+    isCorrect: graded.correct, difficulty, question: exercise.prompt,
+    studentAnswer: args.answer, rubricNotes: graded.feedback, promptRef: exercise.id
   });
+  await repo.consumeServedExercise(db, args.servedExerciseId!);
   const before = await repo.getMasteryOrEmpty(db, p.id, item.topicId);
   const after = applyEvidence(before, [{ source, isCorrect: graded.correct, difficulty, createdAt: new Date() }]);
   await repo.upsertMastery(db, p.id, item.topicId, after);
@@ -103,7 +113,7 @@ export async function completeActivity(
       // derived evidence makes the demotion auditable through the same fold
       await db.insert(evidenceRecord).values({
         profileId: p.id, topicId: routeDecision.remediationTopicId, sessionId: args.sessionId,
-        source: "assessment", isCorrect: false, difficulty, derived: true, promptRef: args.exercise!.id
+        source: "assessment", isCorrect: false, difficulty, derived: true, promptRef: exercise.id
       });
       const prev = await repo.getMasteryOrEmpty(db, p.id, routeDecision.remediationTopicId);
       await repo.upsertMastery(db, p.id, routeDecision.remediationTopicId,

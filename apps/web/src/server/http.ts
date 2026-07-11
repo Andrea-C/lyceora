@@ -1,5 +1,5 @@
 import { auth } from "@/lib/auth";
-import { ForbiddenError } from "./repo";
+import { ForbiddenError, ConflictError } from "./repo";
 
 /** Resolves the authenticated user id from a Route Handler's Request, or a ready-to-return 401. */
 export async function requireUserId(req: Request): Promise<string | Response> {
@@ -8,12 +8,16 @@ export async function requireUserId(req: Request): Promise<string | Response> {
   return session.user.id;
 }
 
-/** Runs a route handler body, mapping ForbiddenError -> 403 and any other error -> 500 (logged server-side). */
+/**
+ * Runs a route handler body, mapping ForbiddenError -> 403, ConflictError -> 409, and any other
+ * error -> 500 (logged server-side).
+ */
 export async function guarded(fn: () => Promise<Response>): Promise<Response> {
   try {
     return await fn();
   } catch (err) {
     if (err instanceof ForbiddenError) return new Response(null, { status: 403 });
+    if (err instanceof ConflictError) return Response.json({ error: err.message }, { status: 409 });
     console.error(err);
     return Response.json({ error: "Something went wrong." }, { status: 500 });
   }

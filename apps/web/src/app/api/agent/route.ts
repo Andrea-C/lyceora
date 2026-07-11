@@ -9,15 +9,19 @@ import { streamTeacher, aguiSSE, type TeacherContext } from "@lyceora/agents";
 import { requireUserId, guarded } from "@/server/http";
 
 const MAX_USER_MESSAGES = 40;
+const MAX_MESSAGE_ENTRIES = 60;
 
+// Only user/assistant turns are accepted from the client — the system prompt is built
+// server-side (buildTeacherSystemPrompt) and content is a plain string, never a raw parts
+// array, since there's no legitimate reason for the client to send anything richer here.
 const messageSchema = z.object({
-  role: z.enum(["system", "user", "assistant", "tool"]),
-  content: z.union([z.string(), z.array(z.unknown())])
+  role: z.enum(["user", "assistant"]),
+  content: z.string().min(1)
 });
 const bodySchema = z.object({
   threadId: z.string().min(1), runId: z.string().min(1),
   profileId: z.string().min(1), topicId: z.string().min(1),
-  messages: z.array(messageSchema).min(1)
+  messages: z.array(messageSchema).min(1).max(MAX_MESSAGE_ENTRIES)
 });
 
 export async function POST(req: Request) {

@@ -8,7 +8,6 @@ import {
 } from "@lyceora/engine";
 import type { Exercise } from "@lyceora/agents";
 import * as repo from "../repo";
-import { getPath } from "../content";
 import { localToday, type AssessorPort } from "./session";
 
 /**
@@ -28,48 +27,56 @@ function fromPlanJson(v: SessionPlan): DiagnosticPlanJson {
   return v as unknown as DiagnosticPlanJson;
 }
 
+/**
+ * pathId + targetTopicIds are both resolved by the caller (the route derives them from the
+ * profile's active enrollment via repo.getActiveEnrollment + content.ts's getPath) rather than
+ * looked up here, so this service has no dependency on the real taxonomy content singleton and
+ * is fully unit-testable against a synthetic graph.
+ */
 export async function startDiagnostic(
-  db: Db, graph: TopicGraph, assessor: AssessorPort, userId: string, profileId: string, pathId?: string
+  db: Db, graph: TopicGraph, assessor: AssessorPort, userId: string, profileId: string,
+  pathId: string, targetTopicIds: string[]
 ) {
   const p = await repo.getOwnedProfile(db, userId, profileId);
-  const resolvedPathId = pathId ?? (await repo.getActiveEnrollment(db, p.id))?.pathId;
-  if (!resolvedPathId) throw new Error(`no active enrollment for profile ${profileId}`);
-
-  const path = getPath(resolvedPathId);
-  const init = initDiagnostic(graph, path.targetTopicIds);
+  const init = initDiagnostic(graph, targetTopicIds);
   const { state, step } = runDiagnosticStep(graph, init, null);
 
   const [s] = await db.insert(learningSession).values({ profileId: p.id, kind: "diagnostic" }).returning();
 
   if (step.kind === "done") {
     // degenerate: nothing to ask (e.g. an already-fully-known target set) — finalize immediately
-    const result = await finalizeDiagnostic(db, p, s!.id, resolvedPathId, step.result);
+    const result = await finalizeDiagnostic(db, p, s!.id, pathId, step.result);
     return { sessionId: s!.id, done: true as const, result };
   }
 
   const [exercise] = await assessor.generate(step.topicId, p.locale, 2, 1);
   await db.update(learningSession)
-    .set({ planJson: toPlanJson({ pathId: resolvedPathId, diagnosticState: state, currentExercise: exercise! }) })
+    .set({ planJson: toPlanJson({ pathId, diagnosticState: state, currentExercise: exercise! }) })
     .where(eq(learningSession.id, s!.id));
   return { sessionId: s!.id, done: false as const, question: { topicId: step.topicId, exercise: exercise! } };
 }
 
 export async function answerDiagnostic(
   db: Db, graph: TopicGraph, assessor: AssessorPort, userId: string,
-  args: { profileId: string; sessionId: string; exerciseJson: Exercise; answer: string }
+  args: { profileId: string; sessionId: string; answer: string }
 ) {
   const p = await repo.getOwnedProfile(db, userId, args.profileId);
   const [row] = await db.select().from(learningSession)
     .where(and(eq(learningSession.id, args.sessionId), eq(learningSession.profileId, p.id)));
-  if (!row || !row.planJson) throw new Error(`no active diagnostic session ${args.sessionId}`);
+  if (!row) throw new repo.ForbiddenError(`session ${args.sessionId} not owned by profile ${p.id}`);
+  // once finalizeDiagnostic flips this to "completed" (in the same synchronous flow that awards
+  // XP), any replayed/duplicate answer POST for this session must be rejected before it can
+  // re-grade or re-award anything — this is the whole idempotency guarantee.
+  if (row.status !== "active") {
+    throw new repo.ConflictError(`diagnostic session ${args.sessionId} is not active (status=${row.status})`);
+  }
+  if (!row.planJson) throw new repo.ConflictError(`no pending diagnostic question for session ${args.sessionId}`);
   const stored = fromPlanJson(row.planJson);
   const topicId = stored.diagnosticState.currentTopicId;
-  if (!topicId || stored.currentExercise.id !== args.exerciseJson.id) {
-    throw new Error("diagnostic answer does not match the pending question");
-  }
+  if (!topicId) throw new repo.ConflictError(`no pending diagnostic question for session ${args.sessionId}`);
 
-  // grade the server-persisted exercise (never the client echo) — the client-supplied
-  // exerciseJson is only used above to confirm it's answering the question we actually asked.
+  // grade the server-persisted exercise only — there is no client echo to cross-check anymore;
+  // the server already knows which exercise is currently pending for this session.
   const graded = await assessor.grade(stored.currentExercise, args.answer, p.locale);
   await db.insert(evidenceRecord).values({
     profileId: p.id, topicId, sessionId: args.sessionId, source: "diagnostic",
