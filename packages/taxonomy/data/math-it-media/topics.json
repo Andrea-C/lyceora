@@ -422,8 +422,8 @@
           "en": "Applies the divisibility rule for 9 to the number 4,581, checking that the digit sum (18) is a multiple of 9."
         },
         {
-          "it": "Usa il criterio per 11 per stabilire che 2937 non è divisibile per 11.",
-          "en": "Uses the rule for 11 to establish that 2,937 is not divisible by 11."
+          "it": "Usa il criterio per 11 per stabilire che 2938 non è divisibile per 11.",
+          "en": "Uses the rule for 11 to establish that 2,938 is not divisible by 11."
         }
       ],
       "assessmentPrompt": {
