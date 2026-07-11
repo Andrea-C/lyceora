@@ -93,7 +93,7 @@
     "name": "Il valore posizionale dei decimali",
     "description": "Convertire tra unità di misura convenzionali di grandezza diversa all'interno di uno stesso sistema (ad esempio, da 5 cm a 0,05 m) usando la notazione decimale fino a tre cifre decimali; convertire tra unità più piccole e più grandi di lunghezza, massa, volume e tempo",
     "evidence": [
-      "Convertire 3,250 g in 3,25 kg usando la notazione decimale",
+      "Convertire 3250 g in 3,25 kg usando la notazione decimale",
       "Convertire 0,45 km in 450 m",
       "Spiegare la relazione tra mm, cm, m e km usando le potenze di 10"
     ],
@@ -235,7 +235,7 @@
     "evidence": [
       "Recitare i multipli di 6 da 0 fino ad almeno 72",
       "Recitare i multipli di 7 da 0 fino ad almeno 84",
-      "Contare a salti di 25 da 0 fino a 1000 e a salti di 1000 fino a 10,000"
+      "Contare a salti di 25 da 0 fino a 1000 e a salti di 1000 fino a 10.000"
     ],
     "assessmentPrompt": "{{name}} riesce a contare per 7 — 7, 14, 21, 28 — o per 9, o per 25 quando pensa alle monete, o per 1000 quando parla di distanze come i chilometri?"
   },
@@ -294,7 +294,7 @@
     "description": "Confrontare due numeri decimali fino ai centesimi (o fino a tre cifre decimali) ragionando sulla grandezza tramite il valore posizionale; registrare il confronto con >, =, <",
     "evidence": [
       "Confrontare 0,45 e 0,405 e spiegare quale sia maggiore",
-      "Ordinare 3,142, 3,14, 3,2 dal più piccolo al più grande",
+      "Ordinare 3,142; 3,14; 3,2 dal più piccolo al più grande",
       "Motivare che 0,7 = 0,70 = 0,700 ragionando sul valore posizionale"
     ],
     "assessmentPrompt": "Se {{name}} confronta 0,45 e 0,54, sa usare il valore posizionale per spiegare quale sia maggiore — senza prendere la calcolatrice?"
@@ -488,7 +488,7 @@
     "evidence": [
       "Spiegare che il 4 in 0,04 è 1/10 del 4 in 0,4",
       "Indicare che uno spostamento di una cifra verso sinistra corrisponde a ×10 e verso destra a ÷10",
-      "Confrontare il valore del 6 in 6,000 e in 0,006"
+      "Confrontare il valore del 6 in 6000 e in 0,006"
     ],
     "assessmentPrompt": "{{name}} sa spiegare che in 4,56 la cifra 5 vale 5 decimi — dieci volte meno del 5 in 54, e dieci volte più del 5 in 0,056?"
   },
@@ -606,14 +606,14 @@
     "assessmentPrompt": "Se {{name}} vede delle uova disposte in una scatola in 3 righe da 4, riesce a usare quella disposizione a griglia per calcolare sia '3 × 4 = 12' sia '12 ÷ 3 = 4'?"
   },
   "mt_Gag_h98jWP": {
-    "name": "Leggere e scrivere i numeri fino a 10,000,000",
-    "description": "Leggere, scrivere, ordinare e confrontare numeri fino a 10,000,000 e determinare il valore di ciascuna cifra",
+    "name": "Leggere e scrivere i numeri fino a 10.000.000",
+    "description": "Leggere, scrivere, ordinare e confrontare numeri fino a 10.000.000 e determinare il valore di ciascuna cifra",
     "evidence": [
-      "Scrivere 4,302,561 in lettere",
+      "Scrivere 4.302.561 in lettere",
       "Ordinare quattro numeri a sette cifre dal più piccolo al più grande",
-      "Indicare che il valore del 7 in 7,045,200 è sette milioni"
+      "Indicare che il valore del 7 in 7.045.200 è sette milioni"
     ],
-    "assessmentPrompt": "{{name}} sa leggere e scrivere numeri fino a 10 milioni — come 4,302,617 — e indicare il valore di qualsiasi cifra del numero?"
+    "assessmentPrompt": "{{name}} sa leggere e scrivere numeri fino a 10 milioni — come 4.302.617 — e indicare il valore di qualsiasi cifra del numero?"
   },
   "mt_GzcJEVkNRn": {
     "name": "Comprendere gli angoli (8+ anni)",
@@ -629,11 +629,11 @@
     "name": "Le regolarità con le potenze di dieci",
     "description": "Spiegare le regolarità negli zeri quando si moltiplica per potenze di 10 e nello spostamento della virgola decimale quando si moltiplica/divide per una potenza di 10; usare esponenti interi per indicare le potenze di 10 (ad esempio, 10³ = 1000)",
     "evidence": [
-      "Scrivere 10⁴ = 10,000 e spiegare che l'esponente indica quattro fattori di 10",
+      "Scrivere 10⁴ = 10.000 e spiegare che l'esponente indica quattro fattori di 10",
       "Spiegare perché 3,4 × 10² = 340 descrivendo lo spostamento della virgola",
       "Prevedere il risultato di 2,56 × 10³ senza calcolarlo e spiegare la regolarità"
     ],
-    "assessmentPrompt": "{{name}} sa spiegare perché 10² = 100 e 10³ = 1,000, e perché moltiplicare per 10 aggiunge semplicemente uno zero — collegando la regolarità degli zeri al valore posizionale?"
+    "assessmentPrompt": "{{name}} sa spiegare perché 10² = 100 e 10³ = 1000, e perché moltiplicare per 10 aggiunge semplicemente uno zero — collegando la regolarità degli zeri al valore posizionale?"
   },
   "mt_HhuSDxwDNM": {
     "name": "Le tabelline",
@@ -649,7 +649,7 @@
     "name": "Valore posizionale dei numeri decimali (8+ anni)",
     "description": "Confrontare numeri con lo stesso numero di cifre decimali, fino a due cifre decimali",
     "evidence": [
-      "Ordinare 0,45, 0,54, 0,39 dal più piccolo al più grande",
+      "Ordinare 0,45; 0,54; 0,39 dal più piccolo al più grande",
       "Confrontare 3,72 e 3,27 ragionando sul valore posizionale",
       "Collocare in ordine tre numeri con due cifre decimali su una linea dei numeri"
     ],
@@ -707,13 +707,13 @@
   },
   "mt_JwP9QFv6gQ": {
     "name": "Leggere e scrivere i numeri (9+ anni)",
-    "description": "Leggere, scrivere, ordinare e confrontare numeri interi fino ad almeno 1,000,000 usando la notazione in base dieci, i nomi dei numeri, la forma estesa e la comprensione del valore posizionale",
+    "description": "Leggere, scrivere, ordinare e confrontare numeri interi fino ad almeno 1.000.000 usando la notazione in base dieci, i nomi dei numeri, la forma estesa e la comprensione del valore posizionale",
     "evidence": [
-      "Scrivere 403,072 in lettere e in forma estesa",
-      "Confrontare 548,301 e 543,801 usando < e spiegare il ragionamento",
+      "Scrivere 403.072 in lettere e in forma estesa",
+      "Confrontare 548.301 e 543.801 usando < e spiegare il ragionamento",
       "Ordinare quattro numeri a sei cifre dal più piccolo al più grande"
     ],
-    "assessmentPrompt": "{{name}} sa leggere e scrivere numeri fino ai milioni — come 1,340,000 — e mettere correttamente in ordine un insieme di numeri grandi?"
+    "assessmentPrompt": "{{name}} sa leggere e scrivere numeri fino ai milioni — come 1.340.000 — e mettere correttamente in ordine un insieme di numeri grandi?"
   },
   "mt_K0Y15w48SY": {
     "name": "Trasformazioni di coordinate",
@@ -783,7 +783,7 @@
       "Calcolare 72 ÷ 1000 = 0,072",
       "Spiegare che moltiplicare per 10 sposta ogni cifra di una posizione verso sinistra"
     ],
-    "assessmentPrompt": "{{name}} riesce a calcolare rapidamente '4,7 × 100' o '3,600 ÷ 1,000' — sapendo che le cifre si spostano a sinistra o a destra nella tabella del valore posizionale a seconda che si stia moltiplicando o dividendo?"
+    "assessmentPrompt": "{{name}} riesce a calcolare rapidamente '4,7 × 100' o '3600 ÷ 1000' — sapendo che le cifre si spostano a sinistra o a destra nella tabella del valore posizionale a seconda che si stia moltiplicando o dividendo?"
   },
   "mt_LpSuPgL31x": {
     "name": "La divisione come suddivisione in parti uguali",
@@ -796,7 +796,7 @@
     "assessmentPrompt": "Se {{name}} ha 12 chicchi d'uva da dividere equamente tra 3 amici, riesce a capire che ogni amico ne riceve 4 — e a spiegare come ha fatto?"
   },
   "mt_M2v1A9OEuM": {
-    "name": "Contare entro 1,000",
+    "name": "Contare entro 1000",
     "description": "Contare entro il 1000, incluso il conteggio a salti per 5, per 10 e per 100",
     "evidence": [
       "Contare in avanti e all'indietro entro il 1000 partendo da un numero qualsiasi",
@@ -819,11 +819,11 @@
     "name": "Schieramenti per la moltiplicazione (9+ anni)",
     "description": "Dividere numeri fino a quattro cifre per un numero a una cifra usando la divisione in colonna (e strategie basate su valore posizionale/schieramenti); interpretare i resti in modo appropriato al contesto",
     "evidence": [
-      "Calcolare 4,932 ÷ 6 usando la divisione in colonna",
+      "Calcolare 4932 ÷ 6 usando la divisione in colonna",
       "Risolvere 125 ÷ 8 e interpretare: 15 resto 5 significa 15 sacchetti pieni con 5 elementi avanzati",
       "Usare la relazione tra moltiplicazione e divisione per verificare il risultato di una divisione"
     ],
-    "assessmentPrompt": "{{name}} riesce a usare il metodo della divisione in colonna per calcolare qualcosa come '2,457 ÷ 6', e a decidere cosa fare con un eventuale resto?"
+    "assessmentPrompt": "{{name}} riesce a usare il metodo della divisione in colonna per calcolare qualcosa come '2457 ÷ 6', e a decidere cosa fare con un eventuale resto?"
   },
   "mt_MFfYcnv6Tv": {
     "name": "Angoli retti e giri",
@@ -840,10 +840,10 @@
     "description": "Ordinare e confrontare numeri oltre il 1000",
     "evidence": [
       "Confrontare due numeri a quattro cifre usando >, < e = esaminando le cifre a partire dal valore posizionale più alto",
-      "Ordinare un insieme di numeri fino a 10,000 dal più piccolo al più grande",
+      "Ordinare un insieme di numeri fino a 10.000 dal più piccolo al più grande",
       "Giustificare l'ordinamento ragionando sul valore posizionale"
     ],
-    "assessmentPrompt": "{{name}} sa mettere in ordine dal più piccolo al più grande un insieme di numeri a quattro cifre come 4,321, 1,876 e 9,045 — confrontandoli cifra per cifra?"
+    "assessmentPrompt": "{{name}} sa mettere in ordine dal più piccolo al più grande un insieme di numeri a quattro cifre come 4321, 1876 e 9045 — confrontandoli cifra per cifra?"
   },
   "mt_MJZA90uc6H": {
     "name": "Perimetro (10+ anni)",
@@ -962,9 +962,9 @@
     "name": "Il modello del valore posizionale × 10",
     "description": "Riconoscere che, in un numero intero con più cifre, una cifra in una posizione rappresenta dieci volte ciò che rappresenta nella posizione alla sua destra (ad esempio, 700 ÷ 70 = 10)",
     "evidence": [
-      "Spiegare che il 3 in 3,000 vale dieci volte il 3 in 300",
+      "Spiegare che il 3 in 3000 vale dieci volte il 3 in 300",
       "Completare: 700 ÷ 70 = __ e spiegare ragionando sul valore posizionale",
-      "Indicare quante volte il valore del 5 in 50,000 è maggiore del valore del 5 in 5,000"
+      "Indicare quante volte il valore del 5 in 50.000 è maggiore del valore del 5 in 5000"
     ],
     "assessmentPrompt": "{{name}} sa spiegare che in 700 il 7 vale 10 volte di più che in 70 — perché spostarsi di una posizione verso sinistra moltiplica il valore per 10?"
   },
@@ -1023,7 +1023,7 @@
     "description": "Risolvere problemi che coinvolgono il calcolo e la conversione di unità di misura, usando la notazione decimale e un ragionamento a più fasi in contesti reali",
     "evidence": [
       "Risolvere: \"Una ricetta usa 0,75 kg di farina. Quanti grammi servono per 3 dosi?\"",
-      "Confrontare 2,5 litri e 2,450 ml convertendoli nella stessa unità",
+      "Confrontare 2,5 litri e 2450 ml convertendoli nella stessa unità",
       "Risolvere un problema a più fasi che coinvolge tempo, distanza e conversione di unità"
     ],
     "assessmentPrompt": "Se {{name}} sta riempiendo un acquario che contiene 60 litri e il rubinetto lo riempie a 3,5 litri al minuto, sa calcolare quanto tempo ci vorrà per riempirlo?"
@@ -1172,11 +1172,11 @@
     "name": "La divisione con resto (10+ anni)",
     "description": "Dividere numeri fino a 4 cifre per un divisore a due cifre usando la divisione scritta in colonna estesa, interpretando i resti come numeri interi, frazioni o arrotondandoli in modo appropriato",
     "evidence": [
-      "Calcolare 4,752 ÷ 13 usando la divisione in colonna estesa ed esprimere il resto come frazione",
+      "Calcolare 4752 ÷ 13 usando la divisione in colonna estesa ed esprimere il resto come frazione",
       "Decidere se arrotondare per eccesso o per difetto il resto di una divisione in un contesto reale (es. numero di autobus necessari)",
       "Spiegare ogni passaggio dell'algoritmo della divisione in colonna estesa per un calcolo a 4 cifre ÷ 2 cifre"
     ],
-    "assessmentPrompt": "{{name}} riesce a usare la divisione in colonna estesa per calcolare qualcosa come '1,848 ÷ 24' — seguendo i passaggi di dividere, moltiplicare, sottrarre e abbassare la cifra successiva fino ad arrivare al risultato?"
+    "assessmentPrompt": "{{name}} riesce a usare la divisione in colonna estesa per calcolare qualcosa come '1848 ÷ 24' — seguendo i passaggi di dividere, moltiplicare, sottrarre e abbassare la cifra successiva fino ad arrivare al risultato?"
   },
   "mt_WtIFJSCQIT": {
     "name": "Tipi di angoli (11+ anni)",
@@ -1212,11 +1212,11 @@
     "name": "Moltiplicazione in colonna estesa (10+ anni)",
     "description": "Moltiplicare con scioltezza numeri interi a più cifre (fino a 4 cifre per 2 cifre) usando il metodo scritto formale della moltiplicazione in colonna estesa",
     "evidence": [
-      "Calcolare correttamente 2,463 × 37 usando la moltiplicazione in colonna estesa",
+      "Calcolare correttamente 2463 × 37 usando la moltiplicazione in colonna estesa",
       "Spiegare ogni prodotto parziale in una moltiplicazione in colonna estesa e perché vengono sommati",
       "Moltiplicare un numero a quattro cifre per un numero a due cifre senza errori procedurali"
     ],
-    "assessmentPrompt": "{{name}} riesce a usare la moltiplicazione in colonna estesa per calcolare qualcosa come '2,347 × 24' — impostandola su due righe, una per le unità e una per le decine, e poi sommando i risultati?"
+    "assessmentPrompt": "{{name}} riesce a usare la moltiplicazione in colonna estesa per calcolare qualcosa come '2347 × 24' — impostandola su due righe, una per le unità e una per le decine, e poi sommando i risultati?"
   },
   "mt_XWSGuFW7It": {
     "name": "La notazione dei rapporti",
@@ -1272,11 +1272,11 @@
     "name": "Addizione e sottrazione fluente (9+ anni)",
     "description": "Addizionare e sottrarre con sicurezza e velocità numeri interi con più di quattro cifre usando l'algoritmo standard in colonna",
     "evidence": [
-      "Calcolare 34,567 + 28,945 usando l'addizione in colonna",
-      "Calcolare 500,000 − 234,178 usando la sottrazione in colonna con più prestiti",
+      "Calcolare 34.567 + 28.945 usando l'addizione in colonna",
+      "Calcolare 500.000 − 234.178 usando la sottrazione in colonna con più prestiti",
       "Sommare tre numeri di cinque cifre in un unico schema in colonna"
     ],
-    "assessmentPrompt": "{{name}} riesce ad addizionare o sottrarre correttamente numeri grandi — come '23,846 + 14,579' — usando il metodo in colonna, riportando e prendendo in prestito correttamente su tutte le colonne necessarie?"
+    "assessmentPrompt": "{{name}} riesce ad addizionare o sottrarre correttamente numeri grandi — come '23.846 + 14.579' — usando il metodo in colonna, riportando e prendendo in prestito correttamente su tutte le colonne necessarie?"
   },
   "mt_YzM5goBctT": {
     "name": "I decimi",
@@ -1292,9 +1292,9 @@
     "name": "Convertire le unità di misura (9+ anni)",
     "description": "Conoscere le dimensioni relative delle unità di misura all'interno di uno stesso sistema (km/m/cm/mm, kg/g, l/ml, h/min/s); convertire tra diverse unità del sistema metrico decimale ed esprimere le misure in un'unità più piccola; registrare le equivalenze in tabelle di conversione",
     "evidence": [
-      "Convertire 3,5 km in 3,500 m",
+      "Convertire 3,5 km in 3500 m",
       "Completare una tabella di conversione per cm e mm: (1,10), (2,20), (3,30)...",
-      "Esprimere 2 kg 350 g come 2,350 g"
+      "Esprimere 2 kg 350 g come 2350 g"
     ],
     "assessmentPrompt": "Se {{name}} deve convertire 3,5 kg in grammi, sa farlo con sicurezza — e anche completare una semplice tabella a due colonne che mostri le stesse misure in kg e g?"
   },
@@ -1385,7 +1385,7 @@
       "Convertire numeri dalla notazione standard alla notazione ordinaria",
       "Confrontare e ordinare numeri dati in notazione standard"
     ],
-    "assessmentPrompt": "{{name}} sa scrivere 3,400,000 come 3,4 × 10⁶ e riconvertirlo — capendo che la notazione standard è un modo abbreviato per esprimere numeri molto grandi o molto piccoli?"
+    "assessmentPrompt": "{{name}} sa scrivere 3.400.000 come 3,4 × 10⁶ e riconvertirlo — capendo che la notazione standard è un modo abbreviato per esprimere numeri molto grandi o molto piccoli?"
   },
   "mt_bfhng6mOuy": {
     "name": "Angoli nei triangoli (6+ anni)",
@@ -1754,11 +1754,11 @@
     "name": "Il valore posizionale di ogni cifra",
     "description": "Riconoscere il valore posizionale di ogni cifra in un numero a quattro cifre (migliaia, centinaia, decine e unità)",
     "evidence": [
-      "Indicare il valore di ciascuna cifra in un numero a quattro cifre (ad esempio, in 7,345 il 7 rappresenta 7 migliaia)",
+      "Indicare il valore di ciascuna cifra in un numero a quattro cifre (ad esempio, in 7345 il 7 rappresenta 7 migliaia)",
       "Scomporre un numero a quattro cifre in migliaia, centinaia, decine e unità",
-      "Comporre un numero a quattro cifre a partire da parti date del valore posizionale (ad esempio, 3000 + 400 + 50 + 2 = 3,452)"
+      "Comporre un numero a quattro cifre a partire da parti date del valore posizionale (ad esempio, 3000 + 400 + 50 + 2 = 3452)"
     ],
-    "assessmentPrompt": "Se {{name}} vede il numero 5,347, sa dirti il valore di ciascuna cifra — che il 5 significa 5,000, il 3 significa 300, il 4 significa 40 e il 7 significa 7?"
+    "assessmentPrompt": "Se {{name}} vede il numero 5347, sa dirti il valore di ciascuna cifra — che il 5 significa 5000, il 3 significa 300, il 4 significa 40 e il 7 significa 7?"
   },
   "mt_k2WE0-22-4": {
     "name": "Frazioni unitarie",
@@ -1791,14 +1791,14 @@
     "assessmentPrompt": "Se {{name}} vede il numero decimale 0,003, sa scriverlo come frazione e dirti all'incirca dove si trova su una linea dei numeri tra 0 e 0,01?"
   },
   "mt_lC_Q5mSL_I": {
-    "name": "I numeri fino a 10,000",
-    "description": "Identificare, rappresentare e stimare numeri fino a 10,000 usando diverse rappresentazioni",
+    "name": "I numeri fino a 10.000",
+    "description": "Identificare, rappresentare e stimare numeri fino a 10.000 usando diverse rappresentazioni",
     "evidence": [
       "Rappresentare un numero a quattro cifre su una tabella del valore posizionale o con materiale in base dieci",
-      "Stimare dove si colloca un numero su una retta numerica da 0 a 10,000",
+      "Stimare dove si colloca un numero su una retta numerica da 0 a 10.000",
       "Abbinare diverse rappresentazioni dello stesso numero (ad esempio, la forma estesa, i gettoni del valore posizionale, il numero scritto)"
     ],
-    "assessmentPrompt": "{{name}} sa segnare un numero come 6,400 all'incirca nel punto giusto su una retta numerica che va da 0 a 10,000 — e spiegare come ha deciso dove metterlo?"
+    "assessmentPrompt": "{{name}} sa segnare un numero come 6400 all'incirca nel punto giusto su una retta numerica che va da 0 a 10.000 — e spiegare come ha deciso dove metterlo?"
   },
   "mt_lNGpnILM5C": {
     "name": "Leggere le cifre decimali",
@@ -1858,7 +1858,7 @@
       "Impostare e risolvere una sottrazione in colonna con prestiti su più colonne",
       "Verificare il risultato usando una stima o le operazioni inverse"
     ],
-    "assessmentPrompt": "{{name}} riesce a impostare in colonna un'operazione come '3,842 + 1,765' o '4,301 − 2,658' e a svolgerla correttamente, riportando e prendendo in prestito su più colonne?"
+    "assessmentPrompt": "{{name}} riesce a impostare in colonna un'operazione come '3842 + 1765' o '4301 − 2658' e a svolgerla correttamente, riportando e prendendo in prestito su più colonne?"
   },
   "mt_nTL-owFJTF": {
     "name": "Stimare le risposte (10+ anni)",
@@ -1954,11 +1954,11 @@
     "name": "Moltiplicazione in colonna estesa",
     "description": "Moltiplicare un numero intero fino a quattro cifre per un numero a una cifra, e moltiplicare due numeri a due cifre, usando metodi scritti formali inclusa la moltiplicazione in colonna estesa; illustrare con modelli ad area",
     "evidence": [
-      "Calcolare 2,347 × 6 usando lo schema scritto formale",
+      "Calcolare 2347 × 6 usando lo schema scritto formale",
       "Calcolare 34 × 27 usando la moltiplicazione in colonna estesa",
       "Disegnare un modello ad area per 45 × 23 e collegarlo al metodo scritto"
     ],
-    "assessmentPrompt": "{{name}} riesce a calcolare qualcosa come '2,346 × 7' o '43 × 28' usando il metodo formale in colonna — impostandolo con attenzione e seguendo tutti i passaggi?"
+    "assessmentPrompt": "{{name}} riesce a calcolare qualcosa come '2346 × 7' o '43 × 28' usando il metodo formale in colonna — impostandolo con attenzione e seguendo tutti i passaggi?"
   },
   "mt_qUGMyMYn9m": {
     "name": "Gradi e giri",
@@ -2138,7 +2138,7 @@
       "Calcolare correttamente 45,2 ÷ 1000 = 0,0452",
       "Spiegare perché moltiplicare per 10 sposta ogni cifra di una posizione verso sinistra"
     ],
-    "assessmentPrompt": "{{name}} riesce a calcolare '4,6 ÷ 1,000 = 0,0046' — sapendo che ogni divisione per 10 sposta le cifre di una posizione verso destra, anche oltre la virgola decimale?"
+    "assessmentPrompt": "{{name}} riesce a calcolare '4,6 ÷ 1000 = 0,0046' — sapendo che ogni divisione per 10 sposta le cifre di una posizione verso destra, anche oltre la virgola decimale?"
   },
   "mt_wQ89AEXhz3": {
     "name": "Le tabelline (7+ anni)",

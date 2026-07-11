@@ -530,7 +530,7 @@
     }
    ],
    "assessmentPrompt": {
-    "it": "{{name}} riesce a impostare in colonna un'operazione come '3,842 + 1,765' o '4,301 − 2,658' e a svolgerla correttamente, riportando e prendendo in prestito su più colonne?",
+    "it": "{{name}} riesce a impostare in colonna un'operazione come '3842 + 1765' o '4301 − 2658' e a svolgerla correttamente, riportando e prendendo in prestito su più colonne?",
     "en": "Can {{name}} line up a sum like '3,842 + 1,765' or '4,301 − 2,658' in columns and work through it correctly — carrying and borrowing across multiple columns?"
    },
    "standards": [
@@ -555,11 +555,11 @@
    "centrality": 0.04377564979480164,
    "evidence": [
     {
-     "it": "Calcolare 34,567 + 28,945 usando l'addizione in colonna",
+     "it": "Calcolare 34.567 + 28.945 usando l'addizione in colonna",
      "en": "Calculate 34,567 + 28,945 using columnar addition"
     },
     {
-     "it": "Calcolare 500,000 − 234,178 usando la sottrazione in colonna con più prestiti",
+     "it": "Calcolare 500.000 − 234.178 usando la sottrazione in colonna con più prestiti",
      "en": "Calculate 500,000 − 234,178 using columnar subtraction with multiple exchanges"
     },
     {
@@ -568,7 +568,7 @@
     }
    ],
    "assessmentPrompt": {
-    "it": "{{name}} riesce ad addizionare o sottrarre correttamente numeri grandi — come '23,846 + 14,579' — usando il metodo in colonna, riportando e prendendo in prestito correttamente su tutte le colonne necessarie?",
+    "it": "{{name}} riesce ad addizionare o sottrarre correttamente numeri grandi — come '23.846 + 14.579' — usando il metodo in colonna, riportando e prendendo in prestito correttamente su tutte le colonne necessarie?",
     "en": "Can {{name}} accurately add or subtract large numbers — like '23,846 + 14,579' — using the column method, carrying and borrowing correctly however many columns it takes?"
    },
    "standards": []
@@ -1043,7 +1043,7 @@
    "subject": "Mathematics",
    "domain": "Counting & Cardinality",
    "name": {
-    "it": "Contare entro 1,000",
+    "it": "Contare entro 1000",
     "en": "Counting Within 1,000"
    },
    "description": {
@@ -1139,7 +1139,7 @@
      "en": "Recite the multiples of 7 from 0 to at least 84"
     },
     {
-     "it": "Contare a salti di 25 da 0 fino a 1000 e a salti di 1000 fino a 10,000",
+     "it": "Contare a salti di 25 da 0 fino a 1000 e a salti di 1000 fino a 10.000",
      "en": "Count in steps of 25 from 0 to 1000 and in steps of 1000 up to 10,000"
     }
    ],
@@ -1769,7 +1769,7 @@
    "centrality": 0.07250341997264022,
    "evidence": [
     {
-     "it": "Ordinare 0,45, 0,54, 0,39 dal più piccolo al più grande",
+     "it": "Ordinare 0,45; 0,54; 0,39 dal più piccolo al più grande",
      "en": "Order 0.45, 0.54, 0.39 from smallest to largest"
     },
     {
@@ -2181,7 +2181,7 @@
      "en": "Compare 0.45 and 0.405 and explain which is greater"
     },
     {
-     "it": "Ordinare 3,142, 3,14, 3,2 dal più piccolo al più grande",
+     "it": "Ordinare 3,142; 3,14; 3,2 dal più piccolo al più grande",
      "en": "Order 3.142, 3.14, 3.2 from smallest to largest"
     },
     {
@@ -5465,7 +5465,7 @@
    "centrality": 0.07797537619699042,
    "evidence": [
     {
-     "it": "Convertire 3,5 km in 3,500 m",
+     "it": "Convertire 3,5 km in 3500 m",
      "en": "Convert 3.5 km to 3,500 m"
     },
     {
@@ -5473,7 +5473,7 @@
      "en": "Complete a conversion table for cm and mm: (1,10), (2,20), (3,30)..."
     },
     {
-     "it": "Esprimere 2 kg 350 g come 2,350 g",
+     "it": "Esprimere 2 kg 350 g come 2350 g",
      "en": "Express 2 kg 350 g as 2,350 g"
     }
    ],
@@ -5681,7 +5681,7 @@
    "centrality": 0.1039671682626539,
    "evidence": [
     {
-     "it": "Convertire 3,250 g in 3,25 kg usando la notazione decimale",
+     "it": "Convertire 3250 g in 3,25 kg usando la notazione decimale",
      "en": "Convert 3,250 g to 3.25 kg using decimal notation"
     },
     {
@@ -5757,7 +5757,7 @@
      "en": "Solve: 'A recipe uses 0.75 kg of flour. How many grams are needed for 3 batches?'"
     },
     {
-     "it": "Confrontare 2,5 litri e 2,450 ml convertendoli nella stessa unità",
+     "it": "Confrontare 2,5 litri e 2450 ml convertendoli nella stessa unità",
      "en": "Compare 2.5 litres and 2,450 ml by converting to the same unit"
     },
     {
@@ -6657,7 +6657,7 @@
    "centrality": 0.13406292749658,
    "evidence": [
     {
-     "it": "Calcolare 4,932 ÷ 6 usando la divisione in colonna",
+     "it": "Calcolare 4932 ÷ 6 usando la divisione in colonna",
      "en": "Calculate 4,932 ÷ 6 using short division"
     },
     {
@@ -6670,7 +6670,7 @@
     }
    ],
    "assessmentPrompt": {
-    "it": "{{name}} riesce a usare il metodo della divisione in colonna per calcolare qualcosa come '2,457 ÷ 6', e a decidere cosa fare con un eventuale resto?",
+    "it": "{{name}} riesce a usare il metodo della divisione in colonna per calcolare qualcosa come '2457 ÷ 6', e a decidere cosa fare con un eventuale resto?",
     "en": "Can {{name}} use the short division ('bus stop') method to work out something like '2,457 ÷ 6', and decide what to do with any remainder left over?"
    },
    "standards": []
@@ -6777,7 +6777,7 @@
    "centrality": 0.1792065663474692,
    "evidence": [
     {
-     "it": "Calcolare 2,347 × 6 usando lo schema scritto formale",
+     "it": "Calcolare 2347 × 6 usando lo schema scritto formale",
      "en": "Calculate 2,347 × 6 using formal written layout"
     },
     {
@@ -6790,7 +6790,7 @@
     }
    ],
    "assessmentPrompt": {
-    "it": "{{name}} riesce a calcolare qualcosa come '2,346 × 7' o '43 × 28' usando il metodo formale in colonna — impostandolo con attenzione e seguendo tutti i passaggi?",
+    "it": "{{name}} riesce a calcolare qualcosa come '2346 × 7' o '43 × 28' usando il metodo formale in colonna — impostandolo con attenzione e seguendo tutti i passaggi?",
     "en": "Can {{name}} work out something like '2,346 × 7' or '43 × 28' using the formal column method — setting it out carefully and working through all the steps?"
    },
    "standards": []
@@ -6862,7 +6862,7 @@
     }
    ],
    "assessmentPrompt": {
-    "it": "{{name}} riesce a calcolare rapidamente '4,7 × 100' o '3,600 ÷ 1,000' — sapendo che le cifre si spostano a sinistra o a destra nella tabella del valore posizionale a seconda che si stia moltiplicando o dividendo?",
+    "it": "{{name}} riesce a calcolare rapidamente '4,7 × 100' o '3600 ÷ 1000' — sapendo che le cifre si spostano a sinistra o a destra nella tabella del valore posizionale a seconda che si stia moltiplicando o dividendo?",
     "en": "Can {{name}} quickly work out '4.7 × 100' or '3,600 ÷ 1,000' — knowing that digits shift left or right in the place-value chart depending on whether they're multiplying or dividing?"
    },
    "standards": []
@@ -6995,7 +6995,7 @@
    "centrality": 0.1450068399452804,
    "evidence": [
     {
-     "it": "Calcolare 4,752 ÷ 13 usando la divisione in colonna estesa ed esprimere il resto come frazione",
+     "it": "Calcolare 4752 ÷ 13 usando la divisione in colonna estesa ed esprimere il resto come frazione",
      "en": "Compute 4,752 ÷ 13 using long division and express the remainder as a fraction"
     },
     {
@@ -7008,7 +7008,7 @@
     }
    ],
    "assessmentPrompt": {
-    "it": "{{name}} riesce a usare la divisione in colonna estesa per calcolare qualcosa come '1,848 ÷ 24' — seguendo i passaggi di dividere, moltiplicare, sottrarre e abbassare la cifra successiva fino ad arrivare al risultato?",
+    "it": "{{name}} riesce a usare la divisione in colonna estesa per calcolare qualcosa come '1848 ÷ 24' — seguendo i passaggi di dividere, moltiplicare, sottrarre e abbassare la cifra successiva fino ad arrivare al risultato?",
     "en": "Can {{name}} use long division to work out something like '1,848 ÷ 24' — going through the steps of divide, multiply, subtract, and bring down until they reach the answer?"
    },
    "standards": []
@@ -7031,7 +7031,7 @@
    "centrality": 0.1751025991792066,
    "evidence": [
     {
-     "it": "Calcolare correttamente 2,463 × 37 usando la moltiplicazione in colonna estesa",
+     "it": "Calcolare correttamente 2463 × 37 usando la moltiplicazione in colonna estesa",
      "en": "Correctly compute 2,463 × 37 using long multiplication"
     },
     {
@@ -7044,7 +7044,7 @@
     }
    ],
    "assessmentPrompt": {
-    "it": "{{name}} riesce a usare la moltiplicazione in colonna estesa per calcolare qualcosa come '2,347 × 24' — impostandola su due righe, una per le unità e una per le decine, e poi sommando i risultati?",
+    "it": "{{name}} riesce a usare la moltiplicazione in colonna estesa per calcolare qualcosa come '2347 × 24' — impostandola su due righe, una per le unità e una per le decine, e poi sommando i risultati?",
     "en": "Can {{name}} use long multiplication to work out something like '2,347 × 24' — setting it out in two rows, one for the units and one for the tens, then adding the results?"
    },
    "standards": []
@@ -7080,7 +7080,7 @@
     }
    ],
    "assessmentPrompt": {
-    "it": "{{name}} riesce a calcolare '4,6 ÷ 1,000 = 0,0046' — sapendo che ogni divisione per 10 sposta le cifre di una posizione verso destra, anche oltre la virgola decimale?",
+    "it": "{{name}} riesce a calcolare '4,6 ÷ 1000 = 0,0046' — sapendo che ogni divisione per 10 sposta le cifre di una posizione verso destra, anche oltre la virgola decimale?",
     "en": "Can {{name}} work out '4.6 ÷ 1,000 = 0.0046' — knowing that each division by 10 shifts digits one place to the right, even past the decimal point?"
    },
    "standards": [
@@ -7662,7 +7662,7 @@
      "en": "Compare two four-digit numbers using >, <, and = by examining digits from the highest place value"
     },
     {
-     "it": "Ordinare un insieme di numeri fino a 10,000 dal più piccolo al più grande",
+     "it": "Ordinare un insieme di numeri fino a 10.000 dal più piccolo al più grande",
      "en": "Order a set of numbers up to 10,000 from smallest to largest"
     },
     {
@@ -7671,7 +7671,7 @@
     }
    ],
    "assessmentPrompt": {
-    "it": "{{name}} sa mettere in ordine dal più piccolo al più grande un insieme di numeri a quattro cifre come 4,321, 1,876 e 9,045 — confrontandoli cifra per cifra?",
+    "it": "{{name}} sa mettere in ordine dal più piccolo al più grande un insieme di numeri a quattro cifre come 4321, 1876 e 9045 — confrontandoli cifra per cifra?",
     "en": "Can {{name}} put a set of four-digit numbers like 4,321, 1,876, and 9,045 in order from smallest to largest — comparing them digit by digit?"
    },
    "standards": [
@@ -7722,11 +7722,11 @@
    "subject": "Mathematics",
    "domain": "Number Representation & Place Value",
    "name": {
-    "it": "I numeri fino a 10,000",
+    "it": "I numeri fino a 10.000",
     "en": "Numbers to 10,000"
    },
    "description": {
-    "it": "Identificare, rappresentare e stimare numeri fino a 10,000 usando diverse rappresentazioni",
+    "it": "Identificare, rappresentare e stimare numeri fino a 10.000 usando diverse rappresentazioni",
     "en": "Identify, represent, and estimate numbers up to 10,000 using different representations"
    },
    "ageRangeStart": 8,
@@ -7738,7 +7738,7 @@
      "en": "Represent a four-digit number on a place-value chart or with base-ten materials"
     },
     {
-     "it": "Stimare dove si colloca un numero su una retta numerica da 0 a 10,000",
+     "it": "Stimare dove si colloca un numero su una retta numerica da 0 a 10.000",
      "en": "Estimate where a number falls on a 0–10,000 number line"
     },
     {
@@ -7747,7 +7747,7 @@
     }
    ],
    "assessmentPrompt": {
-    "it": "{{name}} sa segnare un numero come 6,400 all'incirca nel punto giusto su una retta numerica che va da 0 a 10,000 — e spiegare come ha deciso dove metterlo?",
+    "it": "{{name}} sa segnare un numero come 6400 all'incirca nel punto giusto su una retta numerica che va da 0 a 10.000 — e spiegare come ha deciso dove metterlo?",
     "en": "Can {{name}} mark a number like 6,400 roughly in the right place on a number line that goes from 0 to 10,000 — and explain how they decided where to put it?"
    },
    "standards": [
@@ -7772,7 +7772,7 @@
    "centrality": 0.1217510259917921,
    "evidence": [
     {
-     "it": "Indicare il valore di ciascuna cifra in un numero a quattro cifre (ad esempio, in 7,345 il 7 rappresenta 7 migliaia)",
+     "it": "Indicare il valore di ciascuna cifra in un numero a quattro cifre (ad esempio, in 7345 il 7 rappresenta 7 migliaia)",
      "en": "State the value of each digit in a four-digit number (e.g. in 7,345 the 7 represents 7 thousands)"
     },
     {
@@ -7780,12 +7780,12 @@
      "en": "Partition a four-digit number into thousands, hundreds, tens, and ones"
     },
     {
-     "it": "Comporre un numero a quattro cifre a partire da parti date del valore posizionale (ad esempio, 3000 + 400 + 50 + 2 = 3,452)",
+     "it": "Comporre un numero a quattro cifre a partire da parti date del valore posizionale (ad esempio, 3000 + 400 + 50 + 2 = 3452)",
      "en": "Compose a four-digit number from given place-value parts (e.g. 3000 + 400 + 50 + 2 = 3,452)"
     }
    ],
    "assessmentPrompt": {
-    "it": "Se {{name}} vede il numero 5,347, sa dirti il valore di ciascuna cifra — che il 5 significa 5,000, il 3 significa 300, il 4 significa 40 e il 7 significa 7?",
+    "it": "Se {{name}} vede il numero 5347, sa dirti il valore di ciascuna cifra — che il 5 significa 5000, il 3 significa 300, il 4 significa 40 e il 7 significa 7?",
     "en": "If {{name}} sees the number 5,347, can they tell you the value of each digit — that the 5 means 5,000, the 3 means 300, the 4 means 40, and the 7 means 7?"
    },
    "standards": [
@@ -7846,7 +7846,7 @@
    "centrality": 0.1039671682626539,
    "evidence": [
     {
-     "it": "Spiegare che il 3 in 3,000 vale dieci volte il 3 in 300",
+     "it": "Spiegare che il 3 in 3000 vale dieci volte il 3 in 300",
      "en": "Explain that the 3 in 3,000 is ten times the 3 in 300"
     },
     {
@@ -7854,7 +7854,7 @@
      "en": "Complete: 700 ÷ 70 = __ and explain using place-value reasoning"
     },
     {
-     "it": "Indicare quante volte il valore del 5 in 50,000 è maggiore del valore del 5 in 5,000",
+     "it": "Indicare quante volte il valore del 5 in 50.000 è maggiore del valore del 5 in 5000",
      "en": "State how many times greater the value of the 5 in 50,000 is than the 5 in 5,000"
     }
    ],
@@ -7874,7 +7874,7 @@
     "en": "Reading and writing numbers (age 9+)"
    },
    "description": {
-    "it": "Leggere, scrivere, ordinare e confrontare numeri interi fino ad almeno 1,000,000 usando la notazione in base dieci, i nomi dei numeri, la forma estesa e la comprensione del valore posizionale",
+    "it": "Leggere, scrivere, ordinare e confrontare numeri interi fino ad almeno 1.000.000 usando la notazione in base dieci, i nomi dei numeri, la forma estesa e la comprensione del valore posizionale",
     "en": "Read, write, order, and compare whole numbers up to at least 1,000,000 using base-ten numerals, number names, expanded form, and place-value understanding"
    },
    "ageRangeStart": 9,
@@ -7882,11 +7882,11 @@
    "centrality": 0.06155950752393981,
    "evidence": [
     {
-     "it": "Scrivere 403,072 in lettere e in forma estesa",
+     "it": "Scrivere 403.072 in lettere e in forma estesa",
      "en": "Write 403,072 in words and in expanded form"
     },
     {
-     "it": "Confrontare 548,301 e 543,801 usando < e spiegare il ragionamento",
+     "it": "Confrontare 548.301 e 543.801 usando < e spiegare il ragionamento",
      "en": "Compare 548,301 and 543,801 using < and explain the reasoning"
     },
     {
@@ -7895,7 +7895,7 @@
     }
    ],
    "assessmentPrompt": {
-    "it": "{{name}} sa leggere e scrivere numeri fino ai milioni — come 1,340,000 — e mettere correttamente in ordine un insieme di numeri grandi?",
+    "it": "{{name}} sa leggere e scrivere numeri fino ai milioni — come 1.340.000 — e mettere correttamente in ordine un insieme di numeri grandi?",
     "en": "Can {{name}} read and write numbers into the millions — like 1,340,000 — and put a set of large numbers in order correctly?"
    },
    "standards": []
@@ -7954,7 +7954,7 @@
    "centrality": 0.05882352941176471,
    "evidence": [
     {
-     "it": "Scrivere 10⁴ = 10,000 e spiegare che l'esponente indica quattro fattori di 10",
+     "it": "Scrivere 10⁴ = 10.000 e spiegare che l'esponente indica quattro fattori di 10",
      "en": "Write 10⁴ = 10,000 and explain the exponent means four factors of 10"
     },
     {
@@ -7967,7 +7967,7 @@
     }
    ],
    "assessmentPrompt": {
-    "it": "{{name}} sa spiegare perché 10² = 100 e 10³ = 1,000, e perché moltiplicare per 10 aggiunge semplicemente uno zero — collegando la regolarità degli zeri al valore posizionale?",
+    "it": "{{name}} sa spiegare perché 10² = 100 e 10³ = 1000, e perché moltiplicare per 10 aggiunge semplicemente uno zero — collegando la regolarità degli zeri al valore posizionale?",
     "en": "Can {{name}} explain why 10² = 100 and 10³ = 1,000, and why multiplying by 10 just adds a zero — connecting the pattern of zeros to place value?"
    },
    "standards": []
@@ -7998,7 +7998,7 @@
      "en": "State that a digit moving one place left is ×10 and one place right is ÷10"
     },
     {
-     "it": "Confrontare il valore del 6 in 6,000 e in 0,006",
+     "it": "Confrontare il valore del 6 in 6000 e in 0,006",
      "en": "Compare the value of the 6 in 6,000 and in 0.006"
     }
    ],
@@ -8050,11 +8050,11 @@
    "subject": "Mathematics",
    "domain": "Number Representation & Place Value",
    "name": {
-    "it": "Leggere e scrivere i numeri fino a 10,000,000",
+    "it": "Leggere e scrivere i numeri fino a 10.000.000",
     "en": "Reading and writing numbers to 10,000,000"
    },
    "description": {
-    "it": "Leggere, scrivere, ordinare e confrontare numeri fino a 10,000,000 e determinare il valore di ciascuna cifra",
+    "it": "Leggere, scrivere, ordinare e confrontare numeri fino a 10.000.000 e determinare il valore di ciascuna cifra",
     "en": "Read, write, order, and compare numbers up to 10,000,000 and determine the value of each digit"
    },
    "ageRangeStart": 10,
@@ -8062,7 +8062,7 @@
    "centrality": 0.09986320109439124,
    "evidence": [
     {
-     "it": "Scrivere 4,302,561 in lettere",
+     "it": "Scrivere 4.302.561 in lettere",
      "en": "Write 4,302,561 in words"
     },
     {
@@ -8070,12 +8070,12 @@
      "en": "Order four seven-digit numbers from smallest to largest"
     },
     {
-     "it": "Indicare che il valore del 7 in 7,045,200 è sette milioni",
+     "it": "Indicare che il valore del 7 in 7.045.200 è sette milioni",
      "en": "State the value of the 7 in 7,045,200 as seven million"
     }
    ],
    "assessmentPrompt": {
-    "it": "{{name}} sa leggere e scrivere numeri fino a 10 milioni — come 4,302,617 — e indicare il valore di qualsiasi cifra del numero?",
+    "it": "{{name}} sa leggere e scrivere numeri fino a 10 milioni — come 4.302.617 — e indicare il valore di qualsiasi cifra del numero?",
     "en": "Can {{name}} read and write numbers up to 10 million — like 4,302,617 — and say the value of any digit in the number?"
    },
    "standards": []
@@ -8267,7 +8267,7 @@
     }
    ],
    "assessmentPrompt": {
-    "it": "{{name}} sa scrivere 3,400,000 come 3,4 × 10⁶ e riconvertirlo — capendo che la notazione standard è un modo abbreviato per esprimere numeri molto grandi o molto piccoli?",
+    "it": "{{name}} sa scrivere 3.400.000 come 3,4 × 10⁶ e riconvertirlo — capendo che la notazione standard è un modo abbreviato per esprimere numeri molto grandi o molto piccoli?",
     "en": "Can {{name}} write 3,400,000 as 3.4 × 10⁶ and convert back — understanding that standard form is a shorthand for very large or very small numbers?"
    },
    "standards": [
