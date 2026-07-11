@@ -58,7 +58,7 @@ export async function startDiagnostic(
 
 export async function answerDiagnostic(
   db: Db, graph: TopicGraph, assessor: AssessorPort, userId: string,
-  args: { profileId: string; sessionId: string; answer: string }
+  args: { profileId: string; sessionId: string; exerciseId: string; answer: string }
 ) {
   const p = await repo.getOwnedProfile(db, userId, args.profileId);
   const [row] = await db.select().from(learningSession)
@@ -74,9 +74,16 @@ export async function answerDiagnostic(
   const stored = fromPlanJson(row.planJson);
   const topicId = stored.diagnosticState.currentTopicId;
   if (!topicId) throw new repo.ConflictError(`no pending diagnostic question for session ${args.sessionId}`);
+  // mid-run replay nonce: the client echoes back only the *id* of the question it's answering
+  // (never the full exercise, so correctAnswer/explanation never round-trip) — a stale/replayed
+  // answer for a question that's no longer pending (the diagnostic has already moved on) must be
+  // rejected before anything is graded or written.
+  if (stored.currentExercise.id !== args.exerciseId) {
+    throw new repo.ConflictError(`exerciseId ${args.exerciseId} does not match the pending diagnostic question`);
+  }
 
-  // grade the server-persisted exercise only — there is no client echo to cross-check anymore;
-  // the server already knows which exercise is currently pending for this session.
+  // grade the server-persisted exercise only — the client-supplied exerciseId above is only a
+  // nonce check, never the graded content itself.
   const graded = await assessor.grade(stored.currentExercise, args.answer, p.locale);
   await db.insert(evidenceRecord).values({
     profileId: p.id, topicId, sessionId: args.sessionId, source: "diagnostic",

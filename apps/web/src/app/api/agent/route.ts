@@ -51,9 +51,12 @@ export async function POST(req: Request) {
       masteryStatus: mastery.status, recentErrors, resources
     };
 
-    const { textStream } = await streamTeacher(
-      registry, ctx, messages as unknown as Parameters<typeof streamTeacher>[2], { maxOutputTokens: 1000 }
+    // construct each message per-branch (rather than a blanket cast) so the role literal narrows
+    // correctly against streamTeacher's ModelMessage[] parameter.
+    const modelMessages: Parameters<typeof streamTeacher>[2] = messages.map((m) =>
+      m.role === "user" ? { role: "user" as const, content: m.content } : { role: "assistant" as const, content: m.content }
     );
+    const { textStream } = await streamTeacher(registry, ctx, modelMessages, { maxOutputTokens: 1000 });
     const mirrored = withRunErrorMirror(textStream, async (message) => {
       await db.insert(learningSignal).values({
         profileId: p.id, threadId, runId, actor: "agent", signal: "run_error", after: message

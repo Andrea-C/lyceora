@@ -96,26 +96,31 @@ export async function createServedExercise(
 }
 
 /**
- * Loads a served exercise for grading, enforcing custody: it must belong to this profile
- * (else ForbiddenError/403 — an id for someone else's exercise), and it must match this
- * session+topic and still be unconsumed (else ConflictError/409 — stale/foreign/replayed).
- * Never returns an exercise the caller isn't currently allowed to grade.
+ * Atomically claims a served exercise: consumed_at is set BEFORE grading, not after, via a single
+ * `UPDATE ... WHERE consumed_at IS NULL RETURNING *`. Zero rows back (missing id, or already
+ * consumed) is a clean ConflictError/409 with nothing else having happened — this is what closes
+ * a genuine concurrent double-submit, not just a sequential replay (a check-then-act
+ * select-then-update pair would leave a race window between the two statements; this doesn't).
+ *
+ * The claim query only checks `id` + `consumed_at IS NULL` — it does NOT check
+ * profile/session/topic/difficulty. The caller (completeActivity) must verify all of those
+ * against the returned row and throw the appropriate ForbiddenError/ConflictError itself. If that
+ * post-claim check fails, the exercise is still burned. Accepted tradeoff: the client just fetches
+ * a fresh one from GET /api/activity/exercise; a burned exercise is far cheaper than reopening a
+ * race window on the claim itself.
  */
-export async function loadServedExerciseForGrading(
-  db: Db, args: { servedExerciseId: string; profileId: string; sessionId: string; topicId: string }
-): Promise<{ id: string; exercise: Exercise }> {
-  const [row] = await db.select().from(servedExercise).where(eq(servedExercise.id, args.servedExerciseId));
-  if (!row || row.profileId !== args.profileId) {
-    throw new ForbiddenError(`served exercise ${args.servedExerciseId} not owned by profile ${args.profileId}`);
+export async function claimServedExercise(
+  db: Db, servedExerciseId: string
+): Promise<{ profileId: string; sessionId: string; topicId: string; difficulty: number; exercise: Exercise }> {
+  const [row] = await db.update(servedExercise)
+    .set({ consumedAt: new Date() })
+    .where(and(eq(servedExercise.id, servedExerciseId), isNull(servedExercise.consumedAt)))
+    .returning();
+  if (!row) {
+    throw new ConflictError(`served exercise ${servedExerciseId} is not a valid pending exercise (missing or already consumed)`);
   }
-  if (row.sessionId !== args.sessionId || row.topicId !== args.topicId || row.consumedAt) {
-    throw new ConflictError(`served exercise ${args.servedExerciseId} is not a valid pending exercise for this request`);
-  }
-  return { id: row.id, exercise: row.exerciseJson as unknown as Exercise };
-}
-
-/** Single-use: guarded by `consumedAt IS NULL` so a race can't double-consume the same row. */
-export async function consumeServedExercise(db: Db, servedExerciseId: string) {
-  await db.update(servedExercise).set({ consumedAt: new Date() })
-    .where(and(eq(servedExercise.id, servedExerciseId), isNull(servedExercise.consumedAt)));
+  return {
+    profileId: row.profileId, sessionId: row.sessionId, topicId: row.topicId,
+    difficulty: row.difficulty, exercise: row.exerciseJson as unknown as Exercise
+  };
 }

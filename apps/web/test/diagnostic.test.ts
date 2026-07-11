@@ -3,7 +3,7 @@ import { PGlite } from "@electric-sql/pglite";
 import { drizzle } from "drizzle-orm/pglite";
 import { migrate } from "drizzle-orm/pglite/migrator";
 import { fileURLToPath } from "node:url";
-import { user, profile, masteryState, reviewQueue, xpEvent, enrollment, learningSession } from "@lyceora/db";
+import { user, profile, masteryState, reviewQueue, xpEvent, enrollment, learningSession, evidenceRecord } from "@lyceora/db";
 import { buildGraph, type Topic, type Dependency } from "@lyceora/taxonomy";
 import { eq, and } from "drizzle-orm";
 import { startDiagnostic, answerDiagnostic } from "../src/server/services/diagnostic";
@@ -18,8 +18,10 @@ const t = (id: string): Topic => ({
 const hard = (a: string, b: string): Dependency => ({ topicId: a, prerequisiteId: b, strength: "hard", reason: "t" });
 // diag_top depends (hard) on diag_mid, which depends (hard) on diag_base — a single correct
 // answer on the target should prune both prerequisites to "assumedMastered".
+// diag_a / diag_b are two independent (no shared deps) targets — used to get a diagnostic run
+// with more than one sequential question, for the mid-run replay-nonce test.
 const graph = buildGraph(
-  [t("diag_top"), t("diag_mid"), t("diag_base")],
+  [t("diag_top"), t("diag_mid"), t("diag_base"), t("diag_a"), t("diag_b")],
   [hard("diag_top", "diag_mid"), hard("diag_mid", "diag_base")]
 );
 
@@ -56,7 +58,7 @@ describe("diagnostic happy path + replay idempotency", () => {
     expect(started.question.exercise.correctAnswer).toBe("8");
 
     const answered = await answerDiagnostic(db, graph, fakeAssessor, "diag-parent", {
-      profileId, sessionId: started.sessionId, answer: "8" // correct
+      profileId, sessionId: started.sessionId, exerciseId: started.question.exercise.id, answer: "8" // correct
     });
     expect(answered.done).toBe(true);
     if (!answered.done) throw new Error("expected diagnostic to finish");
@@ -91,11 +93,39 @@ describe("diagnostic happy path + replay idempotency", () => {
 
     // REPLAY: answering again after completion must be rejected — no re-grade, no re-award
     await expect(answerDiagnostic(db, graph, fakeAssessor, "diag-parent", {
-      profileId, sessionId: started.sessionId, answer: "8"
+      profileId, sessionId: started.sessionId, exerciseId: started.question.exercise.id, answer: "8"
     })).rejects.toBeInstanceOf(ConflictError);
 
     const xpRowsAfterReplay = await rawDb.select().from(xpEvent)
       .where(and(eq(xpEvent.profileId, profileId), eq(xpEvent.reason, "diagnosticComplete")));
     expect(xpRowsAfterReplay).toHaveLength(1);
+  });
+});
+
+describe("diagnostic mid-run replay nonce", () => {
+  it("rejects an answer submitted against a question that is no longer the pending one", async () => {
+    const started = await startDiagnostic(db, graph, fakeAssessor, "diag-parent", profileId, "path_test", ["diag_a", "diag_b"]);
+    if (started.done) throw new Error("expected a pending question");
+    const question1 = started.question; // diag_a (both independent, level 0, sorted alphabetically first)
+    expect(question1.topicId).toBe("diag_a");
+
+    const answered1 = await answerDiagnostic(db, graph, fakeAssessor, "diag-parent", {
+      profileId, sessionId: started.sessionId, exerciseId: question1.exercise.id, answer: "8"
+    });
+    if (answered1.done) throw new Error("expected a second pending question (diag_b)");
+    expect(answered1.question.topicId).toBe("diag_b");
+
+    const evidenceBefore = await rawDb.select().from(evidenceRecord)
+      .where(and(eq(evidenceRecord.profileId, profileId), eq(evidenceRecord.sessionId, started.sessionId)));
+
+    // REPLAY: submit an answer against question 1's (diag_a's) exercise id while question 2
+    // (diag_b) is the actually-pending one — must be rejected, and must not write evidence.
+    await expect(answerDiagnostic(db, graph, fakeAssessor, "diag-parent", {
+      profileId, sessionId: started.sessionId, exerciseId: question1.exercise.id, answer: "8"
+    })).rejects.toBeInstanceOf(ConflictError);
+
+    const evidenceAfter = await rawDb.select().from(evidenceRecord)
+      .where(and(eq(evidenceRecord.profileId, profileId), eq(evidenceRecord.sessionId, started.sessionId)));
+    expect(evidenceAfter).toHaveLength(evidenceBefore.length);
   });
 });

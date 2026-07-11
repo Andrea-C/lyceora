@@ -13,5 +13,5 @@ export const registry: Registry = createRegistry(loadModelsConfig(readFileSync(y
 export const liveAssessor: AssessorPort = {
   generate: async (topicId, locale, difficulty, count) =>
     generateExercises(registry, getTopic(topicId), locale, { count, difficulty }),
-  grade: (exercise, answer, locale) => gradeAnswer(registry, exercise, answer, locale)
+  grade: (exercise, answer, locale, opts) => gradeAnswer(registry, exercise, answer, locale, opts)
 };

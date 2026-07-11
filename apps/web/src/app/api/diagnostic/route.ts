@@ -10,7 +10,7 @@ import { requireUserId, guarded } from "@/server/http";
 const startSchema = z.object({ profileId: z.string().min(1), action: z.literal("start") });
 const answerSchema = z.object({
   profileId: z.string().min(1), action: z.literal("answer"),
-  sessionId: z.string().min(1), answer: z.string().min(1)
+  sessionId: z.string().min(1), exerciseId: z.string().min(1), answer: z.string().min(1)
 });
 const bodySchema = z.union([startSchema, answerSchema]);
 
@@ -39,10 +39,11 @@ export async function POST(req: Request) {
         : Response.json({ sessionId: r.sessionId, question: { topicId: r.question.topicId, exercise: redactExercise(r.question.exercise) } });
     }
 
-    // no exerciseJson from the client anymore — the server grades whatever it already has
-    // persisted as the pending question for this session.
+    // no exerciseJson from the client anymore — only exerciseId, a nonce checked against the
+    // server-persisted pending question; the server grades whatever it already has stored.
     const r = await answerDiagnostic(db, graph, liveAssessor, userId, {
-      profileId: parsed.data.profileId, sessionId: parsed.data.sessionId, answer: parsed.data.answer
+      profileId: parsed.data.profileId, sessionId: parsed.data.sessionId,
+      exerciseId: parsed.data.exerciseId, answer: parsed.data.answer
     });
     return r.done
       ? Response.json({ done: true, result: r.result })

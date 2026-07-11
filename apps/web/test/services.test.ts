@@ -3,7 +3,7 @@ import { PGlite } from "@electric-sql/pglite";
 import { drizzle } from "drizzle-orm/pglite";
 import { migrate } from "drizzle-orm/pglite/migrator";
 import { fileURLToPath } from "node:url";
-import { user, profile, masteryState, reviewQueue, dailyActivity, servedExercise } from "@lyceora/db";
+import { user, profile, masteryState, reviewQueue, dailyActivity, servedExercise, evidenceRecord } from "@lyceora/db";
 import { buildGraph, type Topic, type Dependency } from "@lyceora/taxonomy";
 import { addDays, INTERVAL_LADDER_DAYS } from "@lyceora/engine";
 import { eq, and } from "drizzle-orm";
@@ -19,7 +19,7 @@ const hard = (a: string, b: string): Dependency => ({ topicId: a, prerequisiteId
 const graph = buildGraph(
   [
     t("pitagora"), t("radici"), t("potenze"),
-    t("avanzamento"), t("ripasso"), t("custodyA"), t("custodyB")
+    t("avanzamento"), t("ripasso"), t("custodyA"), t("custodyB"), t("custodyC")
   ],
   [hard("pitagora", "radici"), hard("radici", "potenze")]
 );
@@ -157,7 +157,7 @@ describe("served-exercise custody", () => {
     })).rejects.toBeInstanceOf(ConflictError);
   });
 
-  it("rejects re-grading an already-consumed servedExercise", async () => {
+  it("rejects re-grading an already-consumed servedExercise (atomic claim closes the race too)", async () => {
     const { sessionId } = await startSession(db, graph, "parent", profileId, ["custodyB"]);
     const served = await serveExercise({ sessionId, topicId: "custodyB", difficulty: 2 });
 
@@ -169,12 +169,38 @@ describe("served-exercise custody", () => {
     });
     expect(first.graded.correct).toBe(true);
 
+    const evidenceBefore = await rawDb.select().from(evidenceRecord)
+      .where(and(eq(evidenceRecord.profileId, profileId), eq(evidenceRecord.sessionId, sessionId)));
+
+    // second call with the SAME servedExerciseId: the atomic UPDATE...WHERE consumed_at IS NULL
+    // claim returns zero rows the second time (same mechanism that would close a real concurrent
+    // race, not just a sequential replay) -> ConflictError, and nothing further is written.
     await expect(completeActivity(db, graph, fakeAssessor, "parent", {
       profileId, sessionId,
       item: { kind: "exercise", topicId: "custodyB", difficulty: 2 },
       servedExerciseId: served.id, // same row, already consumed
       answer: "8"
     })).rejects.toBeInstanceOf(ConflictError);
+
+    const evidenceAfter = await rawDb.select().from(evidenceRecord)
+      .where(and(eq(evidenceRecord.profileId, profileId), eq(evidenceRecord.sessionId, sessionId)));
+    expect(evidenceAfter).toHaveLength(evidenceBefore.length);
+  });
+
+  it("pins difficulty from the served row: a mismatched item.difficulty is rejected with no mastery movement", async () => {
+    const { sessionId } = await startSession(db, graph, "parent", profileId, ["custodyC"]);
+    const served = await serveExercise({ sessionId, topicId: "custodyC", difficulty: 1 }); // served at difficulty 1
+
+    await expect(completeActivity(db, graph, fakeAssessor, "parent", {
+      profileId, sessionId,
+      item: { kind: "exercise", topicId: "custodyC", difficulty: 2 }, // client claims difficulty 2
+      servedExerciseId: served.id,
+      answer: "8"
+    })).rejects.toBeInstanceOf(ConflictError);
+
+    const rows = await rawDb.select().from(masteryState)
+      .where(and(eq(masteryState.profileId, profileId), eq(masteryState.topicId, "custodyC")));
+    expect(rows).toHaveLength(0); // no fold happened at all
   });
 });
 

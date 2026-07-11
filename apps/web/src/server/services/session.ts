@@ -50,25 +50,44 @@ export async function completeActivity(
     return { xp: XP_AMOUNTS.lessonComplete };
   }
 
-  const source = item.kind === "assessment" ? "assessment" as const
-    : item.kind === "review" ? "review" as const : "exercise" as const;
+  // defensive: the discriminated union + the route's zod schema already guarantee this, but a
+  // non-gradeable kind must never reach the custody claim below.
+  if (item.kind !== "assessment" && item.kind !== "review" && item.kind !== "exercise") {
+    throw new repo.ConflictError(`item kind ${(item as { kind: string }).kind} is not gradeable`);
+  }
+  const source = item.kind;
   const candidateConcepts = source === "assessment"
     ? (graph.prereqsOf.get(item.topicId) ?? []).filter((d) => d.strength === "hard").map((d) => d.prerequisiteId)
     : [];
 
-  // server-side custody: grade the exercise this profile/session/topic was actually served,
-  // never a client-echoed blob, and mark it single-use so it can't be replayed.
-  const { exercise } = await repo.loadServedExerciseForGrading(db, {
-    servedExerciseId: args.servedExerciseId!, profileId: p.id, sessionId: args.sessionId, topicId: item.topicId
-  });
+  // server-side custody: claim (consume) the exercise BEFORE grading — an atomic
+  // UPDATE...WHERE consumed_at IS NULL closes both the sequential-replay and the concurrent-race
+  // cases in one query. If a check below then fails, the exercise is still burned (see
+  // repo.claimServedExercise's doc comment for that accepted tradeoff).
+  const claimed = await repo.claimServedExercise(db, args.servedExerciseId!);
+  if (claimed.profileId !== p.id) {
+    throw new repo.ForbiddenError(`served exercise ${args.servedExerciseId} not owned by profile ${p.id}`);
+  }
+  if (claimed.sessionId !== args.sessionId || claimed.topicId !== item.topicId) {
+    throw new repo.ConflictError(`served exercise ${args.servedExerciseId} does not match this session/topic`);
+  }
+  // pin difficulty (and thus the exercise itself) to what was actually served — the client-
+  // supplied item.difficulty is only ever used to validate it matches, never trusted for the
+  // evidence record or the mastery fold.
+  if (claimed.difficulty !== item.difficulty) {
+    throw new repo.ConflictError(
+      `served exercise difficulty (${claimed.difficulty}) does not match the requested item difficulty (${item.difficulty})`
+    );
+  }
+  const exercise = claimed.exercise;
+  const difficulty = claimed.difficulty as 1 | 2 | 3;
+
   const graded = await assessor.grade(exercise, args.answer!, p.locale, { candidateConcepts });
-  const difficulty = "difficulty" in item ? item.difficulty : (2 as const);
   await db.insert(evidenceRecord).values({
     profileId: p.id, topicId: item.topicId, sessionId: args.sessionId, source,
     isCorrect: graded.correct, difficulty, question: exercise.prompt,
     studentAnswer: args.answer, rubricNotes: graded.feedback, promptRef: exercise.id
   });
-  await repo.consumeServedExercise(db, args.servedExerciseId!);
   const before = await repo.getMasteryOrEmpty(db, p.id, item.topicId);
   const after = applyEvidence(before, [{ source, isCorrect: graded.correct, difficulty, createdAt: new Date() }]);
   await repo.upsertMastery(db, p.id, item.topicId, after);
