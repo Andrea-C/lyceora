@@ -1,4 +1,4 @@
-import type { Topic, Dependency } from "./types.js";
+import type { Topic, Dependency } from "./types";
 
 export type MasteryStatus = "unknown" | "inProgress" | "mastered" | "needsReview";
 export type MasteryMap = ReadonlyMap<string, MasteryStatus>;

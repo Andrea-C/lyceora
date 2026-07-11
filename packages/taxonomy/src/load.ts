@@ -1,6 +1,6 @@
 import { z } from "zod";
-import { topicSchema, dependencySchema } from "./schema.js";
-import type { Topic, Dependency } from "./types.js";
+import { topicSchema, dependencySchema } from "./schema";
+import type { Topic, Dependency } from "./types";
 
 export class TaxonomyValidationError extends Error {
   constructor(message?: string) {

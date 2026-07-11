@@ -1,6 +1,6 @@
 import { streamText, type ModelMessage } from "ai";
-import type { Registry } from "./registry.js";
-import { buildTeacherSystemPrompt, type TeacherContext } from "./prompts/teacher.js";
+import type { Registry } from "./registry";
+import { buildTeacherSystemPrompt, type TeacherContext } from "./prompts/teacher";
 
 export async function streamTeacher(
   reg: Registry, ctx: TeacherContext, messages: ModelMessage[],

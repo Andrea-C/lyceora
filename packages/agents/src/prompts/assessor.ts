@@ -1,5 +1,5 @@
 import type { Topic, Locale } from "@lyceora/taxonomy";
-import { KID_SAFETY_GUARDRAILS } from "./guardrails.js";
+import { KID_SAFETY_GUARDRAILS } from "./guardrails";
 
 const langName = { it: "Italian", en: "English" } as const;
 

@@ -1,5 +1,5 @@
 import { z } from "zod";
-import { localizedTextSchema } from "./schema.js";
+import { localizedTextSchema } from "./schema";
 
 export const resourceSchema = z.object({
   id: z.string().min(1),

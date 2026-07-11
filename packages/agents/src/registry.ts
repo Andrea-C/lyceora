@@ -3,7 +3,7 @@ import { createOpenAI } from "@ai-sdk/openai";
 import { createGoogleGenerativeAI } from "@ai-sdk/google";
 import { createOpenAICompatible } from "@ai-sdk/openai-compatible";
 import type { LanguageModel } from "ai";
-import { splitRef, type ModelsConfig, type ProviderConfig } from "./config.js";
+import { splitRef, type ModelsConfig, type ProviderConfig } from "./config";
 
 export interface ModelCandidate { ref: string; provider: string; modelId: string; model: LanguageModel }
 export type ModelFactory = (modelId: string) => LanguageModel;

@@ -1,9 +1,9 @@
 import type { TopicGraph } from "@lyceora/taxonomy";
 import { frontier as graphFrontier } from "@lyceora/taxonomy";
-import type { MasteryState } from "./mastery.js";
-import type { ReviewRow } from "./review.js";
-import { topoLevels } from "./diagnostic.js";
-import { XP_AMOUNTS } from "./xp.js";
+import type { MasteryState } from "./mastery";
+import type { ReviewRow } from "./review";
+import { topoLevels } from "./diagnostic";
+import { XP_AMOUNTS } from "./xp";
 
 export type SessionItem =
   | { kind: "review"; topicId: string; reason: "due" | "remediation"; difficulty: 1 | 2 | 3 }

@@ -1,9 +1,9 @@
 import { generateObject } from "ai";
 import { z } from "zod";
 import type { Topic, Locale } from "@lyceora/taxonomy";
-import type { Registry } from "./registry.js";
-import { exerciseSetSchema, gradeDeterministic, type Exercise } from "./exercise.js";
-import { exerciseGenPrompt, gradingPrompt } from "./prompts/assessor.js";
+import type { Registry } from "./registry";
+import { exerciseSetSchema, gradeDeterministic, type Exercise } from "./exercise";
+import { exerciseGenPrompt, gradingPrompt } from "./prompts/assessor";
 
 export async function generateExercises(
   reg: Registry, topic: Topic, locale: Locale,

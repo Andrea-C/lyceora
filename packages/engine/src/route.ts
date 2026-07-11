@@ -1,6 +1,6 @@
 import type { TopicGraph, MasteryStatus } from "@lyceora/taxonomy";
 import { frontier as graphFrontier } from "@lyceora/taxonomy";
-import { topoLevels } from "./diagnostic.js";
+import { topoLevels } from "./diagnostic";
 
 export interface AssessmentOutcome {
   passed: boolean;

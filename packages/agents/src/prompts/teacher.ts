@@ -1,5 +1,5 @@
 import type { Topic, Locale, MasteryStatus } from "@lyceora/taxonomy";
-import { KID_SAFETY_GUARDRAILS } from "./guardrails.js";
+import { KID_SAFETY_GUARDRAILS } from "./guardrails";
 
 export interface TeacherContext {
   studentName: string;
