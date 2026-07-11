@@ -6,6 +6,7 @@ import { db } from "@/lib/db";
 import { dailyActivity } from "@lyceora/db";
 import { getActiveProfileOrRedirect } from "@/lib/session";
 import { getGraph, getPath } from "@/server/content";
+import { domainLabel } from "@/server/domain-labels";
 import * as repo from "@/server/repo";
 import { localToday } from "@/server/services/session";
 import { XpBar } from "@/components/XpBar";
@@ -53,7 +54,11 @@ export default async function DashboardPage({
   const graph = getGraph();
   const path = getPath(enrollment.pathId);
   const mastery = await repo.getMasteryMap(db, profile.id);
+  const tDomains = await getTranslations("domains");
 
+  // Grouped by the raw (English) taxonomy domain string first, then translated for display —
+  // grouping on the raw string keeps topics correctly bucketed even if two raw domains happened
+  // to translate to the same label.
   const domainTotals = new Map<string, { mastered: number; total: number }>();
   for (const topicId of path.targetTopicIds) {
     const topic = graph.topics.get(topicId);
@@ -63,7 +68,7 @@ export default async function DashboardPage({
     if (mastery.get(topicId)?.status === "mastered") bucket.mastered += 1;
     domainTotals.set(topic.domain, bucket);
   }
-  const domains = [...domainTotals.entries()].map(([domain, v]) => ({ domain, ...v }));
+  const domains = [...domainTotals.entries()].map(([domain, v]) => ({ domain: domainLabel(domain, tDomains), ...v }));
 
   const today = localToday(profile.timezone);
   const [activity] = await db.select().from(dailyActivity)
