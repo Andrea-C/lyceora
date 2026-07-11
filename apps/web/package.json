@@ -25,11 +25,16 @@
   "devDependencies": {
     "@electric-sql/pglite": "^0.5.4",
     "@tailwindcss/postcss": "^4",
+    "@testing-library/dom": "^10.0.0",
+    "@testing-library/jest-dom": "^6.0.0",
+    "@testing-library/react": "^16.0.0",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "@vitejs/plugin-react": "^4.0.0",
     "eslint": "^9",
     "eslint-config-next": "16.2.10",
+    "jsdom": "^25.0.0",
     "tailwindcss": "^4",
     "typescript": "^5",
     "vitest": "^3.0.0"
