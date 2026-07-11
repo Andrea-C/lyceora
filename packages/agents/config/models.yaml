@@ -1,0 +1,45 @@
+# Model routing. Resolution: agents.<role>.model > agents.<role>.tier > defaults.tier.
+# Refs are "provider/model", split on the FIRST slash.
+# Fail over ONLY on auth, rate-limit, timeout, 5xx, billing. Never on context
+# overflow or safety refusals. NOTE: model IDs rot — verify before first run.
+version: 1
+
+providers:
+  anthropic:
+    api_mode: anthropic_messages
+    api_key_env: ANTHROPIC_API_KEY
+  openai:
+    api_mode: openai_responses
+    api_key_env: OPENAI_API_KEY
+  google:
+    api_mode: gemini
+    api_key_env: GEMINI_API_KEY
+  openrouter:
+    api_mode: chat_completions
+    base_url: https://openrouter.ai/api/v1
+    api_key_env: OPENROUTER_API_KEY
+
+tiers:
+  strong:
+    - anthropic/claude-sonnet-5
+    - openai/gpt-5.4
+    - google/gemini-2.5-pro
+  standard:
+    - anthropic/claude-haiku-4-5
+    - google/gemini-2.5-flash
+    - openrouter/deepseek/deepseek-v3.2
+  cheap:
+    - google/gemini-2.5-flash
+    - anthropic/claude-haiku-4-5
+
+defaults:
+  tier: standard
+
+agents:
+  teacher:   { tier: strong }
+  assessor:  { tier: standard }
+  distiller: { tier: cheap }      # reserved for M3 learning loop
+
+task_slots:
+  safety_scan:      { tier: cheap }
+  title_generation: { tier: cheap }
