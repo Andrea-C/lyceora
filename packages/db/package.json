@@ -7,13 +7,13 @@
   "types": "./src/index.ts",
   "scripts": { "test": "vitest run" },
   "dependencies": {
-    "drizzle-orm": "latest",
-    "pg": "latest",
+    "drizzle-orm": "^0.45.2",
+    "pg": "^8.22.0",
     "@lyceora/engine": "workspace:*"
   },
   "devDependencies": {
-    "drizzle-kit": "latest",
-    "@electric-sql/pglite": "latest",
-    "@types/pg": "latest"
+    "drizzle-kit": "^0.31.10",
+    "@electric-sql/pglite": "^0.5.4",
+    "@types/pg": "^8.20.0"
   }
 }

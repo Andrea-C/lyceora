@@ -45,5 +45,10 @@ describe("schema", () => {
     await expect(
       db.insert(s.reviewQueue).values({ profileId: p!.id, topicId: "t1", dueOn: "2026-07-13" })
     ).rejects.toThrow();
+
+    await db.insert(s.dailyActivity).values({ profileId: p!.id, activityDate: "2026-07-12", goalXp: 30 });
+    await expect(
+      db.insert(s.dailyActivity).values({ profileId: p!.id, activityDate: "2026-07-12", goalXp: 30 })
+    ).rejects.toThrow();
   });
 });
