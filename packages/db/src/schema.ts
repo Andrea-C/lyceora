@@ -3,7 +3,7 @@ import {
   timestamp, date, jsonb, index, uniqueIndex
 } from "drizzle-orm/pg-core";
 import type { SessionPlan } from "@lyceora/engine";
-import { user } from "./auth-schema.js";
+import { user } from "./auth-schema";
 
 export const localeEnum = pgEnum("locale", ["it", "en"]);
 export const masteryStatusEnum = pgEnum("mastery_status", ["unknown", "inProgress", "mastered", "needsReview"]);
