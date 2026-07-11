@@ -17,14 +17,17 @@ export function exerciseGenPrompt(topic: Topic, locale: Locale, count: number, d
 }
 
 export function gradingPrompt(
-  prompt: string, studentAnswer: string, locale: Locale, candidateConcepts: string[]
+  prompt: string, correctAnswer: string, explanation: string, studentAnswer: string,
+  locale: Locale, candidateConcepts: string[]
 ): string {
   return [
     `You grade one answer from a middle-school student. Reply in ${langName[locale]}.`,
     KID_SAFETY_GUARDRAILS,
     `Exercise: ${prompt}`,
+    `Reference correct answer: ${correctAnswer}`,
+    `Reference explanation (for your own grounding — don't just repeat it verbatim): ${explanation}`,
     `Student answer: ${studentAnswer}`,
-    `Judge correctness on substance, not spelling. Feedback: 2-3 warm sentences; if wrong, show the correct reasoning.`,
+    `Judge correctness on substance against the reference answer, not spelling or exact wording. Feedback: 2-3 warm sentences; if wrong, show the correct reasoning.`,
     candidateConcepts.length
       ? `If the answer is wrong, set failedConcepts to the subset of these prerequisite ids the error indicates (empty if the error is within the topic itself): ${candidateConcepts.join(", ")}`
       : `Set failedConcepts to [].`

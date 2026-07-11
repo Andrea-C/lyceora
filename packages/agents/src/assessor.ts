@@ -41,7 +41,7 @@ export async function gradeAnswer(
     const { object } = await generateObject({
       model,
       schema: gradeResultSchema,
-      prompt: gradingPrompt(exercise.prompt, answer, locale, candidates)
+      prompt: gradingPrompt(exercise.prompt, exercise.correctAnswer, exercise.explanation, answer, locale, candidates)
     });
     // never trust attribution outside the candidate set
     const failedConcepts = object.failedConcepts.filter((c) => candidates.includes(c));
