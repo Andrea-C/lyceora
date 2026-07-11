@@ -114,4 +114,7 @@ See `packages/taxonomy/data/os-taxonomy/PROVENANCE.md` for per-source curriculum
 
 ## License
 
-App code license is TBD by the owner.
+- **Application code:** [GNU AGPL-3.0-only](LICENSE.md) — free to use, self-host, and modify; if you serve a modified version to users over a network, you must offer them your source. Commercial licenses available from the author.
+- **Learning-content data** (`packages/taxonomy/data/`): ODbL 1.0 (database) + CC BY-SA 4.0 (content) — one consistent share-alike rule across the upstream os-taxonomy data and Lyceora's original `math-it-media` content.
+
+See [`LICENSE.md`](LICENSE.md) for the full map and binding texts. © 2026 Andrea Clementi.

@@ -5,7 +5,10 @@
   "type": "module",
   "main": "./src/index.ts",
   "types": "./src/index.ts",
-  "scripts": { "test": "vitest run", "evals": "tsx evals/run-evals.ts" },
+  "scripts": {
+    "test": "vitest run",
+    "evals": "tsx evals/run-evals.ts"
+  },
   "dependencies": {
     "@lyceora/taxonomy": "workspace:*",
     "ai": "^7.0.0",
@@ -18,5 +21,6 @@
   },
   "devDependencies": {
     "tsx": "^4.0.0"
-  }
+  },
+  "license": "AGPL-3.0-only"
 }

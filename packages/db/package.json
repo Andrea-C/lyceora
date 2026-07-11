@@ -5,7 +5,11 @@
   "type": "module",
   "main": "./src/index.ts",
   "types": "./src/index.ts",
-  "scripts": { "test": "vitest run", "db:migrate": "drizzle-kit migrate", "db:dev": "tsx scripts/dev-server.ts" },
+  "scripts": {
+    "test": "vitest run",
+    "db:migrate": "drizzle-kit migrate",
+    "db:dev": "tsx scripts/dev-server.ts"
+  },
   "dependencies": {
     "drizzle-orm": "^0.45.2",
     "pg": "^8.22.0",
@@ -17,5 +21,6 @@
     "@electric-sql/pglite-socket": "^0.2.7",
     "@types/pg": "^8.20.0",
     "tsx": "^4.0.0"
-  }
+  },
+  "license": "AGPL-3.0-only"
 }
