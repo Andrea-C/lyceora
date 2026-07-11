@@ -49,7 +49,9 @@ export default async function ProfilesPage({
     if (!owned) return;
 
     const cookieStore = await cookies();
-    cookieStore.set("lyceora_profile", profileId, { httpOnly: true, path: "/", sameSite: "lax" });
+    cookieStore.set("lyceora_profile", profileId, {
+      httpOnly: true, path: "/", sameSite: "lax", secure: process.env.NODE_ENV === "production"
+    });
     redirect(`/${locale}/app`);
   }
 

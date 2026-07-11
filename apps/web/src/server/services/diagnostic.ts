@@ -67,6 +67,11 @@ export async function answerDiagnostic(
   const [row] = await db.select().from(learningSession)
     .where(and(eq(learningSession.id, args.sessionId), eq(learningSession.profileId, p.id)));
   if (!row) throw new repo.ForbiddenError(`session ${args.sessionId} not owned by profile ${p.id}`);
+  // a "daily" session id fed into the diagnostic flow is a session/kind mismatch, not a missing
+  // question — must never be graded/routed as a diagnostic answer.
+  if (row.kind !== "diagnostic") {
+    throw new repo.ConflictError(`session ${args.sessionId} is not a diagnostic session (kind=${row.kind})`);
+  }
   // once finalizeDiagnostic flips this to "completed" (in the same synchronous flow that awards
   // XP), any replayed/duplicate answer POST for this session must be rejected before it can
   // re-grade or re-award anything — this is the whole idempotency guarantee.

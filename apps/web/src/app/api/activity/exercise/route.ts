@@ -48,7 +48,10 @@ export async function GET(req: Request) {
     const topic = getTopic(parsed.data.topicId); // throws if unknown -> mapped to 500 by `guarded`
     const [generated] = await liveAssessor.generate(topic.id, p.locale, parsed.data.difficulty as 1 | 2 | 3, 1);
     const exercise = withServerExerciseId(generated!);
-    const served = await repo.createServedExercise(db, {
+    // capped at repo.MAX_SERVED_PER_ITEM total serves per (session, topic, difficulty, kind) — a
+    // client re-fetching this endpoint indefinitely for the same plan slot would otherwise burn
+    // unlimited generate calls and unlimited graded attempts; ConflictError -> 409 via `guarded`.
+    const served = await repo.createServedExerciseCapped(db, {
       profileId: p.id, sessionId: parsed.data.sessionId, topicId: topic.id,
       difficulty: parsed.data.difficulty, itemKind: parsed.data.kind, exercise
     });

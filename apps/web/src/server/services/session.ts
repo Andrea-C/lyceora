@@ -19,6 +19,36 @@ export function localToday(timezone: string): string {
   return new Intl.DateTimeFormat("en-CA", { timeZone: timezone }).format(new Date()); // YYYY-MM-DD
 }
 
+/** Stable per-item consumption signature: kind+topicId, plus difficulty when the item kind has
+ * one (review/exercise/assessment) — "lesson" items have no difficulty field. Deliberately
+ * excludes `reason` (review's due/remediation) — the plan-membership check is about which
+ * kind+topicId+difficulty slots exist, not which reason triggered them. */
+function itemSignature(kind: SessionItem["kind"], topicId: string, difficulty?: number): string {
+  return difficulty === undefined ? `${kind}:${topicId}` : `${kind}:${topicId}:${difficulty}`;
+}
+
+/** One consumption key per plan item, in plan order: `${signature}:${ordinal}` where ordinal
+ * counts prior items sharing the same signature. This is what lets duplicate plan items (not
+ * excluded by composeSessionPlan, though rare in practice) be consumed one at a time, in the
+ * order they appear, instead of colliding on a single key. */
+function planItemKeys(items: SessionItem[]): string[] {
+  const seenCount = new Map<string, number>();
+  return items.map((it) => {
+    const sig = itemSignature(it.kind, it.topicId, "difficulty" in it ? it.difficulty : undefined);
+    const ordinal = seenCount.get(sig) ?? 0;
+    seenCount.set(sig, ordinal + 1);
+    return `${sig}:${ordinal}`;
+  });
+}
+
+/** Plan-item keys (in plan order) whose kind+topicId+difficulty matches the submitted item —
+ * empty means the item isn't on this session's plan at all (a ConflictError case for the
+ * caller), more than one means the plan happens to contain duplicates of this exact slot. */
+function matchingPlanKeys(keys: string[], item: SessionItem): string[] {
+  const prefix = `${itemSignature(item.kind, item.topicId, "difficulty" in item ? item.difficulty : undefined)}:`;
+  return keys.filter((k) => k.startsWith(prefix));
+}
+
 export async function startSession(db: Db, graph: TopicGraph, userId: string, profileId: string, targetTopicIds: string[]) {
   const p = await repo.getOwnedProfile(db, userId, profileId);
   const today = localToday(p.timezone);
@@ -41,11 +71,32 @@ export async function completeActivity(
   const p = await repo.getOwnedProfile(db, userId, args.profileId);
   // IMPORTANT: gates every write below keyed by sessionId. Nothing in this function or in
   // awardXp may touch learning_session/xp_event/daily_activity for this sessionId before this.
-  await repo.assertSessionOwnership(db, p.id, args.sessionId);
+  // Also the single up-front read of session status + plan/consumedItems state everything below
+  // reasons about — a session that isn't "active" (completed/abandoned) is rejected right here.
+  const sessionRow = await repo.assertSessionOwnership(db, p.id, args.sessionId);
   const today = localToday(p.timezone);
   const { item } = args;
 
+  // plan-membership + idempotency ledger: a submitted item must match a real (kind, topicId,
+  // difficulty-where-applicable) slot in this session's composed plan — this is what closes the
+  // "lesson XP for literally any topicId, no plan check, no idempotency at all" hole. The
+  // matching key(s) double as this call's candidate idempotency key(s), consumed below only once
+  // XP actually gets awarded for that slot.
+  const plan = sessionRow.planJson;
+  const planKeys = planItemKeys(plan?.items ?? []);
+  const consumed = new Set(plan?.consumedItems ?? []);
+  const candidateKeys = matchingPlanKeys(planKeys, item);
+  if (candidateKeys.length === 0) {
+    throw new repo.ConflictError(`item ${item.kind}:${item.topicId} is not part of this session's plan`);
+  }
+  const unconsumedKey = candidateKeys.find((k) => !consumed.has(k));
+
   if (item.kind === "lesson") {
+    // idempotency: a lesson has no notion of "regrading" — once its plan slot is consumed, every
+    // subsequent identical POST is a pure replay and must be rejected outright, not re-awarded.
+    if (!unconsumedKey || !(await repo.claimPlanItem(db, args.sessionId, plan!, unconsumedKey))) {
+      throw new repo.ConflictError(`lesson ${item.topicId} was already completed for this session`);
+    }
     await awardXp(db, args, XP_AMOUNTS.lessonComplete, "lessonComplete", today, p);
     return { xp: XP_AMOUNTS.lessonComplete };
   }
@@ -100,10 +151,18 @@ export async function completeActivity(
 
   let xp = 0;
   if (graded.correct) {
-    xp = source === "assessment" && after.status === "mastered" ? XP_AMOUNTS.assessmentPass
+    const amount = source === "assessment" && after.status === "mastered" ? XP_AMOUNTS.assessmentPass
       : source === "review" ? XP_AMOUNTS.reviewComplete : XP_AMOUNTS.exerciseCorrect;
-    await awardXp(db, args, xp, source === "assessment" && after.status === "mastered" ? "assessmentPass"
-      : source === "review" ? "reviewComplete" : "exerciseCorrect", today, p);
+    const reason = source === "assessment" && after.status === "mastered" ? "assessmentPass" as const
+      : source === "review" ? "reviewComplete" as const : "exerciseCorrect" as const;
+    // XP is awarded only the FIRST time this plan slot is successfully completed. A served
+    // exercise can legitimately be re-fetched (up to repo.MAX_SERVED_PER_ITEM) after this slot was
+    // already consumed — grading it here still records honest evidence/mastery/feedback, but xp
+    // stays 0 rather than paying out twice for the same plan slot.
+    if (unconsumedKey && await repo.claimPlanItem(db, args.sessionId, plan!, unconsumedKey)) {
+      xp = amount;
+      await awardXp(db, args, amount, reason, today, p);
+    }
   }
 
   // review-queue bookkeeping for review items

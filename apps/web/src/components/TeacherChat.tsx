@@ -74,6 +74,14 @@ export function TeacherChat({ profileId, topicId, threadId }: TeacherChatProps) 
           setError(message);
           setMessages((prev) => prev.filter((m) => m.id !== assistantId));
           setSending(false);
+        },
+        onRunError() {
+          // a RUN_ERROR frame's underlying text is raw, un-localized provider output — never
+          // shown to the user; map it to the same localized "teacher unavailable" copy used for
+          // the zero-content case above.
+          setError(t("teacherUnavailable"));
+          setMessages((prev) => prev.filter((m) => m.id !== assistantId));
+          setSending(false);
         }
       }
     );

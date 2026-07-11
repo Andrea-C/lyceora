@@ -5,8 +5,19 @@ import { useRouter } from "next/navigation";
 import { useLocale, useTranslations } from "next-intl";
 import { authClient } from "@/lib/auth-client";
 
+/** Maps a better-auth failure `code` (e.g. "INVALID_EMAIL_OR_PASSWORD",
+ * "USER_ALREADY_EXISTS_USE_ANOTHER_EMAIL") to one of our own bilingual message keys — the raw
+ * `authError.message` is always English and never shown to the user. Unrecognized/missing codes
+ * fall back to a generic message rather than leaking provider text. */
+function authErrorKey(code: string | undefined): "invalidCredentials" | "emailInUse" | "genericError" {
+  if (code === "INVALID_EMAIL_OR_PASSWORD") return "invalidCredentials";
+  if (code?.startsWith("USER_ALREADY_EXISTS")) return "emailInUse";
+  return "genericError";
+}
+
 export default function LandingPage() {
   const t = useTranslations("landing");
+  const tAuth = useTranslations("auth");
   const locale = useLocale();
   const router = useRouter();
 
@@ -30,7 +41,7 @@ export default function LandingPage() {
     setPending(false);
 
     if (authError) {
-      setError(authError.message ?? "Error");
+      setError(tAuth(authErrorKey(authError.code)));
       return;
     }
 

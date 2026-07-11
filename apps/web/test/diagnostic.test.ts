@@ -7,7 +7,7 @@ import { user, profile, masteryState, reviewQueue, xpEvent, enrollment, learning
 import { buildGraph, type Topic, type Dependency } from "@lyceora/taxonomy";
 import { eq, and } from "drizzle-orm";
 import { startDiagnostic, answerDiagnostic } from "../src/server/services/diagnostic";
-import type { AssessorPort } from "../src/server/services/session";
+import { startSession, type AssessorPort } from "../src/server/services/session";
 import { ConflictError } from "../src/server/repo";
 
 const t = (id: string): Topic => ({
@@ -127,5 +127,14 @@ describe("diagnostic mid-run replay nonce", () => {
     const evidenceAfter = await rawDb.select().from(evidenceRecord)
       .where(and(eq(evidenceRecord.profileId, profileId), eq(evidenceRecord.sessionId, started.sessionId)));
     expect(evidenceAfter).toHaveLength(evidenceBefore.length);
+  });
+});
+
+describe("diagnostic/daily session kind mismatch (MINOR 6)", () => {
+  it("rejects answerDiagnostic against a session that was started as a daily (non-diagnostic) session", async () => {
+    const { sessionId } = await startSession(db, graph, "diag-parent", profileId, ["diag_a"]);
+    await expect(answerDiagnostic(db, graph, fakeAssessor, "diag-parent", {
+      profileId, sessionId, exerciseId: "whatever", answer: "8"
+    })).rejects.toBeInstanceOf(ConflictError);
   });
 });

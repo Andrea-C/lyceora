@@ -3,7 +3,7 @@ import { PGlite } from "@electric-sql/pglite";
 import { drizzle } from "drizzle-orm/pglite";
 import { migrate } from "drizzle-orm/pglite/migrator";
 import { fileURLToPath } from "node:url";
-import { user, profile, masteryState, reviewQueue, dailyActivity, servedExercise, evidenceRecord } from "@lyceora/db";
+import { user, profile, masteryState, reviewQueue, dailyActivity, servedExercise, evidenceRecord, learningSession, xpEvent } from "@lyceora/db";
 import { buildGraph, type Topic, type Dependency } from "@lyceora/taxonomy";
 import { addDays, INTERVAL_LADDER_DAYS } from "@lyceora/engine";
 import { eq, and } from "drizzle-orm";
@@ -19,7 +19,8 @@ const hard = (a: string, b: string): Dependency => ({ topicId: a, prerequisiteId
 const graph = buildGraph(
   [
     t("pitagora"), t("radici"), t("potenze"),
-    t("avanzamento"), t("ripasso"), t("custodyA"), t("custodyB"), t("custodyC"), t("custodyD")
+    t("avanzamento"), t("ripasso"), t("custodyA"), t("custodyB"), t("custodyC"), t("custodyD"),
+    t("streakA"), t("streakB"), t("replayLesson"), t("reserveTopic")
   ],
   [hard("pitagora", "radici"), hard("radici", "potenze")]
 );
@@ -54,6 +55,8 @@ async function serveExercise(args: {
   return row!;
 }
 
+let isolatedProfileId: string;
+
 beforeAll(async () => {
   const d = drizzle(new PGlite());
   await migrate(d, { migrationsFolder: fileURLToPath(new URL("../../../packages/db/drizzle", import.meta.url)) });
@@ -66,6 +69,12 @@ beforeAll(async () => {
     { profileId, topicId: "radici", status: "mastered", consecutiveCorrectAtLevel: 1 },
     { profileId, topicId: "pitagora", status: "inProgress" }
   ]);
+  // a SEPARATE profile with zero mastery/reviewQueue rows, used below wherever a test needs a
+  // predictable composeSessionPlan output (2 new-topic slots, no remediation/due tiers) — sharing
+  // `profileId` above would make plan composition depend on whatever needsReview/due state
+  // earlier tests in this file happened to leave behind on it.
+  const [p2] = await d.insert(profile).values({ ownerUserId: "parent", displayName: "Isolata" }).returning();
+  isolatedProfileId = p2!.id;
   rawDb = d;
   db = d as never;
 });
@@ -247,36 +256,113 @@ describe("served-exercise custody", () => {
 describe("awardXp goal + streak accounting", () => {
   it("computes cumulative goalMet per local day and does not double-count same-day streaks", async () => {
     const today = localToday("Europe/Rome");
-    // isolate from whatever earlier tests in this file already did today
-    await rawDb.delete(dailyActivity).where(and(eq(dailyActivity.profileId, profileId), eq(dailyActivity.activityDate, today)));
+    // isolatedProfileId: has zero mastery/reviewQueue rows, so composeSessionPlan's remediation
+    // and due tiers are guaranteed empty here and both new-topic slots are granted — using the
+    // shared `profileId` would make this depend on whatever needsReview/due state earlier tests
+    // in this file left behind on it (composeSessionPlan only grants 2 new-topic slots when the
+    // remediation AND due tiers are both empty).
+    await rawDb.delete(dailyActivity).where(and(eq(dailyActivity.profileId, isolatedProfileId), eq(dailyActivity.activityDate, today)));
     await rawDb.update(profile).set({ dailyXpGoal: 8, currentStreak: 0, longestStreak: 0, lastActiveOn: null })
-      .where(eq(profile.id, profileId));
+      .where(eq(profile.id, isolatedProfileId));
 
-    const { sessionId } = await startSession(db, graph, "parent", profileId, ["avanzamento"]);
+    // two DIFFERENT fresh topics, each producing its own lesson plan slot — this test is about
+    // cumulative same-day XP/streak accounting, not per-item idempotency (see "lesson
+    // plan-membership + idempotency" below for that), so two distinct completions are used
+    // rather than replaying the same one.
+    const { sessionId } = await startSession(db, graph, "parent", isolatedProfileId, ["streakA", "streakB"]);
 
     const first = await completeActivity(db, graph, fakeAssessor, "parent", {
-      profileId, sessionId, item: { kind: "lesson", topicId: "avanzamento" }
+      profileId: isolatedProfileId, sessionId, item: { kind: "lesson", topicId: "streakA" }
     });
     expect(first.xp).toBe(5);
     const [afterFirst] = await rawDb.select().from(dailyActivity)
-      .where(and(eq(dailyActivity.profileId, profileId), eq(dailyActivity.activityDate, today)));
+      .where(and(eq(dailyActivity.profileId, isolatedProfileId), eq(dailyActivity.activityDate, today)));
     expect(afterFirst!.xpEarned).toBe(5);
     expect(afterFirst!.goalMet).toBe(false); // 5 < 8
-    const [profileAfterFirst] = await rawDb.select().from(profile).where(eq(profile.id, profileId));
+    const [profileAfterFirst] = await rawDb.select().from(profile).where(eq(profile.id, isolatedProfileId));
     expect(profileAfterFirst!.currentStreak).toBe(1);
     expect(profileAfterFirst!.lastActiveOn).toBe(today);
 
     const second = await completeActivity(db, graph, fakeAssessor, "parent", {
-      profileId, sessionId, item: { kind: "lesson", topicId: "avanzamento" }
+      profileId: isolatedProfileId, sessionId, item: { kind: "lesson", topicId: "streakB" }
     });
     expect(second.xp).toBe(5);
     const [afterSecond] = await rawDb.select().from(dailyActivity)
-      .where(and(eq(dailyActivity.profileId, profileId), eq(dailyActivity.activityDate, today)));
+      .where(and(eq(dailyActivity.profileId, isolatedProfileId), eq(dailyActivity.activityDate, today)));
     expect(afterSecond!.xpEarned).toBe(10);
     expect(afterSecond!.goalMet).toBe(true); // 10 >= 8
 
     // same local day again: nextStreak must be a no-op, not a second increment
-    const [profileAfterSecond] = await rawDb.select().from(profile).where(eq(profile.id, profileId));
+    const [profileAfterSecond] = await rawDb.select().from(profile).where(eq(profile.id, isolatedProfileId));
     expect(profileAfterSecond!.currentStreak).toBe(1);
+  });
+});
+
+describe("lesson plan-membership + idempotency (CRITICAL 1)", () => {
+  it("rejects a lesson POST for a topic that is not on this session's plan", async () => {
+    const { sessionId } = await startSession(db, graph, "parent", isolatedProfileId, ["replayLesson"]);
+    await expect(completeActivity(db, graph, fakeAssessor, "parent", {
+      profileId: isolatedProfileId, sessionId, item: { kind: "lesson", topicId: "not-on-any-plan" }
+    })).rejects.toBeInstanceOf(ConflictError);
+  });
+
+  it("rejects a replayed lesson POST (409) and awards exactly one lessonComplete xp_event", async () => {
+    const { sessionId } = await startSession(db, graph, "parent", isolatedProfileId, ["replayLesson"]);
+
+    const first = await completeActivity(db, graph, fakeAssessor, "parent", {
+      profileId: isolatedProfileId, sessionId, item: { kind: "lesson", topicId: "replayLesson" }
+    });
+    expect(first.xp).toBe(5);
+
+    await expect(completeActivity(db, graph, fakeAssessor, "parent", {
+      profileId: isolatedProfileId, sessionId, item: { kind: "lesson", topicId: "replayLesson" }
+    })).rejects.toBeInstanceOf(ConflictError);
+
+    const xpRows = await rawDb.select().from(xpEvent)
+      .where(and(eq(xpEvent.profileId, isolatedProfileId), eq(xpEvent.sessionId, sessionId), eq(xpEvent.reason, "lessonComplete")));
+    expect(xpRows).toHaveLength(1);
+  });
+
+  it("rejects any activity POST against a session that is no longer active", async () => {
+    const { sessionId } = await startSession(db, graph, "parent", isolatedProfileId, ["replayLesson"]);
+    await rawDb.update(learningSession).set({ status: "completed" }).where(eq(learningSession.id, sessionId));
+
+    await expect(completeActivity(db, graph, fakeAssessor, "parent", {
+      profileId: isolatedProfileId, sessionId, item: { kind: "lesson", topicId: "replayLesson" }
+    })).rejects.toBeInstanceOf(ConflictError);
+  });
+});
+
+describe("gradeable-item XP consumption (CRITICAL 2)", () => {
+  it("a re-fetched exercise for an already-consumed plan slot grades honestly but earns xp: 0", async () => {
+    const { sessionId } = await startSession(db, graph, "parent", isolatedProfileId, ["reserveTopic"]);
+
+    const served1 = await serveExercise({
+      sessionId, topicId: "reserveTopic", difficulty: 1, itemKind: "exercise", forProfileId: isolatedProfileId
+    });
+    const first = await completeActivity(db, graph, fakeAssessor, "parent", {
+      profileId: isolatedProfileId, sessionId,
+      item: { kind: "exercise", topicId: "reserveTopic", difficulty: 1 },
+      servedExerciseId: served1.id, answer: "8" // correct
+    });
+    expect(first.graded.correct).toBe(true);
+    expect(first.xp).toBe(2); // XP_AMOUNTS.exerciseCorrect
+
+    // re-serve a second instance of the SAME plan slot (allowed up to repo.MAX_SERVED_PER_ITEM)
+    // and grade it too — legitimate extra practice, not a replay of the first servedExerciseId.
+    const served2 = await serveExercise({
+      sessionId, topicId: "reserveTopic", difficulty: 1, itemKind: "exercise", forProfileId: isolatedProfileId
+    });
+    const second = await completeActivity(db, graph, fakeAssessor, "parent", {
+      profileId: isolatedProfileId, sessionId,
+      item: { kind: "exercise", topicId: "reserveTopic", difficulty: 1 },
+      servedExerciseId: served2.id, answer: "8" // also correct
+    });
+    expect(second.graded.correct).toBe(true); // honest feedback, still graded
+    expect(second.xp).toBe(0); // but the plan slot was already consumed — no second payout
+
+    const xpRows = await rawDb.select().from(xpEvent)
+      .where(and(eq(xpEvent.profileId, isolatedProfileId), eq(xpEvent.sessionId, sessionId), eq(xpEvent.reason, "exerciseCorrect")));
+    expect(xpRows).toHaveLength(1);
   });
 });

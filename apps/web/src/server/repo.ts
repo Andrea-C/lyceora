@@ -1,7 +1,7 @@
-import { and, eq, lte, desc, isNull } from "drizzle-orm";
+import { and, eq, lte, desc, isNull, sql } from "drizzle-orm";
 import type { Db } from "@lyceora/db";
 import { profile, masteryState, evidenceRecord, reviewQueue, enrollment, learningSession, servedExercise } from "@lyceora/db";
-import type { MasteryState } from "@lyceora/engine";
+import type { MasteryState, SessionPlan } from "@lyceora/engine";
 import { EMPTY_MASTERY_STATE } from "@lyceora/engine";
 import type { Exercise } from "@lyceora/agents";
 
@@ -71,16 +71,71 @@ export async function createEnrollment(db: Db, profileId: string, pathId: string
 }
 
 /**
- * Verifies a learning_session row belongs to the gated profile. Every write keyed by a
- * client-supplied sessionId (completeActivity, awardXp, servedExercise creation) MUST go through
- * this first — sessionId alone is not a tenant boundary.
+ * Verifies a learning_session row belongs to the gated profile AND is still active. Every write
+ * keyed by a client-supplied sessionId (completeActivity, awardXp, servedExercise creation) MUST
+ * go through this first — sessionId alone is not a tenant boundary, and a session that has
+ * already ended (completed/abandoned) must never accept further activity (mirrors the same
+ * status gate answerDiagnostic already enforces for diagnostic sessions).
  */
 export async function assertSessionOwnership(db: Db, profileId: string, sessionId: string) {
   const [row] = await db.select().from(learningSession).where(eq(learningSession.id, sessionId));
   if (!row || row.profileId !== profileId) {
     throw new ForbiddenError(`session ${sessionId} not owned by profile ${profileId}`);
   }
+  if (row.status !== "active") {
+    throw new ConflictError(`session ${sessionId} is not active (status=${row.status})`);
+  }
   return row;
+}
+
+/**
+ * Optimistic compare-and-swap: appends `key` to `currentPlan.consumedItems` iff the row's
+ * plan_json is STILL exactly `currentPlan` (Postgres jsonb structural equality, not a version
+ * column) — i.e. nobody else has consumed anything since this call's caller read the row. Returns
+ * false when the swap loses the race (a concurrent identical request already recorded this same
+ * key, or any other consumption happened first); the caller must treat that as "already
+ * consumed", never retry the write itself.
+ */
+export async function claimPlanItem(
+  db: Db, sessionId: string, currentPlan: SessionPlan, key: string
+): Promise<boolean> {
+  const consumedItems = [...(currentPlan.consumedItems ?? []), key];
+  const [row] = await db.update(learningSession)
+    .set({ planJson: { ...currentPlan, consumedItems } })
+    .where(and(eq(learningSession.id, sessionId), eq(learningSession.planJson, currentPlan)))
+    .returning();
+  return !!row;
+}
+
+/** Product cap, not a DB uniqueness rule: a client re-fetching GET /api/activity/exercise for the
+ * same plan slot indefinitely would burn unlimited assessor.generate calls (cost) and, via
+ * completeActivity's plan-item consumption, unlimited *graded* attempts. 3 covers "wrong, wrong,
+ * right" without letting the endpoint be hammered. */
+export const MAX_SERVED_PER_ITEM = 3;
+
+/**
+ * Serves a fresh exercise for a plan item, capped at MAX_SERVED_PER_ITEM total servedExercise
+ * rows per (sessionId, topicId, difficulty, itemKind) — COUNT-then-insert (itemKind lives inside
+ * exerciseJson, not a dedicated column, so the count filters on that jsonb field). Throws
+ * ConflictError at the cap; the caller (GET /api/activity/exercise) maps that to 409 via
+ * `guarded`.
+ */
+export async function createServedExerciseCapped(
+  db: Db, args: { profileId: string; sessionId: string; topicId: string; difficulty: number; itemKind: ServedItemKind; exercise: Exercise }
+) {
+  const [{ count }] = await db.select({ count: sql<number>`count(*)::int` }).from(servedExercise)
+    .where(and(
+      eq(servedExercise.sessionId, args.sessionId),
+      eq(servedExercise.topicId, args.topicId),
+      eq(servedExercise.difficulty, args.difficulty),
+      sql`${servedExercise.exerciseJson} ->> 'itemKind' = ${args.itemKind}`
+    ));
+  if (count >= MAX_SERVED_PER_ITEM) {
+    throw new ConflictError(
+      `already served ${MAX_SERVED_PER_ITEM} exercises for ${args.itemKind}:${args.topicId}:${args.difficulty} in session ${args.sessionId}`
+    );
+  }
+  return createServedExercise(db, args);
 }
 
 /** The SessionItem kind an exercise was fetched for — distinct from Exercise.kind (mcq/numeric/

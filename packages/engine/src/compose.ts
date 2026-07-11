@@ -16,6 +16,10 @@ export interface SessionPlan {
   items: SessionItem[];
   estimatedXp: number;
   dailyXpGoal: number;
+  /** Idempotency ledger: stable keys (`${kind}:${topicId}:${difficulty}:${ordinal}`) of plan
+   * items that have already had XP awarded for them. Absent/undefined == none consumed yet.
+   * Written by apps/web's completeActivity, never by composeSessionPlan itself. */
+  consumedItems?: string[];
 }
 
 export interface ComposeInputs {

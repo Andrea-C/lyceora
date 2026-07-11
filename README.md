@@ -73,9 +73,18 @@ Adaptive bilingual math-learning platform. **M1** is the "Recupero Matematica â€
    - Root directory: `apps/web`
    - Vercel auto-detects the pnpm monorepo.
 
-3. **Apply migrations** against production database:
+3. **Apply migrations** against production database (set `DATABASE_URL` for the shell you're using, then run the migration):
+
+   bash / macOS / Linux:
    ```bash
-   DATABASE_URL=<your-neon-url> pnpm --filter @lyceora/db db:migrate
+   export DATABASE_URL=<your-neon-url>
+   pnpm --filter @lyceora/db db:migrate
+   ```
+
+   PowerShell (Windows):
+   ```powershell
+   $env:DATABASE_URL = "<your-neon-url>"
+   pnpm --filter @lyceora/db db:migrate
    ```
 
 4. **Set environment variables** in Vercel:
