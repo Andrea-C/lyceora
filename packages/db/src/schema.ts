@@ -2,6 +2,7 @@ import {
   pgTable, pgEnum, uuid, text, integer, boolean, numeric,
   timestamp, date, jsonb, index, uniqueIndex
 } from "drizzle-orm/pg-core";
+import type { SessionPlan } from "@lyceora/engine";
 import { user } from "./auth-schema.js";
 
 export const localeEnum = pgEnum("locale", ["it", "en"]);
@@ -87,7 +88,7 @@ export const learningSession = pgTable("learning_session", {
   profileId: uuid("profile_id").notNull().references(() => profile.id, { onDelete: "cascade" }),
   kind: sessionKindEnum("kind").notNull().default("daily"),
   status: sessionStatusEnum("status").notNull().default("active"),
-  planJson: jsonb("plan_json").$type<Record<string, unknown>>(), // switched to SessionPlan in Task 9
+  planJson: jsonb("plan_json").$type<SessionPlan>(),
   xpEarned: integer("xp_earned").notNull().default(0),
   startedAt: timestamp("started_at", { withTimezone: true }).notNull().defaultNow(),
   endedAt: timestamp("ended_at", { withTimezone: true })
