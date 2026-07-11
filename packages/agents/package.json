@@ -1,0 +1,22 @@
+{
+  "name": "@lyceora/agents",
+  "version": "0.0.1",
+  "private": true,
+  "type": "module",
+  "main": "./src/index.ts",
+  "types": "./src/index.ts",
+  "scripts": { "test": "vitest run", "evals": "tsx evals/run-evals.ts" },
+  "dependencies": {
+    "@lyceora/taxonomy": "workspace:*",
+    "ai": "^7.0.0",
+    "@ai-sdk/anthropic": "^3.0.0",
+    "@ai-sdk/openai": "^3.0.0",
+    "@ai-sdk/google": "^3.0.0",
+    "@ai-sdk/openai-compatible": "^3.0.0",
+    "yaml": "^2.6.0",
+    "zod": "^3.23.0"
+  },
+  "devDependencies": {
+    "tsx": "^4.0.0"
+  }
+}

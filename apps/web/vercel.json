@@ -1,0 +1,1 @@
+{ "functions": { "src/app/api/agent/route.ts": { "maxDuration": 120 } } }

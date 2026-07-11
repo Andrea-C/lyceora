@@ -11,3 +11,9 @@ dist/
 .env
 .env.*
 !.env.example
+.superpowers/
+
+.vercel/
+coverage/
+playwright-report/
+test-results/

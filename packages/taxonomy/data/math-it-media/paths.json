@@ -1,0 +1,21 @@
+{
+  "paths": [
+    {
+      "id": "path_recupero_media",
+      "name": {
+        "it": "Recupero Matematica — Scuola Media",
+        "en": "Math Recovery — Middle School"
+      },
+      "targetTopicIds": [
+        "lyc_potenze_espressioni",
+        "lyc_div_mcm_mcd_problemi",
+        "lyc_fraz_espressioni",
+        "lyc_radici_espressioni",
+        "lyc_equiv_problemi",
+        "lyc_piano_figure",
+        "lyc_area_problemi",
+        "lyc_pit_applicazioni_figure"
+      ]
+    }
+  ]
+}
