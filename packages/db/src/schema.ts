@@ -94,6 +94,23 @@ export const learningSession = pgTable("learning_session", {
   endedAt: timestamp("ended_at", { withTimezone: true })
 }, (t) => [index("session_profile_time_idx").on(t.profileId, t.startedAt)]);
 
+/**
+ * Server-side custody for an exercise handed to a client: the full exercise (incl.
+ * correctAnswer/explanation) lives here, never in a client-echoed request body. Single-use:
+ * consumedAt is set the moment it's graded, and a second grading attempt against the same row
+ * must be rejected (see apps/web's repo.loadServedExerciseForGrading).
+ */
+export const servedExercise = pgTable("served_exercise", {
+  id: uuid("id").primaryKey().defaultRandom(),
+  profileId: uuid("profile_id").notNull().references(() => profile.id, { onDelete: "cascade" }),
+  sessionId: uuid("session_id").notNull().references(() => learningSession.id, { onDelete: "cascade" }),
+  topicId: text("topic_id").notNull(),
+  difficulty: integer("difficulty").notNull(),
+  exerciseJson: jsonb("exercise_json").$type<Record<string, unknown>>().notNull(),
+  consumedAt: timestamp("consumed_at", { withTimezone: true }),
+  createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow()
+}, (t) => [index("served_exercise_profile_session_idx").on(t.profileId, t.sessionId)]);
+
 /** Append-only XP ledger. Total XP = SUM(amount). */
 export const xpEvent = pgTable("xp_event", {
   id: uuid("id").primaryKey().defaultRandom(),
