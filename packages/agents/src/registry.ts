@@ -33,8 +33,10 @@ export function isFailoverError(err: unknown): boolean {
   const status = (err as { statusCode?: number })?.statusCode;
   if (status === 401 || status === 402 || status === 403 || status === 408 || status === 429) return true;
   if (status !== undefined && status >= 500) return true;
+  if (status !== undefined) return false;
+  if ((err as Error)?.name === "AbortError") return true;
   const msg = String((err as Error)?.message ?? "").toLowerCase();
-  return status === undefined && /timeout|etimedout|econnrefused|econnreset|fetch failed/.test(msg);
+  return /timeout|etimedout|econnrefused|econnreset|fetch failed|enotfound|eai_again|ehostunreach|epipe|aborted/.test(msg);
 }
 
 export interface Registry {

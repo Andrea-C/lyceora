@@ -15,8 +15,5 @@
     "@ai-sdk/openai-compatible": "^3.0.0",
     "yaml": "^2.6.0",
     "zod": "^3.23.0"
-  },
-  "devDependencies": {
-    "vitest": "^2.1.0"
   }
 }
