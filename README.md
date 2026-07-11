@@ -2,6 +2,8 @@
 
 Adaptive bilingual math-learning platform. **M1** is the "Recupero Matematica — Scuola Media" path for a 13-year-old, built on the [os-taxonomy](https://github.com/withmarbleapp/os-taxonomy) knowledge graph with an AI teacher and assessor over the AG-UI protocol.
 
+> **Resuming development?** Start with [`docs/lyceora-development-report.md`](docs/lyceora-development-report.md) — full build history, the map of all spec/design/plan documents, decisions that supersede them, current verified state, and the outstanding-work checklist.
+
 ## Local Development
 
 ### Prerequisites
