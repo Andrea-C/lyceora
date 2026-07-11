@@ -417,6 +417,8 @@ serializable to `session.planJson`), and is deterministic given the graph + answ
 shape is better than an all-at-once `runDiagnostic()` because a 13-year-old answers
 interactively and may quit mid-way — we must persist partial state.
 
+> **Implementation amendment (2026-07-11, Task 10 review):** the pseudocode below has two known gaps, corrected in `packages/engine/src/diagnostic.ts`: (1) a pure max-heap-by-level worklist starves shallow sibling targets behind a deep failing chain — the implementation asks all pending targets first, then appends each fail's descent batch FIFO (breadth across clusters, per this doc's own stated intent); (2) the single-pass `met()`-only finalize fails to mark leaf prerequisites under a fail as `assumedUnmastered` in chains ≥2 deep — the implementation uses an iterative fixed-point propagating `assumedUnmastered` downward through dependents, gated to `untested` labels only (direct evidence is never overwritten).
+
 **Algorithm (pseudocode, deterministic):**
 
 ```
