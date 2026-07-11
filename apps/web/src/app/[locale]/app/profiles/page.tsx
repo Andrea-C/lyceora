@@ -65,6 +65,7 @@ export default async function ProfilesPage({
                 <input type="hidden" name="profileId" value={p.id} />
                 <button
                   type="submit"
+                  data-testid="profile-pick"
                   className="w-full rounded-md border border-black/[.1] px-4 py-3 text-left transition-colors hover:bg-black/[.03] dark:border-white/[.15] dark:hover:bg-white/[.05]"
                 >
                   {p.displayName}
@@ -92,13 +93,14 @@ export default async function ProfilesPage({
           <input
             name="birthYear"
             type="number"
-            min={2000}
-            max={2025}
+            min={2005}
+            max={2022}
             className="rounded-md border border-black/[.1] px-3 py-2 dark:border-white/[.15] dark:bg-black"
           />
         </label>
         <button
           type="submit"
+          data-testid="profile-create"
           className="rounded-full bg-foreground px-5 py-2 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc]"
         >
           {t("create")}
