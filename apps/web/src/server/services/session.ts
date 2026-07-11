@@ -61,22 +61,28 @@ export async function completeActivity(
     : [];
 
   // server-side custody: claim (consume) the exercise BEFORE grading — an atomic
-  // UPDATE...WHERE consumed_at IS NULL closes both the sequential-replay and the concurrent-race
-  // cases in one query. If a check below then fails, the exercise is still burned (see
-  // repo.claimServedExercise's doc comment for that accepted tradeoff).
-  const claimed = await repo.claimServedExercise(db, args.servedExerciseId!);
-  if (claimed.profileId !== p.id) {
-    throw new repo.ForbiddenError(`served exercise ${args.servedExerciseId} not owned by profile ${p.id}`);
-  }
+  // UPDATE...WHERE profile_id = $2 AND consumed_at IS NULL closes the sequential-replay, the
+  // concurrent-race, AND the foreign-profile cases in one query (a foreign profileId simply never
+  // matches a row to claim, so it's never burned). If a check below then fails, the exercise is
+  // still burned (see repo.claimServedExercise's doc comment for that accepted tradeoff).
+  const claimed = await repo.claimServedExercise(db, args.servedExerciseId!, p.id);
   if (claimed.sessionId !== args.sessionId || claimed.topicId !== item.topicId) {
     throw new repo.ConflictError(`served exercise ${args.servedExerciseId} does not match this session/topic`);
   }
-  // pin difficulty (and thus the exercise itself) to what was actually served — the client-
-  // supplied item.difficulty is only ever used to validate it matches, never trusted for the
-  // evidence record or the mastery fold.
+  // pin difficulty AND item kind (and thus the exercise itself) to what was actually served — the
+  // client-supplied item.difficulty/item.kind are only ever used to validate they match, never
+  // trusted for the evidence record or the mastery fold. Kind pinning closes the slack where the
+  // same topicId+difficulty can appear under more than one item kind in the plan (e.g. an
+  // "exercise" and an "assessment" for the same topic at the same difficulty) — without this, a
+  // client could fetch under one kind and grade under the other to get that kind's XP/routing.
   if (claimed.difficulty !== item.difficulty) {
     throw new repo.ConflictError(
       `served exercise difficulty (${claimed.difficulty}) does not match the requested item difficulty (${item.difficulty})`
+    );
+  }
+  if (claimed.itemKind !== item.kind) {
+    throw new repo.ConflictError(
+      `served exercise was fetched for item kind "${claimed.itemKind}", not "${item.kind}"`
     );
   }
   const exercise = claimed.exercise;

@@ -8,6 +8,7 @@ import {
 } from "@lyceora/engine";
 import type { Exercise } from "@lyceora/agents";
 import * as repo from "../repo";
+import { withServerExerciseId } from "../exercise";
 import { localToday, type AssessorPort } from "./session";
 
 /**
@@ -49,11 +50,13 @@ export async function startDiagnostic(
     return { sessionId: s!.id, done: true as const, result };
   }
 
-  const [exercise] = await assessor.generate(step.topicId, p.locale, 2, 1);
+  const [generated] = await assessor.generate(step.topicId, p.locale, 2, 1);
+  // never trust a model-emitted id for the nonce this question's answer will be checked against
+  const exercise = withServerExerciseId(generated!);
   await db.update(learningSession)
-    .set({ planJson: toPlanJson({ pathId, diagnosticState: state, currentExercise: exercise! }) })
+    .set({ planJson: toPlanJson({ pathId, diagnosticState: state, currentExercise: exercise }) })
     .where(eq(learningSession.id, s!.id));
-  return { sessionId: s!.id, done: false as const, question: { topicId: step.topicId, exercise: exercise! } };
+  return { sessionId: s!.id, done: false as const, question: { topicId: step.topicId, exercise } };
 }
 
 export async function answerDiagnostic(
@@ -100,11 +103,12 @@ export async function answerDiagnostic(
   const { state, step } = runDiagnosticStep(graph, stored.diagnosticState, { topicId, passed: graded.correct });
 
   if (step.kind === "ask") {
-    const [exercise] = await assessor.generate(step.topicId, p.locale, 2, 1);
+    const [generated] = await assessor.generate(step.topicId, p.locale, 2, 1);
+    const exercise = withServerExerciseId(generated!);
     await db.update(learningSession)
-      .set({ planJson: toPlanJson({ pathId: stored.pathId, diagnosticState: state, currentExercise: exercise! }) })
+      .set({ planJson: toPlanJson({ pathId: stored.pathId, diagnosticState: state, currentExercise: exercise }) })
       .where(eq(learningSession.id, args.sessionId));
-    return { done: false as const, question: { topicId: step.topicId, exercise: exercise! } };
+    return { done: false as const, question: { topicId: step.topicId, exercise } };
   }
 
   const result = await finalizeDiagnostic(db, p, args.sessionId, stored.pathId, step.result);

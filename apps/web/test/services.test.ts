@@ -8,7 +8,7 @@ import { buildGraph, type Topic, type Dependency } from "@lyceora/taxonomy";
 import { addDays, INTERVAL_LADDER_DAYS } from "@lyceora/engine";
 import { eq, and } from "drizzle-orm";
 import { startSession, completeActivity, localToday, type AssessorPort } from "../src/server/services/session";
-import { ConflictError, ForbiddenError } from "../src/server/repo";
+import { ConflictError } from "../src/server/repo";
 
 const t = (id: string): Topic => ({
   id, type: "CONCEPTUAL", subject: "Mathematics", domain: "Arithmetic",
@@ -19,7 +19,7 @@ const hard = (a: string, b: string): Dependency => ({ topicId: a, prerequisiteId
 const graph = buildGraph(
   [
     t("pitagora"), t("radici"), t("potenze"),
-    t("avanzamento"), t("ripasso"), t("custodyA"), t("custodyB"), t("custodyC")
+    t("avanzamento"), t("ripasso"), t("custodyA"), t("custodyB"), t("custodyC"), t("custodyD")
   ],
   [hard("pitagora", "radici"), hard("radici", "potenze")]
 );
@@ -38,11 +38,18 @@ let rawDb: ReturnType<typeof drizzle>;
 let db: never;
 let profileId: string;
 
-/** Server-side custody fixture: mirrors what GET /api/activity/exercise would have inserted. */
-async function serveExercise(args: { sessionId: string; topicId: string; difficulty: 1 | 2 | 3; correctAnswer?: string; forProfileId?: string }) {
+/** Server-side custody fixture: mirrors what GET /api/activity/exercise would have inserted
+ * (including the itemKind folded into exerciseJson, never a dedicated column). */
+async function serveExercise(args: {
+  sessionId: string; topicId: string; difficulty: 1 | 2 | 3;
+  itemKind: "review" | "exercise" | "assessment"; correctAnswer?: string; forProfileId?: string;
+}) {
   const [row] = await rawDb.insert(servedExercise).values({
     profileId: args.forProfileId ?? profileId, sessionId: args.sessionId, topicId: args.topicId, difficulty: args.difficulty,
-    exerciseJson: { id: `ex-${args.topicId}`, kind: "numeric", prompt: "?", correctAnswer: args.correctAnswer ?? "8", explanation: "e", difficulty: args.difficulty }
+    exerciseJson: {
+      id: `ex-${args.topicId}`, kind: "numeric", prompt: "?", correctAnswer: args.correctAnswer ?? "8",
+      explanation: "e", difficulty: args.difficulty, itemKind: args.itemKind
+    }
   }).returning();
   return row!;
 }
@@ -66,7 +73,7 @@ beforeAll(async () => {
 describe("assessment failure routes to remediation with derived evidence", () => {
   it("failing the pitagora assessment demotes radici and blocks pitagora", async () => {
     const { sessionId } = await startSession(db, graph, "parent", profileId, ["pitagora"]);
-    const served = await serveExercise({ sessionId, topicId: "pitagora", difficulty: 2 });
+    const served = await serveExercise({ sessionId, topicId: "pitagora", difficulty: 2, itemKind: "assessment" });
     const r = await completeActivity(db, graph, fakeAssessor, "parent", {
       profileId, sessionId,
       item: { kind: "assessment", topicId: "pitagora", difficulty: 2 },
@@ -87,7 +94,7 @@ describe("completeActivity advance branch", () => {
       profileId, topicId: "avanzamento", status: "inProgress", consecutiveCorrectAtLevel: 1
     });
     const { sessionId } = await startSession(db, graph, "parent", profileId, ["avanzamento"]);
-    const served = await serveExercise({ sessionId, topicId: "avanzamento", difficulty: 2 });
+    const served = await serveExercise({ sessionId, topicId: "avanzamento", difficulty: 2, itemKind: "assessment" });
 
     const r = await completeActivity(db, graph, fakeAssessor, "parent", {
       profileId, sessionId,
@@ -113,7 +120,7 @@ describe("completeActivity review item", () => {
       profileId, topicId: "ripasso", intervalRung: 0, dueOn: today, lapses: 0, suspended: false
     });
     const { sessionId } = await startSession(db, graph, "parent", profileId, ["ripasso"]);
-    const served = await serveExercise({ sessionId, topicId: "ripasso", difficulty: 2 });
+    const served = await serveExercise({ sessionId, topicId: "ripasso", difficulty: 2, itemKind: "review" });
 
     const r = await completeActivity(db, graph, fakeAssessor, "parent", {
       profileId, sessionId,
@@ -131,23 +138,37 @@ describe("completeActivity review item", () => {
 });
 
 describe("served-exercise custody", () => {
-  it("rejects grading against a servedExercise owned by a different profile", async () => {
+  it("rejects grading against a servedExercise owned by a different profile (never claimed/burned)", async () => {
     const [otherProfile] = await rawDb.insert(profile).values({ ownerUserId: "parent", displayName: "Luca" }).returning();
     const { sessionId: otherSessionId } = await startSession(db, graph, "parent", otherProfile!.id, ["custodyA"]);
-    const foreign = await serveExercise({ sessionId: otherSessionId, topicId: "custodyA", difficulty: 2, forProfileId: otherProfile!.id });
+    const foreign = await serveExercise({
+      sessionId: otherSessionId, topicId: "custodyA", difficulty: 2, itemKind: "exercise", forProfileId: otherProfile!.id
+    });
 
     const { sessionId } = await startSession(db, graph, "parent", profileId, ["custodyA"]);
+    // the atomic claim's WHERE clause includes profile_id, so a foreign servedExerciseId simply
+    // never matches a row to claim — indistinguishable from "missing or already consumed"
+    // (ConflictError), and critically the other profile's exercise is never touched/burned by this.
     await expect(completeActivity(db, graph, fakeAssessor, "parent", {
       profileId, sessionId,
       item: { kind: "exercise", topicId: "custodyA", difficulty: 2 },
       servedExerciseId: foreign.id,
       answer: "8"
-    })).rejects.toBeInstanceOf(ForbiddenError);
+    })).rejects.toBeInstanceOf(ConflictError);
+
+    // confirm it truly was never touched: the other profile can still claim/grade it themselves
+    const otherResult = await completeActivity(db, graph, fakeAssessor, "parent", {
+      profileId: otherProfile!.id, sessionId: otherSessionId,
+      item: { kind: "exercise", topicId: "custodyA", difficulty: 2 },
+      servedExerciseId: foreign.id,
+      answer: "8"
+    });
+    expect(otherResult.graded.correct).toBe(true);
   });
 
   it("rejects grading against a servedExercise for a different topic/session", async () => {
     const { sessionId } = await startSession(db, graph, "parent", profileId, ["custodyA", "custodyB"]);
-    const servedForA = await serveExercise({ sessionId, topicId: "custodyA", difficulty: 2 });
+    const servedForA = await serveExercise({ sessionId, topicId: "custodyA", difficulty: 2, itemKind: "exercise" });
 
     await expect(completeActivity(db, graph, fakeAssessor, "parent", {
       profileId, sessionId,
@@ -159,7 +180,7 @@ describe("served-exercise custody", () => {
 
   it("rejects re-grading an already-consumed servedExercise (atomic claim closes the race too)", async () => {
     const { sessionId } = await startSession(db, graph, "parent", profileId, ["custodyB"]);
-    const served = await serveExercise({ sessionId, topicId: "custodyB", difficulty: 2 });
+    const served = await serveExercise({ sessionId, topicId: "custodyB", difficulty: 2, itemKind: "exercise" });
 
     const first = await completeActivity(db, graph, fakeAssessor, "parent", {
       profileId, sessionId,
@@ -189,7 +210,7 @@ describe("served-exercise custody", () => {
 
   it("pins difficulty from the served row: a mismatched item.difficulty is rejected with no mastery movement", async () => {
     const { sessionId } = await startSession(db, graph, "parent", profileId, ["custodyC"]);
-    const served = await serveExercise({ sessionId, topicId: "custodyC", difficulty: 1 }); // served at difficulty 1
+    const served = await serveExercise({ sessionId, topicId: "custodyC", difficulty: 1, itemKind: "exercise" }); // served at difficulty 1
 
     await expect(completeActivity(db, graph, fakeAssessor, "parent", {
       profileId, sessionId,
@@ -200,6 +221,25 @@ describe("served-exercise custody", () => {
 
     const rows = await rawDb.select().from(masteryState)
       .where(and(eq(masteryState.profileId, profileId), eq(masteryState.topicId, "custodyC")));
+    expect(rows).toHaveLength(0); // no fold happened at all
+  });
+
+  it("pins item kind from the served row: fetched as one kind, graded as another is rejected", async () => {
+    const { sessionId } = await startSession(db, graph, "parent", profileId, ["custodyD"]);
+    // served for a plain "exercise" item...
+    const served = await serveExercise({ sessionId, topicId: "custodyD", difficulty: 2, itemKind: "exercise" });
+
+    // ...but graded as the higher-stakes "assessment" (same topic+difficulty, would otherwise
+    // trigger candidateConcepts attribution, assessmentPass XP, and post-assessment routing).
+    await expect(completeActivity(db, graph, fakeAssessor, "parent", {
+      profileId, sessionId,
+      item: { kind: "assessment", topicId: "custodyD", difficulty: 2 },
+      servedExerciseId: served.id,
+      answer: "8"
+    })).rejects.toBeInstanceOf(ConflictError);
+
+    const rows = await rawDb.select().from(masteryState)
+      .where(and(eq(masteryState.profileId, profileId), eq(masteryState.topicId, "custodyD")));
     expect(rows).toHaveLength(0); // no fold happened at all
   });
 });

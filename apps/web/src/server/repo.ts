@@ -83,44 +83,56 @@ export async function assertSessionOwnership(db: Db, profileId: string, sessionI
   return row;
 }
 
+/** The SessionItem kind an exercise was fetched for — distinct from Exercise.kind (mcq/numeric/
+ * open). Pinned at serve time so a client can't grade the same served exercise under a different
+ * item kind (e.g. fetched for a plain "exercise" item, graded as the higher-stakes "assessment"
+ * that happens to share the same topicId+difficulty in the plan). */
+export type ServedItemKind = "review" | "exercise" | "assessment";
+
 /** Server-side custody: persist the FULL exercise (incl. correctAnswer/explanation) the moment
- * it's generated. The client only ever sees the id back, plus a redacted copy for display. */
+ * it's generated, plus the item kind it was fetched for. The client only ever sees the id back,
+ * plus a redacted copy for display. No dedicated `kind` column: folded into the existing
+ * `exerciseJson` jsonb as `itemKind` alongside the exercise fields, read back at claim time. */
 export async function createServedExercise(
-  db: Db, args: { profileId: string; sessionId: string; topicId: string; difficulty: number; exercise: Exercise }
+  db: Db, args: { profileId: string; sessionId: string; topicId: string; difficulty: number; itemKind: ServedItemKind; exercise: Exercise }
 ) {
   const [row] = await db.insert(servedExercise).values({
     profileId: args.profileId, sessionId: args.sessionId, topicId: args.topicId, difficulty: args.difficulty,
-    exerciseJson: args.exercise as unknown as Record<string, unknown>
+    exerciseJson: { ...args.exercise, itemKind: args.itemKind } as unknown as Record<string, unknown>
   }).returning();
   return row!;
 }
 
 /**
  * Atomically claims a served exercise: consumed_at is set BEFORE grading, not after, via a single
- * `UPDATE ... WHERE consumed_at IS NULL RETURNING *`. Zero rows back (missing id, or already
- * consumed) is a clean ConflictError/409 with nothing else having happened — this is what closes
- * a genuine concurrent double-submit, not just a sequential replay (a check-then-act
- * select-then-update pair would leave a race window between the two statements; this doesn't).
+ * `UPDATE ... WHERE consumed_at IS NULL RETURNING *`. Zero rows back (missing id, not owned by
+ * this profile, or already consumed) is a clean ConflictError/409 with nothing else having
+ * happened — this is what closes a genuine concurrent double-submit, not just a sequential replay
+ * (a check-then-act select-then-update pair would leave a race window between the two statements;
+ * this doesn't).
  *
- * The claim query only checks `id` + `consumed_at IS NULL` — it does NOT check
- * profile/session/topic/difficulty. The caller (completeActivity) must verify all of those
- * against the returned row and throw the appropriate ForbiddenError/ConflictError itself. If that
- * post-claim check fails, the exercise is still burned. Accepted tradeoff: the client just fetches
- * a fresh one from GET /api/activity/exercise; a burned exercise is far cheaper than reopening a
- * race window on the claim itself.
+ * The claim query also checks `profile_id = $2` — an id for an exercise served to a *different*
+ * profile is indistinguishable from "missing or already consumed" and, critically, is never
+ * claimed/burned by the attempt. Session/topic/difficulty/itemKind are NOT part of the WHERE
+ * clause; the caller (completeActivity) must verify those against the returned row and throw the
+ * appropriate ConflictError itself. If that post-claim check fails, the exercise is still burned.
+ * Accepted tradeoff: the client just fetches a fresh one from GET /api/activity/exercise; a burned
+ * exercise is far cheaper than reopening a race window on the claim itself.
  */
 export async function claimServedExercise(
-  db: Db, servedExerciseId: string
-): Promise<{ profileId: string; sessionId: string; topicId: string; difficulty: number; exercise: Exercise }> {
+  db: Db, servedExerciseId: string, profileId: string
+): Promise<{ sessionId: string; topicId: string; difficulty: number; itemKind: string; exercise: Exercise }> {
   const [row] = await db.update(servedExercise)
     .set({ consumedAt: new Date() })
-    .where(and(eq(servedExercise.id, servedExerciseId), isNull(servedExercise.consumedAt)))
+    .where(and(
+      eq(servedExercise.id, servedExerciseId),
+      eq(servedExercise.profileId, profileId),
+      isNull(servedExercise.consumedAt)
+    ))
     .returning();
   if (!row) {
-    throw new ConflictError(`served exercise ${servedExerciseId} is not a valid pending exercise (missing or already consumed)`);
+    throw new ConflictError(`served exercise ${servedExerciseId} is not a valid pending exercise for this profile (missing, foreign, or already consumed)`);
   }
-  return {
-    profileId: row.profileId, sessionId: row.sessionId, topicId: row.topicId,
-    difficulty: row.difficulty, exercise: row.exerciseJson as unknown as Exercise
-  };
+  const { itemKind, ...exercise } = row.exerciseJson as unknown as (Exercise & { itemKind: string });
+  return { sessionId: row.sessionId, topicId: row.topicId, difficulty: row.difficulty, itemKind, exercise: exercise as Exercise };
 }
