@@ -2,3 +2,8 @@ export * from "./config.js";
 export * from "./registry.js";
 export * from "./exercise.js";
 export * from "./assessor.js";
+export * from "./prompts/guardrails.js";
+export * from "./prompts/teacher.js";
+export * from "./teacher.js";
+export * from "./agui.js";
+export * from "./signals.js";
