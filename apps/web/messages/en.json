@@ -1,0 +1,9 @@
+{
+  "landing": { "title": "Lyceora", "tagline": "Your personal math teacher", "login": "Log in", "signup": "Create account", "email": "Email", "password": "Password", "name": "Name" },
+  "profiles": { "title": "Who's studying today?", "create": "Add profile", "displayName": "Name", "birthYear": "Birth year", "start": "Start" },
+  "dashboard": { "title": "Hi {name}!", "startSession": "Start session", "startDiagnostic": "Find out where to start", "xpToday": "XP today", "streak": "Day streak", "progress": "Path progress" },
+  "diagnostic": { "title": "Let's see what you already know", "intro": "A few quick questions — no grades!", "done": "Done! Your path is ready.", "question": "Question {n}" },
+  "session": { "lesson": "Lesson", "exercise": "Exercise", "review": "Review", "assessment": "Assessment", "check": "Check", "next": "Next", "correct": "Correct!", "incorrect": "Not yet — look:", "askTeacher": "Ask the teacher", "videos": "Video lessons", "explainDifferently": "Explain it a different way", "sessionDone": "Session complete! +{xp} XP" },
+  "parent": { "title": "Parent area", "children": "Your kids", "mastered": "Mastered topics", "inProgress": "In progress", "needsReview": "Needs review" },
+  "footer": { "attribution": "Taxonomy content derived from Marble os-taxonomy (ODbL 1.0)" }
+}
