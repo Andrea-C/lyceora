@@ -5,5 +5,15 @@
   "type": "module",
   "main": "./src/index.ts",
   "types": "./src/index.ts",
-  "scripts": { "test": "vitest run" }
+  "scripts": { "test": "vitest run" },
+  "dependencies": {
+    "drizzle-orm": "latest",
+    "pg": "latest",
+    "@lyceora/engine": "workspace:*"
+  },
+  "devDependencies": {
+    "drizzle-kit": "latest",
+    "@electric-sql/pglite": "latest",
+    "@types/pg": "latest"
+  }
 }
