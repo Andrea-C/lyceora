@@ -4,8 +4,8 @@ import { db } from "@/lib/db";
 import { learningSignal } from "@lyceora/db";
 import { getTopic, getResources } from "@/server/content";
 import * as repo from "@/server/repo";
-import { registry } from "@/server/registry";
-import { streamTeacher, aguiSSE, type TeacherContext } from "@lyceora/agents";
+import { teacherStream } from "@/server/registry";
+import { aguiSSE, type TeacherContext } from "@lyceora/agents";
 import { requireUserId, guarded } from "@/server/http";
 
 const MAX_USER_MESSAGES = 40;
@@ -52,11 +52,11 @@ export async function POST(req: Request) {
     };
 
     // construct each message per-branch (rather than a blanket cast) so the role literal narrows
-    // correctly against streamTeacher's ModelMessage[] parameter.
-    const modelMessages: Parameters<typeof streamTeacher>[2] = messages.map((m) =>
+    // correctly against teacherStream's ModelMessage[] parameter.
+    const modelMessages: Parameters<typeof teacherStream>[1] = messages.map((m) =>
       m.role === "user" ? { role: "user" as const, content: m.content } : { role: "assistant" as const, content: m.content }
     );
-    const { textStream } = await streamTeacher(registry, ctx, modelMessages, { maxOutputTokens: 1000 });
+    const { textStream } = await teacherStream(ctx, modelMessages, { maxOutputTokens: 1000 });
     const mirrored = withRunErrorMirror(textStream, async (message) => {
       await db.insert(learningSignal).values({
         profileId: p.id, threadId, runId, actor: "agent", signal: "run_error", after: message

@@ -7,3 +7,4 @@ export * from "./prompts/teacher";
 export * from "./teacher";
 export * from "./agui";
 export * from "./signals";
+export * from "./fake";
