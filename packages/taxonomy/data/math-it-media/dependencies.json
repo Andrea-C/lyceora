@@ -1,0 +1,940 @@
+{
+  "dependencies": [
+    {
+      "topicId": "lyc_potenze_lettura",
+      "prerequisiteId": "lyc_potenze_def",
+      "strength": "hard",
+      "reason": "serve la definizione per leggere/scrivere una potenza"
+    },
+    {
+      "topicId": "lyc_potenze_particolari",
+      "prerequisiteId": "lyc_potenze_def",
+      "strength": "hard",
+      "reason": "i casi esp. 0 e 1 derivano dalla definizione"
+    },
+    {
+      "topicId": "lyc_potenze_prod_stessa_base",
+      "prerequisiteId": "lyc_potenze_def",
+      "strength": "hard",
+      "reason": "la regola nasce dalla definizione di potenza"
+    },
+    {
+      "topicId": "lyc_potenze_quoz_stessa_base",
+      "prerequisiteId": "lyc_potenze_def",
+      "strength": "hard",
+      "reason": "richiede la definizione di potenza"
+    },
+    {
+      "topicId": "lyc_potenze_quoz_stessa_base",
+      "prerequisiteId": "lyc_potenze_prod_stessa_base",
+      "strength": "soft",
+      "reason": "il quoziente è simmetrico al prodotto"
+    },
+    {
+      "topicId": "lyc_potenze_potenza_di_potenza",
+      "prerequisiteId": "lyc_potenze_prod_stessa_base",
+      "strength": "hard",
+      "reason": "si ricava ripetendo il prodotto di potenze"
+    },
+    {
+      "topicId": "lyc_potenze_prod_stesso_esp",
+      "prerequisiteId": "lyc_potenze_def",
+      "strength": "hard",
+      "reason": "la regola nasce dalla definizione"
+    },
+    {
+      "topicId": "lyc_potenze_esp_negativo",
+      "prerequisiteId": "lyc_potenze_quoz_stessa_base",
+      "strength": "hard",
+      "reason": "l'esponente negativo emerge da a^m:a^n con m<n"
+    },
+    {
+      "topicId": "lyc_potenze_esp_negativo",
+      "prerequisiteId": "lyc_potenze_particolari",
+      "strength": "soft",
+      "reason": "collega esp. 0 al reciproco"
+    },
+    {
+      "topicId": "lyc_potenze_base_10",
+      "prerequisiteId": "lyc_potenze_def",
+      "strength": "soft",
+      "reason": "le potenze di 10 sono un caso della definizione"
+    },
+    {
+      "topicId": "lyc_potenze_base_10",
+      "prerequisiteId": "lyc_potenze_esp_negativo",
+      "strength": "soft",
+      "reason": "la notazione scientifica usa esponenti negativi"
+    },
+    {
+      "topicId": "lyc_potenze_espressioni",
+      "prerequisiteId": "lyc_potenze_prod_stessa_base",
+      "strength": "hard",
+      "reason": "l'espressione applica questa proprietà"
+    },
+    {
+      "topicId": "lyc_potenze_espressioni",
+      "prerequisiteId": "lyc_potenze_quoz_stessa_base",
+      "strength": "hard",
+      "reason": "l'espressione applica questa proprietà"
+    },
+    {
+      "topicId": "lyc_potenze_espressioni",
+      "prerequisiteId": "lyc_potenze_potenza_di_potenza",
+      "strength": "hard",
+      "reason": "l'espressione applica questa proprietà"
+    },
+    {
+      "topicId": "lyc_potenze_espressioni",
+      "prerequisiteId": "lyc_potenze_prod_stesso_esp",
+      "strength": "hard",
+      "reason": "l'espressione applica questa proprietà"
+    },
+    {
+      "topicId": "lyc_potenze_espressioni",
+      "prerequisiteId": "lyc_potenze_particolari",
+      "strength": "soft",
+      "reason": "ricorrono esp. 0 e 1"
+    },
+    {
+      "topicId": "lyc_potenze_espressioni",
+      "prerequisiteId": "lyc_potenze_esp_negativo",
+      "strength": "soft",
+      "reason": "possono comparire esponenti negativi"
+    },
+    {
+      "topicId": "lyc_potenze_espressioni",
+      "prerequisiteId": "lyc_potenze_lettura",
+      "strength": "soft",
+      "reason": "serve leggere correttamente la notazione"
+    },
+    {
+      "topicId": "lyc_potenze_espressioni",
+      "prerequisiteId": "lyc_potenze_base_10",
+      "strength": "soft",
+      "reason": "possono comparire potenze di 10"
+    },
+    {
+      "topicId": "lyc_div_criteri",
+      "prerequisiteId": "lyc_div_multipli_divisori",
+      "strength": "hard",
+      "reason": "i criteri stabiliscono se un numero è divisore"
+    },
+    {
+      "topicId": "lyc_div_primi_composti",
+      "prerequisiteId": "lyc_div_multipli_divisori",
+      "strength": "hard",
+      "reason": "primo/composto si definisce contando i divisori"
+    },
+    {
+      "topicId": "lyc_div_scomposizione",
+      "prerequisiteId": "lyc_div_primi_composti",
+      "strength": "hard",
+      "reason": "serve riconoscere i primi per scomporre"
+    },
+    {
+      "topicId": "lyc_div_scomposizione",
+      "prerequisiteId": "lyc_div_criteri",
+      "strength": "soft",
+      "reason": "i criteri velocizzano la ricerca dei fattori"
+    },
+    {
+      "topicId": "lyc_div_mcd",
+      "prerequisiteId": "lyc_div_scomposizione",
+      "strength": "hard",
+      "reason": "il MCD si legge dalla scomposizione"
+    },
+    {
+      "topicId": "lyc_div_mcm",
+      "prerequisiteId": "lyc_div_scomposizione",
+      "strength": "hard",
+      "reason": "il mcm si legge dalla scomposizione"
+    },
+    {
+      "topicId": "lyc_div_mcm_mcd_problemi",
+      "prerequisiteId": "lyc_div_mcd",
+      "strength": "hard",
+      "reason": "il problema richiede il calcolo del MCD"
+    },
+    {
+      "topicId": "lyc_div_mcm_mcd_problemi",
+      "prerequisiteId": "lyc_div_mcm",
+      "strength": "hard",
+      "reason": "il problema richiede il calcolo del mcm"
+    },
+    {
+      "topicId": "lyc_fraz_equivalenti",
+      "prerequisiteId": "lyc_fraz_concetto",
+      "strength": "hard",
+      "reason": "l'equivalenza si fonda sul concetto di frazione"
+    },
+    {
+      "topicId": "lyc_fraz_confronto",
+      "prerequisiteId": "lyc_fraz_equivalenti",
+      "strength": "hard",
+      "reason": "si confronta portando a denominatore comune"
+    },
+    {
+      "topicId": "lyc_fraz_miste",
+      "prerequisiteId": "lyc_fraz_concetto",
+      "strength": "hard",
+      "reason": "numeri misti definiti dal concetto di frazione"
+    },
+    {
+      "topicId": "lyc_fraz_add_sott",
+      "prerequisiteId": "lyc_fraz_equivalenti",
+      "strength": "hard",
+      "reason": "servono frazioni equivalenti per il denom. comune"
+    },
+    {
+      "topicId": "lyc_fraz_add_sott",
+      "prerequisiteId": "lyc_div_mcm",
+      "strength": "soft",
+      "reason": "il minimo comune denominatore è il mcm dei denominatori"
+    },
+    {
+      "topicId": "lyc_fraz_molt",
+      "prerequisiteId": "lyc_fraz_concetto",
+      "strength": "hard",
+      "reason": "prodotto di frazioni dal concetto"
+    },
+    {
+      "topicId": "lyc_fraz_molt",
+      "prerequisiteId": "lyc_fraz_equivalenti",
+      "strength": "soft",
+      "reason": "la semplificazione a croce usa l'equivalenza"
+    },
+    {
+      "topicId": "lyc_fraz_div",
+      "prerequisiteId": "lyc_fraz_molt",
+      "strength": "hard",
+      "reason": "dividere = moltiplicare per il reciproco"
+    },
+    {
+      "topicId": "lyc_fraz_potenza",
+      "prerequisiteId": "lyc_fraz_molt",
+      "strength": "hard",
+      "reason": "la potenza di frazione è un prodotto ripetuto"
+    },
+    {
+      "topicId": "lyc_fraz_potenza",
+      "prerequisiteId": "lyc_potenze_def",
+      "strength": "soft",
+      "reason": "riusa la definizione di potenza"
+    },
+    {
+      "topicId": "lyc_fraz_frazione_di",
+      "prerequisiteId": "lyc_fraz_molt",
+      "strength": "hard",
+      "reason": "frazione di un numero = moltiplicazione"
+    },
+    {
+      "topicId": "lyc_fraz_frazione_di",
+      "prerequisiteId": "lyc_fraz_div",
+      "strength": "soft",
+      "reason": "il problema inverso usa la divisione"
+    },
+    {
+      "topicId": "lyc_fraz_espressioni",
+      "prerequisiteId": "lyc_fraz_add_sott",
+      "strength": "hard",
+      "reason": "l'espressione combina addizione/sottrazione"
+    },
+    {
+      "topicId": "lyc_fraz_espressioni",
+      "prerequisiteId": "lyc_fraz_molt",
+      "strength": "hard",
+      "reason": "l'espressione combina la moltiplicazione"
+    },
+    {
+      "topicId": "lyc_fraz_espressioni",
+      "prerequisiteId": "lyc_fraz_div",
+      "strength": "hard",
+      "reason": "l'espressione combina la divisione"
+    },
+    {
+      "topicId": "lyc_fraz_espressioni",
+      "prerequisiteId": "lyc_fraz_potenza",
+      "strength": "soft",
+      "reason": "possono comparire potenze di frazioni"
+    },
+    {
+      "topicId": "lyc_fraz_espressioni",
+      "prerequisiteId": "lyc_fraz_miste",
+      "strength": "soft",
+      "reason": "possono comparire numeri misti"
+    },
+    {
+      "topicId": "lyc_fraz_espressioni",
+      "prerequisiteId": "lyc_fraz_confronto",
+      "strength": "soft",
+      "reason": "talora serve confrontare risultati"
+    },
+    {
+      "topicId": "lyc_fraz_espressioni",
+      "prerequisiteId": "lyc_fraz_frazione_di",
+      "strength": "soft",
+      "reason": "possono comparire frazioni di quantità"
+    },
+    {
+      "topicId": "lyc_radici_concetto",
+      "prerequisiteId": "lyc_potenze_def",
+      "strength": "hard",
+      "reason": "la radice è l'inversa dell'elevamento a potenza"
+    },
+    {
+      "topicId": "lyc_radici_concetto",
+      "prerequisiteId": "lyc_potenze_lettura",
+      "strength": "soft",
+      "reason": "serve la notazione di quadrato"
+    },
+    {
+      "topicId": "lyc_radici_quadrati_perfetti",
+      "prerequisiteId": "lyc_radici_concetto",
+      "strength": "hard",
+      "reason": "la radice esatta dipende dal concetto"
+    },
+    {
+      "topicId": "lyc_radici_stima",
+      "prerequisiteId": "lyc_radici_quadrati_perfetti",
+      "strength": "hard",
+      "reason": "si stima tra due quadrati perfetti vicini"
+    },
+    {
+      "topicId": "lyc_radici_proprieta",
+      "prerequisiteId": "lyc_radici_quadrati_perfetti",
+      "strength": "hard",
+      "reason": "le proprietà si applicano su radici note"
+    },
+    {
+      "topicId": "lyc_radici_proprieta",
+      "prerequisiteId": "lyc_div_scomposizione",
+      "strength": "soft",
+      "reason": "semplificare un radicale usa la scomposizione in fattori"
+    },
+    {
+      "topicId": "lyc_radici_espressioni",
+      "prerequisiteId": "lyc_radici_proprieta",
+      "strength": "hard",
+      "reason": "l'espressione applica le proprietà dei radicali"
+    },
+    {
+      "topicId": "lyc_radici_espressioni",
+      "prerequisiteId": "lyc_radici_stima",
+      "strength": "soft",
+      "reason": "talora serve stimare radici non esatte"
+    },
+    {
+      "topicId": "lyc_radici_espressioni",
+      "prerequisiteId": "lyc_potenze_esp_negativo",
+      "strength": "soft",
+      "reason": "collega radici ed esponenti frazionari/negativi"
+    },
+    {
+      "topicId": "lyc_equiv_sistema_metrico",
+      "prerequisiteId": "lyc_potenze_base_10",
+      "strength": "soft",
+      "reason": "le equivalenze si basano sulle potenze di 10"
+    },
+    {
+      "topicId": "lyc_equiv_lunghezze",
+      "prerequisiteId": "lyc_equiv_sistema_metrico",
+      "strength": "hard",
+      "reason": "conversioni dal sistema metrico"
+    },
+    {
+      "topicId": "lyc_equiv_massa",
+      "prerequisiteId": "lyc_equiv_sistema_metrico",
+      "strength": "hard",
+      "reason": "conversioni dal sistema metrico"
+    },
+    {
+      "topicId": "lyc_equiv_tempo",
+      "prerequisiteId": "lyc_equiv_sistema_metrico",
+      "strength": "soft",
+      "reason": "il tempo NON è decimale: contrasto col sistema metrico"
+    },
+    {
+      "topicId": "lyc_equiv_superfici",
+      "prerequisiteId": "lyc_equiv_lunghezze",
+      "strength": "hard",
+      "reason": "le unità di superficie derivano da lunghezza al quadrato"
+    },
+    {
+      "topicId": "lyc_equiv_superfici",
+      "prerequisiteId": "lyc_area_concetto",
+      "strength": "soft",
+      "reason": "serve il concetto di area"
+    },
+    {
+      "topicId": "lyc_equiv_volumi_capacita",
+      "prerequisiteId": "lyc_equiv_lunghezze",
+      "strength": "hard",
+      "reason": "le unità di volume derivano da lunghezza al cubo"
+    },
+    {
+      "topicId": "lyc_equiv_problemi",
+      "prerequisiteId": "lyc_equiv_lunghezze",
+      "strength": "hard",
+      "reason": "i problemi usano lunghezze"
+    },
+    {
+      "topicId": "lyc_equiv_problemi",
+      "prerequisiteId": "lyc_equiv_superfici",
+      "strength": "hard",
+      "reason": "i problemi usano superfici"
+    },
+    {
+      "topicId": "lyc_equiv_problemi",
+      "prerequisiteId": "lyc_equiv_volumi_capacita",
+      "strength": "hard",
+      "reason": "i problemi usano volumi/capacità"
+    },
+    {
+      "topicId": "lyc_equiv_problemi",
+      "prerequisiteId": "lyc_equiv_massa",
+      "strength": "soft",
+      "reason": "possono comparire masse"
+    },
+    {
+      "topicId": "lyc_equiv_problemi",
+      "prerequisiteId": "lyc_equiv_tempo",
+      "strength": "soft",
+      "reason": "possono comparire tempi"
+    },
+    {
+      "topicId": "lyc_piano_punti",
+      "prerequisiteId": "lyc_piano_assi",
+      "strength": "hard",
+      "reason": "i punti si collocano rispetto agli assi"
+    },
+    {
+      "topicId": "lyc_piano_distanza",
+      "prerequisiteId": "lyc_piano_punti",
+      "strength": "hard",
+      "reason": "la distanza opera su punti dati"
+    },
+    {
+      "topicId": "lyc_piano_distanza",
+      "prerequisiteId": "lyc_pit_calcolo_lati",
+      "strength": "soft",
+      "reason": "la distanza generale si calcola con Pitagora"
+    },
+    {
+      "topicId": "lyc_piano_punto_medio",
+      "prerequisiteId": "lyc_piano_punti",
+      "strength": "hard",
+      "reason": "il punto medio opera su punti dati"
+    },
+    {
+      "topicId": "lyc_piano_figure",
+      "prerequisiteId": "lyc_piano_punti",
+      "strength": "hard",
+      "reason": "le figure sono insiemi di punti"
+    },
+    {
+      "topicId": "lyc_piano_figure",
+      "prerequisiteId": "lyc_piano_distanza",
+      "strength": "hard",
+      "reason": "servono le distanze per lati/perimetro"
+    },
+    {
+      "topicId": "lyc_piano_figure",
+      "prerequisiteId": "lyc_piano_punto_medio",
+      "strength": "soft",
+      "reason": "talora serve il punto medio"
+    },
+    {
+      "topicId": "lyc_piano_figure",
+      "prerequisiteId": "lyc_perimetro",
+      "strength": "soft",
+      "reason": "riusa il concetto di perimetro"
+    },
+    {
+      "topicId": "lyc_perimetro",
+      "prerequisiteId": "lyc_poli_classificazione",
+      "strength": "soft",
+      "reason": "serve riconoscere il poligono"
+    },
+    {
+      "topicId": "lyc_area_concetto",
+      "prerequisiteId": "lyc_poli_classificazione",
+      "strength": "soft",
+      "reason": "serve riconoscere la figura"
+    },
+    {
+      "topicId": "lyc_area_rettangolo_quadrato",
+      "prerequisiteId": "lyc_area_concetto",
+      "strength": "hard",
+      "reason": "l'area di base dal concetto di area"
+    },
+    {
+      "topicId": "lyc_area_triangolo",
+      "prerequisiteId": "lyc_area_rettangolo_quadrato",
+      "strength": "hard",
+      "reason": "il triangolo è metà rettangolo"
+    },
+    {
+      "topicId": "lyc_area_parallelogramma",
+      "prerequisiteId": "lyc_area_rettangolo_quadrato",
+      "strength": "hard",
+      "reason": "il parallelogramma si trasforma in rettangolo"
+    },
+    {
+      "topicId": "lyc_area_trapezio",
+      "prerequisiteId": "lyc_area_triangolo",
+      "strength": "hard",
+      "reason": "il trapezio si scompone in triangoli"
+    },
+    {
+      "topicId": "lyc_area_trapezio",
+      "prerequisiteId": "lyc_area_parallelogramma",
+      "strength": "soft",
+      "reason": "via alternativa per il trapezio"
+    },
+    {
+      "topicId": "lyc_area_poligoni_regolari",
+      "prerequisiteId": "lyc_area_triangolo",
+      "strength": "hard",
+      "reason": "il poligono regolare si scompone in triangoli"
+    },
+    {
+      "topicId": "lyc_area_poligoni_regolari",
+      "prerequisiteId": "lyc_perimetro",
+      "strength": "soft",
+      "reason": "area = perimetro × apotema / 2"
+    },
+    {
+      "topicId": "lyc_cerchio",
+      "prerequisiteId": "lyc_area_concetto",
+      "strength": "hard",
+      "reason": "l'area del cerchio dal concetto di area"
+    },
+    {
+      "topicId": "lyc_area_composte",
+      "prerequisiteId": "lyc_area_rettangolo_quadrato",
+      "strength": "hard",
+      "reason": "scomposizione in rettangoli"
+    },
+    {
+      "topicId": "lyc_area_composte",
+      "prerequisiteId": "lyc_area_triangolo",
+      "strength": "hard",
+      "reason": "scomposizione in triangoli"
+    },
+    {
+      "topicId": "lyc_area_composte",
+      "prerequisiteId": "lyc_area_trapezio",
+      "strength": "soft",
+      "reason": "scomposizione in trapezi"
+    },
+    {
+      "topicId": "lyc_area_composte",
+      "prerequisiteId": "lyc_cerchio",
+      "strength": "soft",
+      "reason": "figure con parti circolari"
+    },
+    {
+      "topicId": "lyc_area_problemi",
+      "prerequisiteId": "lyc_perimetro",
+      "strength": "hard",
+      "reason": "i problemi usano il perimetro"
+    },
+    {
+      "topicId": "lyc_area_problemi",
+      "prerequisiteId": "lyc_area_composte",
+      "strength": "hard",
+      "reason": "i problemi usano figure composte"
+    },
+    {
+      "topicId": "lyc_area_problemi",
+      "prerequisiteId": "lyc_area_poligoni_regolari",
+      "strength": "soft",
+      "reason": "possono comparire poligoni regolari"
+    },
+    {
+      "topicId": "lyc_area_problemi",
+      "prerequisiteId": "lyc_cerchio",
+      "strength": "soft",
+      "reason": "possono comparire cerchi"
+    },
+    {
+      "topicId": "lyc_area_problemi",
+      "prerequisiteId": "lyc_area_trapezio",
+      "strength": "soft",
+      "reason": "possono comparire trapezi"
+    },
+    {
+      "topicId": "lyc_pit_enunciato",
+      "prerequisiteId": "lyc_pit_triangolo_rettangolo",
+      "strength": "hard",
+      "reason": "il teorema riguarda il triangolo rettangolo"
+    },
+    {
+      "topicId": "lyc_pit_enunciato",
+      "prerequisiteId": "lyc_potenze_lettura",
+      "strength": "soft",
+      "reason": "il teorema usa i quadrati dei lati"
+    },
+    {
+      "topicId": "lyc_pit_enunciato",
+      "prerequisiteId": "lyc_area_rettangolo_quadrato",
+      "strength": "soft",
+      "reason": "interpretazione con le aree dei quadrati sui lati"
+    },
+    {
+      "topicId": "lyc_pit_terne",
+      "prerequisiteId": "lyc_pit_enunciato",
+      "strength": "hard",
+      "reason": "le terne verificano l'enunciato"
+    },
+    {
+      "topicId": "lyc_pit_calcolo_lati",
+      "prerequisiteId": "lyc_pit_enunciato",
+      "strength": "hard",
+      "reason": "il calcolo applica l'enunciato"
+    },
+    {
+      "topicId": "lyc_pit_calcolo_lati",
+      "prerequisiteId": "lyc_radici_concetto",
+      "strength": "hard",
+      "reason": "per trovare un lato serve la radice quadrata"
+    },
+    {
+      "topicId": "lyc_pit_calcolo_lati",
+      "prerequisiteId": "lyc_radici_quadrati_perfetti",
+      "strength": "soft",
+      "reason": "molte soluzioni sono radici esatte"
+    },
+    {
+      "topicId": "lyc_pit_applicazioni_figure",
+      "prerequisiteId": "lyc_pit_calcolo_lati",
+      "strength": "hard",
+      "reason": "le applicazioni riusano il calcolo dei lati"
+    },
+    {
+      "topicId": "lyc_pit_applicazioni_figure",
+      "prerequisiteId": "lyc_pit_terne",
+      "strength": "soft",
+      "reason": "le terne semplificano molte applicazioni"
+    },
+    {
+      "topicId": "lyc_pit_applicazioni_figure",
+      "prerequisiteId": "lyc_area_triangolo",
+      "strength": "soft",
+      "reason": "altezze di triangoli isosceli/equilateri"
+    },
+    {
+      "topicId": "lyc_pit_applicazioni_figure",
+      "prerequisiteId": "lyc_poli_classificazione",
+      "strength": "soft",
+      "reason": "serve riconoscere le figure"
+    },
+    {
+      "topicId": "lyc_pit_applicazioni_figure",
+      "prerequisiteId": "lyc_piano_distanza",
+      "strength": "soft",
+      "reason": "distanza nel piano cartesiano come applicazione"
+    },
+    {
+      "topicId": "lyc_potenze_def",
+      "prerequisiteId": "mt_PZ909yPrEC",
+      "strength": "hard",
+      "reason": "la potenza estende la moltiplicazione ripetuta"
+    },
+    {
+      "topicId": "lyc_potenze_def",
+      "prerequisiteId": "mt_gxCIASSezX",
+      "strength": "soft",
+      "reason": "quadrati e cubi sono le prime potenze"
+    },
+    {
+      "topicId": "lyc_potenze_lettura",
+      "prerequisiteId": "mt_hCVPYlF-7Y",
+      "strength": "soft",
+      "reason": "notazione di quadrato/cubo (11–14)"
+    },
+    {
+      "topicId": "lyc_potenze_espressioni",
+      "prerequisiteId": "mt_jHgRQ4hR0g",
+      "strength": "hard",
+      "reason": "le espressioni richiedono la gerarchia delle operazioni"
+    },
+    {
+      "topicId": "lyc_potenze_base_10",
+      "prerequisiteId": "mt_HLUqHJ9Y7n",
+      "strength": "hard",
+      "reason": "pattern delle potenze di 10"
+    },
+    {
+      "topicId": "lyc_potenze_base_10",
+      "prerequisiteId": "mt_bO-njVOige",
+      "strength": "soft",
+      "reason": "notazione con potenze di 10"
+    },
+    {
+      "topicId": "lyc_potenze_esp_negativo",
+      "prerequisiteId": "mt_9QzSnn8m80",
+      "strength": "soft",
+      "reason": "serve il concetto di numero negativo"
+    },
+    {
+      "topicId": "lyc_potenze_esp_negativo",
+      "prerequisiteId": "mt_rxInpOQ74w",
+      "strength": "soft",
+      "reason": "gestione dei segni"
+    },
+    {
+      "topicId": "lyc_div_multipli_divisori",
+      "prerequisiteId": "mt_HhuSDxwDNM",
+      "strength": "hard",
+      "reason": "i multipli sono le tabelline"
+    },
+    {
+      "topicId": "lyc_div_multipli_divisori",
+      "prerequisiteId": "mt_iNdrM2-oJf",
+      "strength": "hard",
+      "reason": "divisore = divisione esatta"
+    },
+    {
+      "topicId": "lyc_div_multipli_divisori",
+      "prerequisiteId": "mt_nZkL5-XjRX",
+      "strength": "soft",
+      "reason": "coppie di fattori"
+    },
+    {
+      "topicId": "lyc_div_multipli_divisori",
+      "prerequisiteId": "mt_K5jM7vlVhA",
+      "strength": "soft",
+      "reason": "padronanza delle tabelline"
+    },
+    {
+      "topicId": "lyc_div_primi_composti",
+      "prerequisiteId": "mt_y1XCVsIelg",
+      "strength": "hard",
+      "reason": "definizione di numero primo"
+    },
+    {
+      "topicId": "lyc_div_scomposizione",
+      "prerequisiteId": "mt_FHIAv6dfhU",
+      "strength": "hard",
+      "reason": "fattori, multipli e primi"
+    },
+    {
+      "topicId": "lyc_fraz_concetto",
+      "prerequisiteId": "mt_vKcxX6iNOA",
+      "strength": "hard",
+      "reason": "notazione di frazione"
+    },
+    {
+      "topicId": "lyc_fraz_concetto",
+      "prerequisiteId": "mt_wB-GBDkoNr",
+      "strength": "soft",
+      "reason": "collegamento frazioni–decimali"
+    },
+    {
+      "topicId": "lyc_fraz_equivalenti",
+      "prerequisiteId": "mt_FbDKeLfBCo",
+      "strength": "hard",
+      "reason": "base delle frazioni equivalenti"
+    },
+    {
+      "topicId": "lyc_fraz_equivalenti",
+      "prerequisiteId": "mt_b7T-CjOYUR",
+      "strength": "hard",
+      "reason": "riduzione ai minimi termini"
+    },
+    {
+      "topicId": "lyc_fraz_add_sott",
+      "prerequisiteId": "mt_14T5yPXUq_",
+      "strength": "hard",
+      "reason": "addizione con denominatori diversi"
+    },
+    {
+      "topicId": "lyc_fraz_div",
+      "prerequisiteId": "mt_9Y96vxG_LH",
+      "strength": "soft",
+      "reason": "base della divisione tra frazioni"
+    },
+    {
+      "topicId": "lyc_fraz_miste",
+      "prerequisiteId": "mt_o_p-3tCxiM",
+      "strength": "hard",
+      "reason": "numeri misti e frazioni improprie"
+    },
+    {
+      "topicId": "lyc_radici_concetto",
+      "prerequisiteId": "mt_gxCIASSezX",
+      "strength": "hard",
+      "reason": "la radice inverte il quadrato"
+    },
+    {
+      "topicId": "lyc_radici_quadrati_perfetti",
+      "prerequisiteId": "mt_hCVPYlF-7Y",
+      "strength": "hard",
+      "reason": "i quadrati perfetti sono quadrati di interi"
+    },
+    {
+      "topicId": "lyc_equiv_sistema_metrico",
+      "prerequisiteId": "mt_EDgw64OmfA",
+      "strength": "hard",
+      "reason": "spostare la virgola per x/:10"
+    },
+    {
+      "topicId": "lyc_equiv_lunghezze",
+      "prerequisiteId": "mt_d8al9JcajP",
+      "strength": "hard",
+      "reason": "conversione di unità di misura"
+    },
+    {
+      "topicId": "lyc_equiv_lunghezze",
+      "prerequisiteId": "mt_SqhXQhAEUf",
+      "strength": "hard",
+      "reason": "conversioni di misura"
+    },
+    {
+      "topicId": "lyc_equiv_tempo",
+      "prerequisiteId": "mt_EXlmTURK_o",
+      "strength": "soft",
+      "reason": "unità di tempo"
+    },
+    {
+      "topicId": "lyc_equiv_massa",
+      "prerequisiteId": "mt_-af65bxfdp",
+      "strength": "soft",
+      "reason": "misure di massa e liquidi"
+    },
+    {
+      "topicId": "lyc_equiv_volumi_capacita",
+      "prerequisiteId": "mt_5TBUFnCy5-",
+      "strength": "soft",
+      "reason": "concetto di volume"
+    },
+    {
+      "topicId": "lyc_piano_assi",
+      "prerequisiteId": "mt_jBQS-CicNn",
+      "strength": "hard",
+      "reason": "coordinate nel primo quadrante"
+    },
+    {
+      "topicId": "lyc_piano_assi",
+      "prerequisiteId": "mt_R4AY0LKxfl",
+      "strength": "hard",
+      "reason": "uso delle coordinate"
+    },
+    {
+      "topicId": "lyc_piano_assi",
+      "prerequisiteId": "mt_9QzSnn8m80",
+      "strength": "hard",
+      "reason": "servono i negativi per i 4 quadranti"
+    },
+    {
+      "topicId": "lyc_piano_punti",
+      "prerequisiteId": "mt_hVpGOEz2kG",
+      "strength": "soft",
+      "reason": "coordinate a 11+"
+    },
+    {
+      "topicId": "lyc_piano_punti",
+      "prerequisiteId": "mt_snlqRCiA1R",
+      "strength": "soft",
+      "reason": "tracciare punti"
+    },
+    {
+      "topicId": "lyc_piano_figure",
+      "prerequisiteId": "mt_y-BuQAfw4B",
+      "strength": "soft",
+      "reason": "coordinate a 12+"
+    },
+    {
+      "topicId": "lyc_poli_classificazione",
+      "prerequisiteId": "mt_DNYQLahbfa",
+      "strength": "hard",
+      "reason": "proprietà di triangoli e quadrilateri"
+    },
+    {
+      "topicId": "lyc_poli_classificazione",
+      "prerequisiteId": "mt_8H2kO4k2B9",
+      "strength": "soft",
+      "reason": "poligoni regolari e irregolari"
+    },
+    {
+      "topicId": "lyc_perimetro",
+      "prerequisiteId": "mt_WtcFrxGOgw",
+      "strength": "hard",
+      "reason": "perimetro dei poligoni"
+    },
+    {
+      "topicId": "lyc_perimetro",
+      "prerequisiteId": "mt_MJZA90uc6H",
+      "strength": "soft",
+      "reason": "perimetro a 10+"
+    },
+    {
+      "topicId": "lyc_area_concetto",
+      "prerequisiteId": "mt_6xNmQLzuqm",
+      "strength": "hard",
+      "reason": "concetto di area"
+    },
+    {
+      "topicId": "lyc_area_rettangolo_quadrato",
+      "prerequisiteId": "mt_y1n0Zwhoca",
+      "strength": "hard",
+      "reason": "area di base per conteggio"
+    },
+    {
+      "topicId": "lyc_area_triangolo",
+      "prerequisiteId": "mt_ML5t7n2-U8",
+      "strength": "hard",
+      "reason": "area di triangoli"
+    },
+    {
+      "topicId": "lyc_area_parallelogramma",
+      "prerequisiteId": "mt_ML5t7n2-U8",
+      "strength": "soft",
+      "reason": "area di parallelogrammi"
+    },
+    {
+      "topicId": "lyc_cerchio",
+      "prerequisiteId": "mt_svFa6_mjO_",
+      "strength": "hard",
+      "reason": "circonferenza e area del cerchio"
+    },
+    {
+      "topicId": "lyc_cerchio",
+      "prerequisiteId": "mt_xq3YHZ2zeR",
+      "strength": "soft",
+      "reason": "parti del cerchio"
+    },
+    {
+      "topicId": "lyc_area_composte",
+      "prerequisiteId": "mt_eMtV6tBSJm",
+      "strength": "soft",
+      "reason": "aree di figure composte"
+    },
+    {
+      "topicId": "lyc_pit_triangolo_rettangolo",
+      "prerequisiteId": "mt_MFfYcnv6Tv",
+      "strength": "hard",
+      "reason": "l'angolo retto definisce il triangolo rettangolo"
+    },
+    {
+      "topicId": "lyc_pit_triangolo_rettangolo",
+      "prerequisiteId": "mt_tAJH5BrpOx",
+      "strength": "soft",
+      "reason": "angoli nei triangoli"
+    },
+    {
+      "topicId": "lyc_pit_triangolo_rettangolo",
+      "prerequisiteId": "mt_DNYQLahbfa",
+      "strength": "soft",
+      "reason": "proprietà dei triangoli"
+    },
+    {
+      "topicId": "lyc_pit_enunciato",
+      "prerequisiteId": "mt_hCVPYlF-7Y",
+      "strength": "soft",
+      "reason": "il teorema usa i quadrati"
+    }
+  ]
+}

@@ -1,0 +1,2164 @@
+{
+  "topics": [
+    {
+      "id": "lyc_potenze_def",
+      "type": "CONCEPTUAL",
+      "subject": "Mathematics",
+      "domain": "Powers & Roots",
+      "name": {
+        "it": "Definizione di potenza",
+        "en": "Definition of a power"
+      },
+      "description": {
+        "it": "La potenza a^n come prodotto di n fattori tutti uguali alla base a (con n intero maggiore di 1); saper individuare base, esponente e valore della potenza e collegare la potenza alla moltiplicazione ripetuta.",
+        "en": "The power a^n as the product of n factors all equal to the base a (for integer n greater than 1); identifying base, exponent and the value of the power, and linking a power to repeated multiplication."
+      },
+      "ageRangeStart": 11,
+      "ageRangeEnd": 12,
+      "centrality": 0.7,
+      "evidence": [
+        {
+          "it": "Data una potenza (es. 2^5), {{name}} indica correttamente qual è la base e quale l'esponente.",
+          "en": "Given a power (e.g. 2^5), {{name}} correctly states which number is the base and which is the exponent."
+        },
+        {
+          "it": "Riscrive una potenza come prodotto di fattori uguali e viceversa (es. 2^4 = 2x2x2x2 = 16).",
+          "en": "Rewrites a power as a product of equal factors and back (e.g. 2^4 = 2x2x2x2 = 16)."
+        },
+        {
+          "it": "Spiega perché 2^3 e 3^2 danno risultati diversi, distinguendo il ruolo di base ed esponente.",
+          "en": "Explains why 2^3 and 3^2 give different results, distinguishing the roles of base and exponent."
+        }
+      ],
+      "assessmentPrompt": {
+        "it": "{{name}} sa spiegare che cos'è una potenza come 2^5, indicando base ed esponente e calcolandone il valore come prodotto ripetuto?",
+        "en": "Can {{name}} explain what a power such as 2^5 means, naming the base and exponent and working out its value as a repeated product?"
+      },
+      "standards": []
+    },
+    {
+      "id": "lyc_potenze_lettura",
+      "type": "REPRESENTATIONAL",
+      "subject": "Mathematics",
+      "domain": "Powers & Roots",
+      "name": {
+        "it": "Scrittura e lettura delle potenze",
+        "en": "Reading and writing powers"
+      },
+      "description": {
+        "it": "Leggere/scrivere potenze; riconoscere quadrati e cubi.",
+        "en": "Read/write powers; recognise squares and cubes."
+      },
+      "ageRangeStart": 11,
+      "ageRangeEnd": 12,
+      "centrality": 0.3,
+      "evidence": [
+        {
+          "it": "{{name}} legge correttamente 5^3 come 'cinque alla terza' e scrive 'sette al quadrato' come 7^2.",
+          "en": "{{name}} correctly reads 5^3 as 'five cubed' and writes 'seven squared' as 7^2."
+        },
+        {
+          "it": "Riconosce che 4^2 si legge 'quattro al quadrato' e 2^3 'due al cubo', usando i nomi speciali per esponente 2 e 3.",
+          "en": "Recognises that 4^2 is read 'four squared' and 2^3 'two cubed', using the special names for exponent 2 and 3."
+        },
+        {
+          "it": "Passa senza errori dalla scrittura in potenza a quella a parole e viceversa (es. 'tre alla quarta' = 3^4).",
+          "en": "Moves without errors from power notation to words and back (e.g. 'three to the fourth' = 3^4)."
+        }
+      ],
+      "assessmentPrompt": {
+        "it": "{{name}} sa leggere ad alta voce la potenza 6^2 e scrivere in simboli 'quattro al cubo'?",
+        "en": "Can {{name}} read the power 6^2 aloud and write 'four cubed' in symbols?"
+      },
+      "standards": []
+    },
+    {
+      "id": "lyc_potenze_particolari",
+      "type": "CONCEPTUAL",
+      "subject": "Mathematics",
+      "domain": "Powers & Roots",
+      "name": {
+        "it": "Potenze particolari (esp. 0 e 1)",
+        "en": "Special powers (exp. 0 and 1)"
+      },
+      "description": {
+        "it": "Casi speciali: esponente 0 e 1, potenze di 0 e 1.",
+        "en": "Special cases: exponent 0 and 1, powers of 0 and 1."
+      },
+      "ageRangeStart": 11,
+      "ageRangeEnd": 12,
+      "centrality": 0.3,
+      "evidence": [
+        {
+          "it": "{{name}} sa che qualunque numero elevato a 0 vale 1 (es. 8^0 = 1) e qualunque numero elevato a 1 resta se stesso (es. 8^1 = 8).",
+          "en": "{{name}} knows that any number to the power 0 equals 1 (e.g. 8^0 = 1) and any number to the power 1 stays itself (e.g. 8^1 = 8)."
+        },
+        {
+          "it": "Calcola correttamente 0^5 = 0 e distingue questo caso da 5^0 = 1.",
+          "en": "Correctly computes 0^5 = 0 and distinguishes this case from 5^0 = 1."
+        },
+        {
+          "it": "Calcola 1^100 = 1, spiegando che moltiplicare 1 per se stesso non cambia mai il risultato.",
+          "en": "Computes 1^100 = 1, explaining that multiplying 1 by itself never changes the result."
+        }
+      ],
+      "assessmentPrompt": {
+        "it": "{{name}} sa dire subito quanto vale 9^0 e quanto vale 9^1, spiegando perché?",
+        "en": "Can {{name}} say straight away what 9^0 and 9^1 are worth, explaining why?"
+      },
+      "standards": []
+    },
+    {
+      "id": "lyc_potenze_prod_stessa_base",
+      "type": "PROCEDURAL",
+      "subject": "Mathematics",
+      "domain": "Powers & Roots",
+      "name": {
+        "it": "Prodotto di potenze con stessa base",
+        "en": "Product of powers, same base"
+      },
+      "description": {
+        "it": "Moltiplicare potenze di ugual base sommando gli esponenti.",
+        "en": "Multiply same-base powers by adding exponents."
+      },
+      "ageRangeStart": 11,
+      "ageRangeEnd": 12,
+      "centrality": 0.3,
+      "evidence": [
+        {
+          "it": "{{name}} calcola 2^3 x 2^4 sommando gli esponenti: 2^3 x 2^4 = 2^7.",
+          "en": "{{name}} computes 2^3 x 2^4 by adding the exponents: 2^3 x 2^4 = 2^7."
+        },
+        {
+          "it": "Applica la regola anche con basi diverse da 2, ad esempio 5^2 x 5^5 = 5^7.",
+          "en": "Applies the rule with bases other than 2, for example 5^2 x 5^5 = 5^7."
+        },
+        {
+          "it": "Riconosce quando la regola NON si applica, perché le basi sono diverse (es. 2^3 x 3^4 non si semplifica sommando gli esponenti).",
+          "en": "Recognises when the rule does NOT apply, because the bases differ (e.g. 2^3 x 3^4 cannot be simplified by adding exponents)."
+        }
+      ],
+      "assessmentPrompt": {
+        "it": "{{name}} sa semplificare 3^2 x 3^5 in un'unica potenza, spiegando la regola che usa?",
+        "en": "Can {{name}} simplify 3^2 x 3^5 into a single power, explaining the rule they use?"
+      },
+      "standards": []
+    },
+    {
+      "id": "lyc_potenze_quoz_stessa_base",
+      "type": "PROCEDURAL",
+      "subject": "Mathematics",
+      "domain": "Powers & Roots",
+      "name": {
+        "it": "Quoziente di potenze con stessa base",
+        "en": "Quotient of powers, same base"
+      },
+      "description": {
+        "it": "Dividere potenze di ugual base sottraendo gli esponenti.",
+        "en": "Divide same-base powers by subtracting exponents."
+      },
+      "ageRangeStart": 11,
+      "ageRangeEnd": 12,
+      "centrality": 0.3,
+      "evidence": [
+        {
+          "it": "{{name}} calcola 5^6 : 5^2 sottraendo gli esponenti: 5^6 : 5^2 = 5^4.",
+          "en": "{{name}} computes 5^6 : 5^2 by subtracting the exponents: 5^6 : 5^2 = 5^4."
+        },
+        {
+          "it": "Applica correttamente la regola anche quando l'esponente al denominatore è maggiore, riconoscendo che il risultato avrà esponente negativo (es. 2^3 : 2^5 = 2^-2).",
+          "en": "Correctly applies the rule even when the denominator's exponent is larger, recognising the result will have a negative exponent (e.g. 2^3 : 2^5 = 2^-2)."
+        },
+        {
+          "it": "Verifica il risultato tornando alla definizione di potenza per un caso semplice (es. 2^4 : 2^2 = 16 : 4 = 4 = 2^2).",
+          "en": "Checks the result by going back to the definition of a power for a simple case (e.g. 2^4 : 2^2 = 16 : 4 = 4 = 2^2)."
+        }
+      ],
+      "assessmentPrompt": {
+        "it": "{{name}} sa calcolare 7^5 : 7^3 sottraendo gli esponenti invece di eseguire i calcoli per esteso?",
+        "en": "Can {{name}} compute 7^5 : 7^3 by subtracting the exponents instead of working out the full calculations?"
+      },
+      "standards": []
+    },
+    {
+      "id": "lyc_potenze_potenza_di_potenza",
+      "type": "PROCEDURAL",
+      "subject": "Mathematics",
+      "domain": "Powers & Roots",
+      "name": {
+        "it": "Potenza di potenza",
+        "en": "Power of a power"
+      },
+      "description": {
+        "it": "Elevare una potenza a potenza moltiplicando gli esponenti.",
+        "en": "Raise a power to a power by multiplying exponents."
+      },
+      "ageRangeStart": 11,
+      "ageRangeEnd": 12,
+      "centrality": 0.3,
+      "evidence": [
+        {
+          "it": "{{name}} calcola (2^3)^2 moltiplicando gli esponenti: (2^3)^2 = 2^6.",
+          "en": "{{name}} computes (2^3)^2 by multiplying the exponents: (2^3)^2 = 2^6."
+        },
+        {
+          "it": "Distingue (5^2)^3 = 5^6 da 5^2 x 5^3 = 5^5, non confondendo le due regole.",
+          "en": "Distinguishes (5^2)^3 = 5^6 from 5^2 x 5^3 = 5^5, not mixing up the two rules."
+        },
+        {
+          "it": "Verifica un caso semplice tornando alla definizione: (2^2)^2 = 4^2 = 16 = 2^4.",
+          "en": "Checks a simple case by returning to the definition: (2^2)^2 = 4^2 = 16 = 2^4."
+        }
+      ],
+      "assessmentPrompt": {
+        "it": "{{name}} sa semplificare (3^2)^4 in un'unica potenza, spiegando perché gli esponenti si moltiplicano?",
+        "en": "Can {{name}} simplify (3^2)^4 into a single power, explaining why the exponents are multiplied?"
+      },
+      "standards": []
+    },
+    {
+      "id": "lyc_potenze_prod_stesso_esp",
+      "type": "PROCEDURAL",
+      "subject": "Mathematics",
+      "domain": "Powers & Roots",
+      "name": {
+        "it": "Potenze con lo stesso esponente",
+        "en": "Powers with the same exponent"
+      },
+      "description": {
+        "it": "Prodotto/quoziente di potenze con ugual esponente e basi diverse.",
+        "en": "Product/quotient of powers with equal exponent, different bases."
+      },
+      "ageRangeStart": 12,
+      "ageRangeEnd": 13,
+      "centrality": 0.3,
+      "evidence": [
+        {
+          "it": "{{name}} calcola 2^3 x 5^3 moltiplicando le basi: 2^3 x 5^3 = 10^3 = 1000.",
+          "en": "{{name}} computes 2^3 x 5^3 by multiplying the bases: 2^3 x 5^3 = 10^3 = 1000."
+        },
+        {
+          "it": "Applica la regola anche al quoziente, es. 8^2 : 4^2 = (8:4)^2 = 2^2 = 4.",
+          "en": "Applies the rule to a quotient too, e.g. 8^2 : 4^2 = (8:4)^2 = 2^2 = 4."
+        },
+        {
+          "it": "Riconosce che la regola richiede lo stesso esponente, non la stessa base, distinguendola dalla proprietà del prodotto di potenze con stessa base.",
+          "en": "Recognises the rule needs the same exponent, not the same base, telling it apart from the same-base product property."
+        }
+      ],
+      "assessmentPrompt": {
+        "it": "{{name}} sa calcolare 3^4 x 2^4 raccogliendo le basi in un unico prodotto elevato alla quarta?",
+        "en": "Can {{name}} compute 3^4 x 2^4 by combining the bases into a single product raised to the fourth?"
+      },
+      "standards": []
+    },
+    {
+      "id": "lyc_potenze_esp_negativo",
+      "type": "PROCEDURAL",
+      "subject": "Mathematics",
+      "domain": "Powers & Roots",
+      "name": {
+        "it": "Potenze con esponente negativo",
+        "en": "Powers with a negative exponent"
+      },
+      "description": {
+        "it": "L'esponente negativo come reciproco della base.",
+        "en": "A negative exponent as the reciprocal of the base."
+      },
+      "ageRangeStart": 12,
+      "ageRangeEnd": 13,
+      "centrality": 0.3,
+      "evidence": [
+        {
+          "it": "{{name}} riscrive 2^-3 come 1/2^3 = 1/8, spiegando che l'esponente negativo indica il reciproco.",
+          "en": "{{name}} rewrites 2^-3 as 1/2^3 = 1/8, explaining that a negative exponent means the reciprocal."
+        },
+        {
+          "it": "Calcola 5^-2 = 1/25, senza confondere il segno dell'esponente con un valore negativo del risultato.",
+          "en": "Computes 5^-2 = 1/25, without confusing the sign of the exponent with a negative value of the result."
+        },
+        {
+          "it": "Trasforma una frazione con potenza negativa nella forma equivalente positiva, es. 3^-1 = 1/3.",
+          "en": "Turns a fraction with a negative power into the equivalent positive form, e.g. 3^-1 = 1/3."
+        }
+      ],
+      "assessmentPrompt": {
+        "it": "{{name}} sa dire quanto vale 4^-2 e spiegare perché l'esponente negativo dà una frazione?",
+        "en": "Can {{name}} say what 4^-2 equals and explain why the negative exponent gives a fraction?"
+      },
+      "standards": []
+    },
+    {
+      "id": "lyc_potenze_base_10",
+      "type": "REPRESENTATIONAL",
+      "subject": "Mathematics",
+      "domain": "Powers & Roots",
+      "name": {
+        "it": "Potenze di 10 e notazione scientifica",
+        "en": "Powers of ten and scientific notation"
+      },
+      "description": {
+        "it": "Usare potenze di 10 e notazione scientifica.",
+        "en": "Use powers of ten and scientific notation."
+      },
+      "ageRangeStart": 12,
+      "ageRangeEnd": 13,
+      "centrality": 0.3,
+      "evidence": [
+        {
+          "it": "{{name}} scrive 1000 come 10^3 e 100000 come 10^5, riconoscendo il legame tra esponente e numero di zeri.",
+          "en": "{{name}} writes 1000 as 10^3 and 100000 as 10^5, recognising the link between the exponent and the number of zeros."
+        },
+        {
+          "it": "Scrive in notazione scientifica il numero 45.000.000 come 4,5 x 10^7.",
+          "en": "Writes the number 45,000,000 in scientific notation as 4.5 x 10^7."
+        },
+        {
+          "it": "Converte un numero molto piccolo, es. 0,00032, in notazione scientifica come 3,2 x 10^-4.",
+          "en": "Converts a very small number, e.g. 0.00032, into scientific notation as 3.2 x 10^-4."
+        }
+      ],
+      "assessmentPrompt": {
+        "it": "{{name}} sa scrivere in notazione scientifica il numero 7.200.000 e spiegare cosa rappresenta l'esponente?",
+        "en": "Can {{name}} write the number 7,200,000 in scientific notation and explain what the exponent represents?"
+      },
+      "standards": []
+    },
+    {
+      "id": "lyc_potenze_espressioni",
+      "type": "PROCEDURAL",
+      "subject": "Mathematics",
+      "domain": "Powers & Roots",
+      "name": {
+        "it": "Espressioni con le potenze",
+        "en": "Expressions with powers"
+      },
+      "description": {
+        "it": "Risolvere espressioni applicando le proprietà delle potenze.",
+        "en": "Solve expressions applying the properties of powers."
+      },
+      "ageRangeStart": 12,
+      "ageRangeEnd": 14,
+      "centrality": 0.3,
+      "evidence": [
+        {
+          "it": "{{name}} risolve l'espressione 2^3 x 2^2 : 2^4 applicando nell'ordine corretto le proprietà delle potenze, ottenendo 2.",
+          "en": "{{name}} solves the expression 2^3 x 2^2 : 2^4 applying the properties of powers in the right order, getting 2."
+        },
+        {
+          "it": "Gestisce un'espressione con parentesi e potenze miste, es. (3^2 + 4^0) x 2^2 = 40, rispettando le priorità di calcolo.",
+          "en": "Handles an expression with brackets and mixed powers, e.g. (3^2 + 4^0) x 2^2 = 40, respecting the order of operations."
+        },
+        {
+          "it": "Individua e corregge un errore tipico, come sommare gli esponenti in 2^3 + 2^2 invece di eseguire prima le potenze.",
+          "en": "Spots and corrects a typical error, such as adding the exponents in 2^3 + 2^2 instead of evaluating the powers first."
+        }
+      ],
+      "assessmentPrompt": {
+        "it": "{{name}} sa risolvere l'espressione (5^2 - 3^2) x 2^3, applicando nell'ordine giusto le proprietà delle potenze?",
+        "en": "Can {{name}} solve the expression (5^2 - 3^2) x 2^3, applying the properties of powers in the right order?"
+      },
+      "standards": []
+    },
+    {
+      "id": "lyc_div_multipli_divisori",
+      "type": "CONCEPTUAL",
+      "subject": "Mathematics",
+      "domain": "Number Theory",
+      "name": {
+        "it": "Multipli e divisori",
+        "en": "Multiples and divisors"
+      },
+      "description": {
+        "it": "Distinguere multipli e divisori e la loro relazione.",
+        "en": "Tell multiples and divisors apart and relate them."
+      },
+      "ageRangeStart": 11,
+      "ageRangeEnd": 12,
+      "centrality": 0.3,
+      "evidence": [
+        {
+          "it": "{{name}} elenca i primi multipli di 6 (6, 12, 18, 24, 30) e riconosce che 4 è un divisore di 12.",
+          "en": "{{name}} lists the first multiples of 6 (6, 12, 18, 24, 30) and recognises that 4 is a divisor of 12."
+        },
+        {
+          "it": "Spiega che se 3 è un divisore di 15, allora 15 è un multiplo di 3.",
+          "en": "Explains that if 3 is a divisor of 15, then 15 is a multiple of 3."
+        },
+        {
+          "it": "Riconosce che 0 è multiplo di ogni numero e che ogni numero è multiplo e divisore di se stesso.",
+          "en": "Recognises that 0 is a multiple of every number and that every number is a multiple and divisor of itself."
+        }
+      ],
+      "assessmentPrompt": {
+        "it": "{{name}} sa spiegare la relazione tra 5 e 20, dicendo se 5 è multiplo o divisore di 20?",
+        "en": "Can {{name}} explain the relationship between 5 and 20, saying whether 5 is a multiple or a divisor of 20?"
+      },
+      "standards": []
+    },
+    {
+      "id": "lyc_div_criteri",
+      "type": "PROCEDURAL",
+      "subject": "Mathematics",
+      "domain": "Number Theory",
+      "name": {
+        "it": "Criteri di divisibilità",
+        "en": "Divisibility rules"
+      },
+      "description": {
+        "it": "Applicare i criteri per 2, 3, 4, 5, 9, 10, 11.",
+        "en": "Apply the rules for 2, 3, 4, 5, 9, 10, 11."
+      },
+      "ageRangeStart": 11,
+      "ageRangeEnd": 12,
+      "centrality": 0.3,
+      "evidence": [
+        {
+          "it": "{{name}} riconosce che 4518 è divisibile per 2 e per 3 (la somma delle cifre è 18) ma non per 5.",
+          "en": "{{name}} recognises that 4,518 is divisible by 2 and by 3 (the digit sum is 18) but not by 5."
+        },
+        {
+          "it": "Applica il criterio di divisibilità per 9 al numero 4581, verificando che la somma delle cifre (18) è multipla di 9.",
+          "en": "Applies the divisibility rule for 9 to the number 4,581, checking that the digit sum (18) is a multiple of 9."
+        },
+        {
+          "it": "Usa il criterio per 11 per stabilire che 2937 non è divisibile per 11.",
+          "en": "Uses the rule for 11 to establish that 2,937 is not divisible by 11."
+        }
+      ],
+      "assessmentPrompt": {
+        "it": "{{name}} sa dire, senza fare la divisione, se 3564 è divisibile per 4 e per 9?",
+        "en": "Without doing the division, can {{name}} say whether 3,564 is divisible by 4 and by 9?"
+      },
+      "standards": []
+    },
+    {
+      "id": "lyc_div_primi_composti",
+      "type": "CONCEPTUAL",
+      "subject": "Mathematics",
+      "domain": "Number Theory",
+      "name": {
+        "it": "Numeri primi e composti",
+        "en": "Prime and composite numbers"
+      },
+      "description": {
+        "it": "Riconoscere numeri primi e composti.",
+        "en": "Recognise prime and composite numbers."
+      },
+      "ageRangeStart": 11,
+      "ageRangeEnd": 12,
+      "centrality": 0.3,
+      "evidence": [
+        {
+          "it": "{{name}} riconosce che 17 è primo perché ha solo i divisori 1 e 17, mentre 18 è composto.",
+          "en": "{{name}} recognises that 17 is prime because it only has the divisors 1 and 17, while 18 is composite."
+        },
+        {
+          "it": "Elenca i numeri primi minori di 30 (2, 3, 5, 7, 11, 13, 17, 19, 23, 29).",
+          "en": "Lists the prime numbers below 30 (2, 3, 5, 7, 11, 13, 17, 19, 23, 29)."
+        },
+        {
+          "it": "Spiega perché 1 non è né primo né composto.",
+          "en": "Explains why 1 is neither prime nor composite."
+        }
+      ],
+      "assessmentPrompt": {
+        "it": "{{name}} sa dire se 51 è un numero primo o composto, e spiegare come lo ha stabilito?",
+        "en": "Can {{name}} say whether 51 is a prime or composite number, and explain how they worked it out?"
+      },
+      "standards": []
+    },
+    {
+      "id": "lyc_div_scomposizione",
+      "type": "PROCEDURAL",
+      "subject": "Mathematics",
+      "domain": "Number Theory",
+      "name": {
+        "it": "Scomposizione in fattori primi",
+        "en": "Prime factorisation"
+      },
+      "description": {
+        "it": "Scomporre un numero nel prodotto dei suoi fattori primi.",
+        "en": "Break a number into a product of prime factors."
+      },
+      "ageRangeStart": 11,
+      "ageRangeEnd": 13,
+      "centrality": 0.3,
+      "evidence": [
+        {
+          "it": "{{name}} scompone 60 nei suoi fattori primi: 60 = 2^2 x 3 x 5.",
+          "en": "{{name}} breaks 60 down into its prime factors: 60 = 2^2 x 3 x 5."
+        },
+        {
+          "it": "Usa il metodo delle divisioni successive per scomporre 84 = 2^2 x 3 x 7.",
+          "en": "Uses successive division to factorise 84 = 2^2 x 3 x 7."
+        },
+        {
+          "it": "Verifica la scomposizione moltiplicando i fattori trovati e ritrovando il numero di partenza.",
+          "en": "Checks the factorisation by multiplying the factors found and recovering the original number."
+        }
+      ],
+      "assessmentPrompt": {
+        "it": "{{name}} sa scomporre 90 in fattori primi, scrivendo il risultato con le potenze?",
+        "en": "Can {{name}} break 90 down into prime factors, writing the result using powers?"
+      },
+      "standards": []
+    },
+    {
+      "id": "lyc_div_mcd",
+      "type": "PROCEDURAL",
+      "subject": "Mathematics",
+      "domain": "Number Theory",
+      "name": {
+        "it": "Massimo Comune Divisore (MCD)",
+        "en": "Greatest Common Divisor"
+      },
+      "description": {
+        "it": "Calcolare il MCD dalla scomposizione.",
+        "en": "Compute the GCD from the factorisation."
+      },
+      "ageRangeStart": 12,
+      "ageRangeEnd": 13,
+      "centrality": 0.3,
+      "evidence": [
+        {
+          "it": "{{name}} calcola il MCD tra 24 e 36 scomponendo entrambi (24 = 2^3 x 3; 36 = 2^2 x 3^2) e prendendo i fattori comuni con esponente minore: MCD = 2^2 x 3 = 12.",
+          "en": "{{name}} finds the GCD of 24 and 36 by factorising both (24 = 2^3 x 3; 36 = 2^2 x 3^2) and taking common factors with the lower exponent: GCD = 2^2 x 3 = 12."
+        },
+        {
+          "it": "Riconosce che il MCD di due numeri primi tra loro (es. 8 e 15) è 1.",
+          "en": "Recognises that the GCD of two coprime numbers (e.g. 8 and 15) is 1."
+        },
+        {
+          "it": "Usa il MCD per semplificare al minimo la frazione 36/24.",
+          "en": "Uses the GCD to reduce the fraction 36/24 to its lowest terms."
+        }
+      ],
+      "assessmentPrompt": {
+        "it": "{{name}} sa calcolare il MCD tra 18 e 30 a partire dalla scomposizione in fattori primi?",
+        "en": "Can {{name}} compute the GCD of 18 and 30 starting from the prime factorisation?"
+      },
+      "standards": []
+    },
+    {
+      "id": "lyc_div_mcm",
+      "type": "PROCEDURAL",
+      "subject": "Mathematics",
+      "domain": "Number Theory",
+      "name": {
+        "it": "minimo comune multiplo (mcm)",
+        "en": "Least Common Multiple"
+      },
+      "description": {
+        "it": "Calcolare il mcm dalla scomposizione.",
+        "en": "Compute the LCM from the factorisation."
+      },
+      "ageRangeStart": 12,
+      "ageRangeEnd": 13,
+      "centrality": 0.3,
+      "evidence": [
+        {
+          "it": "{{name}} calcola il mcm tra 4 e 6 scomponendo entrambi e prendendo tutti i fattori con l'esponente maggiore: mcm = 2^2 x 3 = 12.",
+          "en": "{{name}} finds the LCM of 4 and 6 by factorising both and taking every factor with its highest exponent: LCM = 2^2 x 3 = 12."
+        },
+        {
+          "it": "Riconosce che il mcm tra 5 e 8, numeri primi tra loro, è il loro prodotto: 40.",
+          "en": "Recognises that the LCM of 5 and 8, which are coprime, is their product: 40."
+        },
+        {
+          "it": "Usa il mcm per trovare il minimo comune denominatore tra 1/6 e 1/9.",
+          "en": "Uses the LCM to find the least common denominator between 1/6 and 1/9."
+        }
+      ],
+      "assessmentPrompt": {
+        "it": "{{name}} sa calcolare il mcm tra 8 e 12 a partire dalla scomposizione in fattori primi?",
+        "en": "Can {{name}} compute the LCM of 8 and 12 starting from the prime factorisation?"
+      },
+      "standards": []
+    },
+    {
+      "id": "lyc_div_mcm_mcd_problemi",
+      "type": "PROCEDURAL",
+      "subject": "Mathematics",
+      "domain": "Number Theory",
+      "name": {
+        "it": "Problemi con mcm e MCD",
+        "en": "Word problems with LCM and GCD"
+      },
+      "description": {
+        "it": "Risolvere problemi scegliendo tra mcm e MCD.",
+        "en": "Solve problems choosing between LCM and GCD."
+      },
+      "ageRangeStart": 12,
+      "ageRangeEnd": 14,
+      "centrality": 0.3,
+      "evidence": [
+        {
+          "it": "{{name}} risolve un problema in cui due autobus ripartono ogni 15 e 20 minuti, capendo che serve il mcm (60 minuti) per sapere quando ripartono insieme.",
+          "en": "{{name}} solves a problem where two buses leave every 15 and 20 minutes, understanding the LCM (60 minutes) is needed to find when they leave together."
+        },
+        {
+          "it": "Risolve un problema di ripartizione in gruppi uguali, capendo che serve il MCD (es. dividere 18 matite e 24 penne nel massimo numero di scatole uguali: 6 scatole).",
+          "en": "Solves a problem about splitting into equal groups, understanding the GCD is needed (e.g. dividing 18 pencils and 24 pens into the greatest number of equal boxes: 6 boxes)."
+        },
+        {
+          "it": "Distingue nel testo del problema gli indizi che segnalano 'mcm' (ripetersi insieme, coincidenza) da quelli che segnalano 'MCD' (dividere al massimo, gruppi uguali).",
+          "en": "Picks out clues in the wording that signal 'LCM' (recurring together, coinciding) from those that signal 'GCD' (dividing into the largest groups, equal groups)."
+        }
+      ],
+      "assessmentPrompt": {
+        "it": "Se due luci lampeggiano ogni 8 e 12 secondi, {{name}} sa dire dopo quanti secondi lampeggeranno di nuovo insieme, spiegando se serve il mcm o il MCD?",
+        "en": "If two lights blink every 8 and 12 seconds, can {{name}} say after how many seconds they will blink together again, explaining whether the LCM or the GCD is needed?"
+      },
+      "standards": []
+    },
+    {
+      "id": "lyc_fraz_concetto",
+      "type": "CONCEPTUAL",
+      "subject": "Mathematics",
+      "domain": "Fractions",
+      "name": {
+        "it": "Concetto di frazione",
+        "en": "Meaning of a fraction"
+      },
+      "description": {
+        "it": "La frazione come parte di un intero e come quoziente.",
+        "en": "A fraction as part of a whole and as a quotient."
+      },
+      "ageRangeStart": 11,
+      "ageRangeEnd": 12,
+      "centrality": 0.3,
+      "evidence": [
+        {
+          "it": "{{name}} rappresenta 3/4 di una pizza colorando 3 spicchi su 4.",
+          "en": "{{name}} represents 3/4 of a pizza by shading 3 slices out of 4."
+        },
+        {
+          "it": "Spiega che 5/2 significa anche '5 diviso 2', collegando la frazione al quoziente.",
+          "en": "Explains that 5/2 also means '5 divided by 2', linking the fraction to a quotient."
+        },
+        {
+          "it": "Riconosce numeratore e denominatore in una frazione data, spiegando cosa indica ciascuno.",
+          "en": "Identifies numerator and denominator in a given fraction, explaining what each one shows."
+        }
+      ],
+      "assessmentPrompt": {
+        "it": "{{name}} sa spiegare che cosa significa la frazione 2/5 di una torta, e disegnarla?",
+        "en": "Can {{name}} explain what the fraction 2/5 of a cake means, and draw it?"
+      },
+      "standards": []
+    },
+    {
+      "id": "lyc_fraz_equivalenti",
+      "type": "PROCEDURAL",
+      "subject": "Mathematics",
+      "domain": "Fractions",
+      "name": {
+        "it": "Frazioni equivalenti e riduzione",
+        "en": "Equivalent fractions and simplification"
+      },
+      "description": {
+        "it": "Riconoscere frazioni equivalenti e ridurre ai minimi termini.",
+        "en": "Recognise equivalent fractions and reduce to lowest terms."
+      },
+      "ageRangeStart": 11,
+      "ageRangeEnd": 12,
+      "centrality": 0.3,
+      "evidence": [
+        {
+          "it": "{{name}} riconosce che 2/4 e 3/6 sono frazioni equivalenti a 1/2.",
+          "en": "{{name}} recognises that 2/4 and 3/6 are fractions equivalent to 1/2."
+        },
+        {
+          "it": "Riduce ai minimi termini la frazione 18/24, ottenendo 3/4.",
+          "en": "Reduces the fraction 18/24 to its lowest terms, getting 3/4."
+        },
+        {
+          "it": "Genera una frazione equivalente a 2/3 moltiplicando numeratore e denominatore per 5, ottenendo 10/15.",
+          "en": "Generates a fraction equivalent to 2/3 by multiplying numerator and denominator by 5, getting 10/15."
+        }
+      ],
+      "assessmentPrompt": {
+        "it": "{{name}} sa ridurre ai minimi termini la frazione 24/36?",
+        "en": "Can {{name}} reduce the fraction 24/36 to its lowest terms?"
+      },
+      "standards": []
+    },
+    {
+      "id": "lyc_fraz_confronto",
+      "type": "PROCEDURAL",
+      "subject": "Mathematics",
+      "domain": "Fractions",
+      "name": {
+        "it": "Confronto e ordinamento",
+        "en": "Comparing and ordering"
+      },
+      "description": {
+        "it": "Confrontare e ordinare frazioni con denominatore comune.",
+        "en": "Compare and order fractions via a common denominator."
+      },
+      "ageRangeStart": 11,
+      "ageRangeEnd": 12,
+      "centrality": 0.3,
+      "evidence": [
+        {
+          "it": "{{name}} confronta 2/3 e 3/5 portandole a denominatore comune (10/15 e 9/15) e concludendo che 2/3 > 3/5.",
+          "en": "{{name}} compares 2/3 and 3/5 by finding a common denominator (10/15 and 9/15) and concluding 2/3 > 3/5."
+        },
+        {
+          "it": "Ordina in modo crescente le frazioni 1/2, 1/3 e 5/6.",
+          "en": "Orders the fractions 1/2, 1/3 and 5/6 from smallest to largest."
+        },
+        {
+          "it": "Confronta due frazioni con lo stesso denominatore guardando solo i numeratori, es. 5/8 > 3/8.",
+          "en": "Compares two fractions with the same denominator by looking only at the numerators, e.g. 5/8 > 3/8."
+        }
+      ],
+      "assessmentPrompt": {
+        "it": "{{name}} sa dire quale tra 3/4 e 5/6 è maggiore, spiegando come lo ha calcolato?",
+        "en": "Can {{name}} say which of 3/4 and 5/6 is bigger, explaining how they worked it out?"
+      },
+      "standards": []
+    },
+    {
+      "id": "lyc_fraz_miste",
+      "type": "CONCEPTUAL",
+      "subject": "Mathematics",
+      "domain": "Fractions",
+      "name": {
+        "it": "Proprie, improprie, apparenti",
+        "en": "Proper, improper, whole-valued"
+      },
+      "description": {
+        "it": "Distinguere frazioni proprie/improprie/apparenti e numeri misti.",
+        "en": "Distinguish proper/improper/whole-valued fractions and mixed numbers."
+      },
+      "ageRangeStart": 11,
+      "ageRangeEnd": 12,
+      "centrality": 0.3,
+      "evidence": [
+        {
+          "it": "{{name}} riconosce che 5/3 è una frazione impropria e la trasforma nel numero misto 1 e 2/3.",
+          "en": "{{name}} recognises that 5/3 is an improper fraction and converts it to the mixed number 1 and 2/3."
+        },
+        {
+          "it": "Distingue 3/4 (propria), 9/4 (impropria) e 8/4 (apparente, uguale a 2).",
+          "en": "Tells apart 3/4 (proper), 9/4 (improper) and 8/4 (whole-valued, equal to 2)."
+        },
+        {
+          "it": "Trasforma il numero misto 2 e 3/5 nella frazione impropria 13/5.",
+          "en": "Converts the mixed number 2 and 3/5 into the improper fraction 13/5."
+        }
+      ],
+      "assessmentPrompt": {
+        "it": "{{name}} sa trasformare la frazione impropria 11/4 in numero misto, spiegando il procedimento?",
+        "en": "Can {{name}} convert the improper fraction 11/4 into a mixed number, explaining the method?"
+      },
+      "standards": []
+    },
+    {
+      "id": "lyc_fraz_add_sott",
+      "type": "PROCEDURAL",
+      "subject": "Mathematics",
+      "domain": "Fractions",
+      "name": {
+        "it": "Addizione e sottrazione",
+        "en": "Adding and subtracting"
+      },
+      "description": {
+        "it": "Sommare/sottrarre frazioni col minimo comune denominatore.",
+        "en": "Add/subtract fractions using the least common denominator."
+      },
+      "ageRangeStart": 11,
+      "ageRangeEnd": 13,
+      "centrality": 0.3,
+      "evidence": [
+        {
+          "it": "{{name}} calcola 1/4 + 1/6 trovando il minimo comune denominatore (12): 3/12 + 2/12 = 5/12.",
+          "en": "{{name}} computes 1/4 + 1/6 by finding the least common denominator (12): 3/12 + 2/12 = 5/12."
+        },
+        {
+          "it": "Calcola 3/5 - 1/4 = 12/20 - 5/20 = 7/20.",
+          "en": "Computes 3/5 - 1/4 = 12/20 - 5/20 = 7/20."
+        },
+        {
+          "it": "Somma due numeri misti, es. 1 e 1/2 + 2 e 1/3, gestendo correttamente le parti intere e frazionarie.",
+          "en": "Adds two mixed numbers, e.g. 1 and 1/2 + 2 and 1/3, correctly handling the whole and fractional parts."
+        }
+      ],
+      "assessmentPrompt": {
+        "it": "{{name}} sa calcolare 2/3 + 3/4, trovando il minimo comune denominatore?",
+        "en": "Can {{name}} compute 2/3 + 3/4, finding the least common denominator?"
+      },
+      "standards": []
+    },
+    {
+      "id": "lyc_fraz_molt",
+      "type": "PROCEDURAL",
+      "subject": "Mathematics",
+      "domain": "Fractions",
+      "name": {
+        "it": "Moltiplicazione",
+        "en": "Multiplying"
+      },
+      "description": {
+        "it": "Moltiplicare frazioni e semplificare in croce.",
+        "en": "Multiply fractions and cancel across."
+      },
+      "ageRangeStart": 11,
+      "ageRangeEnd": 13,
+      "centrality": 0.3,
+      "evidence": [
+        {
+          "it": "{{name}} calcola 2/3 x 3/5 moltiplicando numeratori e denominatori, semplificando in croce prima: 2/3 x 3/5 = 2/5.",
+          "en": "{{name}} computes 2/3 x 3/5 by multiplying numerators and denominators, cancelling across first: 2/3 x 3/5 = 2/5."
+        },
+        {
+          "it": "Moltiplica una frazione per un numero intero, es. 3/4 x 8 = 6.",
+          "en": "Multiplies a fraction by a whole number, e.g. 3/4 x 8 = 6."
+        },
+        {
+          "it": "Semplifica in croce prima di moltiplicare 4/9 x 3/8, ottenendo 1/6.",
+          "en": "Cancels across before multiplying 4/9 x 3/8, getting 1/6."
+        }
+      ],
+      "assessmentPrompt": {
+        "it": "{{name}} sa calcolare 5/6 x 3/10, semplificando in croce prima di moltiplicare?",
+        "en": "Can {{name}} compute 5/6 x 3/10, cancelling across before multiplying?"
+      },
+      "standards": []
+    },
+    {
+      "id": "lyc_fraz_div",
+      "type": "PROCEDURAL",
+      "subject": "Mathematics",
+      "domain": "Fractions",
+      "name": {
+        "it": "Divisione",
+        "en": "Dividing"
+      },
+      "description": {
+        "it": "Dividere frazioni moltiplicando per il reciproco.",
+        "en": "Divide by multiplying by the reciprocal."
+      },
+      "ageRangeStart": 12,
+      "ageRangeEnd": 13,
+      "centrality": 0.3,
+      "evidence": [
+        {
+          "it": "{{name}} calcola 2/3 : 4/5 moltiplicando per il reciproco: 2/3 x 5/4 = 5/6.",
+          "en": "{{name}} computes 2/3 : 4/5 by multiplying by the reciprocal: 2/3 x 5/4 = 5/6."
+        },
+        {
+          "it": "Divide una frazione per un numero intero, es. 3/4 : 6 = 1/8.",
+          "en": "Divides a fraction by a whole number, e.g. 3/4 : 6 = 1/8."
+        },
+        {
+          "it": "Divide un numero intero per una frazione, es. 5 : 2/3 = 15/2.",
+          "en": "Divides a whole number by a fraction, e.g. 5 : 2/3 = 15/2."
+        }
+      ],
+      "assessmentPrompt": {
+        "it": "{{name}} sa calcolare 3/5 : 2/7, spiegando perché si moltiplica per il reciproco?",
+        "en": "Can {{name}} compute 3/5 : 2/7, explaining why you multiply by the reciprocal?"
+      },
+      "standards": []
+    },
+    {
+      "id": "lyc_fraz_potenza",
+      "type": "PROCEDURAL",
+      "subject": "Mathematics",
+      "domain": "Fractions",
+      "name": {
+        "it": "Potenza di una frazione",
+        "en": "Power of a fraction"
+      },
+      "description": {
+        "it": "Elevare a potenza numeratore e denominatore.",
+        "en": "Raise numerator and denominator to the power."
+      },
+      "ageRangeStart": 12,
+      "ageRangeEnd": 13,
+      "centrality": 0.3,
+      "evidence": [
+        {
+          "it": "{{name}} calcola (2/3)^2 elevando numeratore e denominatore: 4/9.",
+          "en": "{{name}} computes (2/3)^2 by raising numerator and denominator: 4/9."
+        },
+        {
+          "it": "Calcola (1/2)^3 = 1/8, riconoscendo che il risultato è più piccolo della base.",
+          "en": "Computes (1/2)^3 = 1/8, recognising the result is smaller than the base."
+        },
+        {
+          "it": "Applica una potenza con esponente 0 a una frazione, es. (5/7)^0 = 1.",
+          "en": "Applies an exponent of 0 to a fraction, e.g. (5/7)^0 = 1."
+        }
+      ],
+      "assessmentPrompt": {
+        "it": "{{name}} sa calcolare (3/4)^2, elevando a potenza numeratore e denominatore?",
+        "en": "Can {{name}} compute (3/4)^2 by raising numerator and denominator to the power?"
+      },
+      "standards": []
+    },
+    {
+      "id": "lyc_fraz_frazione_di",
+      "type": "PROCEDURAL",
+      "subject": "Mathematics",
+      "domain": "Fractions",
+      "name": {
+        "it": "Frazione di un numero e inverso",
+        "en": "Fraction of a number and its inverse"
+      },
+      "description": {
+        "it": "Calcolare la frazione di una quantità e risalire all'intero.",
+        "en": "Find a fraction of a quantity and recover the whole."
+      },
+      "ageRangeStart": 11,
+      "ageRangeEnd": 13,
+      "centrality": 0.3,
+      "evidence": [
+        {
+          "it": "{{name}} calcola i 3/5 di 40, moltiplicando 40 x 3/5 = 24.",
+          "en": "{{name}} computes 3/5 of 40, by multiplying 40 x 3/5 = 24."
+        },
+        {
+          "it": "Dato che i 2/3 di un numero valgono 18, risale al numero intero (27) dividendo per 2 e moltiplicando per 3.",
+          "en": "Given that 2/3 of a number equals 18, works back to the whole number (27) by dividing by 2 and multiplying by 3."
+        },
+        {
+          "it": "Calcola i 7/10 di 250 euro, ottenendo 175 euro.",
+          "en": "Computes 7/10 of 250 euros, getting 175 euros."
+        }
+      ],
+      "assessmentPrompt": {
+        "it": "{{name}} sa calcolare quanto sono i 3/8 di 64, e anche risalire all'intero se i 3/8 valgono 24?",
+        "en": "Can {{name}} work out what 3/8 of 64 is, and also work back to the whole if 3/8 equals 24?"
+      },
+      "standards": []
+    },
+    {
+      "id": "lyc_fraz_espressioni",
+      "type": "PROCEDURAL",
+      "subject": "Mathematics",
+      "domain": "Fractions",
+      "name": {
+        "it": "Espressioni con le frazioni",
+        "en": "Expressions with fractions"
+      },
+      "description": {
+        "it": "Risolvere espressioni con frazioni, parentesi e potenze.",
+        "en": "Solve expressions with fractions, brackets and powers."
+      },
+      "ageRangeStart": 12,
+      "ageRangeEnd": 14,
+      "centrality": 0.3,
+      "evidence": [
+        {
+          "it": "{{name}} risolve un'espressione con frazioni e parentesi, es. (1/2 + 1/3) x 2/5 = 1/3, rispettando le priorità.",
+          "en": "{{name}} solves an expression with fractions and brackets, e.g. (1/2 + 1/3) x 2/5 = 1/3, respecting the order of operations."
+        },
+        {
+          "it": "Gestisce un'espressione con potenze di frazioni e numeri misti, es. (1 e 1/2)^2 - 1/4 = 2.",
+          "en": "Handles an expression with powers of fractions and mixed numbers, e.g. (1 and 1/2)^2 - 1/4 = 2."
+        },
+        {
+          "it": "Individua e corregge un errore tipico, come sommare numeratori e denominatori separatamente senza trovare il denominatore comune.",
+          "en": "Spots and corrects a typical error, such as adding numerators and denominators separately without finding the common denominator."
+        }
+      ],
+      "assessmentPrompt": {
+        "it": "{{name}} sa risolvere l'espressione (2/3 - 1/6) : 1/2 + 1/4, rispettando l'ordine delle operazioni?",
+        "en": "Can {{name}} solve the expression (2/3 - 1/6) : 1/2 + 1/4, respecting the order of operations?"
+      },
+      "standards": []
+    },
+    {
+      "id": "lyc_radici_concetto",
+      "type": "CONCEPTUAL",
+      "subject": "Mathematics",
+      "domain": "Powers & Roots",
+      "name": {
+        "it": "Radice quadrata come operazione inversa",
+        "en": "Square root as inverse operation"
+      },
+      "description": {
+        "it": "La radice quadrata come inversa dell'elevamento al quadrato.",
+        "en": "The square root as the inverse of squaring."
+      },
+      "ageRangeStart": 12,
+      "ageRangeEnd": 13,
+      "centrality": 0.3,
+      "evidence": [
+        {
+          "it": "{{name}} spiega che radice di 49 è 7 perché 7^2 = 49.",
+          "en": "{{name}} explains that the square root of 49 is 7 because 7^2 = 49."
+        },
+        {
+          "it": "Riconosce la radice quadrata come l'operazione inversa dell'elevamento al quadrato.",
+          "en": "Recognises the square root as the inverse operation of squaring."
+        },
+        {
+          "it": "Verifica il risultato di una radice moltiplicando il valore trovato per se stesso, es. controlla che 9 x 9 = 81 per confermare che radice di 81 = 9.",
+          "en": "Checks the result of a root by multiplying the found value by itself, e.g. checking 9 x 9 = 81 to confirm the square root of 81 is 9."
+        }
+      ],
+      "assessmentPrompt": {
+        "it": "{{name}} sa spiegare perché la radice quadrata di 36 è 6, collegandola all'elevamento al quadrato?",
+        "en": "Can {{name}} explain why the square root of 36 is 6, linking it to squaring?"
+      },
+      "standards": []
+    },
+    {
+      "id": "lyc_radici_quadrati_perfetti",
+      "type": "PROCEDURAL",
+      "subject": "Mathematics",
+      "domain": "Powers & Roots",
+      "name": {
+        "it": "Quadrati perfetti e radici esatte",
+        "en": "Perfect squares and exact roots"
+      },
+      "description": {
+        "it": "Riconoscere i quadrati perfetti e calcolarne la radice esatta.",
+        "en": "Recognise perfect squares and find their exact root."
+      },
+      "ageRangeStart": 12,
+      "ageRangeEnd": 13,
+      "centrality": 0.3,
+      "evidence": [
+        {
+          "it": "{{name}} riconosce che 64 è un quadrato perfetto e calcola la sua radice esatta: 8.",
+          "en": "{{name}} recognises that 64 is a perfect square and computes its exact root: 8."
+        },
+        {
+          "it": "Elenca i quadrati perfetti da 1 a 144 (1, 4, 9, 16, 25, 36, 49, 64, 81, 100, 121, 144).",
+          "en": "Lists the perfect squares from 1 to 144 (1, 4, 9, 16, 25, 36, 49, 64, 81, 100, 121, 144)."
+        },
+        {
+          "it": "Riconosce che 50 non è un quadrato perfetto, perché non compare nell'elenco dei quadrati.",
+          "en": "Recognises that 50 is not a perfect square, because it does not appear in the list of squares."
+        }
+      ],
+      "assessmentPrompt": {
+        "it": "{{name}} sa calcolare la radice quadrata di 121, riconoscendo che è un quadrato perfetto?",
+        "en": "Can {{name}} compute the square root of 121, recognising it is a perfect square?"
+      },
+      "standards": []
+    },
+    {
+      "id": "lyc_radici_stima",
+      "type": "PROCEDURAL",
+      "subject": "Mathematics",
+      "domain": "Powers & Roots",
+      "name": {
+        "it": "Stima e approssimazione",
+        "en": "Estimating square roots"
+      },
+      "description": {
+        "it": "Approssimare radici non esatte tra due interi e con le tavole.",
+        "en": "Approximate non-exact roots between two integers and with tables."
+      },
+      "ageRangeStart": 12,
+      "ageRangeEnd": 13,
+      "centrality": 0.3,
+      "evidence": [
+        {
+          "it": "{{name}} stima che la radice di 50 è compresa tra 7 (49) e 8 (64), più vicina a 7.",
+          "en": "{{name}} estimates that the square root of 50 lies between 7 (49) and 8 (64), closer to 7."
+        },
+        {
+          "it": "Approssima la radice di 20 a circa 4,5 sapendo che 4^2 = 16 e 5^2 = 25.",
+          "en": "Approximates the square root of 20 to about 4.5, knowing that 4^2 = 16 and 5^2 = 25."
+        },
+        {
+          "it": "Usa una tavola dei quadrati o la calcolatrice per verificare un'approssimazione trovata a mano.",
+          "en": "Uses a table of squares or a calculator to check an approximation found by hand."
+        }
+      ],
+      "assessmentPrompt": {
+        "it": "{{name}} sa stimare tra quali due numeri interi si trova la radice di 30, senza usare la calcolatrice?",
+        "en": "Can {{name}} estimate between which two whole numbers the square root of 30 lies, without using a calculator?"
+      },
+      "standards": []
+    },
+    {
+      "id": "lyc_radici_proprieta",
+      "type": "PROCEDURAL",
+      "subject": "Mathematics",
+      "domain": "Powers & Roots",
+      "name": {
+        "it": "Proprietà dei radicali",
+        "en": "Properties of radicals"
+      },
+      "description": {
+        "it": "Radice di prodotto e quoziente; semplificazione.",
+        "en": "Root of a product and quotient; simplification."
+      },
+      "ageRangeStart": 13,
+      "ageRangeEnd": 14,
+      "centrality": 0.3,
+      "evidence": [
+        {
+          "it": "{{name}} scompone la radice di 72 come radice di 36 x 2 = 6 x radice di 2.",
+          "en": "{{name}} breaks the square root of 72 down as the square root of 36 x 2 = 6 x the square root of 2."
+        },
+        {
+          "it": "Applica la proprietà della radice di un quoziente, es. radice di (16/9) = radice di 16 / radice di 9 = 4/3.",
+          "en": "Applies the property of the root of a quotient, e.g. the square root of (16/9) = square root of 16 / square root of 9 = 4/3."
+        },
+        {
+          "it": "Moltiplica due radicali semplificando dove possibile, es. radice di 2 x radice di 8 = radice di 16 = 4.",
+          "en": "Multiplies two radicals, simplifying where possible, e.g. the square root of 2 x the square root of 8 = the square root of 16 = 4."
+        }
+      ],
+      "assessmentPrompt": {
+        "it": "{{name}} sa semplificare la radice di 50 scomponendola come prodotto di un quadrato perfetto per un altro numero?",
+        "en": "Can {{name}} simplify the square root of 50 by breaking it down as the product of a perfect square and another number?"
+      },
+      "standards": []
+    },
+    {
+      "id": "lyc_radici_espressioni",
+      "type": "PROCEDURAL",
+      "subject": "Mathematics",
+      "domain": "Powers & Roots",
+      "name": {
+        "it": "Espressioni con radici e potenze",
+        "en": "Expressions with roots and powers"
+      },
+      "description": {
+        "it": "Risolvere espressioni con radici e esponenti frazionari.",
+        "en": "Solve expressions with roots and fractional exponents."
+      },
+      "ageRangeStart": 13,
+      "ageRangeEnd": 14,
+      "centrality": 0.3,
+      "evidence": [
+        {
+          "it": "{{name}} risolve un'espressione con radici e potenze, es. radice di 9 + 2^3 x radice di 4 = 3 + 16 = 19, rispettando le priorità.",
+          "en": "{{name}} solves an expression with roots and powers, e.g. the square root of 9 + 2^3 x the square root of 4 = 3 + 16 = 19, respecting the order of operations."
+        },
+        {
+          "it": "Collega la radice quadrata all'esponente frazionario, scrivendo radice di 5 come 5^(1/2).",
+          "en": "Links the square root to a fractional exponent, writing the square root of 5 as 5^(1/2)."
+        },
+        {
+          "it": "Semplifica un'espressione con radicali non esatti, approssimando solo al passo finale.",
+          "en": "Simplifies an expression with non-exact radicals, approximating only at the final step."
+        }
+      ],
+      "assessmentPrompt": {
+        "it": "{{name}} sa risolvere l'espressione radice di 16 + 3^2 : radice di 9, rispettando l'ordine delle operazioni?",
+        "en": "Can {{name}} solve the expression the square root of 16 + 3^2 : the square root of 9, respecting the order of operations?"
+      },
+      "standards": []
+    },
+    {
+      "id": "lyc_equiv_sistema_metrico",
+      "type": "CONCEPTUAL",
+      "subject": "Mathematics",
+      "domain": "Measurement",
+      "name": {
+        "it": "Sistema metrico decimale",
+        "en": "Decimal metric system"
+      },
+      "description": {
+        "it": "Struttura decimale delle misure e ruolo delle potenze di 10.",
+        "en": "Decimal structure of measures and the role of powers of ten."
+      },
+      "ageRangeStart": 11,
+      "ageRangeEnd": 12,
+      "centrality": 0.3,
+      "evidence": [
+        {
+          "it": "{{name}} spiega che ogni unità del sistema metrico decimale è 10 volte la successiva (es. 1 m = 10 dm).",
+          "en": "{{name}} explains that each unit in the decimal metric system is 10 times the next (e.g. 1 m = 10 dm)."
+        },
+        {
+          "it": "Ordina le unità di lunghezza dal km al mm, riconoscendo la sequenza decimale.",
+          "en": "Orders the length units from km to mm, recognising the decimal sequence."
+        },
+        {
+          "it": "Collega ogni passaggio tra unità a una moltiplicazione o divisione per 10, cioè a una potenza di 10.",
+          "en": "Links each step between units to a multiplication or division by 10, i.e. to a power of ten."
+        }
+      ],
+      "assessmentPrompt": {
+        "it": "{{name}} sa spiegare perché passare da metri a decimetri significa moltiplicare per 10?",
+        "en": "Can {{name}} explain why moving from metres to decimetres means multiplying by 10?"
+      },
+      "standards": []
+    },
+    {
+      "id": "lyc_equiv_lunghezze",
+      "type": "PROCEDURAL",
+      "subject": "Mathematics",
+      "domain": "Measurement",
+      "name": {
+        "it": "Equivalenze di lunghezza",
+        "en": "Length conversions"
+      },
+      "description": {
+        "it": "Convertire lunghezze spostando la virgola.",
+        "en": "Convert lengths by shifting the decimal point."
+      },
+      "ageRangeStart": 11,
+      "ageRangeEnd": 12,
+      "centrality": 0.3,
+      "evidence": [
+        {
+          "it": "{{name}} converte 3,5 m in 350 cm spostando la virgola di due posti.",
+          "en": "{{name}} converts 3.5 m to 350 cm by shifting the decimal point two places."
+        },
+        {
+          "it": "Converte 1250 mm in 1,25 m.",
+          "en": "Converts 1,250 mm to 1.25 m."
+        },
+        {
+          "it": "Confronta 2,4 km e 2400 m, riconoscendo che sono la stessa lunghezza.",
+          "en": "Compares 2.4 km and 2,400 m, recognising they are the same length."
+        }
+      ],
+      "assessmentPrompt": {
+        "it": "{{name}} sa convertire 4,2 m in centimetri, spiegando quanti posti sposta la virgola?",
+        "en": "Can {{name}} convert 4.2 m into centimetres, explaining how many places the decimal point moves?"
+      },
+      "standards": []
+    },
+    {
+      "id": "lyc_equiv_superfici",
+      "type": "PROCEDURAL",
+      "subject": "Mathematics",
+      "domain": "Measurement",
+      "name": {
+        "it": "Equivalenze di superficie",
+        "en": "Area conversions"
+      },
+      "description": {
+        "it": "Convertire superfici ×/÷100 a ogni passo.",
+        "en": "Convert areas ×/÷100 per step."
+      },
+      "ageRangeStart": 12,
+      "ageRangeEnd": 13,
+      "centrality": 0.3,
+      "evidence": [
+        {
+          "it": "{{name}} converte 3 m^2 in 30.000 cm^2, moltiplicando per 100 a ogni passaggio (non per 10).",
+          "en": "{{name}} converts 3 m^2 to 30,000 cm^2, multiplying by 100 at each step (not by 10)."
+        },
+        {
+          "it": "Converte 25.000 cm^2 in 2,5 m^2.",
+          "en": "Converts 25,000 cm^2 to 2.5 m^2."
+        },
+        {
+          "it": "Spiega perché le conversioni di superficie procedono per 100 e non per 10, collegandolo al quadrato della lunghezza.",
+          "en": "Explains why area conversions proceed by 100 rather than 10, linking it to the square of the length."
+        }
+      ],
+      "assessmentPrompt": {
+        "it": "{{name}} sa convertire 1,5 m^2 in cm^2, spiegando perché si moltiplica per 100 a ogni passaggio?",
+        "en": "Can {{name}} convert 1.5 m^2 into cm^2, explaining why you multiply by 100 at each step?"
+      },
+      "standards": []
+    },
+    {
+      "id": "lyc_equiv_volumi_capacita",
+      "type": "PROCEDURAL",
+      "subject": "Mathematics",
+      "domain": "Measurement",
+      "name": {
+        "it": "Equivalenze di volume e capacità",
+        "en": "Volume and capacity conversions"
+      },
+      "description": {
+        "it": "Convertire volumi ×/÷1000 e collegarli alle capacità (L, dm³).",
+        "en": "Convert volumes ×/÷1000 and link to capacity (L, dm³)."
+      },
+      "ageRangeStart": 12,
+      "ageRangeEnd": 13,
+      "centrality": 0.3,
+      "evidence": [
+        {
+          "it": "{{name}} converte 2 m^3 in 2000 dm^3, moltiplicando per 1000 a ogni passaggio.",
+          "en": "{{name}} converts 2 m^3 to 2,000 dm^3, multiplying by 1000 at each step."
+        },
+        {
+          "it": "Collega 1 dm^3 a 1 litro, convertendo 3,5 dm^3 in 3,5 L.",
+          "en": "Links 1 dm^3 to 1 litre, converting 3.5 dm^3 to 3.5 L."
+        },
+        {
+          "it": "Converte 4500 mL in 4,5 L e poi in 0,0045 m^3.",
+          "en": "Converts 4,500 mL to 4.5 L and then to 0.0045 m^3."
+        }
+      ],
+      "assessmentPrompt": {
+        "it": "{{name}} sa convertire 2,5 dm^3 in litri e poi in centimetri cubi, spiegando i legami tra le unità?",
+        "en": "Can {{name}} convert 2.5 dm^3 into litres and then into cubic centimetres, explaining the links between the units?"
+      },
+      "standards": []
+    },
+    {
+      "id": "lyc_equiv_massa",
+      "type": "PROCEDURAL",
+      "subject": "Mathematics",
+      "domain": "Measurement",
+      "name": {
+        "it": "Equivalenze di massa",
+        "en": "Mass conversions"
+      },
+      "description": {
+        "it": "Convertire misure di massa e peso.",
+        "en": "Convert units of mass and weight."
+      },
+      "ageRangeStart": 11,
+      "ageRangeEnd": 12,
+      "centrality": 0.3,
+      "evidence": [
+        {
+          "it": "{{name}} converte 2,3 kg in 2300 g.",
+          "en": "{{name}} converts 2.3 kg to 2,300 g."
+        },
+        {
+          "it": "Converte 750 g in 0,75 kg.",
+          "en": "Converts 750 g to 0.75 kg."
+        },
+        {
+          "it": "Distingue massa (kg, g) da peso, riconoscendo che nell'uso comune si trattano come sinonimi.",
+          "en": "Distinguishes mass (kg, g) from weight, recognising that in everyday use they are treated as synonyms."
+        }
+      ],
+      "assessmentPrompt": {
+        "it": "{{name}} sa convertire 3200 g in kg, spiegando come sposta la virgola?",
+        "en": "Can {{name}} convert 3,200 g into kg, explaining how they shift the decimal point?"
+      },
+      "standards": []
+    },
+    {
+      "id": "lyc_equiv_tempo",
+      "type": "PROCEDURAL",
+      "subject": "Mathematics",
+      "domain": "Measurement",
+      "name": {
+        "it": "Misure di tempo non decimali",
+        "en": "Non-decimal time measures"
+      },
+      "description": {
+        "it": "Operare con ore, minuti, secondi (non decimali).",
+        "en": "Work with hours, minutes, seconds (non-decimal)."
+      },
+      "ageRangeStart": 11,
+      "ageRangeEnd": 12,
+      "centrality": 0.3,
+      "evidence": [
+        {
+          "it": "{{name}} converte 2 ore e 30 minuti in 150 minuti totali, sapendo che 1 ora = 60 minuti (non 100).",
+          "en": "{{name}} converts 2 hours 30 minutes to 150 minutes total, knowing 1 hour = 60 minutes (not 100)."
+        },
+        {
+          "it": "Somma 1 h 45 min + 40 min ottenendo 2 h 25 min, riportando correttamente oltre i 60 minuti.",
+          "en": "Adds 1 h 45 min + 40 min getting 2 h 25 min, correctly carrying over past 60 minutes."
+        },
+        {
+          "it": "Spiega perché non si possono usare le virgole decimali per i minuti come si fa per i metri (75 minuti non è 1,75 ore).",
+          "en": "Explains why decimal points cannot be used for minutes the way they are for metres (75 minutes is not 1.75 hours)."
+        }
+      ],
+      "assessmentPrompt": {
+        "it": "{{name}} sa dire quanti minuti sono 3 ore e 20 minuti, spiegando perché non si moltiplica semplicemente per 100?",
+        "en": "Can {{name}} say how many minutes are in 3 hours 20 minutes, explaining why you don't simply multiply by 100?"
+      },
+      "standards": []
+    },
+    {
+      "id": "lyc_equiv_problemi",
+      "type": "PROCEDURAL",
+      "subject": "Mathematics",
+      "domain": "Measurement",
+      "name": {
+        "it": "Problemi con le equivalenze",
+        "en": "Problems mixing magnitudes"
+      },
+      "description": {
+        "it": "Risolvere problemi che combinano grandezze diverse.",
+        "en": "Solve problems combining different magnitudes."
+      },
+      "ageRangeStart": 12,
+      "ageRangeEnd": 14,
+      "centrality": 0.3,
+      "evidence": [
+        {
+          "it": "{{name}} risolve un problema che chiede quanti sacchetti da 250 g servono per confezionare 3,5 kg di farina (14 sacchetti), convertendo prima le unità.",
+          "en": "{{name}} solves a problem asking how many 250 g bags are needed to pack 3.5 kg of flour (14 bags), converting the units first."
+        },
+        {
+          "it": "Calcola quanti litri d'acqua contiene una vasca di 1,2 m x 0,8 m x 0,5 m, collegando il volume in m^3 ai litri.",
+          "en": "Computes how many litres of water a 1.2 m x 0.8 m x 0.5 m tank holds, linking the volume in m^3 to litres."
+        },
+        {
+          "it": "Combina in uno stesso problema tempo e lunghezza, es. calcolando la velocità media dati 15 km percorsi in 1 h 30 min.",
+          "en": "Combines time and length in the same problem, e.g. computing the average speed given 15 km covered in 1 h 30 min."
+        }
+      ],
+      "assessmentPrompt": {
+        "it": "{{name}} sa risolvere un problema in cui deve convertire litri, kg e metri nella stessa richiesta, ad esempio calcolando quanti litri di succo servono per riempire 25 bicchieri da 2 dL?",
+        "en": "Can {{name}} solve a problem requiring conversions between litres, kg and metres in the same task, e.g. working out how many litres of juice are needed to fill 25 glasses of 2 dL each?"
+      },
+      "standards": []
+    },
+    {
+      "id": "lyc_piano_assi",
+      "type": "CONCEPTUAL",
+      "subject": "Mathematics",
+      "domain": "Coordinate Geometry",
+      "name": {
+        "it": "Assi, origine e coordinate",
+        "en": "Axes, origin and coordinates"
+      },
+      "description": {
+        "it": "Assi, origine, quadranti e coppie ordinate.",
+        "en": "Axes, origin, quadrants and ordered pairs."
+      },
+      "ageRangeStart": 11,
+      "ageRangeEnd": 12,
+      "centrality": 0.3,
+      "evidence": [
+        {
+          "it": "{{name}} indica l'asse delle ascisse (x) e delle ordinate (y) e individua l'origine come punto (0,0).",
+          "en": "{{name}} points out the x-axis (abscissa) and y-axis (ordinate) and identifies the origin as the point (0,0)."
+        },
+        {
+          "it": "Riconosce in quale dei quattro quadranti si trova il punto (-3, 5).",
+          "en": "Recognises which of the four quadrants contains the point (-3, 5)."
+        },
+        {
+          "it": "Spiega che il primo numero di una coppia ordinata (x, y) indica lo spostamento orizzontale e il secondo quello verticale.",
+          "en": "Explains that the first number in an ordered pair (x, y) shows the horizontal shift and the second the vertical one."
+        }
+      ],
+      "assessmentPrompt": {
+        "it": "{{name}} sa dire in quale quadrante si trova il punto (4, -2) e spiegare perché?",
+        "en": "Can {{name}} say which quadrant contains the point (4, -2) and explain why?"
+      },
+      "standards": []
+    },
+    {
+      "id": "lyc_piano_punti",
+      "type": "PROCEDURAL",
+      "subject": "Mathematics",
+      "domain": "Coordinate Geometry",
+      "name": {
+        "it": "Rappresentare e leggere punti",
+        "en": "Plotting and reading points"
+      },
+      "description": {
+        "it": "Collocare e leggere punti nei quattro quadranti.",
+        "en": "Plot and read points across all four quadrants."
+      },
+      "ageRangeStart": 11,
+      "ageRangeEnd": 12,
+      "centrality": 0.3,
+      "evidence": [
+        {
+          "it": "{{name}} colloca correttamente il punto A(3, -2) sul piano cartesiano.",
+          "en": "{{name}} correctly plots the point A(3, -2) on the Cartesian plane."
+        },
+        {
+          "it": "Legge le coordinate di un punto già disegnato nel terzo quadrante, es. (-4, -1).",
+          "en": "Reads the coordinates of a point already drawn in the third quadrant, e.g. (-4, -1)."
+        },
+        {
+          "it": "Colloca più punti dati in una tabella e ne verifica la posizione reciproca.",
+          "en": "Plots several points given in a table and checks their relative position."
+        }
+      ],
+      "assessmentPrompt": {
+        "it": "{{name}} sa disegnare sul piano cartesiano il punto B(-2, 5) e leggere le coordinate del punto C già disegnato?",
+        "en": "Can {{name}} draw the point B(-2, 5) on the Cartesian plane and read the coordinates of the already-drawn point C?"
+      },
+      "standards": []
+    },
+    {
+      "id": "lyc_piano_distanza",
+      "type": "PROCEDURAL",
+      "subject": "Mathematics",
+      "domain": "Coordinate Geometry",
+      "name": {
+        "it": "Distanza tra due punti",
+        "en": "Distance between two points"
+      },
+      "description": {
+        "it": "Distanza tra punti, anche con Pitagora.",
+        "en": "Distance between points, including via Pythagoras."
+      },
+      "ageRangeStart": 12,
+      "ageRangeEnd": 14,
+      "centrality": 0.3,
+      "evidence": [
+        {
+          "it": "{{name}} calcola la distanza tra A(1, 2) e B(1, 7), sottraendo direttamente le ordinate (5) perché i punti hanno la stessa ascissa.",
+          "en": "{{name}} computes the distance between A(1, 2) and B(1, 7) by directly subtracting the ordinates (5) since the points share the same abscissa."
+        },
+        {
+          "it": "Calcola la distanza tra A(0, 0) e B(3, 4) usando il teorema di Pitagora, ottenendo 5.",
+          "en": "Computes the distance between A(0, 0) and B(3, 4) using the Pythagorean theorem, getting 5."
+        },
+        {
+          "it": "Distingue il caso di punti allineati orizzontalmente o verticalmente (sottrazione diretta) dal caso generale (Pitagora).",
+          "en": "Tells apart the case of points aligned horizontally or vertically (direct subtraction) from the general case (Pythagoras)."
+        }
+      ],
+      "assessmentPrompt": {
+        "it": "{{name}} sa calcolare la distanza tra i punti A(2, 1) e B(5, 5), usando il teorema di Pitagora?",
+        "en": "Can {{name}} compute the distance between the points A(2, 1) and B(5, 5), using the Pythagorean theorem?"
+      },
+      "standards": []
+    },
+    {
+      "id": "lyc_piano_punto_medio",
+      "type": "PROCEDURAL",
+      "subject": "Mathematics",
+      "domain": "Coordinate Geometry",
+      "name": {
+        "it": "Punto medio di un segmento",
+        "en": "Midpoint of a segment"
+      },
+      "description": {
+        "it": "Coordinate del punto medio di un segmento.",
+        "en": "Coordinates of the midpoint of a segment."
+      },
+      "ageRangeStart": 12,
+      "ageRangeEnd": 14,
+      "centrality": 0.3,
+      "evidence": [
+        {
+          "it": "{{name}} calcola il punto medio di A(2, 4) e B(6, 8), facendo la media delle ascisse e delle ordinate: M(4, 6).",
+          "en": "{{name}} computes the midpoint of A(2, 4) and B(6, 8), averaging the abscissas and ordinates: M(4, 6)."
+        },
+        {
+          "it": "Verifica che il punto medio trovato è equidistante dai due estremi del segmento.",
+          "en": "Checks that the midpoint found is equidistant from the two endpoints of the segment."
+        },
+        {
+          "it": "Calcola il punto medio anche con coordinate negative, es. A(-3, 2) e B(5, -6), ottenendo M(1, -2).",
+          "en": "Computes the midpoint even with negative coordinates, e.g. A(-3, 2) and B(5, -6), getting M(1, -2)."
+        }
+      ],
+      "assessmentPrompt": {
+        "it": "{{name}} sa calcolare le coordinate del punto medio del segmento tra A(0, 3) e B(6, -1)?",
+        "en": "Can {{name}} compute the coordinates of the midpoint of the segment between A(0, 3) and B(6, -1)?"
+      },
+      "standards": []
+    },
+    {
+      "id": "lyc_piano_figure",
+      "type": "PROCEDURAL",
+      "subject": "Mathematics",
+      "domain": "Coordinate Geometry",
+      "name": {
+        "it": "Figure nel piano cartesiano",
+        "en": "Figures on the Cartesian plane"
+      },
+      "description": {
+        "it": "Disegnare poligoni e calcolarne perimetro e area.",
+        "en": "Draw polygons and compute their perimeter and area."
+      },
+      "ageRangeStart": 12,
+      "ageRangeEnd": 14,
+      "centrality": 0.3,
+      "evidence": [
+        {
+          "it": "{{name}} disegna il triangolo di vertici A(0,0), B(4,0), C(0,3) e ne calcola il perimetro usando le distanze tra i punti.",
+          "en": "{{name}} draws the triangle with vertices A(0,0), B(4,0), C(0,3) and computes its perimeter using the distances between the points."
+        },
+        {
+          "it": "Calcola l'area di un rettangolo dati i suoi quattro vertici nel piano cartesiano.",
+          "en": "Computes the area of a rectangle given its four vertices on the Cartesian plane."
+        },
+        {
+          "it": "Riconosce che tipo di poligono si forma dati i vertici e ne verifica le proprietà (es. lati uguali per un rombo).",
+          "en": "Recognises which kind of polygon is formed by given vertices and checks its properties (e.g. equal sides for a rhombus)."
+        }
+      ],
+      "assessmentPrompt": {
+        "it": "Dati i vertici A(1,1), B(5,1), C(5,4), D(1,4), {{name}} sa riconoscere che figura è, e calcolarne perimetro e area?",
+        "en": "Given the vertices A(1,1), B(5,1), C(5,4), D(1,4), can {{name}} recognise what shape it is, and compute its perimeter and area?"
+      },
+      "standards": []
+    },
+    {
+      "id": "lyc_poli_classificazione",
+      "type": "CONCEPTUAL",
+      "subject": "Mathematics",
+      "domain": "Geometry",
+      "name": {
+        "it": "Classificazione dei poligoni",
+        "en": "Classifying polygons"
+      },
+      "description": {
+        "it": "Classificare triangoli e quadrilateri; poligoni regolari.",
+        "en": "Classify triangles and quadrilaterals; regular polygons."
+      },
+      "ageRangeStart": 11,
+      "ageRangeEnd": 12,
+      "centrality": 0.3,
+      "evidence": [
+        {
+          "it": "{{name}} classifica un triangolo con i lati di 5 cm, 5 cm e 3 cm come isoscele.",
+          "en": "{{name}} classifies a triangle with sides 5 cm, 5 cm and 3 cm as isosceles."
+        },
+        {
+          "it": "Distingue un rombo (lati uguali, angoli diversi da 90°) da un quadrato (lati uguali, angoli di 90°).",
+          "en": "Tells apart a rhombus (equal sides, angles different from 90°) from a square (equal sides, 90° angles)."
+        },
+        {
+          "it": "Riconosce un esagono regolare, spiegando che ha tutti i lati e gli angoli uguali.",
+          "en": "Recognises a regular hexagon, explaining that all its sides and angles are equal."
+        }
+      ],
+      "assessmentPrompt": {
+        "it": "{{name}} sa classificare un quadrilatero con due coppie di lati paralleli ma nessun angolo retto?",
+        "en": "Can {{name}} classify a quadrilateral with two pairs of parallel sides but no right angle?"
+      },
+      "standards": []
+    },
+    {
+      "id": "lyc_perimetro",
+      "type": "PROCEDURAL",
+      "subject": "Mathematics",
+      "domain": "Geometry",
+      "name": {
+        "it": "Perimetro dei poligoni",
+        "en": "Perimeter of polygons"
+      },
+      "description": {
+        "it": "Calcolare il perimetro sommando i lati.",
+        "en": "Compute perimeter by adding sides."
+      },
+      "ageRangeStart": 11,
+      "ageRangeEnd": 12,
+      "centrality": 0.3,
+      "evidence": [
+        {
+          "it": "{{name}} calcola il perimetro di un rettangolo con base 8 cm e altezza 5 cm, sommando i lati: 26 cm.",
+          "en": "{{name}} computes the perimeter of a rectangle with base 8 cm and height 5 cm, adding the sides: 26 cm."
+        },
+        {
+          "it": "Calcola il perimetro di un triangolo con lati 6 cm, 7 cm e 9 cm: 22 cm.",
+          "en": "Computes the perimeter of a triangle with sides 6 cm, 7 cm and 9 cm: 22 cm."
+        },
+        {
+          "it": "Calcola il perimetro di un pentagono regolare con lato 4 cm: 20 cm, moltiplicando il lato per il numero dei lati.",
+          "en": "Computes the perimeter of a regular pentagon with side 4 cm: 20 cm, by multiplying the side by the number of sides."
+        }
+      ],
+      "assessmentPrompt": {
+        "it": "{{name}} sa calcolare il perimetro di un rettangolo con base 12 cm e altezza 7 cm?",
+        "en": "Can {{name}} compute the perimeter of a rectangle with base 12 cm and height 7 cm?"
+      },
+      "standards": []
+    },
+    {
+      "id": "lyc_area_concetto",
+      "type": "CONCEPTUAL",
+      "subject": "Mathematics",
+      "domain": "Geometry",
+      "name": {
+        "it": "Concetto di area e unità",
+        "en": "Concept of area and units"
+      },
+      "description": {
+        "it": "L'area come misura della superficie e le sue unità.",
+        "en": "Area as the measure of a surface and its units."
+      },
+      "ageRangeStart": 11,
+      "ageRangeEnd": 12,
+      "centrality": 0.3,
+      "evidence": [
+        {
+          "it": "{{name}} spiega che l'area misura quanto spazio occupa una superficie, distinguendola dal perimetro.",
+          "en": "{{name}} explains that area measures how much space a surface covers, telling it apart from perimeter."
+        },
+        {
+          "it": "Conta i quadretti coperti da una figura disegnata su carta millimetrata per stimarne l'area.",
+          "en": "Counts the squares covered by a figure drawn on graph paper to estimate its area."
+        },
+        {
+          "it": "Riconosce le unità di misura dell'area (cm^2, m^2) e le distingue da quelle di lunghezza.",
+          "en": "Recognises the units of area (cm^2, m^2) and distinguishes them from length units."
+        }
+      ],
+      "assessmentPrompt": {
+        "it": "{{name}} sa spiegare la differenza tra perimetro e area di una figura, facendo un esempio concreto?",
+        "en": "Can {{name}} explain the difference between the perimeter and the area of a shape, giving a concrete example?"
+      },
+      "standards": []
+    },
+    {
+      "id": "lyc_area_rettangolo_quadrato",
+      "type": "PROCEDURAL",
+      "subject": "Mathematics",
+      "domain": "Geometry",
+      "name": {
+        "it": "Area di rettangolo e quadrato",
+        "en": "Area of rectangle and square"
+      },
+      "description": {
+        "it": "Area di rettangolo e quadrato.",
+        "en": "Area of a rectangle and a square."
+      },
+      "ageRangeStart": 11,
+      "ageRangeEnd": 12,
+      "centrality": 0.3,
+      "evidence": [
+        {
+          "it": "{{name}} calcola l'area di un rettangolo con base 9 cm e altezza 4 cm: 36 cm^2.",
+          "en": "{{name}} computes the area of a rectangle with base 9 cm and height 4 cm: 36 cm^2."
+        },
+        {
+          "it": "Calcola l'area di un quadrato con lato 6 cm: 36 cm^2.",
+          "en": "Computes the area of a square with side 6 cm: 36 cm^2."
+        },
+        {
+          "it": "Applica la formula inversa per trovare un lato del rettangolo, sapendo che l'area è 48 cm^2 e la base 8 cm (altezza 6 cm).",
+          "en": "Applies the inverse formula to find a side of the rectangle, knowing the area is 48 cm^2 and the base is 8 cm (height 6 cm)."
+        }
+      ],
+      "assessmentPrompt": {
+        "it": "{{name}} sa calcolare l'area di un rettangolo con base 11 cm e altezza 5 cm?",
+        "en": "Can {{name}} compute the area of a rectangle with base 11 cm and height 5 cm?"
+      },
+      "standards": []
+    },
+    {
+      "id": "lyc_area_triangolo",
+      "type": "PROCEDURAL",
+      "subject": "Mathematics",
+      "domain": "Geometry",
+      "name": {
+        "it": "Area del triangolo",
+        "en": "Area of a triangle"
+      },
+      "description": {
+        "it": "Area del triangolo (base × altezza / 2).",
+        "en": "Area of a triangle (base × height / 2)."
+      },
+      "ageRangeStart": 11,
+      "ageRangeEnd": 13,
+      "centrality": 0.3,
+      "evidence": [
+        {
+          "it": "{{name}} calcola l'area di un triangolo con base 10 cm e altezza 6 cm: (10 x 6) : 2 = 30 cm^2.",
+          "en": "{{name}} computes the area of a triangle with base 10 cm and height 6 cm: (10 x 6) : 2 = 30 cm^2."
+        },
+        {
+          "it": "Spiega perché l'area del triangolo è metà di quella del rettangolo con la stessa base e altezza.",
+          "en": "Explains why the triangle's area is half that of the rectangle with the same base and height."
+        },
+        {
+          "it": "Trova l'altezza di un triangolo, sapendo che l'area è 24 cm^2 e la base 8 cm (altezza 6 cm).",
+          "en": "Finds the height of a triangle, knowing the area is 24 cm^2 and the base 8 cm (height 6 cm)."
+        }
+      ],
+      "assessmentPrompt": {
+        "it": "{{name}} sa calcolare l'area di un triangolo con base 14 cm e altezza 5 cm?",
+        "en": "Can {{name}} compute the area of a triangle with base 14 cm and height 5 cm?"
+      },
+      "standards": []
+    },
+    {
+      "id": "lyc_area_parallelogramma",
+      "type": "PROCEDURAL",
+      "subject": "Mathematics",
+      "domain": "Geometry",
+      "name": {
+        "it": "Area di parallelogramma e rombo",
+        "en": "Area of parallelogram and rhombus"
+      },
+      "description": {
+        "it": "Area di parallelogramma e rombo.",
+        "en": "Area of a parallelogram and a rhombus."
+      },
+      "ageRangeStart": 11,
+      "ageRangeEnd": 13,
+      "centrality": 0.3,
+      "evidence": [
+        {
+          "it": "{{name}} calcola l'area di un parallelogramma con base 7 cm e altezza 4 cm: 28 cm^2.",
+          "en": "{{name}} computes the area of a parallelogram with base 7 cm and height 4 cm: 28 cm^2."
+        },
+        {
+          "it": "Calcola l'area di un rombo con le diagonali di 6 cm e 8 cm: (6 x 8) : 2 = 24 cm^2.",
+          "en": "Computes the area of a rhombus with diagonals 6 cm and 8 cm: (6 x 8) : 2 = 24 cm^2."
+        },
+        {
+          "it": "Spiega perché il parallelogramma si trasforma in un rettangolo equivalente tagliando e spostando un triangolo.",
+          "en": "Explains why a parallelogram becomes an equivalent rectangle by cutting off and moving a triangle."
+        }
+      ],
+      "assessmentPrompt": {
+        "it": "{{name}} sa calcolare l'area di un rombo con le diagonali di 10 cm e 12 cm?",
+        "en": "Can {{name}} compute the area of a rhombus with diagonals 10 cm and 12 cm?"
+      },
+      "standards": []
+    },
+    {
+      "id": "lyc_area_trapezio",
+      "type": "PROCEDURAL",
+      "subject": "Mathematics",
+      "domain": "Geometry",
+      "name": {
+        "it": "Area del trapezio",
+        "en": "Area of a trapezoid"
+      },
+      "description": {
+        "it": "Area del trapezio.",
+        "en": "Area of a trapezoid."
+      },
+      "ageRangeStart": 12,
+      "ageRangeEnd": 13,
+      "centrality": 0.3,
+      "evidence": [
+        {
+          "it": "{{name}} calcola l'area di un trapezio con basi 5 cm e 9 cm e altezza 4 cm: [(5+9) x 4] : 2 = 28 cm^2.",
+          "en": "{{name}} computes the area of a trapezoid with bases 5 cm and 9 cm and height 4 cm: [(5+9) x 4] : 2 = 28 cm^2."
+        },
+        {
+          "it": "Spiega perché nella formula del trapezio si sommano le due basi prima di moltiplicare per l'altezza.",
+          "en": "Explains why the trapezoid formula adds the two bases before multiplying by the height."
+        },
+        {
+          "it": "Trova la base maggiore di un trapezio, conoscendo area, base minore e altezza.",
+          "en": "Finds the longer base of a trapezoid, knowing the area, the shorter base and the height."
+        }
+      ],
+      "assessmentPrompt": {
+        "it": "{{name}} sa calcolare l'area di un trapezio con basi 6 cm e 10 cm e altezza 5 cm?",
+        "en": "Can {{name}} compute the area of a trapezoid with bases 6 cm and 10 cm and height 5 cm?"
+      },
+      "standards": []
+    },
+    {
+      "id": "lyc_area_poligoni_regolari",
+      "type": "PROCEDURAL",
+      "subject": "Mathematics",
+      "domain": "Geometry",
+      "name": {
+        "it": "Area dei poligoni regolari (apotema)",
+        "en": "Area of regular polygons (apothem)"
+      },
+      "description": {
+        "it": "Area dei poligoni regolari con l'apotema.",
+        "en": "Area of regular polygons using the apothem."
+      },
+      "ageRangeStart": 12,
+      "ageRangeEnd": 14,
+      "centrality": 0.3,
+      "evidence": [
+        {
+          "it": "{{name}} calcola l'area di un esagono regolare di perimetro 36 cm e apotema 5,2 cm: (36 x 5,2) : 2 = 93,6 cm^2.",
+          "en": "{{name}} computes the area of a regular hexagon with perimeter 36 cm and apothem 5.2 cm: (36 x 5.2) : 2 = 93.6 cm^2."
+        },
+        {
+          "it": "Spiega che l'apotema è la distanza dal centro al punto medio di un lato.",
+          "en": "Explains that the apothem is the distance from the centre to the midpoint of a side."
+        },
+        {
+          "it": "Calcola il perimetro di un pentagono regolare a partire dal lato, prima di applicare la formula dell'area.",
+          "en": "Computes the perimeter of a regular pentagon from the side length, before applying the area formula."
+        }
+      ],
+      "assessmentPrompt": {
+        "it": "{{name}} sa calcolare l'area di un ottagono regolare con perimetro 40 cm e apotema 6 cm?",
+        "en": "Can {{name}} compute the area of a regular octagon with perimeter 40 cm and apothem 6 cm?"
+      },
+      "standards": []
+    },
+    {
+      "id": "lyc_cerchio",
+      "type": "PROCEDURAL",
+      "subject": "Mathematics",
+      "domain": "Geometry",
+      "name": {
+        "it": "Circonferenza e area del cerchio",
+        "en": "Circumference and area of a circle"
+      },
+      "description": {
+        "it": "Circonferenza e area del cerchio con π.",
+        "en": "Circumference and area of a circle using π."
+      },
+      "ageRangeStart": 12,
+      "ageRangeEnd": 14,
+      "centrality": 0.3,
+      "evidence": [
+        {
+          "it": "{{name}} calcola la circonferenza di un cerchio con raggio 5 cm: 2 x pi greco x 5 = 31,4 cm (con pi greco = 3,14).",
+          "en": "{{name}} computes the circumference of a circle with radius 5 cm: 2 x pi x 5 = 31.4 cm (using pi = 3.14)."
+        },
+        {
+          "it": "Calcola l'area di un cerchio con raggio 4 cm: pi greco x 4^2 = 50,24 cm^2.",
+          "en": "Computes the area of a circle with radius 4 cm: pi x 4^2 = 50.24 cm^2."
+        },
+        {
+          "it": "Trova il raggio di un cerchio conoscendo la circonferenza, invertendo la formula.",
+          "en": "Finds the radius of a circle knowing the circumference, by inverting the formula."
+        }
+      ],
+      "assessmentPrompt": {
+        "it": "{{name}} sa calcolare circonferenza e area di un cerchio con diametro 10 cm?",
+        "en": "Can {{name}} compute the circumference and area of a circle with a 10 cm diameter?"
+      },
+      "standards": []
+    },
+    {
+      "id": "lyc_area_composte",
+      "type": "PROCEDURAL",
+      "subject": "Mathematics",
+      "domain": "Geometry",
+      "name": {
+        "it": "Aree di figure composte",
+        "en": "Area of compound figures"
+      },
+      "description": {
+        "it": "Area di figure scomponibili in poligoni noti.",
+        "en": "Area of figures decomposable into known polygons."
+      },
+      "ageRangeStart": 12,
+      "ageRangeEnd": 14,
+      "centrality": 0.3,
+      "evidence": [
+        {
+          "it": "{{name}} scompone una figura a forma di 'L' in due rettangoli e ne somma le aree.",
+          "en": "{{name}} splits an L-shaped figure into two rectangles and adds their areas."
+        },
+        {
+          "it": "Calcola l'area di una figura composta da un rettangolo con un semicerchio sopra, sommando le due aree parziali.",
+          "en": "Computes the area of a figure made of a rectangle with a semicircle on top, adding the two partial areas."
+        },
+        {
+          "it": "Calcola l'area di una figura per differenza, sottraendo un triangolo ritagliato da un rettangolo.",
+          "en": "Computes the area of a figure by subtraction, removing a triangle cut out of a rectangle."
+        }
+      ],
+      "assessmentPrompt": {
+        "it": "{{name}} sa calcolare l'area di una figura composta da un quadrato di lato 6 cm con un triangolo di base 6 cm e altezza 4 cm sopra?",
+        "en": "Can {{name}} compute the area of a figure made of a square with 6 cm sides and a triangle with base 6 cm and height 4 cm on top?"
+      },
+      "standards": []
+    },
+    {
+      "id": "lyc_area_problemi",
+      "type": "PROCEDURAL",
+      "subject": "Mathematics",
+      "domain": "Geometry",
+      "name": {
+        "it": "Problemi su perimetro e area",
+        "en": "Perimeter and area problems"
+      },
+      "description": {
+        "it": "Problemi con formule dirette e inverse.",
+        "en": "Problems using direct and inverse formulas."
+      },
+      "ageRangeStart": 12,
+      "ageRangeEnd": 14,
+      "centrality": 0.3,
+      "evidence": [
+        {
+          "it": "{{name}} risolve un problema in cui conosce l'area di un rettangolo (60 cm^2) e la base (12 cm), trovando l'altezza (5 cm) con la formula inversa.",
+          "en": "{{name}} solves a problem knowing the area of a rectangle (60 cm^2) and the base (12 cm), finding the height (5 cm) with the inverse formula."
+        },
+        {
+          "it": "Risolve un problema su un giardino composto da un rettangolo e un'aiuola circolare, calcolando l'area totale.",
+          "en": "Solves a problem about a garden made of a rectangle and a circular flowerbed, computing the total area."
+        },
+        {
+          "it": "Sceglie la formula corretta tra dirette e inverse in base al dato mancante nel testo del problema.",
+          "en": "Picks the correct formula, direct or inverse, based on the missing piece of data in the problem's wording."
+        }
+      ],
+      "assessmentPrompt": {
+        "it": "{{name}} sa risolvere un problema in cui l'area di un triangolo è 45 cm^2 e la base è 10 cm, trovando l'altezza con la formula inversa?",
+        "en": "Can {{name}} solve a problem where a triangle's area is 45 cm^2 and its base is 10 cm, finding the height with the inverse formula?"
+      },
+      "standards": []
+    },
+    {
+      "id": "lyc_pit_triangolo_rettangolo",
+      "type": "CONCEPTUAL",
+      "subject": "Mathematics",
+      "domain": "Geometry",
+      "name": {
+        "it": "Cateti e ipotenusa",
+        "en": "Legs and hypotenuse"
+      },
+      "description": {
+        "it": "Riconoscere cateti e ipotenusa nel triangolo rettangolo.",
+        "en": "Identify legs and hypotenuse in a right triangle."
+      },
+      "ageRangeStart": 12,
+      "ageRangeEnd": 13,
+      "centrality": 0.3,
+      "evidence": [
+        {
+          "it": "{{name}} indica in un triangolo rettangolo quali sono i due cateti e quale l'ipotenusa.",
+          "en": "{{name}} points out which two sides of a right triangle are the legs and which is the hypotenuse."
+        },
+        {
+          "it": "Spiega che l'ipotenusa è sempre il lato opposto all'angolo retto ed è il lato più lungo.",
+          "en": "Explains that the hypotenuse is always the side opposite the right angle and is the longest side."
+        },
+        {
+          "it": "Riconosce un triangolo rettangolo tra diversi triangoli disegnati, individuando l'angolo di 90°.",
+          "en": "Recognises a right triangle among several drawn triangles, spotting the 90° angle."
+        }
+      ],
+      "assessmentPrompt": {
+        "it": "{{name}} sa indicare cateti e ipotenusa in un triangolo rettangolo disegnato, spiegando perché l'ipotenusa è il lato più lungo?",
+        "en": "Can {{name}} point out the legs and hypotenuse in a drawn right triangle, explaining why the hypotenuse is the longest side?"
+      },
+      "standards": []
+    },
+    {
+      "id": "lyc_pit_enunciato",
+      "type": "CONCEPTUAL",
+      "subject": "Mathematics",
+      "domain": "Geometry",
+      "name": {
+        "it": "Enunciato del teorema",
+        "en": "Statement of the theorem"
+      },
+      "description": {
+        "it": "Il quadrato dell'ipotenusa = somma dei quadrati dei cateti.",
+        "en": "The square on the hypotenuse = sum of the squares on the legs."
+      },
+      "ageRangeStart": 12,
+      "ageRangeEnd": 13,
+      "centrality": 0.3,
+      "evidence": [
+        {
+          "it": "{{name}} enuncia il teorema: in un triangolo rettangolo, il quadrato costruito sull'ipotenusa è equivalente alla somma dei quadrati costruiti sui cateti.",
+          "en": "{{name}} states the theorem: in a right triangle, the square built on the hypotenuse equals the sum of the squares built on the legs."
+        },
+        {
+          "it": "Verifica l'enunciato su un triangolo 3-4-5, mostrando che 3^2 + 4^2 = 5^2 (9 + 16 = 25).",
+          "en": "Checks the statement on a 3-4-5 triangle, showing that 3^2 + 4^2 = 5^2 (9 + 16 = 25)."
+        },
+        {
+          "it": "Collega l'enunciato all'idea geometrica di 'quadrato costruito su un lato', disegnando i tre quadrati su un triangolo rettangolo.",
+          "en": "Links the statement to the geometric idea of 'a square built on a side', drawing the three squares on a right triangle."
+        }
+      ],
+      "assessmentPrompt": {
+        "it": "{{name}} sa enunciare il teorema di Pitagora e verificarlo su un triangolo con cateti 6 e 8 e ipotenusa 10?",
+        "en": "Can {{name}} state the Pythagorean theorem and check it on a triangle with legs 6 and 8 and hypotenuse 10?"
+      },
+      "standards": []
+    },
+    {
+      "id": "lyc_pit_terne",
+      "type": "PROCEDURAL",
+      "subject": "Mathematics",
+      "domain": "Geometry",
+      "name": {
+        "it": "Terne pitagoriche",
+        "en": "Pythagorean triples"
+      },
+      "description": {
+        "it": "Riconoscere terne e verificare se un triangolo è rettangolo.",
+        "en": "Recognise triples and test if a triangle is right-angled."
+      },
+      "ageRangeStart": 12,
+      "ageRangeEnd": 14,
+      "centrality": 0.3,
+      "evidence": [
+        {
+          "it": "{{name}} riconosce la terna pitagorica 6-8-10 come multiplo della terna 3-4-5.",
+          "en": "{{name}} recognises the Pythagorean triple 6-8-10 as a multiple of the triple 3-4-5."
+        },
+        {
+          "it": "Verifica se un triangolo con lati 5, 12, 13 è rettangolo, controllando che 5^2 + 12^2 = 13^2.",
+          "en": "Checks whether a triangle with sides 5, 12, 13 is right-angled, verifying that 5^2 + 12^2 = 13^2."
+        },
+        {
+          "it": "Riconosce che un triangolo con lati 4, 5, 6 non è rettangolo, perché 4^2 + 5^2 non è uguale a 6^2.",
+          "en": "Recognises that a triangle with sides 4, 5, 6 is not right-angled, because 4^2 + 5^2 does not equal 6^2."
+        }
+      ],
+      "assessmentPrompt": {
+        "it": "{{name}} sa verificare se un triangolo con lati 9, 12 e 15 è rettangolo, usando le terne pitagoriche?",
+        "en": "Can {{name}} check whether a triangle with sides 9, 12 and 15 is right-angled, using Pythagorean triples?"
+      },
+      "standards": []
+    },
+    {
+      "id": "lyc_pit_calcolo_lati",
+      "type": "PROCEDURAL",
+      "subject": "Mathematics",
+      "domain": "Geometry",
+      "name": {
+        "it": "Calcolo di ipotenusa e cateti",
+        "en": "Computing hypotenuse and legs"
+      },
+      "description": {
+        "it": "Applicare le formule diretta e inverse del teorema di Pitagora per calcolare l'ipotenusa (c = radice(a^2 + b^2)) o un cateto (a = radice(c^2 - b^2)) di un triangolo rettangolo, scegliendo la formula in base al lato incognito.",
+        "en": "Apply the direct and inverse forms of the Pythagorean theorem to compute the hypotenuse (c = sqrt(a^2 + b^2)) or a leg (a = sqrt(c^2 - b^2)) of a right triangle, choosing the formula according to the unknown side."
+      },
+      "ageRangeStart": 12,
+      "ageRangeEnd": 14,
+      "centrality": 0.45,
+      "evidence": [
+        {
+          "it": "Dati i due cateti, {{name}} calcola l'ipotenusa applicando c = radice(a^2 + b^2).",
+          "en": "Given the two legs, {{name}} computes the hypotenuse using c = sqrt(a^2 + b^2)."
+        },
+        {
+          "it": "Dati l'ipotenusa e un cateto, calcola l'altro cateto con la formula inversa a = radice(c^2 - b^2).",
+          "en": "Given the hypotenuse and one leg, computes the other leg with the inverse formula a = sqrt(c^2 - b^2)."
+        },
+        {
+          "it": "Sceglie correttamente la formula diretta o inversa in base al lato incognito e arrotonda in modo sensato le radici non esatte.",
+          "en": "Correctly chooses the direct or inverse formula depending on the unknown side and rounds non-exact roots sensibly."
+        }
+      ],
+      "assessmentPrompt": {
+        "it": "Dato un triangolo rettangolo con i cateti di 3 cm e 4 cm, {{name}} sa calcolare la lunghezza dell'ipotenusa? E conoscendo l'ipotenusa (5 cm) e un cateto (3 cm), sa trovare l'altro cateto?",
+        "en": "Given a right triangle with legs of 3 cm and 4 cm, can {{name}} work out the length of the hypotenuse? And knowing the hypotenuse (5 cm) and one leg (3 cm), can they find the other leg?"
+      },
+      "standards": []
+    },
+    {
+      "id": "lyc_pit_applicazioni_figure",
+      "type": "PROCEDURAL",
+      "subject": "Mathematics",
+      "domain": "Geometry",
+      "name": {
+        "it": "Applicazioni ad altre figure",
+        "en": "Applications to other figures"
+      },
+      "description": {
+        "it": "Pitagora su rettangoli, triangoli isosceli, rombi, trapezi, piano cartesiano.",
+        "en": "Pythagoras on rectangles, isosceles triangles, rhombi, trapezoids, the Cartesian plane."
+      },
+      "ageRangeStart": 13,
+      "ageRangeEnd": 14,
+      "centrality": 0.3,
+      "evidence": [
+        {
+          "it": "{{name}} calcola la diagonale di un rettangolo con lati 6 cm e 8 cm, applicando Pitagora: 10 cm.",
+          "en": "{{name}} computes the diagonal of a rectangle with sides 6 cm and 8 cm, applying Pythagoras: 10 cm."
+        },
+        {
+          "it": "Calcola l'altezza di un triangolo isoscele con lati obliqui 5 cm e base 6 cm, usando Pitagora sulla metà della base: altezza 4 cm.",
+          "en": "Computes the height of an isosceles triangle with slant sides 5 cm and base 6 cm, using Pythagoras on half the base: height 4 cm."
+        },
+        {
+          "it": "Calcola la distanza tra due punti nel piano cartesiano, es. A(1,1) e B(4,5), applicando Pitagora sulle differenze di coordinate: 5.",
+          "en": "Computes the distance between two points on the Cartesian plane, e.g. A(1,1) and B(4,5), applying Pythagoras to the coordinate differences: 5."
+        }
+      ],
+      "assessmentPrompt": {
+        "it": "{{name}} sa calcolare il lato di un rombo con le diagonali di 6 cm e 8 cm, usando il teorema di Pitagora sui triangoli rettangoli formati dalle diagonali?",
+        "en": "Can {{name}} compute the side of a rhombus with diagonals 6 cm and 8 cm, using the Pythagorean theorem on the right triangles formed by the diagonals?"
+      },
+      "standards": []
+    }
+  ]
+}
