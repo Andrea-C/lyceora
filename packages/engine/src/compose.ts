@@ -82,7 +82,12 @@ export function composeSessionPlan(inputs: ComposeInputs): SessionPlan {
   // never fall through to tier 3 as "new" content. Order: topics that block another topic first
   // (fix foundations before leaves), then dependentless ones; deepest-first within each group,
   // ties by id.
-  const needsReviewIds = [...mastery].filter(([, s]) => s.status === "needsReview").map(([id]) => id);
+  // Scope to topics actually in this graph: an out-of-path mastery row (e.g. leftover state from
+  // a different enrollment/path) must not consume session budget, and topoLevels only has
+  // entries for in-graph ids (levels.get(id)! would be NaN otherwise).
+  const needsReviewIds = [...mastery]
+    .filter(([id, s]) => s.status === "needsReview" && graph.topics.has(id))
+    .map(([id]) => id);
   const blocksSomething = (id: string) => (graph.dependentsOf.get(id) ?? []).some((d) => d.strength === "hard");
   const remediation = [
     ...needsReviewIds.filter(blocksSomething).sort(byDeepestThenId),
@@ -116,6 +121,8 @@ export function composeSessionPlan(inputs: ComposeInputs): SessionPlan {
 
   const items: SessionItem[] = [];
   for (const block of blocks) {
+    // break, not skip-and-continue: tier priority order is deliberate, so a later smaller block
+    // must never jump ahead of an earlier block that didn't fit.
     if (items.length !== 0 && items.length + block.length > MAX_ITEMS) break;
     items.push(...block);
   }

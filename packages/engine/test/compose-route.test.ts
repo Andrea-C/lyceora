@@ -133,18 +133,20 @@ describe("composeSessionPlan — the post-remediation session", () => {
 });
 
 describe("routeNext — deepest-first prerequisite selection (Finding 2)", () => {
-  it("descends to the deepest weak prerequisite by topo level (closest to foundations), not alphabetical order", () => {
-    // a -> b -> c (hard chain) plus a -> d (hard); d mastered so only b is weak directly under a,
-    // forcing the descent through b to c. Exercises topoLevel-based argmin at both the initial
-    // pick and the deepestWeak descent (replacing the old alphabetical .sort()[0] pick).
+  it("picks the argmin-level prerequisite among siblings, not the alphabetically-first one", () => {
+    // z -> b (hard), z -> y (hard), b -> x (hard); b, x, y all unknown (weak), z inProgress.
+    // Levels: x=0, y=0, b=1 (depends on x), z=2. weak(z) = {b, y}; the correct pick is the
+    // LOWEST level among direct siblings, i.e. y (level 0), which is also a dead end (no further
+    // weak prereqs) — so it is the answer directly. The old alphabetical `.sort()[0]` pick would
+    // have chosen "b" (alphabetically first) and then wrongly descended to "x" instead.
     const g2 = buildGraph(
-      [t("a"), t("b"), t("c"), t("d")],
-      [hard("a", "b"), hard("b", "c"), hard("a", "d")]
+      [t("z"), t("b"), t("y"), t("x")],
+      [hard("z", "b"), hard("z", "y"), hard("b", "x")]
     );
-    const statusOf = (id: string) => (id === "d" ? ("mastered" as const) : ("unknown" as const));
-    const decision = routeNext(g2, "a", { passed: false, masteryAfter: "inProgress", failedConcepts: [] }, statusOf);
+    const statusOf = (id: string) => (id === "z" ? ("inProgress" as const) : ("unknown" as const));
+    const decision = routeNext(g2, "z", { passed: false, masteryAfter: "inProgress", failedConcepts: [] }, statusOf);
     expect(decision).toEqual({
-      action: "remediate", blockedTopicId: "a", remediationTopicId: "c", demotePrereq: false
+      action: "remediate", blockedTopicId: "z", remediationTopicId: "y", demotePrereq: false
     });
   });
 });
