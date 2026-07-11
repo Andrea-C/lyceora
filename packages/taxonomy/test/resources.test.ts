@@ -6,7 +6,17 @@ import { resourceSchema } from "../src/index.js";
 const read = (f: string) => JSON.parse(readFileSync(new URL(`../data/${f}`, import.meta.url), "utf-8"));
 const resources = z.array(resourceSchema).parse(read("math-it-media/resources.json").resources);
 const topicIds = new Set(read("math-it-media/topics.json").topics.map((t: { id: string }) => t.id));
-const targets: string[] = read("math-it-media/paths.json").paths[0].targetTopicIds;
+
+const CLUSTERS: Record<string, string[]> = {
+  potenze: ["lyc_potenze"],
+  divisibilita: ["lyc_div"],
+  frazioni: ["lyc_fraz"],
+  radici: ["lyc_radici"],
+  equivalenze: ["lyc_equiv"],
+  piano: ["lyc_piano"],
+  poligoni: ["lyc_poli", "lyc_perimetro", "lyc_area", "lyc_cerchio"],
+  pitagora: ["lyc_pit"]
+};
 
 describe("curated resources", () => {
   it("has >= 30 records, all https, all referencing existing lyc_ topics", () => {
@@ -17,11 +27,11 @@ describe("curated resources", () => {
     }
   });
   it("every cluster has at least one video, one exercises and one assessment resource", () => {
-    const prefixOf = (t: string) => t.split("_").slice(0, 2).join("_"); // lyc_potenze, lyc_div, ...
-    for (const target of targets) {
-      const cluster = prefixOf(target);
+    for (const [cluster, prefixes] of Object.entries(CLUSTERS)) {
       for (const kind of ["video", "exercises", "assessment"] as const) {
-        const hit = resources.some((r) => r.kind === kind && r.topicIds.some((id) => prefixOf(id) === cluster));
+        const hit = resources.some(
+          (r) => r.kind === kind && r.topicIds.some((id) => prefixes.some((p) => id.startsWith(p)))
+        );
         expect(hit, `${cluster} missing ${kind}`).toBe(true);
       }
     }
