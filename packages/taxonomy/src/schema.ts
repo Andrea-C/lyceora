@@ -4,7 +4,7 @@ export const localizedTextSchema = z.object({ it: z.string().min(1), en: z.strin
 
 export const topicSchema = z.object({
   id: z.string().min(1),
-  type: z.enum(["CONCEPTUAL", "PROCEDURAL", "REPRESENTATIONAL", "DISPOSITIONAL", "METACOGNITIVE", "PSYCHOMOTOR"]),
+  type: z.enum(["CONCEPTUAL", "PROCEDURAL", "REPRESENTATIONAL", "LANGUAGE", "META"]),
   subject: z.string(),
   domain: z.string(),
   name: localizedTextSchema,

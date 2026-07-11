@@ -1,7 +1,7 @@
 export type LocalizedText = { it: string; en: string };
 export type TopicType =
   | "CONCEPTUAL" | "PROCEDURAL" | "REPRESENTATIONAL"
-  | "DISPOSITIONAL" | "METACOGNITIVE" | "PSYCHOMOTOR";
+  | "LANGUAGE" | "META";
 export type Locale = keyof LocalizedText;
 
 export interface Topic {

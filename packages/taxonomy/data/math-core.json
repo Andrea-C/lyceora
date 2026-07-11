@@ -196,7 +196,7 @@
   },
   {
    "id": "mt_8RmpkDxT9L",
-   "type": "REPRESENTATIONAL",
+   "type": "LANGUAGE",
    "subject": "Mathematics",
    "domain": "Addition & Subtraction",
    "name": {
@@ -591,11 +591,11 @@
    "centrality": 0.08481532147742818,
    "evidence": [
     {
-     "it": "Calcolare correttamente 3.45 + 2.78 e spiegare il riporto tra le cifre decimali",
+     "it": "Calcolare correttamente 3,45 + 2,78 e spiegare il riporto tra le cifre decimali",
      "en": "Correctly compute 3.45 + 2.78 and explain regrouping across decimal places"
     },
     {
-     "it": "Usare una linea dei numeri o i blocchi base dieci per rappresentare 5.03 − 2.67",
+     "it": "Usare una linea dei numeri o i blocchi base dieci per rappresentare 5,03 − 2,67",
      "en": "Use a number line or base-ten blocks to model 5.03 − 2.67"
     },
     {
@@ -604,7 +604,7 @@
     }
    ],
    "assessmentPrompt": {
-    "it": "{{name}} riesce ad addizionare o sottrarre numeri decimali come '4.73 + 2.68' o '10.00 − 3.47', allineando la virgola decimale e svolgendo correttamente i calcoli in colonna?",
+    "it": "{{name}} riesce ad addizionare o sottrarre numeri decimali come '4,73 + 2,68' o '10,00 − 3,47', allineando la virgola decimale e svolgendo correttamente i calcoli in colonna?",
     "en": "Can {{name}} add or subtract decimal amounts like '4.73 + 2.68' or '10.00 − 3.47', lining up the decimal points and working through the columns correctly?"
    },
    "standards": []
@@ -1267,7 +1267,7 @@
   },
   {
    "id": "mt_vKcxX6iNOA",
-   "type": "REPRESENTATIONAL",
+   "type": "LANGUAGE",
    "subject": "Mathematics",
    "domain": "Fractions",
    "name": {
@@ -1689,7 +1689,7 @@
     "en": "Decimal equivalents of tenths and hundredths"
    },
    "description": {
-    "it": "Riconoscere e scrivere gli equivalenti decimali di un numero qualsiasi di decimi o centesimi (ad es. 3/10 = 0.3, 27/100 = 0.27)",
+    "it": "Riconoscere e scrivere gli equivalenti decimali di un numero qualsiasi di decimi o centesimi (ad es. 3/10 = 0,3, 27/100 = 0,27)",
     "en": "Recognise and write decimal equivalents of any number of tenths or hundredths (e.g. 3/10 = 0.3, 27/100 = 0.27)"
    },
    "ageRangeStart": 8,
@@ -1697,15 +1697,15 @@
    "centrality": 0.1354309165526676,
    "evidence": [
     {
-     "it": "Scrivere 7/10 come 0.7 e viceversa",
+     "it": "Scrivere 7/10 come 0,7 e viceversa",
      "en": "Write 7/10 as 0.7 and vice versa"
     },
     {
-     "it": "Convertire 45/100 in 0.45",
+     "it": "Convertire 45/100 in 0,45",
      "en": "Convert 45/100 to 0.45"
     },
     {
-     "it": "Collocare 0.3 e 3/10 nello stesso punto di una linea dei numeri",
+     "it": "Collocare 0,3 e 3/10 nello stesso punto di una linea dei numeri",
      "en": "Place 0.3 and 3/10 at the same point on a number line"
     }
    ],
@@ -1717,7 +1717,7 @@
   },
   {
    "id": "mt_W17Kbwm0-u",
-   "type": "REPRESENTATIONAL",
+   "type": "LANGUAGE",
    "subject": "Mathematics",
    "domain": "Fractions",
    "name": {
@@ -1741,12 +1741,12 @@
      "en": "Use the % symbol correctly and explain that per cent means 'out of 100'"
     },
     {
-     "it": "Convertire tra frazioni semplici, numeri decimali e percentuali (ad es. 1/2 = 0.5 = 50%) e spiegare perché sono equivalenti",
+     "it": "Convertire tra frazioni semplici, numeri decimali e percentuali (ad es. 1/2 = 0,5 = 50%) e spiegare perché sono equivalenti",
      "en": "Convert between simple fractions, decimals, and percentages (e.g. 1/2 = 0.5 = 50%) and explain why they are equal"
     }
    ],
    "assessmentPrompt": {
-    "it": "Se {{name}} vedesse scritti '0.5' e '50%', saprebbe spiegare che rappresentano la stessa quantità — e scriverli anche come frazione?",
+    "it": "Se {{name}} vedesse scritti '0,5' e '50%', saprebbe spiegare che rappresentano la stessa quantità — e scriverli anche come frazione?",
     "en": "If {{name}} saw '0.5' and '50%' written down, could they explain that they both mean the same amount — and write them as a fraction too?"
    },
    "standards": []
@@ -1769,11 +1769,11 @@
    "centrality": 0.07250341997264022,
    "evidence": [
     {
-     "it": "Ordinare 0.45, 0.54, 0.39 dal più piccolo al più grande",
+     "it": "Ordinare 0,45, 0,54, 0,39 dal più piccolo al più grande",
      "en": "Order 0.45, 0.54, 0.39 from smallest to largest"
     },
     {
-     "it": "Confrontare 3.72 e 3.27 ragionando sul valore posizionale",
+     "it": "Confrontare 3,72 e 3,27 ragionando sul valore posizionale",
      "en": "Compare 3.72 and 3.27 using place-value reasoning"
     },
     {
@@ -1782,7 +1782,7 @@
     }
    ],
    "assessmentPrompt": {
-    "it": "Se {{name}} confronta due prezzi — £4.75 e £4.57 — sa dirti qual è più caro senza usare la calcolatrice?",
+    "it": "Se {{name}} confronta due prezzi — £4,75 e £4,57 — sa dirti qual è più caro senza usare la calcolatrice?",
     "en": "If {{name}} is comparing two prices — £4.75 and £4.57 — can they tell you which is more expensive without using a calculator?"
    },
    "standards": []
@@ -1805,11 +1805,11 @@
    "centrality": 0.02735978112175103,
    "evidence": [
     {
-     "it": "Calcolare 1/4 di £3.20",
+     "it": "Calcolare 1/4 di £3,20",
      "en": "Calculate 1/4 of £3.20"
     },
     {
-     "it": "Una corda è lunga 2.5 m; quanto ne rimane dopo averne tagliati 0.75 m?",
+     "it": "Una corda è lunga 2,5 m; quanto ne rimane dopo averne tagliati 0,75 m?",
      "en": "A rope is 2.5 m long; how much is left after cutting 0.75 m?"
     },
     {
@@ -1818,7 +1818,7 @@
     }
    ],
    "assessmentPrompt": {
-    "it": "Se una bottiglia contiene 1.5 litri e {{name}} ne beve 0.75, sa calcolare quanti ne rimangono — e scriverlo sia come numero decimale sia come frazione?",
+    "it": "Se una bottiglia contiene 1,5 litri e {{name}} ne beve 0,75, sa calcolare quanti ne rimangono — e scriverlo sia come numero decimale sia come frazione?",
     "en": "If a bottle holds 1.5 litres and {{name}} drinks 0.75 litres, can they work out how much is left — and write it as both a decimal and a fraction?"
    },
    "standards": []
@@ -1841,11 +1841,11 @@
    "centrality": 0.06703146374829001,
    "evidence": [
     {
-     "it": "Calcolare 37 ÷ 10 = 3.7 e riconoscere 3 come unità e 7 come decimi",
+     "it": "Calcolare 37 ÷ 10 = 3,7 e riconoscere 3 come unità e 7 come decimi",
      "en": "Calculate 37 ÷ 10 = 3.7 and identify 3 as ones and 7 as tenths"
     },
     {
-     "it": "Calcolare 4 ÷ 100 = 0.04 e riconoscere 4 come centesimi",
+     "it": "Calcolare 4 ÷ 100 = 0,04 e riconoscere 4 come centesimi",
      "en": "Calculate 4 ÷ 100 = 0.04 and identify 4 as hundredths"
     },
     {
@@ -2177,20 +2177,20 @@
    "centrality": 0.09849521203830369,
    "evidence": [
     {
-     "it": "Confrontare 0.45 e 0.405 e spiegare quale sia maggiore",
+     "it": "Confrontare 0,45 e 0,405 e spiegare quale sia maggiore",
      "en": "Compare 0.45 and 0.405 and explain which is greater"
     },
     {
-     "it": "Ordinare 3.142, 3.14, 3.2 dal più piccolo al più grande",
+     "it": "Ordinare 3,142, 3,14, 3,2 dal più piccolo al più grande",
      "en": "Order 3.142, 3.14, 3.2 from smallest to largest"
     },
     {
-     "it": "Motivare che 0.7 = 0.70 = 0.700 ragionando sul valore posizionale",
+     "it": "Motivare che 0,7 = 0,70 = 0,700 ragionando sul valore posizionale",
      "en": "Justify that 0.7 = 0.70 = 0.700 using place-value reasoning"
     }
    ],
    "assessmentPrompt": {
-    "it": "Se {{name}} confronta 0.45 e 0.54, sa usare il valore posizionale per spiegare quale sia maggiore — senza prendere la calcolatrice?",
+    "it": "Se {{name}} confronta 0,45 e 0,54, sa usare il valore posizionale per spiegare quale sia maggiore — senza prendere la calcolatrice?",
     "en": "If {{name}} compares 0.45 and 0.54, can they use place value to explain which is bigger — without reaching for a calculator?"
    },
    "standards": []
@@ -2241,7 +2241,7 @@
     "en": "Decimals for Tenths & Hundredths"
    },
    "description": {
-    "it": "Usare la notazione decimale per frazioni con denominatore 10 o 100; leggere e scrivere numeri decimali come frazioni (ad es. 0.62 = 62/100, 0.71 = 71/100)",
+    "it": "Usare la notazione decimale per frazioni con denominatore 10 o 100; leggere e scrivere numeri decimali come frazioni (ad es. 0,62 = 62/100, 0,71 = 71/100)",
     "en": "Use decimal notation for fractions with denominators 10 or 100; read and write decimal numbers as fractions (e.g. 0.62 = 62/100, 0.71 = 71/100)"
    },
    "ageRangeStart": 9,
@@ -2249,20 +2249,20 @@
    "centrality": 0.1422708618331053,
    "evidence": [
     {
-     "it": "Riscrivere 0.62 come 62/100",
+     "it": "Riscrivere 0,62 come 62/100",
      "en": "Rewrite 0.62 as 62/100"
     },
     {
-     "it": "Scrivere 3/10 come 0.3 e collocarlo su una linea dei numeri",
+     "it": "Scrivere 3/10 come 0,3 e collocarlo su una linea dei numeri",
      "en": "Write 3/10 as 0.3 and locate on a number line"
     },
     {
-     "it": "Leggere 0.07 ed esprimerlo come 7/100",
+     "it": "Leggere 0,07 ed esprimerlo come 7/100",
      "en": "Read 0.07 and express as 7/100"
     }
    ],
    "assessmentPrompt": {
-    "it": "Se {{name}} vede un'etichetta di prezzo con £0.65, sa riscriverla come frazione — e fare il percorso inverso, trasformando 47/100 in un numero decimale?",
+    "it": "Se {{name}} vede un'etichetta di prezzo con £0,65, sa riscriverla come frazione — e fare il percorso inverso, trasformando 47/100 in un numero decimale?",
     "en": "If {{name}} sees a price tag showing £0.65, can they rewrite it as a fraction — and go the other way, turning 47/100 into a decimal?"
    },
    "standards": []
@@ -2421,7 +2421,7 @@
     "en": "Tenths (age 9+)"
    },
    "description": {
-    "it": "Riconoscere e usare i millesimi; metterli in relazione con decimi, centesimi e i loro equivalenti decimali (ad es. 1/1000 = 0.001, 35/1000 = 0.035)",
+    "it": "Riconoscere e usare i millesimi; metterli in relazione con decimi, centesimi e i loro equivalenti decimali (ad es. 1/1000 = 0,001, 35/1000 = 0,035)",
     "en": "Recognise and use thousandths; relate them to tenths, hundredths, and their decimal equivalents (e.g. 1/1000 = 0.001, 35/1000 = 0.035)"
    },
    "ageRangeStart": 9,
@@ -2429,7 +2429,7 @@
    "centrality": 0.119015047879617,
    "evidence": [
     {
-     "it": "Scrivere 0.025 come 25/1000",
+     "it": "Scrivere 0,025 come 25/1000",
      "en": "Write 0.025 as 25/1000"
     },
     {
@@ -2437,12 +2437,12 @@
      "en": "Explain that 1 tenth = 100 thousandths"
     },
     {
-     "it": "Collocare 0.345 su una linea dei numeri tra 0.34 e 0.35",
+     "it": "Collocare 0,345 su una linea dei numeri tra 0,34 e 0,35",
      "en": "Place 0.345 on a number line between 0.34 and 0.35"
     }
    ],
    "assessmentPrompt": {
-    "it": "Se {{name}} vede il numero decimale 0.003, sa scriverlo come frazione e dirti all'incirca dove si trova su una linea dei numeri tra 0 e 0.01?",
+    "it": "Se {{name}} vede il numero decimale 0,003, sa scriverlo come frazione e dirti all'incirca dove si trova su una linea dei numeri tra 0 e 0,01?",
     "en": "If {{name}} sees the decimal 0.003, can they write it as a fraction and tell you roughly where it sits on a number line between 0 and 0.01?"
    },
    "standards": []
@@ -2783,7 +2783,7 @@
   },
   {
    "id": "mt_qeZYF6HZ4o",
-   "type": "REPRESENTATIONAL",
+   "type": "LANGUAGE",
    "subject": "Mathematics",
    "domain": "Geometry",
    "name": {
@@ -2974,7 +2974,7 @@
   },
   {
    "id": "mt_TdV9YGJEoY",
-   "type": "REPRESENTATIONAL",
+   "type": "LANGUAGE",
    "subject": "Mathematics",
    "domain": "Geometry",
    "name": {
@@ -4093,7 +4093,7 @@
   },
   {
    "id": "mt_WtIFJSCQIT",
-   "type": "REPRESENTATIONAL",
+   "type": "LANGUAGE",
    "subject": "Mathematics",
    "domain": "Geometry",
    "name": {
@@ -4249,7 +4249,7 @@
   },
   {
    "id": "mt_TcG90kS8nu",
-   "type": "REPRESENTATIONAL",
+   "type": "LANGUAGE",
    "subject": "Mathematics",
    "domain": "Measurement",
    "name": {
@@ -4861,7 +4861,7 @@
   },
   {
    "id": "mt_pbuhUQJjtt",
-   "type": "REPRESENTATIONAL",
+   "type": "LANGUAGE",
    "subject": "Mathematics",
    "domain": "Measurement",
    "name": {
@@ -4877,7 +4877,7 @@
    "centrality": 0.02325581395348837,
    "evidence": [
     {
-     "it": "Scrivere correttamente £1.50 oppure 150p",
+     "it": "Scrivere correttamente £1,50 oppure 150p",
      "en": "Write £1.50 or 150p correctly"
     },
     {
@@ -4961,12 +4961,12 @@
      "en": "Work out the change from £5 or £10"
     },
     {
-     "it": "Registrare correttamente i calcoli con il denaro usando la notazione £ e p (ad esempio, £3.47)",
+     "it": "Registrare correttamente i calcoli con il denaro usando la notazione £ e p (ad esempio, £3,47)",
      "en": "Record money calculations using £ and p notation correctly (e.g. £3.47)"
     }
    ],
    "assessmentPrompt": {
-    "it": "Se {{name}} compra un libro da £3.50 e una matita da £1.25 pagando con una banconota da £5, sa calcolare esattamente quanto resto deve ricevere?",
+    "it": "Se {{name}} compra un libro da £3,50 e una matita da £1,25 pagando con una banconota da £5, sa calcolare esattamente quanto resto deve ricevere?",
     "en": "If {{name}} buys a book for £3.50 and a pencil for £1.25 with a £5 note, can they work out exactly how much change they should receive?"
    },
    "standards": [
@@ -5262,7 +5262,7 @@
     }
    ],
    "assessmentPrompt": {
-    "it": "Se a {{name}} viene detto che un viaggio è lungo 3.5 km, sa convertirlo in metri — e anche trasformare 2 ore e 15 minuti in soli minuti?",
+    "it": "Se a {{name}} viene detto che un viaggio è lungo 3,5 km, sa convertirlo in metri — e anche trasformare 2 ore e 15 minuti in soli minuti?",
     "en": "If {{name}} is told a journey is 3.5 km, can they convert that to metres — and also turn 2 hours 15 minutes into just minutes?"
    },
    "standards": []
@@ -5289,16 +5289,16 @@
      "en": "Estimate the length of the classroom in metres"
     },
     {
-     "it": "Confrontare 1.5 kg e 1200 g e individuare quale pesa di più",
+     "it": "Confrontare 1,5 kg e 1200 g e individuare quale pesa di più",
      "en": "Compare 1.5 kg and 1200 g and identify which is heavier"
     },
     {
-     "it": "Calcolare il costo totale di 3 articoli a £2.45, £1.30 e £0.75",
+     "it": "Calcolare il costo totale di 3 articoli a £2,45, £1,30 e £0,75",
      "en": "Calculate the total cost of 3 items at £2.45, £1.30, and £0.75"
     }
    ],
    "assessmentPrompt": {
-    "it": "Se {{name}} confronta tre articoli che costano £2.85, £3.10 e £2.50, sa metterli in ordine dal più economico al più costoso — e calcolare il costo totale?",
+    "it": "Se {{name}} confronta tre articoli che costano £2,85, £3,10 e £2,50, sa metterli in ordine dal più economico al più costoso — e calcolare il costo totale?",
     "en": "If {{name}} is comparing three items costing £2.85, £3.10, and £2.50, can they put them in order from cheapest to most expensive — and work out the total cost?"
    },
    "standards": []
@@ -5465,7 +5465,7 @@
    "centrality": 0.07797537619699042,
    "evidence": [
     {
-     "it": "Convertire 3.5 km in 3,500 m",
+     "it": "Convertire 3,5 km in 3,500 m",
      "en": "Convert 3.5 km to 3,500 m"
     },
     {
@@ -5478,7 +5478,7 @@
     }
    ],
    "assessmentPrompt": {
-    "it": "Se {{name}} deve convertire 3.5 kg in grammi, sa farlo con sicurezza — e anche completare una semplice tabella a due colonne che mostri le stesse misure in kg e g?",
+    "it": "Se {{name}} deve convertire 3,5 kg in grammi, sa farlo con sicurezza — e anche completare una semplice tabella a due colonne che mostri le stesse misure in kg e g?",
     "en": "If {{name}} needs to convert 3.5 kg to grams, can they do it confidently — and also fill in a simple two-column table showing the same measurements in kg and g?"
    },
    "standards": []
@@ -5505,7 +5505,7 @@
      "en": "Find the width of a room given area = 48 m² and length = 8 m"
     },
     {
-     "it": "Calcolare l'area di un quadrato con lato 7.5 cm",
+     "it": "Calcolare l'area di un quadrato con lato 7,5 cm",
      "en": "Calculate the area of a square with side 7.5 cm"
     },
     {
@@ -5514,7 +5514,7 @@
     }
    ],
    "assessmentPrompt": {
-    "it": "Se {{name}} vuole mettere la moquette in una stanza di 6.5 m × 4 m, sa calcolare l'area — e anche quanti metri di battiscopa servono lungo il bordo?",
+    "it": "Se {{name}} vuole mettere la moquette in una stanza di 6,5 m × 4 m, sa calcolare l'area — e anche quanti metri di battiscopa servono lungo il bordo?",
     "en": "If {{name}} wants to carpet a room 6.5 m × 4 m, can they calculate the area — and also work out how many metres of skirting board are needed around the edge?"
    },
    "standards": []
@@ -5573,7 +5573,7 @@
    "centrality": 0.09302325581395349,
    "evidence": [
     {
-     "it": "Un sacchetto di farina da 2.5 kg viene diviso equamente in 4 porzioni — quanto pesa ciascuna?",
+     "it": "Un sacchetto di farina da 2,5 kg viene diviso equamente in 4 porzioni — quanto pesa ciascuna?",
      "en": "A 2.5 kg bag of flour is split equally into 4 portions — what does each weigh?"
     },
     {
@@ -5581,12 +5581,12 @@
      "en": "A journey takes 1 hr 45 min; what time do you arrive if you leave at 09:20?"
     },
     {
-     "it": "Tre nastri di 0.75 m, 1.2 m e 0.95 m — qual è la lunghezza totale?",
+     "it": "Tre nastri di 0,75 m, 1,2 m e 0,95 m — qual è la lunghezza totale?",
      "en": "Three ribbons of 0.75 m, 1.2 m, and 0.95 m — what is the total length?"
     }
    ],
    "assessmentPrompt": {
-    "it": "Se {{name}} sta pianificando una camminata di 4.5 km e ha già percorso 1.75 km, sa calcolare quanto ne manca — e stimare quanto tempo potrebbe richiedere il tratto rimanente?",
+    "it": "Se {{name}} sta pianificando una camminata di 4,5 km e ha già percorso 1,75 km, sa calcolare quanto ne manca — e stimare quanto tempo potrebbe richiedere il tratto rimanente?",
     "en": "If {{name}} is planning a 4.5 km walk and has already walked 1.75 km, can they work out how far is left — and estimate how long the remaining walk might take?"
    },
    "standards": []
@@ -5673,7 +5673,7 @@
     "en": "Decimal place value"
    },
    "description": {
-    "it": "Convertire tra unità di misura convenzionali di grandezza diversa all'interno di uno stesso sistema (ad esempio, da 5 cm a 0.05 m) usando la notazione decimale fino a tre cifre decimali; convertire tra unità più piccole e più grandi di lunghezza, massa, volume e tempo",
+    "it": "Convertire tra unità di misura convenzionali di grandezza diversa all'interno di uno stesso sistema (ad esempio, da 5 cm a 0,05 m) usando la notazione decimale fino a tre cifre decimali; convertire tra unità più piccole e più grandi di lunghezza, massa, volume e tempo",
     "en": "Convert among different-sized standard measurement units within a given system (e.g. 5 cm to 0.05 m) using decimal notation to up to three decimal places; convert between smaller and larger units of length, mass, volume, and time"
    },
    "ageRangeStart": 10,
@@ -5681,11 +5681,11 @@
    "centrality": 0.1039671682626539,
    "evidence": [
     {
-     "it": "Convertire 3,250 g in 3.25 kg usando la notazione decimale",
+     "it": "Convertire 3,250 g in 3,25 kg usando la notazione decimale",
      "en": "Convert 3,250 g to 3.25 kg using decimal notation"
     },
     {
-     "it": "Convertire 0.45 km in 450 m",
+     "it": "Convertire 0,45 km in 450 m",
      "en": "Convert 0.45 km to 450 m"
     },
     {
@@ -5694,7 +5694,7 @@
     }
    ],
    "assessmentPrompt": {
-    "it": "Se {{name}} deve convertire 5 cm in metri e scrivere la risposta come numero decimale, sa farlo — e anche convertire 2.45 kg in grammi?",
+    "it": "Se {{name}} deve convertire 5 cm in metri e scrivere la risposta come numero decimale, sa farlo — e anche convertire 2,45 kg in grammi?",
     "en": "If {{name}} needs to convert 5 cm to metres and write the answer as a decimal, can they do it — and also convert 2.45 kg into grams?"
    },
    "standards": []
@@ -5753,11 +5753,11 @@
    "centrality": 0.1039671682626539,
    "evidence": [
     {
-     "it": "Risolvere: \"Una ricetta usa 0.75 kg di farina. Quanti grammi servono per 3 dosi?\"",
+     "it": "Risolvere: \"Una ricetta usa 0,75 kg di farina. Quanti grammi servono per 3 dosi?\"",
      "en": "Solve: 'A recipe uses 0.75 kg of flour. How many grams are needed for 3 batches?'"
     },
     {
-     "it": "Confrontare 2.5 litri e 2,450 ml convertendoli nella stessa unità",
+     "it": "Confrontare 2,5 litri e 2,450 ml convertendoli nella stessa unità",
      "en": "Compare 2.5 litres and 2,450 ml by converting to the same unit"
     },
     {
@@ -5766,7 +5766,7 @@
     }
    ],
    "assessmentPrompt": {
-    "it": "Se {{name}} sta riempiendo un acquario che contiene 60 litri e il rubinetto lo riempie a 3.5 litri al minuto, sa calcolare quanto tempo ci vorrà per riempirlo?",
+    "it": "Se {{name}} sta riempiendo un acquario che contiene 60 litri e il rubinetto lo riempie a 3,5 litri al minuto, sa calcolare quanto tempo ci vorrà per riempirlo?",
     "en": "If {{name}} is filling a fish tank that holds 60 litres and the tap fills it at 3.5 litres per minute, can they work out how long it will take to fill the tank?"
    },
    "standards": []
@@ -6071,7 +6071,7 @@
   },
   {
    "id": "mt_zOWwLxa77y",
-   "type": "REPRESENTATIONAL",
+   "type": "LANGUAGE",
    "subject": "Mathematics",
    "domain": "Multiplication & Division",
    "name": {
@@ -6697,7 +6697,7 @@
      "en": "52 children go on a trip in minibuses holding 9 each — how many minibuses are needed? (interpret remainder)"
     },
     {
-     "it": "Un negozio vende confezioni da 6 matite a £1.50 ciascuna — quanto costano 5 confezioni?",
+     "it": "Un negozio vende confezioni da 6 matite a £1,50 ciascuna — quanto costano 5 confezioni?",
      "en": "A shop sells packs of 6 pencils for £1.50 each — how much do 5 packs cost?"
     },
     {
@@ -6849,11 +6849,11 @@
    "centrality": 0.07660738714090287,
    "evidence": [
     {
-     "it": "Calcolare 3.45 × 100 = 345",
+     "it": "Calcolare 3,45 × 100 = 345",
      "en": "Calculate 3.45 × 100 = 345"
     },
     {
-     "it": "Calcolare 72 ÷ 1000 = 0.072",
+     "it": "Calcolare 72 ÷ 1000 = 0,072",
      "en": "Calculate 72 ÷ 1000 = 0.072"
     },
     {
@@ -6862,7 +6862,7 @@
     }
    ],
    "assessmentPrompt": {
-    "it": "{{name}} riesce a calcolare rapidamente '4.7 × 100' o '3,600 ÷ 1,000' — sapendo che le cifre si spostano a sinistra o a destra nella tabella del valore posizionale a seconda che si stia moltiplicando o dividendo?",
+    "it": "{{name}} riesce a calcolare rapidamente '4,7 × 100' o '3,600 ÷ 1,000' — sapendo che le cifre si spostano a sinistra o a destra nella tabella del valore posizionale a seconda che si stia moltiplicando o dividendo?",
     "en": "Can {{name}} quickly work out '4.7 × 100' or '3,600 ÷ 1,000' — knowing that digits shift left or right in the place-value chart depending on whether they're multiplying or dividing?"
    },
    "standards": []
@@ -7067,11 +7067,11 @@
    "centrality": 0.09986320109439124,
    "evidence": [
     {
-     "it": "Calcolare correttamente 3.456 × 100 = 345.6",
+     "it": "Calcolare correttamente 3,456 × 100 = 345,6",
      "en": "Compute 3.456 × 100 = 345.6 correctly"
     },
     {
-     "it": "Calcolare correttamente 45.2 ÷ 1000 = 0.0452",
+     "it": "Calcolare correttamente 45,2 ÷ 1000 = 0,0452",
      "en": "Compute 45.2 ÷ 1000 = 0.0452 correctly"
     },
     {
@@ -7080,7 +7080,7 @@
     }
    ],
    "assessmentPrompt": {
-    "it": "{{name}} riesce a calcolare '4.6 ÷ 1,000 = 0.0046' — sapendo che ogni divisione per 10 sposta le cifre di una posizione verso destra, anche oltre la virgola decimale?",
+    "it": "{{name}} riesce a calcolare '4,6 ÷ 1,000 = 0,0046' — sapendo che ogni divisione per 10 sposta le cifre di una posizione verso destra, anche oltre la virgola decimale?",
     "en": "Can {{name}} work out '4.6 ÷ 1,000 = 0.0046' — knowing that each division by 10 shifts digits one place to the right, even past the decimal point?"
    },
    "standards": [
@@ -7958,11 +7958,11 @@
      "en": "Write 10⁴ = 10,000 and explain the exponent means four factors of 10"
     },
     {
-     "it": "Spiegare perché 3.4 × 10² = 340 descrivendo lo spostamento della virgola",
+     "it": "Spiegare perché 3,4 × 10² = 340 descrivendo lo spostamento della virgola",
      "en": "Explain why 3.4 × 10² = 340 by describing the decimal shift"
     },
     {
-     "it": "Prevedere il risultato di 2.56 × 10³ senza calcolarlo e spiegare la regolarità",
+     "it": "Prevedere il risultato di 2,56 × 10³ senza calcolarlo e spiegare la regolarità",
      "en": "Predict 2.56 × 10³ without calculating and explain the pattern"
     }
    ],
@@ -7990,7 +7990,7 @@
    "centrality": 0.1258549931600547,
    "evidence": [
     {
-     "it": "Spiegare che il 4 in 0.04 è 1/10 del 4 in 0.4",
+     "it": "Spiegare che il 4 in 0,04 è 1/10 del 4 in 0,4",
      "en": "Explain that the 4 in 0.04 is 1/10 of the 4 in 0.4"
     },
     {
@@ -7998,12 +7998,12 @@
      "en": "State that a digit moving one place left is ×10 and one place right is ÷10"
     },
     {
-     "it": "Confrontare il valore del 6 in 6,000 e in 0.006",
+     "it": "Confrontare il valore del 6 in 6,000 e in 0,006",
      "en": "Compare the value of the 6 in 6,000 and in 0.006"
     }
    ],
    "assessmentPrompt": {
-    "it": "{{name}} sa spiegare che in 4.56 la cifra 5 vale 5 decimi — dieci volte meno del 5 in 54, e dieci volte più del 5 in 0.056?",
+    "it": "{{name}} sa spiegare che in 4,56 la cifra 5 vale 5 decimi — dieci volte meno del 5 in 54, e dieci volte più del 5 in 0,056?",
     "en": "Can {{name}} explain that in 4.56, the digit 5 is worth 5 tenths — ten times less than the 5 in 54, and ten times more than the 5 in 0.056?"
    },
    "standards": []
@@ -8026,20 +8026,20 @@
    "centrality": 0.1080711354309166,
    "evidence": [
     {
-     "it": "Scrivere 347.392 in forma estesa: 3×100 + 4×10 + 7×1 + 3×(1/10) + 9×(1/100) + 2×(1/1000)",
+     "it": "Scrivere 347,392 in forma estesa: 3×100 + 4×10 + 7×1 + 3×(1/10) + 9×(1/100) + 2×(1/1000)",
      "en": "Write 347.392 in expanded form: 3×100 + 4×10 + 7×1 + 3×(1/10) + 9×(1/100) + 2×(1/1000)"
     },
     {
-     "it": "Confrontare 0.372 e 0.38 ragionando sul valore posizionale",
+     "it": "Confrontare 0,372 e 0,38 ragionando sul valore posizionale",
      "en": "Compare 0.372 and 0.38 using place-value reasoning"
     },
     {
-     "it": "Scrivere 'cinque e sessantadue millesimi' come 5.062",
+     "it": "Scrivere 'cinque e sessantadue millesimi' come 5,062",
      "en": "Write 'five and sixty-two thousandths' as 5.062"
     }
    ],
    "assessmentPrompt": {
-    "it": "{{name}} sa leggere e scrivere numeri decimali come 3.047 o 0.625, dire cosa significa ciascuna cifra (3 unità, 0 decimi, 4 centesimi, 7 millesimi), e mettere in ordine un insieme di numeri decimali?",
+    "it": "{{name}} sa leggere e scrivere numeri decimali come 3,047 o 0,625, dire cosa significa ciascuna cifra (3 unità, 0 decimi, 4 centesimi, 7 millesimi), e mettere in ordine un insieme di numeri decimali?",
     "en": "Can {{name}} read and write decimals like 3.047 or 0.625, say what each digit means (3 ones, 0 tenths, 4 hundredths, 7 thousandths), and put a set of decimals in order?"
    },
    "standards": []
@@ -8090,7 +8090,7 @@
     "en": "Reading Decimal Places"
    },
    "description": {
-    "it": "Identificare il valore di ciascuna cifra in numeri con tre cifre decimali (ad esempio, in 4.378 il 7 rappresenta 7 centesimi)",
+    "it": "Identificare il valore di ciascuna cifra in numeri con tre cifre decimali (ad esempio, in 4,378 il 7 rappresenta 7 centesimi)",
     "en": "Identify the value of each digit in numbers given to three decimal places (e.g. in 4.378, the 7 represents 7 hundredths)"
    },
    "ageRangeStart": 10,
@@ -8098,7 +8098,7 @@
    "centrality": 0.09712722298221614,
    "evidence": [
     {
-     "it": "Indicare il valore di ciascuna cifra in 2.635 (2 unità, 6 decimi, 3 centesimi, 5 millesimi)",
+     "it": "Indicare il valore di ciascuna cifra in 2,635 (2 unità, 6 decimi, 3 centesimi, 5 millesimi)",
      "en": "State the value of each digit in 2.635 (2 ones, 6 tenths, 3 hundredths, 5 thousandths)"
     },
     {
@@ -8106,12 +8106,12 @@
      "en": "Explain the relationship between adjacent decimal places (each place is ten times smaller)"
     },
     {
-     "it": "Scrivere un numero dati i valori delle cifre (ad esempio, 4 unità, 0 decimi, 7 centesimi, 3 millesimi = 4.073)",
+     "it": "Scrivere un numero dati i valori delle cifre (ad esempio, 4 unità, 0 decimi, 7 centesimi, 3 millesimi = 4,073)",
      "en": "Write a number given digit values (e.g. 4 ones, 0 tenths, 7 hundredths, 3 thousandths = 4.073)"
     }
    ],
    "assessmentPrompt": {
-    "it": "Nel numero 4.378, {{name}} sa dirti che il 7 rappresenta 7 centesimi — non 7 decimi o 7 millesimi?",
+    "it": "Nel numero 4,378, {{name}} sa dirti che il 7 rappresenta 7 centesimi — non 7 decimi o 7 millesimi?",
     "en": "In the number 4.378, can {{name}} tell you that the 7 represents 7 hundredths — not 7 tenths or 7 thousandths?"
    },
    "standards": [
@@ -8149,7 +8149,7 @@
     }
    ],
    "assessmentPrompt": {
-    "it": "{{name}} sa collocare un insieme misto di numeri — come 3, −2, 0.5, −1.75 e ¼ — tutti sulla stessa retta numerica, nell'ordine corretto?",
+    "it": "{{name}} sa collocare un insieme misto di numeri — come 3, −2, 0,5, −1,75 e ¼ — tutti sulla stessa retta numerica, nell'ordine corretto?",
     "en": "Can {{name}} place a mix of numbers — like 3, −2, 0.5, −1.75, and ¼ — all on the same number line, in the right order?"
    },
    "standards": [
@@ -8182,12 +8182,12 @@
      "en": "Use the symbols =, ≠, <, >, ≤, ≥ correctly in mathematical statements"
     },
     {
-     "it": "Confrontare numeri presentati in forme diverse, come 0.75 e 3/4",
+     "it": "Confrontare numeri presentati in forme diverse, come 0,75 e 3/4",
      "en": "Compare numbers presented in different forms such as 0.75 and 3/4"
     }
    ],
    "assessmentPrompt": {
-    "it": "Se a {{name}} viene data una lista mista come 2.5, −3, ¾, 0 e −0.5, riesce a metterli in ordine dal più piccolo al più grande, usando una retta numerica se necessario?",
+    "it": "Se a {{name}} viene data una lista mista come 2,5, −3, ¾, 0 e −0,5, riesce a metterli in ordine dal più piccolo al più grande, usando una retta numerica se necessario?",
     "en": "If {{name}} is given a mixed list like 2.5, −3, ¾, 0, and −0.5, can they put them in order from least to greatest using a number line if needed?"
    },
    "standards": [
@@ -8267,7 +8267,7 @@
     }
    ],
    "assessmentPrompt": {
-    "it": "{{name}} sa scrivere 3,400,000 come 3.4 × 10⁶ e riconvertirlo — capendo che la notazione standard è un modo abbreviato per esprimere numeri molto grandi o molto piccoli?",
+    "it": "{{name}} sa scrivere 3,400,000 come 3,4 × 10⁶ e riconvertirlo — capendo che la notazione standard è un modo abbreviato per esprimere numeri molto grandi o molto piccoli?",
     "en": "Can {{name}} write 3,400,000 as 3.4 × 10⁶ and convert back — understanding that standard form is a shorthand for very large or very small numbers?"
    },
    "standards": [
@@ -8314,7 +8314,7 @@
   },
   {
    "id": "mt_ESgc4YBw-a",
-   "type": "REPRESENTATIONAL",
+   "type": "LANGUAGE",
    "subject": "Mathematics",
    "domain": "Ratio & Proportion",
    "name": {
@@ -8415,7 +8415,7 @@
     }
    ],
    "assessmentPrompt": {
-    "it": "Se {{name}} ha un disegno in scala dove 1 cm rappresenta 5 m, e una stanza misura 3.5 cm sulla piantina, sa calcolare la lunghezza reale della stanza?",
+    "it": "Se {{name}} ha un disegno in scala dove 1 cm rappresenta 5 m, e una stanza misura 3,5 cm sulla piantina, sa calcolare la lunghezza reale della stanza?",
     "en": "If {{name}} has a scale drawing where 1 cm represents 5 m, and a room measures 3.5 cm on the plan, can they work out the real length of the room?"
    },
    "standards": []
@@ -8458,7 +8458,7 @@
   },
   {
    "id": "mt_ATYLKt0je-",
-   "type": "REPRESENTATIONAL",
+   "type": "LANGUAGE",
    "subject": "Mathematics",
    "domain": "Ratio & Proportion",
    "name": {

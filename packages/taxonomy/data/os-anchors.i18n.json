@@ -87,17 +87,17 @@
       "Determinare il fattore di scala tra due triangoli simili a partire dalle lunghezze dei lati date",
       "Usare un fattore di scala per ingrandire o rimpicciolire una figura e verificare che tutti i lati siano nello stesso rapporto"
     ],
-    "assessmentPrompt": "Se {{name}} ha un disegno in scala dove 1 cm rappresenta 5 m, e una stanza misura 3.5 cm sulla piantina, sa calcolare la lunghezza reale della stanza?"
+    "assessmentPrompt": "Se {{name}} ha un disegno in scala dove 1 cm rappresenta 5 m, e una stanza misura 3,5 cm sulla piantina, sa calcolare la lunghezza reale della stanza?"
   },
   "mt_2VpdPjvewx": {
     "name": "Il valore posizionale dei decimali",
-    "description": "Convertire tra unità di misura convenzionali di grandezza diversa all'interno di uno stesso sistema (ad esempio, da 5 cm a 0.05 m) usando la notazione decimale fino a tre cifre decimali; convertire tra unità più piccole e più grandi di lunghezza, massa, volume e tempo",
+    "description": "Convertire tra unità di misura convenzionali di grandezza diversa all'interno di uno stesso sistema (ad esempio, da 5 cm a 0,05 m) usando la notazione decimale fino a tre cifre decimali; convertire tra unità più piccole e più grandi di lunghezza, massa, volume e tempo",
     "evidence": [
-      "Convertire 3,250 g in 3.25 kg usando la notazione decimale",
-      "Convertire 0.45 km in 450 m",
+      "Convertire 3,250 g in 3,25 kg usando la notazione decimale",
+      "Convertire 0,45 km in 450 m",
       "Spiegare la relazione tra mm, cm, m e km usando le potenze di 10"
     ],
-    "assessmentPrompt": "Se {{name}} deve convertire 5 cm in metri e scrivere la risposta come numero decimale, sa farlo — e anche convertire 2.45 kg in grammi?"
+    "assessmentPrompt": "Se {{name}} deve convertire 5 cm in metri e scrivere la risposta come numero decimale, sa farlo — e anche convertire 2,45 kg in grammi?"
   },
   "mt_2XDGT5tei1": {
     "name": "Numero di minuti in un'ora",
@@ -163,11 +163,11 @@
     "name": "Le frazioni sulla retta numerica",
     "description": "Risolvere problemi che coinvolgono distanze, intervalli di tempo, volumi di liquidi, masse e denaro usando le quattro operazioni con frazioni o numeri decimali; rappresentare con diagrammi, incluse le rette numeriche",
     "evidence": [
-      "Un sacchetto di farina da 2.5 kg viene diviso equamente in 4 porzioni — quanto pesa ciascuna?",
+      "Un sacchetto di farina da 2,5 kg viene diviso equamente in 4 porzioni — quanto pesa ciascuna?",
       "Un viaggio dura 1 h 45 min; a che ora si arriva se si parte alle 09:20?",
-      "Tre nastri di 0.75 m, 1.2 m e 0.95 m — qual è la lunghezza totale?"
+      "Tre nastri di 0,75 m, 1,2 m e 0,95 m — qual è la lunghezza totale?"
     ],
-    "assessmentPrompt": "Se {{name}} sta pianificando una camminata di 4.5 km e ha già percorso 1.75 km, sa calcolare quanto ne manca — e stimare quanto tempo potrebbe richiedere il tratto rimanente?"
+    "assessmentPrompt": "Se {{name}} sta pianificando una camminata di 4,5 km e ha già percorso 1,75 km, sa calcolare quanto ne manca — e stimare quanto tempo potrebbe richiedere il tratto rimanente?"
   },
   "mt_5TBUFnCy5-": {
     "name": "Il volume come grandezza additiva",
@@ -195,9 +195,9 @@
     "evidence": [
       "Calcolare il costo totale di due o tre articoli con prezzi in sterline e pence",
       "Calcolare il resto da £5 o £10",
-      "Registrare correttamente i calcoli con il denaro usando la notazione £ e p (ad esempio, £3.47)"
+      "Registrare correttamente i calcoli con il denaro usando la notazione £ e p (ad esempio, £3,47)"
     ],
-    "assessmentPrompt": "Se {{name}} compra un libro da £3.50 e una matita da £1.25 pagando con una banconota da £5, sa calcolare esattamente quanto resto deve ricevere?"
+    "assessmentPrompt": "Se {{name}} compra un libro da £3,50 e una matita da £1,25 pagando con una banconota da £5, sa calcolare esattamente quanto resto deve ricevere?"
   },
   "mt_6oxQPNLHNv": {
     "name": "Calcolare con le misure",
@@ -293,11 +293,11 @@
     "name": "Confrontare numeri decimali",
     "description": "Confrontare due numeri decimali fino ai centesimi (o fino a tre cifre decimali) ragionando sulla grandezza tramite il valore posizionale; registrare il confronto con >, =, <",
     "evidence": [
-      "Confrontare 0.45 e 0.405 e spiegare quale sia maggiore",
-      "Ordinare 3.142, 3.14, 3.2 dal più piccolo al più grande",
-      "Motivare che 0.7 = 0.70 = 0.700 ragionando sul valore posizionale"
+      "Confrontare 0,45 e 0,405 e spiegare quale sia maggiore",
+      "Ordinare 3,142, 3,14, 3,2 dal più piccolo al più grande",
+      "Motivare che 0,7 = 0,70 = 0,700 ragionando sul valore posizionale"
     ],
-    "assessmentPrompt": "Se {{name}} confronta 0.45 e 0.54, sa usare il valore posizionale per spiegare quale sia maggiore — senza prendere la calcolatrice?"
+    "assessmentPrompt": "Se {{name}} confronta 0,45 e 0,54, sa usare il valore posizionale per spiegare quale sia maggiore — senza prendere la calcolatrice?"
   },
   "mt_9L3NQqgqRd": {
     "name": "Rappresentare i numeri",
@@ -406,11 +406,11 @@
     "name": "Leggere e scrivere i numeri (10+ anni)",
     "description": "Leggere, scrivere e confrontare numeri decimali fino ai millesimi usando la notazione in base dieci, i nomi dei numeri e la forma estesa; confrontare usando >, =, < in base al significato del valore posizionale",
     "evidence": [
-      "Scrivere 347.392 in forma estesa: 3×100 + 4×10 + 7×1 + 3×(1/10) + 9×(1/100) + 2×(1/1000)",
-      "Confrontare 0.372 e 0.38 ragionando sul valore posizionale",
-      "Scrivere 'cinque e sessantadue millesimi' come 5.062"
+      "Scrivere 347,392 in forma estesa: 3×100 + 4×10 + 7×1 + 3×(1/10) + 9×(1/100) + 2×(1/1000)",
+      "Confrontare 0,372 e 0,38 ragionando sul valore posizionale",
+      "Scrivere 'cinque e sessantadue millesimi' come 5,062"
     ],
-    "assessmentPrompt": "{{name}} sa leggere e scrivere numeri decimali come 3.047 o 0.625, dire cosa significa ciascuna cifra (3 unità, 0 decimi, 4 centesimi, 7 millesimi), e mettere in ordine un insieme di numeri decimali?"
+    "assessmentPrompt": "{{name}} sa leggere e scrivere numeri decimali come 3,047 o 0,625, dire cosa significa ciascuna cifra (3 unità, 0 decimi, 4 centesimi, 7 millesimi), e mettere in ordine un insieme di numeri decimali?"
   },
   "mt_B1zj1RwQ3a": {
     "name": "Schieramenti per la moltiplicazione (7+ anni)",
@@ -486,11 +486,11 @@
     "name": "Il valore posizionale × 10 e ÷ 10",
     "description": "Riconoscere che, in un numero con più cifre, una cifra in una posizione rappresenta 10 volte tanto quanto nella posizione alla sua destra e 1/10 di ciò che rappresenta nella posizione alla sua sinistra",
     "evidence": [
-      "Spiegare che il 4 in 0.04 è 1/10 del 4 in 0.4",
+      "Spiegare che il 4 in 0,04 è 1/10 del 4 in 0,4",
       "Indicare che uno spostamento di una cifra verso sinistra corrisponde a ×10 e verso destra a ÷10",
-      "Confrontare il valore del 6 in 6,000 e in 0.006"
+      "Confrontare il valore del 6 in 6,000 e in 0,006"
     ],
-    "assessmentPrompt": "{{name}} sa spiegare che in 4.56 la cifra 5 vale 5 decimi — dieci volte meno del 5 in 54, e dieci volte più del 5 in 0.056?"
+    "assessmentPrompt": "{{name}} sa spiegare che in 4,56 la cifra 5 vale 5 decimi — dieci volte meno del 5 in 54, e dieci volte più del 5 in 0,056?"
   },
   "mt_ESgc4YBw-a": {
     "name": "Le percentuali (9+ anni)",
@@ -630,8 +630,8 @@
     "description": "Spiegare le regolarità negli zeri quando si moltiplica per potenze di 10 e nello spostamento della virgola decimale quando si moltiplica/divide per una potenza di 10; usare esponenti interi per indicare le potenze di 10 (ad esempio, 10³ = 1000)",
     "evidence": [
       "Scrivere 10⁴ = 10,000 e spiegare che l'esponente indica quattro fattori di 10",
-      "Spiegare perché 3.4 × 10² = 340 descrivendo lo spostamento della virgola",
-      "Prevedere il risultato di 2.56 × 10³ senza calcolarlo e spiegare la regolarità"
+      "Spiegare perché 3,4 × 10² = 340 descrivendo lo spostamento della virgola",
+      "Prevedere il risultato di 2,56 × 10³ senza calcolarlo e spiegare la regolarità"
     ],
     "assessmentPrompt": "{{name}} sa spiegare perché 10² = 100 e 10³ = 1,000, e perché moltiplicare per 10 aggiunge semplicemente uno zero — collegando la regolarità degli zeri al valore posizionale?"
   },
@@ -649,11 +649,11 @@
     "name": "Valore posizionale dei numeri decimali (8+ anni)",
     "description": "Confrontare numeri con lo stesso numero di cifre decimali, fino a due cifre decimali",
     "evidence": [
-      "Ordinare 0.45, 0.54, 0.39 dal più piccolo al più grande",
-      "Confrontare 3.72 e 3.27 ragionando sul valore posizionale",
+      "Ordinare 0,45, 0,54, 0,39 dal più piccolo al più grande",
+      "Confrontare 3,72 e 3,27 ragionando sul valore posizionale",
       "Collocare in ordine tre numeri con due cifre decimali su una linea dei numeri"
     ],
-    "assessmentPrompt": "Se {{name}} confronta due prezzi — £4.75 e £4.57 — sa dirti qual è più caro senza usare la calcolatrice?"
+    "assessmentPrompt": "Se {{name}} confronta due prezzi — £4,75 e £4,57 — sa dirti qual è più caro senza usare la calcolatrice?"
   },
   "mt_IuHa5UI5od": {
     "name": "Misurare la lunghezza (10+ anni)",
@@ -679,11 +679,11 @@
     "name": "Strategie di addizione e sottrazione (10+ anni)",
     "description": "Addizionare e sottrarre numeri decimali fino ai centesimi usando strategie basate sul valore posizionale, sulle proprietà delle operazioni e sulla relazione tra addizione e sottrazione; collegare le strategie ai metodi scritti e spiegare il ragionamento",
     "evidence": [
-      "Calcolare correttamente 3.45 + 2.78 e spiegare il riporto tra le cifre decimali",
-      "Usare una linea dei numeri o i blocchi base dieci per rappresentare 5.03 − 2.67",
+      "Calcolare correttamente 3,45 + 2,78 e spiegare il riporto tra le cifre decimali",
+      "Usare una linea dei numeri o i blocchi base dieci per rappresentare 5,03 − 2,67",
       "Spiegare perché l'algoritmo standard funziona per l'addizione di numeri decimali, collegandolo alla comprensione del valore posizionale"
     ],
-    "assessmentPrompt": "{{name}} riesce ad addizionare o sottrarre numeri decimali come '4.73 + 2.68' o '10.00 − 3.47', allineando la virgola decimale e svolgendo correttamente i calcoli in colonna?"
+    "assessmentPrompt": "{{name}} riesce ad addizionare o sottrarre numeri decimali come '4,73 + 2,68' o '10,00 − 3,47', allineando la virgola decimale e svolgendo correttamente i calcoli in colonna?"
   },
   "mt_Jvg8X0N5u0": {
     "name": "Usare formule semplici",
@@ -779,11 +779,11 @@
     "name": "Moltiplicare e dividere",
     "description": "Moltiplicare e dividere numeri interi e numeri decimali per 10, 100 e 1000",
     "evidence": [
-      "Calcolare 3.45 × 100 = 345",
-      "Calcolare 72 ÷ 1000 = 0.072",
+      "Calcolare 3,45 × 100 = 345",
+      "Calcolare 72 ÷ 1000 = 0,072",
       "Spiegare che moltiplicare per 10 sposta ogni cifra di una posizione verso sinistra"
     ],
-    "assessmentPrompt": "{{name}} riesce a calcolare rapidamente '4.7 × 100' o '3,600 ÷ 1,000' — sapendo che le cifre si spostano a sinistra o a destra nella tabella del valore posizionale a seconda che si stia moltiplicando o dividendo?"
+    "assessmentPrompt": "{{name}} riesce a calcolare rapidamente '4,7 × 100' o '3,600 ÷ 1,000' — sapendo che le cifre si spostano a sinistra o a destra nella tabella del valore posizionale a seconda che si stia moltiplicando o dividendo?"
   },
   "mt_LpSuPgL31x": {
     "name": "La divisione come suddivisione in parti uguali",
@@ -946,7 +946,7 @@
       "Collocare numeri interi positivi e negativi, decimali e frazioni su una retta numerica",
       "Usare il valore posizionale per confrontare e ordinare numeri in tutto il sistema numerico"
     ],
-    "assessmentPrompt": "{{name}} sa collocare un insieme misto di numeri — come 3, −2, 0.5, −1.75 e ¼ — tutti sulla stessa retta numerica, nell'ordine corretto?"
+    "assessmentPrompt": "{{name}} sa collocare un insieme misto di numeri — come 3, −2, 0,5, −1,75 e ¼ — tutti sulla stessa retta numerica, nell'ordine corretto?"
   },
   "mt_Qcp2d_kuta": {
     "name": "Solidi",
@@ -1022,11 +1022,11 @@
     "name": "Conversioni di misura",
     "description": "Risolvere problemi che coinvolgono il calcolo e la conversione di unità di misura, usando la notazione decimale e un ragionamento a più fasi in contesti reali",
     "evidence": [
-      "Risolvere: \"Una ricetta usa 0.75 kg di farina. Quanti grammi servono per 3 dosi?\"",
-      "Confrontare 2.5 litri e 2,450 ml convertendoli nella stessa unità",
+      "Risolvere: \"Una ricetta usa 0,75 kg di farina. Quanti grammi servono per 3 dosi?\"",
+      "Confrontare 2,5 litri e 2,450 ml convertendoli nella stessa unità",
       "Risolvere un problema a più fasi che coinvolge tempo, distanza e conversione di unità"
     ],
-    "assessmentPrompt": "Se {{name}} sta riempiendo un acquario che contiene 60 litri e il rubinetto lo riempie a 3.5 litri al minuto, sa calcolare quanto tempo ci vorrà per riempirlo?"
+    "assessmentPrompt": "Se {{name}} sta riempiendo un acquario che contiene 60 litri e il rubinetto lo riempie a 3,5 litri al minuto, sa calcolare quanto tempo ci vorrà per riempirlo?"
   },
   "mt_SrrsLiJkr3": {
     "name": "Addizionare e sottrarre (7+ anni)",
@@ -1080,11 +1080,11 @@
   },
   "mt_TqDq6jyOmL": {
     "name": "Equivalenti decimali di decimi e centesimi",
-    "description": "Riconoscere e scrivere gli equivalenti decimali di un numero qualsiasi di decimi o centesimi (ad es. 3/10 = 0.3, 27/100 = 0.27)",
+    "description": "Riconoscere e scrivere gli equivalenti decimali di un numero qualsiasi di decimi o centesimi (ad es. 3/10 = 0,3, 27/100 = 0,27)",
     "evidence": [
-      "Scrivere 7/10 come 0.7 e viceversa",
-      "Convertire 45/100 in 0.45",
-      "Collocare 0.3 e 3/10 nello stesso punto di una linea dei numeri"
+      "Scrivere 7/10 come 0,7 e viceversa",
+      "Convertire 45/100 in 0,45",
+      "Collocare 0,3 e 3/10 nello stesso punto di una linea dei numeri"
     ],
     "assessmentPrompt": "Se {{name}} vede 7/10 su un'etichetta di prezzo, sa riscriverlo come numero decimale — e fare lo stesso con 43/100?"
   },
@@ -1130,13 +1130,13 @@
   },
   "mt_Vi4Vo5xs_g": {
     "name": "Numeri decimali per decimi e centesimi",
-    "description": "Usare la notazione decimale per frazioni con denominatore 10 o 100; leggere e scrivere numeri decimali come frazioni (ad es. 0.62 = 62/100, 0.71 = 71/100)",
+    "description": "Usare la notazione decimale per frazioni con denominatore 10 o 100; leggere e scrivere numeri decimali come frazioni (ad es. 0,62 = 62/100, 0,71 = 71/100)",
     "evidence": [
-      "Riscrivere 0.62 come 62/100",
-      "Scrivere 3/10 come 0.3 e collocarlo su una linea dei numeri",
-      "Leggere 0.07 ed esprimerlo come 7/100"
+      "Riscrivere 0,62 come 62/100",
+      "Scrivere 3/10 come 0,3 e collocarlo su una linea dei numeri",
+      "Leggere 0,07 ed esprimerlo come 7/100"
     ],
-    "assessmentPrompt": "Se {{name}} vede un'etichetta di prezzo con £0.65, sa riscriverla come frazione — e fare il percorso inverso, trasformando 47/100 in un numero decimale?"
+    "assessmentPrompt": "Se {{name}} vede un'etichetta di prezzo con £0,65, sa riscriverla come frazione — e fare il percorso inverso, trasformando 47/100 in un numero decimale?"
   },
   "mt_W17Kbwm0-u": {
     "name": "Notazione decimale e percentuale",
@@ -1144,9 +1144,9 @@
     "evidence": [
       "Leggere e scrivere correttamente i numeri decimali, individuando il valore di ogni cifra (unità, decimi, centesimi)",
       "Usare correttamente il simbolo % e spiegare che percentuale significa 'su 100'",
-      "Convertire tra frazioni semplici, numeri decimali e percentuali (ad es. 1/2 = 0.5 = 50%) e spiegare perché sono equivalenti"
+      "Convertire tra frazioni semplici, numeri decimali e percentuali (ad es. 1/2 = 0,5 = 50%) e spiegare perché sono equivalenti"
     ],
-    "assessmentPrompt": "Se {{name}} vedesse scritti '0.5' e '50%', saprebbe spiegare che rappresentano la stessa quantità — e scriverli anche come frazione?"
+    "assessmentPrompt": "Se {{name}} vedesse scritti '0,5' e '50%', saprebbe spiegare che rappresentano la stessa quantità — e scriverli anche come frazione?"
   },
   "mt_WX30dzi4dt": {
     "name": "Padronanza dei fatti di moltiplicazione e divisione",
@@ -1292,11 +1292,11 @@
     "name": "Convertire le unità di misura (9+ anni)",
     "description": "Conoscere le dimensioni relative delle unità di misura all'interno di uno stesso sistema (km/m/cm/mm, kg/g, l/ml, h/min/s); convertire tra diverse unità del sistema metrico decimale ed esprimere le misure in un'unità più piccola; registrare le equivalenze in tabelle di conversione",
     "evidence": [
-      "Convertire 3.5 km in 3,500 m",
+      "Convertire 3,5 km in 3,500 m",
       "Completare una tabella di conversione per cm e mm: (1,10), (2,20), (3,30)...",
       "Esprimere 2 kg 350 g come 2,350 g"
     ],
-    "assessmentPrompt": "Se {{name}} deve convertire 3.5 kg in grammi, sa farlo con sicurezza — e anche completare una semplice tabella a due colonne che mostri le stesse misure in kg e g?"
+    "assessmentPrompt": "Se {{name}} deve convertire 3,5 kg in grammi, sa farlo con sicurezza — e anche completare una semplice tabella a due colonne che mostri le stesse misure in kg e g?"
   },
   "mt__N55B7u7HD": {
     "name": "Leggere l'ora al minuto",
@@ -1385,7 +1385,7 @@
       "Convertire numeri dalla notazione standard alla notazione ordinaria",
       "Confrontare e ordinare numeri dati in notazione standard"
     ],
-    "assessmentPrompt": "{{name}} sa scrivere 3,400,000 come 3.4 × 10⁶ e riconvertirlo — capendo che la notazione standard è un modo abbreviato per esprimere numeri molto grandi o molto piccoli?"
+    "assessmentPrompt": "{{name}} sa scrivere 3,400,000 come 3,4 × 10⁶ e riconvertirlo — capendo che la notazione standard è un modo abbreviato per esprimere numeri molto grandi o molto piccoli?"
   },
   "mt_bfhng6mOuy": {
     "name": "Angoli nei triangoli (6+ anni)",
@@ -1455,7 +1455,7 @@
       "Affermare che 2 ore = 120 minuti",
       "Convertire 5 settimane in 35 giorni"
     ],
-    "assessmentPrompt": "Se a {{name}} viene detto che un viaggio è lungo 3.5 km, sa convertirlo in metri — e anche trasformare 2 ore e 15 minuti in soli minuti?"
+    "assessmentPrompt": "Se a {{name}} viene detto che un viaggio è lungo 3,5 km, sa convertirlo in metri — e anche trasformare 2 ore e 15 minuti in soli minuti?"
   },
   "mt_dmNvjroCPT": {
     "name": "Quanti in tutto?",
@@ -1552,10 +1552,10 @@
     "description": "Applicare la formula dell'area (l × w) e la formula del perimetro (2l + 2w) per i rettangoli, compresi i quadrati, in problemi reali e matematici; calcolare e confrontare aree usando unità di misura convenzionali (cm², m²) e stimare aree di figure irregolari",
     "evidence": [
       "Trovare la larghezza di una stanza data l'area = 48 m² e la lunghezza = 8 m",
-      "Calcolare l'area di un quadrato con lato 7.5 cm",
+      "Calcolare l'area di un quadrato con lato 7,5 cm",
       "Stimare l'area di uno stagno irregolare disegnato su una griglia in cm²"
     ],
-    "assessmentPrompt": "Se {{name}} vuole mettere la moquette in una stanza di 6.5 m × 4 m, sa calcolare l'area — e anche quanti metri di battiscopa servono lungo il bordo?"
+    "assessmentPrompt": "Se {{name}} vuole mettere la moquette in una stanza di 6,5 m × 4 m, sa calcolare l'area — e anche quanti metri di battiscopa servono lungo il bordo?"
   },
   "mt_ewmuMMPAzP": {
     "name": "Addizione e sottrazione entro il 1000",
@@ -1774,21 +1774,21 @@
     "name": "Dividere per 10 e per 100",
     "description": "Individuare l'effetto della divisione di un numero a una o due cifre per 10 e per 100, riconoscendo il valore delle cifre come unità, decimi e centesimi",
     "evidence": [
-      "Calcolare 37 ÷ 10 = 3.7 e riconoscere 3 come unità e 7 come decimi",
-      "Calcolare 4 ÷ 100 = 0.04 e riconoscere 4 come centesimi",
+      "Calcolare 37 ÷ 10 = 3,7 e riconoscere 3 come unità e 7 come decimi",
+      "Calcolare 4 ÷ 100 = 0,04 e riconoscere 4 come centesimi",
       "Spiegare che dividere per 10 sposta ogni cifra di una posizione verso destra"
     ],
     "assessmentPrompt": "Se {{name}} parte dal numero 48 e lo divide per 10, sa dirti il risultato — e spiegare cosa è successo al valore posizionale di ogni cifra?"
   },
   "mt_kdWoAel3Zl": {
     "name": "I decimi (9+ anni)",
-    "description": "Riconoscere e usare i millesimi; metterli in relazione con decimi, centesimi e i loro equivalenti decimali (ad es. 1/1000 = 0.001, 35/1000 = 0.035)",
+    "description": "Riconoscere e usare i millesimi; metterli in relazione con decimi, centesimi e i loro equivalenti decimali (ad es. 1/1000 = 0,001, 35/1000 = 0,035)",
     "evidence": [
-      "Scrivere 0.025 come 25/1000",
+      "Scrivere 0,025 come 25/1000",
       "Spiegare che 1 decimo = 100 millesimi",
-      "Collocare 0.345 su una linea dei numeri tra 0.34 e 0.35"
+      "Collocare 0,345 su una linea dei numeri tra 0,34 e 0,35"
     ],
-    "assessmentPrompt": "Se {{name}} vede il numero decimale 0.003, sa scriverlo come frazione e dirti all'incirca dove si trova su una linea dei numeri tra 0 e 0.01?"
+    "assessmentPrompt": "Se {{name}} vede il numero decimale 0,003, sa scriverlo come frazione e dirti all'incirca dove si trova su una linea dei numeri tra 0 e 0,01?"
   },
   "mt_lC_Q5mSL_I": {
     "name": "I numeri fino a 10,000",
@@ -1802,13 +1802,13 @@
   },
   "mt_lNGpnILM5C": {
     "name": "Leggere le cifre decimali",
-    "description": "Identificare il valore di ciascuna cifra in numeri con tre cifre decimali (ad esempio, in 4.378 il 7 rappresenta 7 centesimi)",
+    "description": "Identificare il valore di ciascuna cifra in numeri con tre cifre decimali (ad esempio, in 4,378 il 7 rappresenta 7 centesimi)",
     "evidence": [
-      "Indicare il valore di ciascuna cifra in 2.635 (2 unità, 6 decimi, 3 centesimi, 5 millesimi)",
+      "Indicare il valore di ciascuna cifra in 2,635 (2 unità, 6 decimi, 3 centesimi, 5 millesimi)",
       "Spiegare la relazione tra posizioni decimali adiacenti (ogni posizione vale dieci volte meno della precedente)",
-      "Scrivere un numero dati i valori delle cifre (ad esempio, 4 unità, 0 decimi, 7 centesimi, 3 millesimi = 4.073)"
+      "Scrivere un numero dati i valori delle cifre (ad esempio, 4 unità, 0 decimi, 7 centesimi, 3 millesimi = 4,073)"
     ],
-    "assessmentPrompt": "Nel numero 4.378, {{name}} sa dirti che il 7 rappresenta 7 centesimi — non 7 decimi o 7 millesimi?"
+    "assessmentPrompt": "Nel numero 4,378, {{name}} sa dirti che il 7 rappresenta 7 centesimi — non 7 decimi o 7 millesimi?"
   },
   "mt_liIW336odh": {
     "name": "Classificare le figure in base alle proprietà",
@@ -1845,10 +1845,10 @@
     "description": "Stimare, confrontare e calcolare diverse misure, incluso il denaro in sterline e pence",
     "evidence": [
       "Stimare la lunghezza dell'aula in metri",
-      "Confrontare 1.5 kg e 1200 g e individuare quale pesa di più",
-      "Calcolare il costo totale di 3 articoli a £2.45, £1.30 e £0.75"
+      "Confrontare 1,5 kg e 1200 g e individuare quale pesa di più",
+      "Calcolare il costo totale di 3 articoli a £2,45, £1,30 e £0,75"
     ],
-    "assessmentPrompt": "Se {{name}} confronta tre articoli che costano £2.85, £3.10 e £2.50, sa metterli in ordine dal più economico al più costoso — e calcolare il costo totale?"
+    "assessmentPrompt": "Se {{name}} confronta tre articoli che costano £2,85, £3,10 e £2,50, sa metterli in ordine dal più economico al più costoso — e calcolare il costo totale?"
   },
   "mt_mpS-JK_p_m": {
     "name": "Addizionare e sottrarre (8+ anni)",
@@ -1925,7 +1925,7 @@
     "description": "Risolvere problemi a più passaggi usando le quattro operazioni con numeri interi, incluso interpretare i resti nel contesto; rappresentare con equazioni usando una lettera per l'incognita; verificare con la stima",
     "evidence": [
       "52 bambini vanno in gita su minibus che ne contengono 9 ciascuno — quanti minibus servono? (interpretare il resto)",
-      "Un negozio vende confezioni da 6 matite a £1.50 ciascuna — quanto costano 5 confezioni?",
+      "Un negozio vende confezioni da 6 matite a £1,50 ciascuna — quanto costano 5 confezioni?",
       "Rappresentare un problema a due passaggi con un'equazione usando n per l'incognita"
     ],
     "assessmentPrompt": "Se {{name}} legge 'una scuola acquista 7 scatole da 24 penne e le divide equamente tra 8 classi', riesce a seguire tutti i passaggi e a decidere in modo sensato cosa fare con un eventuale resto?"
@@ -1944,7 +1944,7 @@
     "name": "Notazione di sterline e pence",
     "description": "Riconoscere e usare i simboli per sterline (£) e pence (p) e combinare importi per formare un determinato valore",
     "evidence": [
-      "Scrivere correttamente £1.50 oppure 150p",
+      "Scrivere correttamente £1,50 oppure 150p",
       "Combinare monete per ottenere un totale dato, ad esempio 50p + 20p + 5p = 75p",
       "Leggere prezzi scritti con i simboli £ e p"
     ],
@@ -2076,9 +2076,9 @@
     "evidence": [
       "Ordinare un insieme misto di numeri interi positivi e negativi, decimali e frazioni",
       "Usare correttamente i simboli =, ≠, <, >, ≤, ≥ in espressioni matematiche",
-      "Confrontare numeri presentati in forme diverse, come 0.75 e 3/4"
+      "Confrontare numeri presentati in forme diverse, come 0,75 e 3/4"
     ],
-    "assessmentPrompt": "Se a {{name}} viene data una lista mista come 2.5, −3, ¾, 0 e −0.5, riesce a metterli in ordine dal più piccolo al più grande, usando una retta numerica se necessario?"
+    "assessmentPrompt": "Se a {{name}} viene data una lista mista come 2,5, −3, ¾, 0 e −0,5, riesce a metterli in ordine dal più piccolo al più grande, usando una retta numerica se necessario?"
   },
   "mt_uhuxX8sg9f": {
     "name": "Confrontare lunghezze e altezze",
@@ -2114,11 +2114,11 @@
     "name": "Numeri decimali e frazioni",
     "description": "Risolvere semplici problemi di misura e di denaro che coinvolgono frazioni e numeri decimali fino a due cifre decimali",
     "evidence": [
-      "Calcolare 1/4 di £3.20",
-      "Una corda è lunga 2.5 m; quanto ne rimane dopo averne tagliati 0.75 m?",
+      "Calcolare 1/4 di £3,20",
+      "Una corda è lunga 2,5 m; quanto ne rimane dopo averne tagliati 0,75 m?",
       "Trovare 3/10 di 1 kg ed esprimere il risultato in grammi e come numero decimale di kg"
     ],
-    "assessmentPrompt": "Se una bottiglia contiene 1.5 litri e {{name}} ne beve 0.75, sa calcolare quanti ne rimangono — e scriverlo sia come numero decimale sia come frazione?"
+    "assessmentPrompt": "Se una bottiglia contiene 1,5 litri e {{name}} ne beve 0,75, sa calcolare quanti ne rimangono — e scriverlo sia come numero decimale sia come frazione?"
   },
   "mt_wE7-Gs9ENL": {
     "name": "Misurare i perimetri",
@@ -2134,11 +2134,11 @@
     "name": "Moltiplicare e dividere (10+ anni)",
     "description": "Moltiplicare e dividere numeri per 10, 100 e 1000 ottenendo risultati fino a tre cifre decimali, comprendendo che le cifre cambiano posizione nella tabella del valore posizionale",
     "evidence": [
-      "Calcolare correttamente 3.456 × 100 = 345.6",
-      "Calcolare correttamente 45.2 ÷ 1000 = 0.0452",
+      "Calcolare correttamente 3,456 × 100 = 345,6",
+      "Calcolare correttamente 45,2 ÷ 1000 = 0,0452",
       "Spiegare perché moltiplicare per 10 sposta ogni cifra di una posizione verso sinistra"
     ],
-    "assessmentPrompt": "{{name}} riesce a calcolare '4.6 ÷ 1,000 = 0.0046' — sapendo che ogni divisione per 10 sposta le cifre di una posizione verso destra, anche oltre la virgola decimale?"
+    "assessmentPrompt": "{{name}} riesce a calcolare '4,6 ÷ 1,000 = 0,0046' — sapendo che ogni divisione per 10 sposta le cifre di una posizione verso destra, anche oltre la virgola decimale?"
   },
   "mt_wQ89AEXhz3": {
     "name": "Le tabelline (7+ anni)",

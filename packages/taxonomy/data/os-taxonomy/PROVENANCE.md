@@ -11,8 +11,13 @@ Licenses (per upstream README / this file):
   - Content (topic names, descriptions, evidence, assessment prompts): CC BY-SA 4.0
   - Encumbered curriculum-standards sources are licensed separately per the
     "Per-source terms" section below; Lyceora does not vendor
-    data/curriculum-standards.json and does not use any standards mapping
-    from os-taxonomy in this package.
+    data/curriculum-standards.json and does not ship any full-text standard.
+    math-core.json topics do carry the bare standard *codes* passed through
+    from upstream topics.json (e.g. "ccss-math:K.OA.1", "uk-nc-2013:Maths/Y1/AS/1"
+    — 128 of the 228 math-core topics have one or more) as topic metadata;
+    per the "codes-only" distinction below, a bare code is a short factual
+    identifier, not the encumbered standard text itself, and this is exactly
+    upstream's own codes-only-safe practice.
 
 Everything below this line is the upstream PROVENANCE.md, unmodified.
 -->

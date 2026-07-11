@@ -31,17 +31,10 @@ const loc = (id: string, en: string, it: string | undefined, field: string): Loc
   return { it, en };
 };
 
-// os-taxonomy's topic.type vocabulary (CONCEPTUAL/PROCEDURAL/REPRESENTATIONAL/LANGUAGE/META)
-// only partly overlaps our schema's TopicType enum (schema.ts, Task 2), which has no
-// LANGUAGE or META. Remap to the closest existing enum value so upstream data validates.
-const typeRemap: Record<string, Topic["type"]> = { LANGUAGE: "REPRESENTATIONAL", META: "METACOGNITIVE" };
-const remapType = (type: string): Topic["type"] => (typeRemap[type] ?? type) as Topic["type"];
-
 const topics: Topic[] = os.topics
   .filter((t) => keep.has(t.id) && t.subject === "Mathematics")
   .map((t) => ({
     ...t,
-    type: remapType(t.type),
     name: loc(t.id, t.name, overlay[t.id]?.name, "name"),
     description: loc(t.id, t.description, overlay[t.id]?.description, "description"),
     evidence: t.evidence.map((e, i) => loc(t.id, e, overlay[t.id]?.evidence?.[i], `evidence[${i}]`)),
