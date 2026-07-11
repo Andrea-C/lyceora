@@ -24,7 +24,7 @@ export interface DiagnosticResult {
 export type DiagnosticStep = { kind: "ask"; topicId: string } | { kind: "done"; result: DiagnosticResult };
 
 /** Longest hard-edge path from a source, within scope. Deterministic; memoized per call. */
-function topoLevels(graph: TopicGraph, scope: Set<string>): Map<string, number> {
+export function topoLevels(graph: TopicGraph, scope: Set<string>): Map<string, number> {
   const memo = new Map<string, number>();
   const level = (id: string): number => {
     const hit = memo.get(id);

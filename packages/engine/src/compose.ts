@@ -2,6 +2,7 @@ import type { TopicGraph } from "@lyceora/taxonomy";
 import { frontier as graphFrontier } from "@lyceora/taxonomy";
 import type { MasteryState } from "./mastery.js";
 import type { ReviewRow } from "./review.js";
+import { topoLevels } from "./diagnostic.js";
 import { XP_AMOUNTS } from "./xp.js";
 
 export type SessionItem =
@@ -32,22 +33,61 @@ function statusMap(mastery: ReadonlyMap<string, MasteryState>) {
   return new Map([...mastery].map(([id, s]) => [id, s.status] as const));
 }
 
+/**
+ * Full re-teach (lesson + 3 escalating exercises + assessment) when the prior "mastery" was
+ * thin evidence (a likely false test-out) or the topic has lapsed repeatedly; otherwise a
+ * short block (exercises + assessment at rung difficulty) is enough to confirm re-mastery.
+ */
+function remediationBlock(topicId: string, state: MasteryState | undefined): SessionItem[] {
+  const lapses = state?.lapses ?? 0;
+  const totalAttempts = state?.totalAttempts ?? 0;
+  const review: SessionItem = { kind: "review", topicId, reason: "remediation", difficulty: 2 };
+  if (lapses >= 2 || totalAttempts <= 2) {
+    return [
+      review,
+      { kind: "lesson", topicId },
+      { kind: "exercise", topicId, difficulty: 1 },
+      { kind: "exercise", topicId, difficulty: 2 },
+      { kind: "exercise", topicId, difficulty: 3 },
+      { kind: "assessment", topicId, difficulty: 2 }
+    ];
+  }
+  return [
+    review,
+    { kind: "exercise", topicId, difficulty: 2 },
+    { kind: "exercise", topicId, difficulty: 3 },
+    { kind: "assessment", topicId, difficulty: 2 }
+  ];
+}
+
+function newTopicBlock(topicId: string): SessionItem[] {
+  return [
+    { kind: "lesson", topicId },
+    { kind: "exercise", topicId, difficulty: 1 },
+    { kind: "exercise", topicId, difficulty: 2 },
+    { kind: "exercise", topicId, difficulty: 3 },
+    { kind: "assessment", topicId, difficulty: 2 }
+  ];
+}
+
 export function composeSessionPlan(inputs: ComposeInputs): SessionPlan {
   const { graph, targetTopicIds, mastery, dailyXpGoal } = inputs;
   const statuses = statusMap(mastery);
   const front = graphFrontier(graph, targetTopicIds, statuses);
+  const levels = topoLevels(graph, new Set(graph.topics.keys()));
+  const byDeepestThenId = (a: string, b: string) => (levels.get(a)! - levels.get(b)!) || a.localeCompare(b);
 
-  // tier 1: needsReview topics that gate a frontier-adjacent topic (deepest first = fix foundations)
-  const blockedBy = (id: string) =>
-    (graph.prereqsOf.get(id) ?? []).some((d) => d.strength === "hard" && statuses.get(d.prerequisiteId) === "needsReview");
-  const blockedTopics = [...graph.topics.keys()].filter(blockedBy);
-  const remediation = [...new Set(
-    blockedTopics.flatMap((id) =>
-      (graph.prereqsOf.get(id) ?? [])
-        .filter((d) => d.strength === "hard" && statuses.get(d.prerequisiteId) === "needsReview")
-        .map((d) => d.prerequisiteId)
-    )
-  )].sort();
+  // tier 1: ALL needsReview topics (not just ones blocking another topic) — a needsReview path
+  // target with no dependents (e.g. a spaced-review failure on a leaf) must still be remediated,
+  // never fall through to tier 3 as "new" content. Order: topics that block another topic first
+  // (fix foundations before leaves), then dependentless ones; deepest-first within each group,
+  // ties by id.
+  const needsReviewIds = [...mastery].filter(([, s]) => s.status === "needsReview").map(([id]) => id);
+  const blocksSomething = (id: string) => (graph.dependentsOf.get(id) ?? []).some((d) => d.strength === "hard");
+  const remediation = [
+    ...needsReviewIds.filter(blocksSomething).sort(byDeepestThenId),
+    ...needsReviewIds.filter((id) => !blocksSomething(id)).sort(byDeepestThenId)
+  ];
 
   // tier 2: due reviews, most overdue first, excluding anything already remediated this session
   const due = inputs.dueReviews
@@ -55,30 +95,31 @@ export function composeSessionPlan(inputs: ComposeInputs): SessionPlan {
     .sort((a, b) => a.dueOn.localeCompare(b.dueOn))
     .slice(0, MAX_DUE_REVIEWS);
 
-  // tier 3: frontier new content — 1 new topic (2 only when tiers 1-2 are empty)
+  // tier 3: frontier new content — unknown/inProgress ONLY (needsReview is never "new"),
+  // 1 new topic (2 only when tiers 1-2 are empty), excluding anything already scheduled above
+  const dueIds = new Set(due.map((r) => r.topicId));
   const newCount = remediation.length === 0 && due.length === 0 ? 2 : 1;
-  const newTopics = front.filter((id) => !remediation.includes(id)).slice(0, newCount);
+  const newTopics = front
+    .filter((id) => {
+      const status = statuses.get(id) ?? "unknown";
+      return (status === "unknown" || status === "inProgress") && !remediation.includes(id) && !dueIds.has(id);
+    })
+    .slice(0, newCount);
+
+  // assemble as whole blocks and cap at MAX_ITEMS without ever truncating a block mid-way;
+  // the first block is always admitted, even alone.
+  const blocks: SessionItem[][] = [];
+  for (const topicId of remediation) blocks.push(remediationBlock(topicId, mastery.get(topicId)));
+  for (const r of due.slice(0, 2)) blocks.push([{ kind: "review", topicId: r.topicId, reason: "due", difficulty: 2 }]);
+  for (const topicId of newTopics) blocks.push(newTopicBlock(topicId));
+  for (const r of due.slice(2)) blocks.push([{ kind: "review", topicId: r.topicId, reason: "due", difficulty: 2 }]);
 
   const items: SessionItem[] = [];
-  for (const topicId of remediation) {
-    const st = mastery.get(topicId);
-    items.push({ kind: "review", topicId, reason: "remediation", difficulty: 2 });
-    items.push({ kind: "lesson", topicId });
-    items.push({ kind: "exercise", topicId, difficulty: st && st.lapses >= 2 ? 1 : 2 });
-    items.push({ kind: "exercise", topicId, difficulty: 2 });
-    items.push({ kind: "assessment", topicId, difficulty: 2 });
+  for (const block of blocks) {
+    if (items.length !== 0 && items.length + block.length > MAX_ITEMS) break;
+    items.push(...block);
   }
-  for (const r of due.slice(0, 2)) items.push({ kind: "review", topicId: r.topicId, reason: "due", difficulty: 2 });
-  for (const topicId of newTopics) {
-    items.push({ kind: "lesson", topicId });
-    items.push({ kind: "exercise", topicId, difficulty: 1 });
-    items.push({ kind: "exercise", topicId, difficulty: 2 });
-    items.push({ kind: "exercise", topicId, difficulty: 3 });
-    items.push({ kind: "assessment", topicId, difficulty: 2 });
-  }
-  for (const r of due.slice(2)) items.push({ kind: "review", topicId: r.topicId, reason: "due", difficulty: 2 });
 
-  const capped = items.slice(0, MAX_ITEMS);
   const xpOf = (i: SessionItem) =>
     i.kind === "lesson" ? XP_AMOUNTS.lessonComplete
     : i.kind === "exercise" ? XP_AMOUNTS.exerciseCorrect
@@ -86,8 +127,8 @@ export function composeSessionPlan(inputs: ComposeInputs): SessionPlan {
     : XP_AMOUNTS.reviewComplete;
   return {
     sessionKind: "daily",
-    items: capped,
-    estimatedXp: capped.reduce((sum, i) => sum + xpOf(i), 0),
+    items,
+    estimatedXp: items.reduce((sum, i) => sum + xpOf(i), 0),
     dailyXpGoal
   };
 }

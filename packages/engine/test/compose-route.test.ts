@@ -71,4 +71,80 @@ describe("composeSessionPlan — the post-remediation session", () => {
     const lessons = plan.items.filter((i) => i.kind === "lesson").map((i) => i.topicId);
     expect(lessons).toEqual(["radici"]); // only radici is on the frontier (pitagora blocked)
   });
+
+  it("(Finding 1a) remediates a needsReview path target with no dependents (dependentless leaf) instead of re-teaching it as new content", () => {
+    const mastery = new Map<string, MasteryState>([
+      ["potenze", mastered],
+      ["radici", mastered],
+      ["pitagora", { ...EMPTY_MASTERY_STATE, status: "needsReview", lapses: 1, totalAttempts: 5 }]
+    ]);
+    const plan = composeSessionPlan({ graph, targetTopicIds: ["pitagora"], mastery, dueReviews: [], dailyXpGoal: 30 });
+    expect(plan.items[0]).toMatchObject({ kind: "review", topicId: "pitagora", reason: "remediation" });
+    const pitagoraItems = plan.items.filter((i) => i.topicId === "pitagora");
+    expect(pitagoraItems.some((i) => i.kind === "lesson")).toBe(false); // short block: not thin evidence, not double-lapsed
+    expect(pitagoraItems.map((i) => i.kind)).toEqual(["review", "exercise", "exercise", "assessment"]);
+  });
+
+  it("(Finding 4b) false test-out — thin evidence (totalAttempts <= 2) gets a full re-teach block with a lesson", () => {
+    const mastery = new Map<string, MasteryState>([
+      ["potenze", mastered],
+      ["radici", { ...EMPTY_MASTERY_STATE, status: "needsReview", lapses: 0, totalAttempts: 1 }],
+      ["pitagora", inProgress]
+    ]);
+    const plan = composeSessionPlan({ graph, targetTopicIds: ["pitagora"], mastery, dueReviews: [], dailyXpGoal: 30 });
+    const radiciItems = plan.items.filter((i) => i.topicId === "radici");
+    expect(radiciItems.map((i) => i.kind)).toEqual(["review", "lesson", "exercise", "exercise", "exercise", "assessment"]);
+  });
+
+  it("(Finding 1 dedupe) a needsReview topic that is also due is remediated once, never duplicated as a separate due-review item", () => {
+    const mastery = new Map<string, MasteryState>([
+      ["potenze", mastered],
+      ["radici", mastered],
+      ["pitagora", { ...EMPTY_MASTERY_STATE, status: "needsReview", lapses: 1, totalAttempts: 5 }]
+    ]);
+    const plan = composeSessionPlan({
+      graph, targetTopicIds: ["pitagora"], mastery,
+      dueReviews: [{ topicId: "pitagora", intervalRung: 1, dueOn: "2026-07-10", lapses: 1, suspended: false }],
+      dailyXpGoal: 30
+    });
+    const pitagoraReviews = plan.items.filter((i) => i.kind === "review" && i.topicId === "pitagora");
+    expect(pitagoraReviews).toHaveLength(1);
+    expect(pitagoraReviews[0]).toMatchObject({ reason: "remediation" });
+  });
+
+  it("(Finding 3e) caps the plan at whole-block boundaries — never emits a partial block", () => {
+    const thin = (): MasteryState => ({ ...EMPTY_MASTERY_STATE, status: "needsReview", lapses: 0, totalAttempts: 1 });
+    const mastery = new Map<string, MasteryState>([
+      ["potenze", thin()],
+      ["radici", thin()],
+      ["pitagora", thin()]
+    ]);
+    const plan = composeSessionPlan({ graph, targetTopicIds: ["pitagora"], mastery, dueReviews: [], dailyXpGoal: 30 });
+    expect(plan.items).toHaveLength(12); // 3 full 6-item blocks (18) capped to exactly 2 whole blocks
+    for (let i = 0; i < plan.items.length; i++) {
+      const item = plan.items[i]!;
+      if (item.kind === "lesson") {
+        const next3 = plan.items.slice(i + 1, i + 4);
+        expect(next3.every((x) => x.kind === "exercise" && x.topicId === item.topicId)).toBe(true);
+        expect(plan.items[i + 4]).toMatchObject({ kind: "assessment", topicId: item.topicId });
+      }
+    }
+  });
+});
+
+describe("routeNext — deepest-first prerequisite selection (Finding 2)", () => {
+  it("descends to the deepest weak prerequisite by topo level (closest to foundations), not alphabetical order", () => {
+    // a -> b -> c (hard chain) plus a -> d (hard); d mastered so only b is weak directly under a,
+    // forcing the descent through b to c. Exercises topoLevel-based argmin at both the initial
+    // pick and the deepestWeak descent (replacing the old alphabetical .sort()[0] pick).
+    const g2 = buildGraph(
+      [t("a"), t("b"), t("c"), t("d")],
+      [hard("a", "b"), hard("b", "c"), hard("a", "d")]
+    );
+    const statusOf = (id: string) => (id === "d" ? ("mastered" as const) : ("unknown" as const));
+    const decision = routeNext(g2, "a", { passed: false, masteryAfter: "inProgress", failedConcepts: [] }, statusOf);
+    expect(decision).toEqual({
+      action: "remediate", blockedTopicId: "a", remediationTopicId: "c", demotePrereq: false
+    });
+  });
 });

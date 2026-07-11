@@ -1,5 +1,6 @@
 import type { TopicGraph, MasteryStatus } from "@lyceora/taxonomy";
 import { frontier as graphFrontier } from "@lyceora/taxonomy";
+import { topoLevels } from "./diagnostic.js";
 
 export interface AssessmentOutcome {
   passed: boolean;
@@ -17,13 +18,18 @@ function directHardPrereqs(graph: TopicGraph, id: string): string[] {
   return (graph.prereqsOf.get(id) ?? []).filter((d) => d.strength === "hard").map((d) => d.prerequisiteId);
 }
 
+/** Deepest = lowest topo level (closest to foundations); ties broken by id. */
+function argDeepest(ids: string[], levels: Map<string, number>): string {
+  return [...ids].sort((a, b) => (levels.get(a)! - levels.get(b)!) || a.localeCompare(b))[0]!;
+}
+
 /** Descend hard edges to the deepest prerequisite that is not mastered (or is implicated). */
-function deepestWeak(graph: TopicGraph, start: string, isWeak: (id: string) => boolean): string {
+function deepestWeak(graph: TopicGraph, start: string, isWeak: (id: string) => boolean, levels: Map<string, number>): string {
   let current = start;
   for (;;) {
-    const weakBelow = directHardPrereqs(graph, current).filter(isWeak).sort();
+    const weakBelow = directHardPrereqs(graph, current).filter(isWeak);
     if (weakBelow.length === 0) return current;
-    current = weakBelow[0]!;
+    current = argDeepest(weakBelow, levels);
   }
 }
 
@@ -41,21 +47,16 @@ export function routeNext(
   const isWeak = (id: string) => statusOf(id) !== "mastered" || outcome.failedConcepts.includes(id);
   const weak = prereqs.filter(isWeak);
   if (weak.length === 0) {
-    return outcome.passed
-      ? { action: "continue", topicId }
-      : outcome.failedConcepts.length === 0 && outcome.masteryAfter === "inProgress" && prereqsAllMastered(prereqs, statusOf)
-        ? { action: "reteach", topicId }
-        : { action: "continue", topicId };
+    // Attribution noise (a failedConcepts entry naming a non-prereq) must not suppress reteach:
+    // no weak prerequisite means the gap is in the topic itself.
+    return outcome.passed ? { action: "continue", topicId } : { action: "reteach", topicId };
   }
-  const target = deepestWeak(graph, weak.sort()[0]!, isWeak);
+  const levels = topoLevels(graph, new Set(graph.topics.keys()));
+  const target = deepestWeak(graph, argDeepest(weak, levels), isWeak, levels);
   return {
     action: "remediate",
     blockedTopicId: topicId,
     remediationTopicId: target,
     demotePrereq: statusOf(target) === "mastered"
   };
-}
-
-function prereqsAllMastered(prereqs: string[], statusOf: (id: string) => MasteryStatus): boolean {
-  return prereqs.every((p) => statusOf(p) === "mastered");
 }
