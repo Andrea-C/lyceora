@@ -5,5 +5,6 @@
   "diagnostic": { "title": "Vediamo cosa sai già", "intro": "Qualche domanda veloce — niente voti!", "done": "Fatto! Il tuo percorso è pronto.", "question": "Domanda {n}" },
   "session": { "lesson": "Lezione", "exercise": "Esercizio", "review": "Ripasso", "assessment": "Verifica", "check": "Controlla", "next": "Avanti", "correct": "Giusto!", "incorrect": "Non ancora — guarda:", "askTeacher": "Chiedi al maestro", "videos": "Video lezioni", "explainDifferently": "Spiegamelo in un altro modo", "sessionDone": "Sessione completata! +{xp} XP" },
   "parent": { "title": "Area genitori", "children": "I tuoi ragazzi", "mastered": "Argomenti padroneggiati", "inProgress": "In corso", "needsReview": "Da ripassare" },
+  "agent": { "budgetExceeded": "Facciamo una pausa dalla chat e torniamo a esercitarci — potrai chiedere di nuovo al maestro nella prossima sessione!" },
   "footer": { "attribution": "Contenuti tassonomici derivati da Marble os-taxonomy (ODbL 1.0)" }
 }
