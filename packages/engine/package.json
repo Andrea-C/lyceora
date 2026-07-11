@@ -5,5 +5,9 @@
   "type": "module",
   "main": "./src/index.ts",
   "types": "./src/index.ts",
-  "scripts": { "test": "vitest run" }
+  "scripts": { "test": "vitest run" },
+  "dependencies": {
+    "@lyceora/taxonomy": "workspace:*",
+    "zod": "^4.0.0"
+  }
 }
