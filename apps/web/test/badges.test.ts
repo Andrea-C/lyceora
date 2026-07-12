@@ -13,9 +13,14 @@ const t = (id: string): Topic => ({
   name: { it: id, en: id }, description: { it: id, en: id }, ageRangeStart: 11, ageRangeEnd: 12,
   evidence: [{ it: "e", en: "e" }], assessmentPrompt: { it: "{{name}}?", en: "{{name}}?" }, standards: []
 });
-// topicA + topicB share a domain ("Arithmetic") — the costellazione test masters both to complete
-// the whole domain scoped to pathTopicIds.
-const graph = buildGraph([t("topicA"), t("topicB")], []);
+// topicA + topicB + topicC all share a domain ("Arithmetic"). Only topicA/topicB are
+// pathTopicIds; topicC stays unmastered throughout and is deliberately never in pathTopicIds —
+// this is what makes the costellazione test able to detect broken scoping: a correct
+// implementation only ever looks at pathTopicIds when deciding domain completion, so topicC's
+// unmastered status must not block the "Arithmetic" domain (scoped to topicA+topicB) from
+// counting as complete. A buggy implementation that iterated the whole graph instead of
+// pathTopicIds would see topicC unmastered and wrongly withhold the badge.
+const graph = buildGraph([t("topicA"), t("topicB"), t("topicC")], []);
 const pathTopicIds = ["topicA", "topicB"];
 
 let rawDb: ReturnType<typeof drizzle>;
@@ -43,11 +48,13 @@ describe("checkAndAwardBadges", () => {
     expect(await rawDb.select().from(awardedBadge).where(eq(awardedBadge.profileId, profileId))).toHaveLength(first.length);
   });
 
-  it("awards costellazione when every path topic of one domain is mastered", async () => {
+  it("awards costellazione when every path topic of one domain is mastered (scoped to pathTopicIds, not the whole graph)", async () => {
     await rawDb.insert(masteryState).values([
       { profileId, topicId: "topicA", status: "mastered" },
       { profileId, topicId: "topicB", status: "mastered" }
     ]);
+    // topicC (same domain, same graph) is deliberately left unmastered and is NOT in
+    // pathTopicIds — see the comment on `graph` above for why this pins the scoping contract.
 
     const awarded = await checkAndAwardBadges(db, graph, ["topicA", "topicB"], profileId);
     expect(awarded).toContain("costellazione");
@@ -61,5 +68,29 @@ describe("checkAndAwardBadges", () => {
 
     const awarded = await checkAndAwardBadges(db, graph, pathTopicIds, profileId);
     expect(awarded).toContain("rimonta");
+  });
+
+  it("does not award rimonta when the review is suspended (fails exactly one of the four clauses)", async () => {
+    // a fresh profile: otherwise-comeback-shaped (lapses >= 1, intervalRung >= 1, lastReviewedAt
+    // set) EXCEPT suspended is true — pins that all four clauses of the criterion are load-bearing
+    // (a dropped `suspended: false` check would pass this row and wrongly award the badge).
+    const [p] = await rawDb.insert(profile).values({ ownerUserId: "badge-parent", displayName: "Suspended" }).returning();
+    const pid = p!.id;
+    await rawDb.insert(reviewQueue).values({
+      profileId: pid, topicId: "topicA", intervalRung: 1, dueOn: "2026-01-01",
+      lapses: 1, suspended: true, lastReviewedAt: new Date()
+    });
+
+    const awarded = await checkAndAwardBadges(db, graph, pathTopicIds, pid);
+    expect(awarded).not.toContain("rimonta");
+  });
+
+  it("does not award primi-passi while the only diagnostic session is still active", async () => {
+    const [p] = await rawDb.insert(profile).values({ ownerUserId: "badge-parent", displayName: "ActiveDiag" }).returning();
+    const pid = p!.id;
+    await rawDb.insert(learningSession).values({ profileId: pid, kind: "diagnostic", status: "active" });
+
+    const awarded = await checkAndAwardBadges(db, graph, pathTopicIds, pid);
+    expect(awarded).not.toContain("primi-passi");
   });
 });
