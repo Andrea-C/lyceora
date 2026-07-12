@@ -4,7 +4,7 @@ import { drizzle } from "drizzle-orm/pglite";
 import { migrate } from "drizzle-orm/pglite/migrator";
 import { fileURLToPath } from "node:url";
 import { user, profile, learningSession } from "@lyceora/db";
-import { getOwnedProfile, ForbiddenError, createServedExerciseCapped, ConflictError, MAX_SERVED_PER_ITEM, consumeRateLimit } from "../src/server/repo";
+import { getOwnedProfile, ForbiddenError, createServedExerciseCapped, ConflictError, MAX_SERVED_PER_ITEM, consumeRateLimit, isTopicInActivePlan } from "../src/server/repo";
 
 let db: never;
 let profileA: { id: string };
@@ -70,5 +70,20 @@ describe("rate limiting", () => {
     for (let i = 0; i < 3; i++) await consumeRateLimit(db, profileA.id, "test2", 3, now);
     const nextHour = new Date("2026-07-12T11:01:00Z");
     expect(await consumeRateLimit(db, profileA.id, "test2", 3, nextHour)).toBe(true);
+  });
+});
+
+describe("isTopicInActivePlan", () => {
+  it("matches only topics in an active session's plan", async () => {
+    await db.insert(learningSession).values({
+      profileId: profileA.id, kind: "daily", status: "active",
+      planJson: {
+        sessionKind: "daily",
+        items: [{ kind: "lesson", topicId: "radici" }],
+        estimatedXp: 10, dailyXpGoal: 30
+      }
+    });
+    expect(await isTopicInActivePlan(db, profileA.id, "radici")).toBe(true);
+    expect(await isTopicInActivePlan(db, profileA.id, "not-in-plan")).toBe(false);
   });
 });

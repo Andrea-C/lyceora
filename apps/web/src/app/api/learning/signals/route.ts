@@ -26,6 +26,10 @@ export async function POST(req: Request) {
       }
     }
 
+    if (profileId && !(await repo.consumeRateLimit(db, profileId, "signals", repo.RATE_LIMITS.signals))) {
+      return Response.json({ error: "rate limited" }, { status: 429 });
+    }
+
     const s = parsed.data;
     await db.insert(learningSignal).values({
       profileId, threadId: s.thread_id, runId: s.run_id, actor: s.actor, signal: s.signal,

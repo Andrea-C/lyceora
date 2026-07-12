@@ -192,6 +192,16 @@ export async function claimServedExercise(
   return { sessionId: row.sessionId, topicId: row.topicId, difficulty: row.difficulty, itemKind, exercise: exercise as Exercise };
 }
 
+/** True iff topicId appears in the newest ACTIVE session plan for this profile. Teacher chat and
+ * signals are session-scoped features; scoping them to the active plan closes the
+ * "chat about any topicId" hole from the M1 final-review triage. */
+export async function isTopicInActivePlan(db: Db, profileId: string, topicId: string): Promise<boolean> {
+  const [s] = await db.select().from(learningSession)
+    .where(and(eq(learningSession.profileId, profileId), eq(learningSession.status, "active")))
+    .orderBy(desc(learningSession.startedAt)).limit(1);
+  return (s?.planJson?.items ?? []).some((i) => i.topicId === topicId);
+}
+
 export const RATE_LIMITS = { agent: 30, signals: 120 } as const;
 
 /** Fixed 1h-window counter. Atomic upsert-increment; returns whether this call is within limit.
