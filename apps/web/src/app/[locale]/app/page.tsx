@@ -3,7 +3,7 @@ import Link from "next/link";
 import { and, eq } from "drizzle-orm";
 import { getTranslations } from "next-intl/server";
 import { db } from "@/lib/db";
-import { dailyActivity } from "@lyceora/db";
+import { dailyActivity, awardedBadge } from "@lyceora/db";
 import { getActiveProfileOrRedirect } from "@/lib/session";
 import { getGraph, getPath } from "@/server/content";
 import { domainLabel } from "@/server/domain-labels";
@@ -11,6 +11,7 @@ import * as repo from "@/server/repo";
 import { localToday } from "@/server/services/session";
 import { XpBar } from "@/components/XpBar";
 import { PathProgress } from "@/components/PathProgress";
+import { BadgeCase } from "@/components/BadgeCase";
 
 const RECOVERY_PATH_ID = "path_recupero_media";
 
@@ -75,11 +76,18 @@ export default async function DashboardPage({
     .where(and(eq(dailyActivity.profileId, profile.id), eq(dailyActivity.activityDate, today)));
   const xpToday = activity?.xpEarned ?? 0;
 
+  const earnedBadges = await db.select().from(awardedBadge).where(eq(awardedBadge.profileId, profile.id));
+  const earnedBadgeIds = earnedBadges.map((b) => b.badgeId);
+
   return (
     <main className="mx-auto flex w-full max-w-2xl flex-1 flex-col gap-8 px-6 py-16">
       <h1 className="text-3xl font-semibold tracking-tight">{t("title", { name: profile.displayName })}</h1>
       <XpBar xpToday={xpToday} goal={profile.dailyXpGoal} streak={profile.currentStreak} />
       <PathProgress domains={domains} />
+      <div className="flex flex-col gap-3">
+        <h2 className="text-lg font-semibold">{t("badges")}</h2>
+        <BadgeCase earnedIds={earnedBadgeIds} locale={locale as "it" | "en"} />
+      </div>
       <Link
         href={`/${locale}/app/session`}
         data-testid="start-session"

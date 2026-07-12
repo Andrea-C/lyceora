@@ -1,8 +1,11 @@
-import { eq, sql } from "drizzle-orm";
+import { desc, eq, sql } from "drizzle-orm";
 import { getTranslations } from "next-intl/server";
 import { db } from "@/lib/db";
-import { profile, masteryState, xpEvent } from "@lyceora/db";
+import { profile, masteryState, xpEvent, awardedBadge } from "@lyceora/db";
 import { getSessionOrRedirect } from "@/lib/session";
+import { BADGE_DEFINITIONS } from "@lyceora/engine";
+
+const RECENT_BADGES_LIMIT = 5;
 
 export default async function ParentPage({
   params
@@ -28,7 +31,11 @@ export default async function ParentPage({
         .select({ total: sql<number>`coalesce(sum(${xpEvent.amount}), 0)` })
         .from(xpEvent)
         .where(eq(xpEvent.profileId, p.id));
-      return { profile: p, counts, totalXp: Number(xpRow?.total ?? 0) };
+      const recentBadges = await db.select().from(awardedBadge)
+        .where(eq(awardedBadge.profileId, p.id))
+        .orderBy(desc(awardedBadge.awardedAt))
+        .limit(RECENT_BADGES_LIMIT);
+      return { profile: p, counts, totalXp: Number(xpRow?.total ?? 0), recentBadges };
     })
   );
 
@@ -41,7 +48,7 @@ export default async function ParentPage({
         <p>{t("noChildren")}</p>
       ) : (
         <ul className="flex flex-col gap-4">
-          {children.map(({ profile: p, counts, totalXp }) => (
+          {children.map(({ profile: p, counts, totalXp, recentBadges }) => (
             <li key={p.id} className="rounded-2xl border border-black/[.08] p-5 dark:border-white/[.15]">
               <h3 className="text-xl font-semibold">{p.displayName}</h3>
               <dl className="mt-3 grid grid-cols-2 gap-x-6 gap-y-2 text-sm sm:grid-cols-3">
@@ -70,10 +77,32 @@ export default async function ParentPage({
                   <dd className="text-lg font-semibold">{p.lastActiveOn ?? t("noActivityYet")}</dd>
                 </div>
               </dl>
+              {recentBadges.length > 0 && (
+                <div className="mt-4">
+                  <h4 className="text-sm text-zinc-600 dark:text-zinc-400">{t("recentBadges")}</h4>
+                  <ul className="mt-2 flex flex-col gap-1">
+                    {recentBadges.map((b) => (
+                      <li key={b.id} className="flex items-center justify-between gap-4 text-sm">
+                        <span>🏅 {badgeName(b.badgeId, locale)}</span>
+                        <span className="text-zinc-600 dark:text-zinc-400">
+                          {new Date(b.awardedAt).toLocaleDateString(locale)}
+                        </span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
             </li>
           ))}
         </ul>
       )}
     </main>
   );
+}
+
+/** Falls back to the raw id for any badge id no longer in BADGE_DEFINITIONS (shouldn't happen —
+ * defensive against schema drift, never crashes the page). */
+function badgeName(badgeId: string, locale: string): string {
+  const badge = BADGE_DEFINITIONS.find((b) => b.id === badgeId);
+  return badge ? badge.name[locale as "it" | "en"] : badgeId;
 }

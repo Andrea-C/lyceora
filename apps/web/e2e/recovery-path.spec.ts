@@ -65,6 +65,10 @@ test("signup -> diagnostic -> session -> teacher chat -> locale switch (fake mod
   // --- dashboard: enrollment active, path progress visible ---
   await expect(page.getByText("Progresso del percorso")).toBeVisible();
 
+  // --- dashboard: "Primi passi" badge earned from the diagnostic (full-color, not muted) ---
+  const primiPassiBadge = page.getByText("Primi passi", { exact: true }).locator("xpath=ancestor::li[1]");
+  await expect(primiPassiBadge).not.toHaveClass(/opacity-40/);
+
   // --- daily session: lesson item (+ teacher chat) and at least one gradeable exercise item ---
   await page.getByTestId("start-session").click();
   await page.waitForURL(/\/it\/app\/session$/);
