@@ -1,13 +1,20 @@
 import type { Db } from "@lyceora/db";
-import { awardedBadge, xpEvent, profile, masteryState, evidenceRecord, reviewQueue, dailyActivity, learningSession } from "@lyceora/db";
-import { and, eq, sql, isNotNull, gte } from "drizzle-orm";
+import { awardedBadge, xpEvent, profile, masteryState, evidenceRecord, dailyActivity, learningSession } from "@lyceora/db";
+import { and, eq, sql } from "drizzle-orm";
 import type { TopicGraph } from "@lyceora/taxonomy";
 import { evaluateBadges, type BadgeSnapshot } from "@lyceora/engine";
 
 /** Assembles the snapshot from existing tables and inserts new awards idempotently.
- * pathTopicIds scopes domain-completion to the enrolled path (not the whole graph). */
+ * pathTopicIds scopes domain-completion to the enrolled path (not the whole graph).
+ * `events` carries call-site-local facts that can't be reconstructed from row state alone —
+ * currently just cameBackAfterLapse (a passed review on a topic whose PRE-update lapses >= 1;
+ * see session.ts's review-bookkeeping branch, the only place that knows this at the moment it's
+ * true). A row-state proxy for this was tried and rejected: a FAILED review at rung >= 2 leaves
+ * behind the exact same reviewQueue shape (lapses >= 1, suspended false, intervalRung >= 1,
+ * lastReviewedAt set), so querying reviewQueue here would award rimonta on a wrong answer. */
 export async function checkAndAwardBadges(
-  db: Db, graph: TopicGraph, pathTopicIds: string[], profileId: string
+  db: Db, graph: TopicGraph, pathTopicIds: string[], profileId: string,
+  events?: { cameBackAfterLapse?: boolean }
 ): Promise<string[]> {
   const [p] = await db.select().from(profile).where(eq(profile.id, profileId));
   if (!p) return [];
@@ -26,9 +33,6 @@ export async function checkAndAwardBadges(
 
   const [reviews] = await db.select({ n: sql<number>`count(*)` }).from(evidenceRecord)
     .where(and(eq(evidenceRecord.profileId, profileId), eq(evidenceRecord.source, "review"), eq(evidenceRecord.isCorrect, true)));
-  const [comeback] = await db.select({ n: sql<number>`count(*)` }).from(reviewQueue)
-    .where(and(eq(reviewQueue.profileId, profileId), gte(reviewQueue.lapses, 1),
-      eq(reviewQueue.suspended, false), gte(reviewQueue.intervalRung, 1), isNotNull(reviewQueue.lastReviewedAt)));
   const [diag] = await db.select({ n: sql<number>`count(*)` }).from(learningSession)
     .where(and(eq(learningSession.profileId, profileId), eq(learningSession.kind, "diagnostic"), eq(learningSession.status, "completed")));
   const [goals] = await db.select({ n: sql<number>`count(*)` }).from(dailyActivity)
@@ -37,7 +41,7 @@ export async function checkAndAwardBadges(
   const snapshot: BadgeSnapshot = {
     totalXp: Number(xp?.total ?? 0), currentStreak: p.currentStreak, masteredCount: masteredSet.size,
     domainsCompleted, reviewsPassedTotal: Number(reviews?.n ?? 0),
-    cameBackAfterLapse: Number(comeback?.n ?? 0) > 0, diagnosticCompleted: Number(diag?.n ?? 0) > 0,
+    cameBackAfterLapse: events?.cameBackAfterLapse ?? false, diagnosticCompleted: Number(diag?.n ?? 0) > 0,
     goalMetDays: Number(goals?.n ?? 0)
   };
   const earned = new Set((await db.select().from(awardedBadge).where(eq(awardedBadge.profileId, profileId))).map((b) => b.badgeId));

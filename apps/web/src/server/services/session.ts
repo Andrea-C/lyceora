@@ -169,11 +169,16 @@ export async function completeActivity(
     }
   }
 
-  // review-queue bookkeeping for review items
+  // review-queue bookkeeping for review items. cameBack is computed here (not derived later from
+  // row state) because a FAILED review at rung >= 2 leaves reviewQueue in the exact same shape a
+  // passed comeback would (lapses >= 1, suspended false, intervalRung >= 1, lastReviewedAt set) —
+  // only this moment, with row's PRE-update lapses in hand, can tell the two apart.
+  let cameBack = false;
   if (source === "review") {
     const [row] = await db.select().from(reviewQueue)
       .where(and(eq(reviewQueue.profileId, p.id), eq(reviewQueue.topicId, item.topicId)));
     if (row) {
+      cameBack = graded.correct && row.lapses >= 1;
       const next = applyReviewOutcome(
         { topicId: row.topicId, intervalRung: row.intervalRung, dueOn: row.dueOn, lapses: row.lapses, suspended: row.suspended },
         graded.correct, today,
@@ -238,7 +243,8 @@ export async function completeActivity(
       }
     }
   }
-  const newBadges = await checkAndAwardBadges(db, graph, pathTopicIds, p.id);
+  const newBadges = await checkAndAwardBadges(db, graph, pathTopicIds, p.id,
+    source === "review" ? { cameBackAfterLapse: cameBack } : undefined);
   return { graded, xp, masteryAfter: after.status, routeDecision, newBadges };
 }
 

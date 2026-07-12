@@ -60,25 +60,21 @@ describe("checkAndAwardBadges", () => {
     expect(awarded).toContain("costellazione");
   });
 
-  it("awards rimonta after a passed review on a lapsed topic", async () => {
-    await rawDb.insert(reviewQueue).values({
-      profileId, topicId: "topicA", intervalRung: 1, dueOn: "2026-01-01",
-      lapses: 1, suspended: false, lastReviewedAt: new Date()
-    });
-
-    const awarded = await checkAndAwardBadges(db, graph, pathTopicIds, profileId);
+  it("awards rimonta when the caller signals a passed review on a lapsed topic (event-driven, not row-state)", async () => {
+    const awarded = await checkAndAwardBadges(db, graph, pathTopicIds, profileId, { cameBackAfterLapse: true });
     expect(awarded).toContain("rimonta");
   });
 
-  it("does not award rimonta when the review is suspended (fails exactly one of the four clauses)", async () => {
-    // a fresh profile: otherwise-comeback-shaped (lapses >= 1, intervalRung >= 1, lastReviewedAt
-    // set) EXCEPT suspended is true — pins that all four clauses of the criterion are load-bearing
-    // (a dropped `suspended: false` check would pass this row and wrongly award the badge).
-    const [p] = await rawDb.insert(profile).values({ ownerUserId: "badge-parent", displayName: "Suspended" }).returning();
+  it("does not award rimonta without the event, even with a comeback-looking review_queue row present", async () => {
+    // pins the removal of the row-state proxy: a row that LOOKS like a passed comeback (lapses >=
+    // 1, suspended false, intervalRung >= 1, lastReviewedAt set) — indistinguishable from what a
+    // FAILED review at rung >= 2 also leaves behind — must NOT award rimonta on its own. Only the
+    // explicit event hint from session.ts's review-bookkeeping branch may award it.
+    const [p] = await rawDb.insert(profile).values({ ownerUserId: "badge-parent", displayName: "NoEvent" }).returning();
     const pid = p!.id;
     await rawDb.insert(reviewQueue).values({
       profileId: pid, topicId: "topicA", intervalRung: 1, dueOn: "2026-01-01",
-      lapses: 1, suspended: true, lastReviewedAt: new Date()
+      lapses: 1, suspended: false, lastReviewedAt: new Date()
     });
 
     const awarded = await checkAndAwardBadges(db, graph, pathTopicIds, pid);

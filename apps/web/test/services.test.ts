@@ -158,6 +158,52 @@ describe("completeActivity review item", () => {
   });
 });
 
+describe("rimonta badge is event-driven, not row-state (regression)", () => {
+  it("a passed review on a topic whose row has lapses >= 1 awards rimonta", async () => {
+    const today = localToday("Europe/Rome");
+    const [p] = await rawDb.insert(profile).values({ ownerUserId: "parent", displayName: "RimontaPass" }).returning();
+    const pid = p!.id;
+    await rawDb.insert(reviewQueue).values({
+      profileId: pid, topicId: "ripasso", intervalRung: 1, dueOn: today, lapses: 1, suspended: false
+    });
+    const { sessionId } = await startSession(db, graph, "parent", pid, ["ripasso"]);
+    const served = await serveExercise({
+      sessionId, topicId: "ripasso", difficulty: 2, itemKind: "review", forProfileId: pid
+    });
+
+    const r = await completeActivity(db, graph, fakeAssessor, "parent", {
+      profileId: pid, sessionId,
+      item: { kind: "review", topicId: "ripasso", reason: "due", difficulty: 2 },
+      servedExerciseId: served.id,
+      answer: "8" // correct
+    }, ["ripasso"]);
+    expect(r.graded.correct).toBe(true);
+    expect(r.newBadges).toContain("rimonta");
+  });
+
+  it("a FAILED review at intervalRung 2 (lapses 0 -> 1) does NOT award rimonta, though it leaves the same row shape a passed comeback would", async () => {
+    const today = localToday("Europe/Rome");
+    const [p] = await rawDb.insert(profile).values({ ownerUserId: "parent", displayName: "RimontaFail" }).returning();
+    const pid = p!.id;
+    await rawDb.insert(reviewQueue).values({
+      profileId: pid, topicId: "ripasso", intervalRung: 2, dueOn: today, lapses: 0, suspended: false
+    });
+    const { sessionId } = await startSession(db, graph, "parent", pid, ["ripasso"]);
+    const served = await serveExercise({
+      sessionId, topicId: "ripasso", difficulty: 2, itemKind: "review", forProfileId: pid
+    });
+
+    const r = await completeActivity(db, graph, fakeAssessor, "parent", {
+      profileId: pid, sessionId,
+      item: { kind: "review", topicId: "ripasso", reason: "due", difficulty: 2 },
+      servedExerciseId: served.id,
+      answer: "0" // wrong -> rung 2->1, lapses 0->1: the exact shape the old row-state proxy wrongly rewarded
+    }, ["ripasso"]);
+    expect(r.graded.correct).toBe(false);
+    expect(r.newBadges).not.toContain("rimonta");
+  });
+});
+
 describe("served-exercise custody", () => {
   it("rejects grading against a servedExercise owned by a different profile (never claimed/burned)", async () => {
     const [otherProfile] = await rawDb.insert(profile).values({ ownerUserId: "parent", displayName: "Luca" }).returning();
