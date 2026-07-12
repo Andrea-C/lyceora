@@ -13,7 +13,8 @@
     "./data/*": "./data/*"
   },
   "scripts": {
-    "test": "vitest run"
+    "test": "vitest run",
+    "import:junior": "tsx scripts/import-math-junior.ts"
   },
   "dependencies": {
     "zod": "^4.0.0"

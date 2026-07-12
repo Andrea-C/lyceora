@@ -4,6 +4,7 @@ import {
 } from "@lyceora/taxonomy";
 import { z } from "zod";
 import mathCore from "@lyceora/taxonomy/data/math-core.json";
+import mathJunior from "@lyceora/taxonomy/data/math-junior.json";
 import extTopics from "@lyceora/taxonomy/data/math-it-media/topics.json";
 import extDeps from "@lyceora/taxonomy/data/math-it-media/dependencies.json";
 import rawResources from "@lyceora/taxonomy/data/math-it-media/resources.json";
@@ -12,8 +13,8 @@ import paths from "@lyceora/taxonomy/data/math-it-media/paths.json";
 const resources = { resources: z.array(resourceSchema).parse(rawResources.resources) };
 
 const { topics, dependencies } = loadTaxonomy(
-  { topics: [...mathCore.topics, ...extTopics.topics] },
-  { dependencies: [...mathCore.dependencies, ...extDeps.dependencies] }
+  { topics: [...mathCore.topics, ...mathJunior.topics, ...extTopics.topics] },
+  { dependencies: [...mathCore.dependencies, ...mathJunior.dependencies, ...extDeps.dependencies] }
 );
 const graph: TopicGraph = buildGraph(topics, dependencies);
 assertAcyclic(graph);
