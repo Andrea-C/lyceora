@@ -13,7 +13,9 @@ vi.mock("@lyceora/agents", async (importOriginal) => {
 });
 
 describe("registry liveAssessor wiring", () => {
-  it("forwards grade() opts (candidateConcepts) through to gradeAnswer", async () => {
+  // 30s: the dynamic import cold-transforms the whole server/registry graph inside the test
+  // body, which can exceed the default 5s under parallel workspace runs on a cold cache
+  it("forwards grade() opts (candidateConcepts) through to gradeAnswer", { timeout: 30_000 }, async () => {
     const { liveAssessor } = await import("../src/server/registry");
     const exercise = { id: "e1", kind: "numeric" as const, prompt: "?", correctAnswer: "8", explanation: "e", difficulty: 2 as const };
 
