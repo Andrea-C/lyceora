@@ -57,6 +57,18 @@ async function serveExercise(args: {
 
 let isolatedProfileId: string;
 
+/** Helper: select a profile's review_queue row by topic (Task 7 implicit-review tests). */
+async function getReviewRow(pid: string, topicId: string) {
+  const [row] = await rawDb.select().from(reviewQueue)
+    .where(and(eq(reviewQueue.profileId, pid), eq(reviewQueue.topicId, topicId)));
+  return row;
+}
+/** Helper: total review_queue row count for a profile (asserts no rows were created/destroyed). */
+async function countReviewRows(pid: string) {
+  const rows = await rawDb.select().from(reviewQueue).where(eq(reviewQueue.profileId, pid));
+  return rows.length;
+}
+
 beforeAll(async () => {
   const d = drizzle(new PGlite());
   await migrate(d, { migrationsFolder: fileURLToPath(new URL("../../../packages/db/drizzle", import.meta.url)) });
@@ -88,7 +100,7 @@ describe("assessment failure routes to remediation with derived evidence", () =>
       item: { kind: "assessment", topicId: "pitagora", difficulty: 2 },
       servedExerciseId: served.id,
       answer: "25" // wrong
-    });
+    }, ["pitagora"]);
     expect(r.graded.correct).toBe(false);
     expect(r.routeDecision?.action).toBe("remediate");
     const rows = await rawDb.select().from(masteryState).where(eq(masteryState.profileId, profileId));
@@ -110,7 +122,7 @@ describe("completeActivity advance branch", () => {
       item: { kind: "assessment", topicId: "avanzamento", difficulty: 2 },
       servedExerciseId: served.id,
       answer: "8" // correct -> consecutiveCorrectAtLevel 1 -> 2 -> mastered -> routeNext "advance"
-    });
+    }, ["avanzamento"]);
     expect(r.graded.correct).toBe(true);
     expect(r.routeDecision?.action).toBe("advance");
 
@@ -136,13 +148,59 @@ describe("completeActivity review item", () => {
       item: { kind: "review", topicId: "ripasso", reason: "due", difficulty: 2 },
       servedExerciseId: served.id,
       answer: "8" // correct
-    });
+    }, ["ripasso"]);
     expect(r.graded.correct).toBe(true);
 
     const [row] = await rawDb.select().from(reviewQueue)
       .where(and(eq(reviewQueue.profileId, profileId), eq(reviewQueue.topicId, "ripasso")));
     expect(row!.intervalRung).toBe(1);
     expect(row!.dueOn).toBe(addDays(today, INTERVAL_LADDER_DAYS[1]));
+  });
+});
+
+describe("rimonta badge is event-driven, not row-state (regression)", () => {
+  it("a passed review on a topic whose row has lapses >= 1 awards rimonta", async () => {
+    const today = localToday("Europe/Rome");
+    const [p] = await rawDb.insert(profile).values({ ownerUserId: "parent", displayName: "RimontaPass" }).returning();
+    const pid = p!.id;
+    await rawDb.insert(reviewQueue).values({
+      profileId: pid, topicId: "ripasso", intervalRung: 1, dueOn: today, lapses: 1, suspended: false
+    });
+    const { sessionId } = await startSession(db, graph, "parent", pid, ["ripasso"]);
+    const served = await serveExercise({
+      sessionId, topicId: "ripasso", difficulty: 2, itemKind: "review", forProfileId: pid
+    });
+
+    const r = await completeActivity(db, graph, fakeAssessor, "parent", {
+      profileId: pid, sessionId,
+      item: { kind: "review", topicId: "ripasso", reason: "due", difficulty: 2 },
+      servedExerciseId: served.id,
+      answer: "8" // correct
+    }, ["ripasso"]);
+    expect(r.graded.correct).toBe(true);
+    expect(r.newBadges).toContain("rimonta");
+  });
+
+  it("a FAILED review at intervalRung 2 (lapses 0 -> 1) does NOT award rimonta, though it leaves the same row shape a passed comeback would", async () => {
+    const today = localToday("Europe/Rome");
+    const [p] = await rawDb.insert(profile).values({ ownerUserId: "parent", displayName: "RimontaFail" }).returning();
+    const pid = p!.id;
+    await rawDb.insert(reviewQueue).values({
+      profileId: pid, topicId: "ripasso", intervalRung: 2, dueOn: today, lapses: 0, suspended: false
+    });
+    const { sessionId } = await startSession(db, graph, "parent", pid, ["ripasso"]);
+    const served = await serveExercise({
+      sessionId, topicId: "ripasso", difficulty: 2, itemKind: "review", forProfileId: pid
+    });
+
+    const r = await completeActivity(db, graph, fakeAssessor, "parent", {
+      profileId: pid, sessionId,
+      item: { kind: "review", topicId: "ripasso", reason: "due", difficulty: 2 },
+      servedExerciseId: served.id,
+      answer: "0" // wrong -> rung 2->1, lapses 0->1: the exact shape the old row-state proxy wrongly rewarded
+    }, ["ripasso"]);
+    expect(r.graded.correct).toBe(false);
+    expect(r.newBadges).not.toContain("rimonta");
   });
 });
 
@@ -163,7 +221,7 @@ describe("served-exercise custody", () => {
       item: { kind: "exercise", topicId: "custodyA", difficulty: 2 },
       servedExerciseId: foreign.id,
       answer: "8"
-    })).rejects.toBeInstanceOf(ConflictError);
+    }, ["custodyA"])).rejects.toBeInstanceOf(ConflictError);
 
     // confirm it truly was never touched: the other profile can still claim/grade it themselves
     const otherResult = await completeActivity(db, graph, fakeAssessor, "parent", {
@@ -171,7 +229,7 @@ describe("served-exercise custody", () => {
       item: { kind: "exercise", topicId: "custodyA", difficulty: 2 },
       servedExerciseId: foreign.id,
       answer: "8"
-    });
+    }, ["custodyA"]);
     expect(otherResult.graded.correct).toBe(true);
   });
 
@@ -184,7 +242,7 @@ describe("served-exercise custody", () => {
       item: { kind: "exercise", topicId: "custodyB", difficulty: 2 }, // topic mismatch
       servedExerciseId: servedForA.id,
       answer: "8"
-    })).rejects.toBeInstanceOf(ConflictError);
+    }, ["custodyA", "custodyB"])).rejects.toBeInstanceOf(ConflictError);
   });
 
   it("rejects re-grading an already-consumed servedExercise (atomic claim closes the race too)", async () => {
@@ -196,7 +254,7 @@ describe("served-exercise custody", () => {
       item: { kind: "exercise", topicId: "custodyB", difficulty: 2 },
       servedExerciseId: served.id,
       answer: "8"
-    });
+    }, ["custodyB"]);
     expect(first.graded.correct).toBe(true);
 
     const evidenceBefore = await rawDb.select().from(evidenceRecord)
@@ -210,7 +268,7 @@ describe("served-exercise custody", () => {
       item: { kind: "exercise", topicId: "custodyB", difficulty: 2 },
       servedExerciseId: served.id, // same row, already consumed
       answer: "8"
-    })).rejects.toBeInstanceOf(ConflictError);
+    }, ["custodyB"])).rejects.toBeInstanceOf(ConflictError);
 
     const evidenceAfter = await rawDb.select().from(evidenceRecord)
       .where(and(eq(evidenceRecord.profileId, profileId), eq(evidenceRecord.sessionId, sessionId)));
@@ -226,7 +284,7 @@ describe("served-exercise custody", () => {
       item: { kind: "exercise", topicId: "custodyC", difficulty: 2 }, // client claims difficulty 2
       servedExerciseId: served.id,
       answer: "8"
-    })).rejects.toBeInstanceOf(ConflictError);
+    }, ["custodyC"])).rejects.toBeInstanceOf(ConflictError);
 
     const rows = await rawDb.select().from(masteryState)
       .where(and(eq(masteryState.profileId, profileId), eq(masteryState.topicId, "custodyC")));
@@ -245,7 +303,7 @@ describe("served-exercise custody", () => {
       item: { kind: "assessment", topicId: "custodyD", difficulty: 2 },
       servedExerciseId: served.id,
       answer: "8"
-    })).rejects.toBeInstanceOf(ConflictError);
+    }, ["custodyD"])).rejects.toBeInstanceOf(ConflictError);
 
     const rows = await rawDb.select().from(masteryState)
       .where(and(eq(masteryState.profileId, profileId), eq(masteryState.topicId, "custodyD")));
@@ -273,7 +331,7 @@ describe("awardXp goal + streak accounting", () => {
 
     const first = await completeActivity(db, graph, fakeAssessor, "parent", {
       profileId: isolatedProfileId, sessionId, item: { kind: "lesson", topicId: "streakA" }
-    });
+    }, ["streakA", "streakB"]);
     expect(first.xp).toBe(5);
     const [afterFirst] = await rawDb.select().from(dailyActivity)
       .where(and(eq(dailyActivity.profileId, isolatedProfileId), eq(dailyActivity.activityDate, today)));
@@ -285,7 +343,7 @@ describe("awardXp goal + streak accounting", () => {
 
     const second = await completeActivity(db, graph, fakeAssessor, "parent", {
       profileId: isolatedProfileId, sessionId, item: { kind: "lesson", topicId: "streakB" }
-    });
+    }, ["streakA", "streakB"]);
     expect(second.xp).toBe(5);
     const [afterSecond] = await rawDb.select().from(dailyActivity)
       .where(and(eq(dailyActivity.profileId, isolatedProfileId), eq(dailyActivity.activityDate, today)));
@@ -303,7 +361,7 @@ describe("lesson plan-membership + idempotency (CRITICAL 1)", () => {
     const { sessionId } = await startSession(db, graph, "parent", isolatedProfileId, ["replayLesson"]);
     await expect(completeActivity(db, graph, fakeAssessor, "parent", {
       profileId: isolatedProfileId, sessionId, item: { kind: "lesson", topicId: "not-on-any-plan" }
-    })).rejects.toBeInstanceOf(ConflictError);
+    }, ["replayLesson"])).rejects.toBeInstanceOf(ConflictError);
   });
 
   it("rejects a replayed lesson POST (409) and awards exactly one lessonComplete xp_event", async () => {
@@ -311,12 +369,12 @@ describe("lesson plan-membership + idempotency (CRITICAL 1)", () => {
 
     const first = await completeActivity(db, graph, fakeAssessor, "parent", {
       profileId: isolatedProfileId, sessionId, item: { kind: "lesson", topicId: "replayLesson" }
-    });
+    }, ["replayLesson"]);
     expect(first.xp).toBe(5);
 
     await expect(completeActivity(db, graph, fakeAssessor, "parent", {
       profileId: isolatedProfileId, sessionId, item: { kind: "lesson", topicId: "replayLesson" }
-    })).rejects.toBeInstanceOf(ConflictError);
+    }, ["replayLesson"])).rejects.toBeInstanceOf(ConflictError);
 
     const xpRows = await rawDb.select().from(xpEvent)
       .where(and(eq(xpEvent.profileId, isolatedProfileId), eq(xpEvent.sessionId, sessionId), eq(xpEvent.reason, "lessonComplete")));
@@ -329,7 +387,7 @@ describe("lesson plan-membership + idempotency (CRITICAL 1)", () => {
 
     await expect(completeActivity(db, graph, fakeAssessor, "parent", {
       profileId: isolatedProfileId, sessionId, item: { kind: "lesson", topicId: "replayLesson" }
-    })).rejects.toBeInstanceOf(ConflictError);
+    }, ["replayLesson"])).rejects.toBeInstanceOf(ConflictError);
   });
 });
 
@@ -344,7 +402,7 @@ describe("gradeable-item XP consumption (CRITICAL 2)", () => {
       profileId: isolatedProfileId, sessionId,
       item: { kind: "exercise", topicId: "reserveTopic", difficulty: 1 },
       servedExerciseId: served1.id, answer: "8" // correct
-    });
+    }, ["reserveTopic"]);
     expect(first.graded.correct).toBe(true);
     expect(first.xp).toBe(2); // XP_AMOUNTS.exerciseCorrect
 
@@ -357,12 +415,111 @@ describe("gradeable-item XP consumption (CRITICAL 2)", () => {
       profileId: isolatedProfileId, sessionId,
       item: { kind: "exercise", topicId: "reserveTopic", difficulty: 1 },
       servedExerciseId: served2.id, answer: "8" // also correct
-    });
+    }, ["reserveTopic"]);
     expect(second.graded.correct).toBe(true); // honest feedback, still graded
     expect(second.xp).toBe(0); // but the plan slot was already consumed — no second payout
 
     const xpRows = await rawDb.select().from(xpEvent)
       .where(and(eq(xpEvent.profileId, isolatedProfileId), eq(xpEvent.sessionId, sessionId), eq(xpEvent.reason, "exerciseCorrect")));
     expect(xpRows).toHaveLength(1);
+  });
+});
+
+describe("implicit review + streak promotion in the grade path (Task 7)", () => {
+  it("a correct exercise pushes out the direct hard prereq's review, not the grandparent's, creating no rows", async () => {
+    const today = localToday("Europe/Rome");
+    const [p] = await rawDb.insert(profile).values({ ownerUserId: "parent", displayName: "Implicit1" }).returning();
+    const pid = p!.id;
+    // radici mastered (pitagora's DIRECT hard prereq) and potenze mastered (radici's prereq, i.e.
+    // pitagora's grandparent) — both due later than today, both hold a review_queue row already.
+    await rawDb.insert(masteryState).values([
+      { profileId: pid, topicId: "radici", status: "mastered", consecutiveCorrectAtLevel: 2 },
+      { profileId: pid, topicId: "potenze", status: "mastered", consecutiveCorrectAtLevel: 2 }
+    ]);
+    await rawDb.insert(reviewQueue).values([
+      { profileId: pid, topicId: "radici", intervalRung: 2, dueOn: addDays(today, 3), lapses: 0, suspended: false },
+      { profileId: pid, topicId: "potenze", intervalRung: 2, dueOn: addDays(today, 3), lapses: 0, suspended: false }
+    ]);
+
+    const { sessionId } = await startSession(db, graph, "parent", pid, ["pitagora"]);
+    const served = await serveExercise({
+      sessionId, topicId: "pitagora", difficulty: 1, itemKind: "exercise", forProfileId: pid
+    });
+    const r = await completeActivity(db, graph, fakeAssessor, "parent", {
+      profileId: pid, sessionId,
+      item: { kind: "exercise", topicId: "pitagora", difficulty: 1 },
+      servedExerciseId: served.id,
+      answer: "8" // correct
+    }, ["pitagora"]);
+    expect(r.graded.correct).toBe(true);
+
+    const radici = await getReviewRow(pid, "radici");
+    expect(radici!.dueOn).toBe(addDays(today, INTERVAL_LADDER_DAYS[2]!)); // pushed to today+7
+    const potenze = await getReviewRow(pid, "potenze");
+    expect(potenze!.dueOn).toBe(addDays(today, 3)); // untouched (grandparent)
+    expect(await countReviewRows(pid)).toBe(2); // no new rows
+  });
+
+  it("implicit review does not refresh a lapsed (needsReview) prereq", async () => {
+    const today = localToday("Europe/Rome");
+    const [p] = await rawDb.insert(profile).values({ ownerUserId: "parent", displayName: "Implicit2" }).returning();
+    const pid = p!.id;
+    // radici starts mastered so pitagora is plannable/frontier-eligible (composeSessionPlan only
+    // ever offers "new" content once its hard prereqs are mastered); it's lapsed to needsReview
+    // below, AFTER the plan is composed and the exercise served — completeActivity only reads the
+    // already-persisted plan, so this mutation doesn't affect plan membership at grade time.
+    await rawDb.insert(masteryState).values([
+      { profileId: pid, topicId: "radici", status: "mastered", consecutiveCorrectAtLevel: 2 },
+      { profileId: pid, topicId: "potenze", status: "mastered", consecutiveCorrectAtLevel: 2 }
+    ]);
+    const { sessionId } = await startSession(db, graph, "parent", pid, ["pitagora"]);
+    const served = await serveExercise({
+      sessionId, topicId: "pitagora", difficulty: 1, itemKind: "exercise", forProfileId: pid
+    });
+
+    // now lapse radici: needsReview status + a review row due today (the state at grade time)
+    await rawDb.update(masteryState).set({ status: "needsReview" })
+      .where(and(eq(masteryState.profileId, pid), eq(masteryState.topicId, "radici")));
+    await rawDb.insert(reviewQueue).values({
+      profileId: pid, topicId: "radici", intervalRung: 1, dueOn: today, lapses: 1, suspended: false
+    });
+
+    const r = await completeActivity(db, graph, fakeAssessor, "parent", {
+      profileId: pid, sessionId,
+      item: { kind: "exercise", topicId: "pitagora", difficulty: 1 },
+      servedExerciseId: served.id,
+      answer: "8" // correct
+    }, ["pitagora"]);
+    expect(r.graded.correct).toBe(true);
+
+    const radici = await getReviewRow(pid, "radici");
+    expect(radici!.dueOn).toBe(today); // unchanged — surfaces as remediation
+  });
+
+  it("review pass with masteryStreak >= 4 climbs two rungs", async () => {
+    const today = localToday("Europe/Rome");
+    const [p] = await rawDb.insert(profile).values({ ownerUserId: "parent", displayName: "Implicit3" }).returning();
+    const pid = p!.id;
+    await rawDb.insert(masteryState).values({
+      profileId: pid, topicId: "ripasso", status: "mastered", consecutiveCorrectAtLevel: 4
+    });
+    await rawDb.insert(reviewQueue).values({
+      profileId: pid, topicId: "ripasso", intervalRung: 1, dueOn: today, lapses: 0, suspended: false
+    });
+    const { sessionId } = await startSession(db, graph, "parent", pid, ["ripasso"]);
+    const served = await serveExercise({
+      sessionId, topicId: "ripasso", difficulty: 2, itemKind: "review", forProfileId: pid
+    });
+
+    const r = await completeActivity(db, graph, fakeAssessor, "parent", {
+      profileId: pid, sessionId,
+      item: { kind: "review", topicId: "ripasso", reason: "due", difficulty: 2 },
+      servedExerciseId: served.id,
+      answer: "8" // correct
+    }, ["ripasso"]);
+    expect(r.graded.correct).toBe(true);
+
+    const row = await getReviewRow(pid, "ripasso");
+    expect(row!.intervalRung).toBe(3);
   });
 });

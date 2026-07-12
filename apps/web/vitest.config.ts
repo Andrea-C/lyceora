@@ -9,6 +9,10 @@ export default defineConfig({
     // against the PGlite dev DB) stays on the node environment.
     environmentMatchGlobs: [["test/**/*.test.tsx", "jsdom"]],
     include: ["test/**/*.test.ts", "test/**/*.test.tsx"],
-    setupFiles: ["./test/setup.ts"]
+    setupFiles: ["./test/setup.ts"],
+    // Several suites spin up their own in-memory PGlite + run drizzle migrations in beforeAll;
+    // with this many DB-backed suites now running concurrently (one PGlite/migration per suite),
+    // the default 10s hook timeout is tight enough to flake under full monorepo `pnpm test` load.
+    hookTimeout: 30_000
   }
 });

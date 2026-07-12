@@ -13,10 +13,17 @@
     "./data/*": "./data/*"
   },
   "scripts": {
-    "test": "vitest run"
+    "test": "vitest run",
+    "import:junior": "tsx scripts/import-math-junior.ts",
+    "translate:junior": "tsx scripts/translate-overlay.ts"
   },
   "dependencies": {
     "zod": "^4.0.0"
+  },
+  "devDependencies": {
+    "@lyceora/agents": "workspace:*",
+    "ai": "^7.0.0",
+    "tsx": "^4.0.0"
   },
   "license": "AGPL-3.0-only"
 }

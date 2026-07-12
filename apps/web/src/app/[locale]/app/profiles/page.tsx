@@ -6,6 +6,7 @@ import { getTranslations } from "next-intl/server";
 import { db } from "@/lib/db";
 import { profile } from "@lyceora/db";
 import { getSessionOrRedirect } from "@/lib/session";
+import { setDailyXpGoal, XP_GOAL_MIN, XP_GOAL_MAX } from "@/server/services/settings";
 
 export default async function ProfilesPage({
   params
@@ -36,6 +37,17 @@ export default async function ProfilesPage({
     revalidatePath(`/${locale}/app/profiles`);
   }
 
+  async function updateDailyXpGoal(formData: FormData) {
+    "use server";
+    const profileId = String(formData.get("profileId") ?? "");
+    const goal = Number(formData.get("goal"));
+    if (!profileId || !Number.isInteger(goal) || goal < XP_GOAL_MIN || goal > XP_GOAL_MAX) return;
+
+    const parentSession = await getSessionOrRedirect(locale);
+    await setDailyXpGoal(db, parentSession.user.id, profileId, goal);
+    revalidatePath(`/${locale}/app/profiles`);
+  }
+
   async function selectProfile(formData: FormData) {
     "use server";
     const profileId = String(formData.get("profileId") ?? "");
@@ -62,7 +74,7 @@ export default async function ProfilesPage({
       {profiles.length > 0 && (
         <ul className="flex flex-col gap-3">
           {profiles.map((p) => (
-            <li key={p.id}>
+            <li key={p.id} className="flex flex-col gap-2">
               <form action={selectProfile}>
                 <input type="hidden" name="profileId" value={p.id} />
                 <button
@@ -71,6 +83,26 @@ export default async function ProfilesPage({
                   className="w-full rounded-md border border-black/[.1] px-4 py-3 text-left transition-colors hover:bg-black/[.03] dark:border-white/[.15] dark:hover:bg-white/[.05]"
                 >
                   {p.displayName}
+                </button>
+              </form>
+              <form action={updateDailyXpGoal} className="flex items-center gap-2 px-4 text-sm">
+                <input type="hidden" name="profileId" value={p.id} />
+                <label className="flex flex-1 items-center gap-2">
+                  {t("xpGoalLabel")}
+                  <input
+                    type="number"
+                    name="goal"
+                    min={XP_GOAL_MIN}
+                    max={XP_GOAL_MAX}
+                    defaultValue={p.dailyXpGoal}
+                    className="w-20 rounded-md border border-black/[.1] px-2 py-1 dark:border-white/[.15] dark:bg-black"
+                  />
+                </label>
+                <button
+                  type="submit"
+                  className="rounded-full border border-black/[.1] px-3 py-1 transition-colors hover:bg-black/[.03] dark:border-white/[.15] dark:hover:bg-white/[.05]"
+                >
+                  {t("xpGoalSave")}
                 </button>
               </form>
             </li>

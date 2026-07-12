@@ -7,7 +7,9 @@
   "types": "./src/index.ts",
   "scripts": {
     "test": "vitest run",
-    "evals": "tsx evals/run-evals.ts"
+    "evals": "tsx evals/run-evals.ts",
+    "curate": "tsx curate/run-curator.ts",
+    "curate:promote": "tsx curate/promote.ts"
   },
   "dependencies": {
     "@lyceora/taxonomy": "workspace:*",

@@ -65,6 +65,10 @@ test("signup -> diagnostic -> session -> teacher chat -> locale switch (fake mod
   // --- dashboard: enrollment active, path progress visible ---
   await expect(page.getByText("Progresso del percorso")).toBeVisible();
 
+  // --- dashboard: "Primi passi" badge earned from the diagnostic (full-color, not muted) ---
+  const primiPassiBadge = page.getByText("Primi passi", { exact: true }).locator("xpath=ancestor::li[1]");
+  await expect(primiPassiBadge).not.toHaveClass(/opacity-40/);
+
   // --- daily session: lesson item (+ teacher chat) and at least one gradeable exercise item ---
   await page.getByTestId("start-session").click();
   await page.waitForURL(/\/it\/app\/session$/);
@@ -117,6 +121,12 @@ test("signup -> diagnostic -> session -> teacher chat -> locale switch (fake mod
   await page.getByTestId("locale-switch").click();
   await page.waitForURL(/\/en\/app$/);
   await expect(page.getByText("XP today")).toBeVisible();
+
+  // --- parent page: progress report (Task 11) — activity chart + weekly summary render for
+  // the child, driven by the session activity completed above ---
+  await page.goto("/it/app/parent");
+  await expect(page.locator("svg").first()).toBeVisible();
+  await expect(page.getByText("Questa settimana", { exact: true })).toBeVisible();
 });
 
 /** Waits for the diagnostic's "Domanda N" counter to show the expected question number (exact

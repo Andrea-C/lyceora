@@ -97,3 +97,32 @@ These were discovered during execution; the code on `main` is authoritative:
 6. Read the spec, then this report's §5 before trusting the plan/design docs on any point they disagree with the code.
 
 Known environment quirks: repo developed on Windows (PowerShell) — scripts are cross-platform; root `pnpm typecheck` (`tsc -b`) is not wired (no root tsconfig; per-package `tsc -p` and `next build` are the working checks); `vitest.workspace.ts` format is deprecated in vitest 3 (works, migrate to `test.projects` eventually).
+
+## 9. M2 addendum (2026-07-13)
+
+**State:** M2 built on `feature/m2` off M1 (`8c5c17e`, tag `m1`). Spec at `docs/superpowers/specs/2026-07-12-lyceora-m2-design.md`, plan at `docs/superpowers/plans/2026-07-12-lyceora-m2.md` — same process as M1 (one fresh implementer subagent per task, independent reviewer per task, fix→re-review loops, final whole-branch review). Tests grew **101 → 151**; the eval gate held at **9/9**; the merged taxonomy graph now loads **563 topics**, acyclic.
+
+### What M2 shipped (spec-faithful scope: all five spec items, plus cheap hardening)
+
+- **Taxonomy import**: the 275 remaining os-taxonomy math topics imported (`packages/taxonomy/scripts/import-math-junior.ts` → `math-junior.json`), with a model-assisted Italian overlay (`translate-overlay.ts`, resumable) and a translation lint gate (non-empty `it` fields, no English-stopword hits, Italian decimal notation, length bounds) added to the existing DAG/reachability/dangling-edge validation battery.
+- **Curator agent**: `packages/agents/src/curator.ts` + CLI (`curate/run-curator.ts`) — Anthropic `web_search` for discovery, an HTTP liveness check, and a kid-safety judge, all behind a hard budget cap (default $3) and a per-topic search cap, resumable via a progress file, with deterministic resource ids. Proposals land as JSON in `packages/taxonomy/data/curated-review/` for human review; `curate/promote.ts` appends accepted ids into `resources.json` (format-preserving, collision-refused). Never runs in production serving; never auto-commits.
+- **Richer spaced repetition**: streak-aware fast-promotion (`applyReviewOutcome` advances +2 rungs once `masteryStreak ≥ 4`; the fail path is byte-identical to M1) and implicit review credit (a correct answer on a topic pushes out — never advances — the due date of its mastered, non-suspended direct hard prerequisites already in rotation). Zero schema change; composer untouched.
+- **Badges**: 10 definitions (`packages/engine/src/badges.ts`) — streak milestones, first mastered topic, first completed domain cluster, 10 review passes, a "comeback after a lapse" badge, and a 5-day XP-goal-met badge — a pure evaluator, an additive `awarded_badge` table (`UNIQUE(profileId, badgeId)`), a service invoked after XP/streak/mastery/review/diagnostic events, and UI (badge case, award toast, parent-page strip).
+- **Parent progress reports**: per-domain mastery bars, a 14-day activity chart (inline SVG, no charting library), a non-judgmental "worth revisiting together" list (deepest-first, capped at 5), and a weekly summary (XP, sessions, topics mastered, reviews passed vs. the prior week) — all computed at request time from existing tables, no cron.
+- **Hardening**: `CHECK (difficulty BETWEEN 1 AND 3)` on `served_exercise`; a `rate_limit_window` table backing fixed-window per-profile limits (30/h on `/api/agent`, 120/h on `/api/learning/signals`, env-overridable, localized 429s); plan-scoping the teacher route (the request's topicId must belong to the caller's active plan); a parent-gated, bounded (10–200) `dailyXpGoal` settings UI; and a generator prompt fix requiring well-posed, cleanly computable numbers in word problems (closing the "2.5 kg in 200 g bags" failure class found in production).
+
+### Decisions that supersede the M2 plan
+
+- **Fake curator fixture corrected.** The plan's `createFakeCuratorPorts()` example returned a query-dependent "good" URL (`https://good/${encodeURIComponent(q)}`), which yields a distinct URL per query (Italian + English) and breaks the dedupe its own test asserts (`out` expected to have length 1). Task 14 implemented a static `https://good` URL instead so the same candidate dedupes across both queries. The plan's fixture was buggy; the shipped code is authoritative.
+- **`packages/taxonomy` keeps `.js` relative-import extensions**, per that package's own M1 precedent (Task 4), even though it nominally conflicts with the repo-wide "drop `.js` extensions for Turbopack" rule M1 established for the other packages. Flagged in final review triage as an inconsistency to sweep or codify later; not touched in M2.
+- **`vitest` `hookTimeout` raised 10s → 30s** (Task 11 review): a legitimate infra fix for PGlite setup/teardown under load, not a plan deviation, but noted since it changes shared test config.
+- **The curator CLI's `--locale` flag is currently inert**: accepted and validated, but `curateTopic` (Task 14) hardcodes `"it"` as the judge locale, so `--locale en` has no effect yet. Inherited into Task 15's CLI, not fixed in M2.
+
+### Deferred (per the M2 design's out-of-scope list)
+
+Mid-session resumption (pushed to **M2.5**); email/digest parent reports; non-math taxonomy import. (Also out per spec, unchanged: FSRS-style scheduling, badge levels/certificates, curator running in CI.)
+
+### Flagged for Andrea
+
+- A **spot-review of ~20 translated topics** from the model-assisted Italian overlay — the lint gate checks structure, not pedagogy quality.
+- A **curated-resource batch review**: the curator's proposals in `packages/taxonomy/data/curated-review/` are ready to read and promote (`curate:promote`) into `resources.json`.

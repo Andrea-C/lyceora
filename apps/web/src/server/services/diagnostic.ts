@@ -10,6 +10,7 @@ import type { Exercise } from "@lyceora/agents";
 import * as repo from "../repo";
 import { withServerExerciseId } from "../exercise";
 import { localToday, type AssessorPort } from "./session";
+import { checkAndAwardBadges } from "./badges";
 
 /**
  * `learningSession.planJson` is typed for the daily-session `SessionPlan` shape; a diagnostic
@@ -46,7 +47,7 @@ export async function startDiagnostic(
 
   if (step.kind === "done") {
     // degenerate: nothing to ask (e.g. an already-fully-known target set) — finalize immediately
-    const result = await finalizeDiagnostic(db, p, s!.id, pathId, step.result);
+    const result = await finalizeDiagnostic(db, graph, p, s!.id, pathId, targetTopicIds, step.result);
     return { sessionId: s!.id, done: true as const, result };
   }
 
@@ -116,13 +117,16 @@ export async function answerDiagnostic(
     return { done: false as const, question: { topicId: step.topicId, exercise } };
   }
 
-  const result = await finalizeDiagnostic(db, p, args.sessionId, stored.pathId, step.result);
+  const result = await finalizeDiagnostic(
+    db, graph, p, args.sessionId, stored.pathId, stored.diagnosticState.targetTopicIds, step.result
+  );
   return { done: true as const, result };
 }
 
 async function finalizeDiagnostic(
-  db: Db, p: { id: string; timezone: string }, sessionId: string, pathId: string, result: DiagnosticResult
-): Promise<DiagnosticResult> {
+  db: Db, graph: TopicGraph, p: { id: string; timezone: string }, sessionId: string, pathId: string,
+  pathTopicIds: string[], result: DiagnosticResult
+): Promise<DiagnosticResult & { newBadges: string[] }> {
   const today = localToday(p.timezone);
   const now = new Date();
 
@@ -152,5 +156,6 @@ async function finalizeDiagnostic(
   await db.update(enrollment).set({ diagnosticSessionId: sessionId })
     .where(and(eq(enrollment.profileId, p.id), eq(enrollment.pathId, pathId)));
 
-  return result;
+  const newBadges = await checkAndAwardBadges(db, graph, pathTopicIds, p.id);
+  return { ...result, newBadges };
 }

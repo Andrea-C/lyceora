@@ -1,6 +1,6 @@
-import { and, eq, lte, desc, isNull, sql } from "drizzle-orm";
+import { and, eq, lte, desc, isNull, sql, inArray } from "drizzle-orm";
 import type { Db } from "@lyceora/db";
-import { profile, masteryState, evidenceRecord, reviewQueue, enrollment, learningSession, servedExercise } from "@lyceora/db";
+import { profile, masteryState, evidenceRecord, reviewQueue, enrollment, learningSession, servedExercise, rateLimitWindow } from "@lyceora/db";
 import type { MasteryState, SessionPlan } from "@lyceora/engine";
 import { EMPTY_MASTERY_STATE } from "@lyceora/engine";
 import type { Exercise } from "@lyceora/agents";
@@ -47,6 +47,15 @@ export async function upsertMastery(db: Db, profileId: string, topicId: string, 
 export async function getDueReviews(db: Db, profileId: string, today: string) {
   return db.select().from(reviewQueue)
     .where(and(eq(reviewQueue.profileId, profileId), lte(reviewQueue.dueOn, today), eq(reviewQueue.suspended, false)));
+}
+
+/** Full review_queue rows for a specific set of topics (e.g. a just-answered topic's direct hard
+ * prerequisites, for implicit-review credit). Empty topicIds short-circuits to avoid an empty
+ * inArray(). */
+export async function getReviewRows(db: Db, profileId: string, topicIds: string[]) {
+  if (topicIds.length === 0) return [];
+  return db.select().from(reviewQueue)
+    .where(and(eq(reviewQueue.profileId, profileId), inArray(reviewQueue.topicId, topicIds)));
 }
 
 export async function getRecentErrors(db: Db, profileId: string, topicId: string, limit = 3): Promise<string[]> {
@@ -190,4 +199,32 @@ export async function claimServedExercise(
   }
   const { itemKind, ...exercise } = row.exerciseJson as unknown as (Exercise & { itemKind: string });
   return { sessionId: row.sessionId, topicId: row.topicId, difficulty: row.difficulty, itemKind, exercise: exercise as Exercise };
+}
+
+/** True iff topicId appears in the newest ACTIVE session plan for this profile. Teacher chat and
+ * signals are session-scoped features; scoping them to the active plan closes the
+ * "chat about any topicId" hole from the M1 final-review triage. */
+export async function isTopicInActivePlan(db: Db, profileId: string, topicId: string): Promise<boolean> {
+  const [s] = await db.select().from(learningSession)
+    .where(and(eq(learningSession.profileId, profileId), eq(learningSession.status, "active")))
+    .orderBy(desc(learningSession.startedAt)).limit(1);
+  return (s?.planJson?.items ?? []).some((i) => i.topicId === topicId);
+}
+
+export const RATE_LIMITS = { agent: 30, signals: 120 } as const;
+
+/** Fixed 1h-window counter. Atomic upsert-increment; returns whether this call is within limit.
+ * The increment happens even when refused — harmless (row is already over) and keeps it one query. */
+export async function consumeRateLimit(
+  db: Db, profileId: string, route: string, limit: number, now: Date = new Date()
+): Promise<boolean> {
+  const windowStart = new Date(Math.floor(now.getTime() / 3_600_000) * 3_600_000);
+  const [row] = await db.insert(rateLimitWindow)
+    .values({ profileId, route, windowStart, count: 1 })
+    .onConflictDoUpdate({
+      target: [rateLimitWindow.profileId, rateLimitWindow.route, rateLimitWindow.windowStart],
+      set: { count: sql`${rateLimitWindow.count} + 1` }
+    })
+    .returning({ count: rateLimitWindow.count });
+  return (row?.count ?? limit + 1) <= limit;
 }

@@ -4,11 +4,13 @@ import { and, eq, sql } from "drizzle-orm";
 import type { TopicGraph, Locale } from "@lyceora/taxonomy";
 import {
   applyEvidence, composeSessionPlan, routeNext, applyReviewOutcome, enterReviewRotation,
+  computeImplicitReviews,
   XP_AMOUNTS, nextStreak,
   type SessionPlan, type SessionItem, type AssessmentOutcome
 } from "@lyceora/engine";
 import type { Exercise } from "@lyceora/agents";
 import * as repo from "../repo";
+import { checkAndAwardBadges } from "./badges";
 
 export interface AssessorPort {
   generate(topicId: string, locale: Locale, difficulty: 1 | 2 | 3, count: number): Promise<Exercise[]>;
@@ -66,7 +68,8 @@ export async function startSession(db: Db, graph: TopicGraph, userId: string, pr
 
 export async function completeActivity(
   db: Db, graph: TopicGraph, assessor: AssessorPort, userId: string,
-  args: { profileId: string; sessionId: string; item: SessionItem; servedExerciseId?: string; answer?: string }
+  args: { profileId: string; sessionId: string; item: SessionItem; servedExerciseId?: string; answer?: string },
+  pathTopicIds: string[]
 ) {
   const p = await repo.getOwnedProfile(db, userId, args.profileId);
   // IMPORTANT: gates every write below keyed by sessionId. Nothing in this function or in
@@ -98,7 +101,8 @@ export async function completeActivity(
       throw new repo.ConflictError(`lesson ${item.topicId} was already completed for this session`);
     }
     await awardXp(db, args, XP_AMOUNTS.lessonComplete, "lessonComplete", today, p);
-    return { xp: XP_AMOUNTS.lessonComplete };
+    const newBadges = await checkAndAwardBadges(db, graph, pathTopicIds, p.id);
+    return { xp: XP_AMOUNTS.lessonComplete, newBadges };
   }
 
   // defensive: the discriminated union + the route's zod schema already guarantee this, but a
@@ -165,18 +169,44 @@ export async function completeActivity(
     }
   }
 
-  // review-queue bookkeeping for review items
+  // review-queue bookkeeping for review items. cameBack is computed here (not derived later from
+  // row state) because a FAILED review at rung >= 2 leaves reviewQueue in the exact same shape a
+  // passed comeback would (lapses >= 1, suspended false, intervalRung >= 1, lastReviewedAt set) —
+  // only this moment, with row's PRE-update lapses in hand, can tell the two apart.
+  let cameBack = false;
   if (source === "review") {
     const [row] = await db.select().from(reviewQueue)
       .where(and(eq(reviewQueue.profileId, p.id), eq(reviewQueue.topicId, item.topicId)));
     if (row) {
+      cameBack = graded.correct && row.lapses >= 1;
       const next = applyReviewOutcome(
         { topicId: row.topicId, intervalRung: row.intervalRung, dueOn: row.dueOn, lapses: row.lapses, suspended: row.suspended },
-        graded.correct, today);
+        graded.correct, today,
+        // streak INCLUDING this review's evidence — `after` is the post-fold state; keep this call after applyEvidence
+        { masteryStreak: after.consecutiveCorrectAtLevel });
       await db.update(reviewQueue).set({
         intervalRung: next.intervalRung, dueOn: next.dueOn, lapses: next.lapses,
         suspended: next.suspended, lastReviewedAt: new Date()
       }).where(eq(reviewQueue.id, row.id));
+    }
+  }
+
+  // implicit repetition: a correct answer on this topic silently refreshes its DIRECT hard
+  // prerequisites' review clocks (credit-only; see packages/engine review.ts for the contract)
+  if (graded.correct) {
+    const directHard = (graph.prereqsOf.get(item.topicId) ?? [])
+      .filter((d) => d.strength === "hard").map((d) => d.prerequisiteId);
+    if (directHard.length > 0) {
+      const rows = await repo.getReviewRows(db, p.id, directHard);
+      const masteryMap = await repo.getMasteryMap(db, p.id);
+      const rowOf = new Map(rows.map((r) => [r.topicId,
+        { topicId: r.topicId, intervalRung: r.intervalRung, dueOn: r.dueOn, lapses: r.lapses, suspended: r.suspended }]));
+      const changed = computeImplicitReviews(
+        directHard, (id) => rowOf.get(id), (id) => masteryMap.get(id)?.status ?? "unknown", today);
+      for (const c of changed) {
+        await db.update(reviewQueue).set({ dueOn: c.dueOn })
+          .where(and(eq(reviewQueue.profileId, p.id), eq(reviewQueue.topicId, c.topicId)));
+      }
     }
   }
 
@@ -213,7 +243,9 @@ export async function completeActivity(
       }
     }
   }
-  return { graded, xp, masteryAfter: after.status, routeDecision };
+  const newBadges = await checkAndAwardBadges(db, graph, pathTopicIds, p.id,
+    source === "review" ? { cameBackAfterLapse: cameBack } : undefined);
+  return { graded, xp, masteryAfter: after.status, routeDecision, newBadges };
 }
 
 async function awardXp(

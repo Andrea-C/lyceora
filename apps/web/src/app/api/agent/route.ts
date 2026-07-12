@@ -34,11 +34,18 @@ export async function POST(req: Request) {
 
   return guarded(async () => {
     const p = await repo.getOwnedProfile(db, userId, profileId);
+    const t = await getTranslations({ locale: p.locale, namespace: "agent" });
+
+    if (!(await repo.consumeRateLimit(db, p.id, "agent", repo.RATE_LIMITS.agent))) {
+      return Response.json({ error: t("rateLimited") }, { status: 429 });
+    }
+    if (!(await repo.isTopicInActivePlan(db, p.id, topicId))) {
+      return Response.json({ error: t("topicNotInPlan") }, { status: 403 });
+    }
 
     // token-budget guard: a runaway chat loop must not burn the family's model budget.
     const userMessageCount = messages.filter((m) => m.role === "user").length;
     if (userMessageCount >= MAX_USER_MESSAGES) {
-      const t = await getTranslations({ locale: p.locale, namespace: "agent" });
       return Response.json({ error: t("budgetExceeded") }, { status: 429 });
     }
 
