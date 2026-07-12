@@ -8,3 +8,4 @@ export * from "./teacher";
 export * from "./agui";
 export * from "./signals";
 export * from "./fake";
+export * from "./curator";
