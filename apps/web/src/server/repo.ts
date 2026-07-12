@@ -1,4 +1,4 @@
-import { and, eq, lte, desc, isNull, sql } from "drizzle-orm";
+import { and, eq, lte, desc, isNull, sql, inArray } from "drizzle-orm";
 import type { Db } from "@lyceora/db";
 import { profile, masteryState, evidenceRecord, reviewQueue, enrollment, learningSession, servedExercise, rateLimitWindow } from "@lyceora/db";
 import type { MasteryState, SessionPlan } from "@lyceora/engine";
@@ -47,6 +47,15 @@ export async function upsertMastery(db: Db, profileId: string, topicId: string, 
 export async function getDueReviews(db: Db, profileId: string, today: string) {
   return db.select().from(reviewQueue)
     .where(and(eq(reviewQueue.profileId, profileId), lte(reviewQueue.dueOn, today), eq(reviewQueue.suspended, false)));
+}
+
+/** Full review_queue rows for a specific set of topics (e.g. a just-answered topic's direct hard
+ * prerequisites, for implicit-review credit). Empty topicIds short-circuits to avoid an empty
+ * inArray(). */
+export async function getReviewRows(db: Db, profileId: string, topicIds: string[]) {
+  if (topicIds.length === 0) return [];
+  return db.select().from(reviewQueue)
+    .where(and(eq(reviewQueue.profileId, profileId), inArray(reviewQueue.topicId, topicIds)));
 }
 
 export async function getRecentErrors(db: Db, profileId: string, topicId: string, limit = 3): Promise<string[]> {

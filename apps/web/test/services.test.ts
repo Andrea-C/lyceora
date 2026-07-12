@@ -57,6 +57,18 @@ async function serveExercise(args: {
 
 let isolatedProfileId: string;
 
+/** Helper: select a profile's review_queue row by topic (Task 7 implicit-review tests). */
+async function getReviewRow(pid: string, topicId: string) {
+  const [row] = await rawDb.select().from(reviewQueue)
+    .where(and(eq(reviewQueue.profileId, pid), eq(reviewQueue.topicId, topicId)));
+  return row;
+}
+/** Helper: total review_queue row count for a profile (asserts no rows were created/destroyed). */
+async function countReviewRows(pid: string) {
+  const rows = await rawDb.select().from(reviewQueue).where(eq(reviewQueue.profileId, pid));
+  return rows.length;
+}
+
 beforeAll(async () => {
   const d = drizzle(new PGlite());
   await migrate(d, { migrationsFolder: fileURLToPath(new URL("../../../packages/db/drizzle", import.meta.url)) });
@@ -364,5 +376,104 @@ describe("gradeable-item XP consumption (CRITICAL 2)", () => {
     const xpRows = await rawDb.select().from(xpEvent)
       .where(and(eq(xpEvent.profileId, isolatedProfileId), eq(xpEvent.sessionId, sessionId), eq(xpEvent.reason, "exerciseCorrect")));
     expect(xpRows).toHaveLength(1);
+  });
+});
+
+describe("implicit review + streak promotion in the grade path (Task 7)", () => {
+  it("a correct exercise pushes out the direct hard prereq's review, not the grandparent's, creating no rows", async () => {
+    const today = localToday("Europe/Rome");
+    const [p] = await rawDb.insert(profile).values({ ownerUserId: "parent", displayName: "Implicit1" }).returning();
+    const pid = p!.id;
+    // radici mastered (pitagora's DIRECT hard prereq) and potenze mastered (radici's prereq, i.e.
+    // pitagora's grandparent) — both due later than today, both hold a review_queue row already.
+    await rawDb.insert(masteryState).values([
+      { profileId: pid, topicId: "radici", status: "mastered", consecutiveCorrectAtLevel: 2 },
+      { profileId: pid, topicId: "potenze", status: "mastered", consecutiveCorrectAtLevel: 2 }
+    ]);
+    await rawDb.insert(reviewQueue).values([
+      { profileId: pid, topicId: "radici", intervalRung: 2, dueOn: addDays(today, 3), lapses: 0, suspended: false },
+      { profileId: pid, topicId: "potenze", intervalRung: 2, dueOn: addDays(today, 3), lapses: 0, suspended: false }
+    ]);
+
+    const { sessionId } = await startSession(db, graph, "parent", pid, ["pitagora"]);
+    const served = await serveExercise({
+      sessionId, topicId: "pitagora", difficulty: 1, itemKind: "exercise", forProfileId: pid
+    });
+    const r = await completeActivity(db, graph, fakeAssessor, "parent", {
+      profileId: pid, sessionId,
+      item: { kind: "exercise", topicId: "pitagora", difficulty: 1 },
+      servedExerciseId: served.id,
+      answer: "8" // correct
+    });
+    expect(r.graded.correct).toBe(true);
+
+    const radici = await getReviewRow(pid, "radici");
+    expect(radici!.dueOn).toBe(addDays(today, INTERVAL_LADDER_DAYS[2]!)); // pushed to today+7
+    const potenze = await getReviewRow(pid, "potenze");
+    expect(potenze!.dueOn).toBe(addDays(today, 3)); // untouched (grandparent)
+    expect(await countReviewRows(pid)).toBe(2); // no new rows
+  });
+
+  it("implicit review does not refresh a lapsed (needsReview) prereq", async () => {
+    const today = localToday("Europe/Rome");
+    const [p] = await rawDb.insert(profile).values({ ownerUserId: "parent", displayName: "Implicit2" }).returning();
+    const pid = p!.id;
+    // radici starts mastered so pitagora is plannable/frontier-eligible (composeSessionPlan only
+    // ever offers "new" content once its hard prereqs are mastered); it's lapsed to needsReview
+    // below, AFTER the plan is composed and the exercise served — completeActivity only reads the
+    // already-persisted plan, so this mutation doesn't affect plan membership at grade time.
+    await rawDb.insert(masteryState).values([
+      { profileId: pid, topicId: "radici", status: "mastered", consecutiveCorrectAtLevel: 2 },
+      { profileId: pid, topicId: "potenze", status: "mastered", consecutiveCorrectAtLevel: 2 }
+    ]);
+    const { sessionId } = await startSession(db, graph, "parent", pid, ["pitagora"]);
+    const served = await serveExercise({
+      sessionId, topicId: "pitagora", difficulty: 1, itemKind: "exercise", forProfileId: pid
+    });
+
+    // now lapse radici: needsReview status + a review row due today (the state at grade time)
+    await rawDb.update(masteryState).set({ status: "needsReview" })
+      .where(and(eq(masteryState.profileId, pid), eq(masteryState.topicId, "radici")));
+    await rawDb.insert(reviewQueue).values({
+      profileId: pid, topicId: "radici", intervalRung: 1, dueOn: today, lapses: 1, suspended: false
+    });
+
+    const r = await completeActivity(db, graph, fakeAssessor, "parent", {
+      profileId: pid, sessionId,
+      item: { kind: "exercise", topicId: "pitagora", difficulty: 1 },
+      servedExerciseId: served.id,
+      answer: "8" // correct
+    });
+    expect(r.graded.correct).toBe(true);
+
+    const radici = await getReviewRow(pid, "radici");
+    expect(radici!.dueOn).toBe(today); // unchanged — surfaces as remediation
+  });
+
+  it("review pass with masteryStreak >= 4 climbs two rungs", async () => {
+    const today = localToday("Europe/Rome");
+    const [p] = await rawDb.insert(profile).values({ ownerUserId: "parent", displayName: "Implicit3" }).returning();
+    const pid = p!.id;
+    await rawDb.insert(masteryState).values({
+      profileId: pid, topicId: "ripasso", status: "mastered", consecutiveCorrectAtLevel: 4
+    });
+    await rawDb.insert(reviewQueue).values({
+      profileId: pid, topicId: "ripasso", intervalRung: 1, dueOn: today, lapses: 0, suspended: false
+    });
+    const { sessionId } = await startSession(db, graph, "parent", pid, ["ripasso"]);
+    const served = await serveExercise({
+      sessionId, topicId: "ripasso", difficulty: 2, itemKind: "review", forProfileId: pid
+    });
+
+    const r = await completeActivity(db, graph, fakeAssessor, "parent", {
+      profileId: pid, sessionId,
+      item: { kind: "review", topicId: "ripasso", reason: "due", difficulty: 2 },
+      servedExerciseId: served.id,
+      answer: "8" // correct
+    });
+    expect(r.graded.correct).toBe(true);
+
+    const row = await getReviewRow(pid, "ripasso");
+    expect(row!.intervalRung).toBe(3);
   });
 });

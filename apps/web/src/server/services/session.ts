@@ -4,6 +4,7 @@ import { and, eq, sql } from "drizzle-orm";
 import type { TopicGraph, Locale } from "@lyceora/taxonomy";
 import {
   applyEvidence, composeSessionPlan, routeNext, applyReviewOutcome, enterReviewRotation,
+  computeImplicitReviews,
   XP_AMOUNTS, nextStreak,
   type SessionPlan, type SessionItem, type AssessmentOutcome
 } from "@lyceora/engine";
@@ -172,11 +173,32 @@ export async function completeActivity(
     if (row) {
       const next = applyReviewOutcome(
         { topicId: row.topicId, intervalRung: row.intervalRung, dueOn: row.dueOn, lapses: row.lapses, suspended: row.suspended },
-        graded.correct, today);
+        graded.correct, today,
+        // streak INCLUDING this review's evidence — `after` is the post-fold state; keep this call after applyEvidence
+        { masteryStreak: after.consecutiveCorrectAtLevel });
       await db.update(reviewQueue).set({
         intervalRung: next.intervalRung, dueOn: next.dueOn, lapses: next.lapses,
         suspended: next.suspended, lastReviewedAt: new Date()
       }).where(eq(reviewQueue.id, row.id));
+    }
+  }
+
+  // implicit repetition: a correct answer on this topic silently refreshes its DIRECT hard
+  // prerequisites' review clocks (credit-only; see packages/engine review.ts for the contract)
+  if (graded.correct) {
+    const directHard = (graph.prereqsOf.get(item.topicId) ?? [])
+      .filter((d) => d.strength === "hard").map((d) => d.prerequisiteId);
+    if (directHard.length > 0) {
+      const rows = await repo.getReviewRows(db, p.id, directHard);
+      const masteryMap = await repo.getMasteryMap(db, p.id);
+      const rowOf = new Map(rows.map((r) => [r.topicId,
+        { topicId: r.topicId, intervalRung: r.intervalRung, dueOn: r.dueOn, lapses: r.lapses, suspended: r.suspended }]));
+      const changed = computeImplicitReviews(
+        directHard, (id) => rowOf.get(id), (id) => masteryMap.get(id)?.status ?? "unknown", today);
+      for (const c of changed) {
+        await db.update(reviewQueue).set({ dueOn: c.dueOn })
+          .where(and(eq(reviewQueue.profileId, p.id), eq(reviewQueue.topicId, c.topicId)));
+      }
     }
   }
 
