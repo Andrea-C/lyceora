@@ -12,6 +12,7 @@ dist/
 .env.*
 !.env.example
 .superpowers/
+docs/setup-notes.md
 
 .vercel/
 coverage/
