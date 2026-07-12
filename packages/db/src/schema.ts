@@ -1,7 +1,8 @@
 import {
   pgTable, pgEnum, uuid, text, integer, boolean, numeric,
-  timestamp, date, jsonb, index, uniqueIndex
+  timestamp, date, jsonb, index, uniqueIndex, check
 } from "drizzle-orm/pg-core";
+import { sql } from "drizzle-orm";
 import type { SessionPlan } from "@lyceora/engine";
 import { user } from "./auth-schema";
 
@@ -80,7 +81,8 @@ export const evidenceRecord = pgTable("evidence_record", {
   createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow()
 }, (t) => [
   index("evidence_profile_topic_time_idx").on(t.profileId, t.topicId, t.createdAt),
-  index("evidence_session_idx").on(t.sessionId)
+  index("evidence_session_idx").on(t.sessionId),
+  check("evidence_difficulty_check", sql`${t.difficulty} BETWEEN 1 AND 3`)
 ]);
 
 export const learningSession = pgTable("learning_session", {
@@ -109,7 +111,10 @@ export const servedExercise = pgTable("served_exercise", {
   exerciseJson: jsonb("exercise_json").$type<Record<string, unknown>>().notNull(),
   consumedAt: timestamp("consumed_at", { withTimezone: true }),
   createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow()
-}, (t) => [index("served_exercise_profile_session_idx").on(t.profileId, t.sessionId)]);
+}, (t) => [
+  index("served_exercise_profile_session_idx").on(t.profileId, t.sessionId),
+  check("served_exercise_difficulty_check", sql`${t.difficulty} BETWEEN 1 AND 3`)
+]);
 
 /** Append-only XP ledger. Total XP = SUM(amount). */
 export const xpEvent = pgTable("xp_event", {
@@ -166,3 +171,12 @@ export const learningSignal = pgTable("learning_signal", {
   scopeHint: text("scope_hint"),
   createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow()
 }, (t) => [index("signal_profile_time_idx").on(t.profileId, t.createdAt)]);
+
+/** Fixed-window rate limiting (serverless-safe: state in Postgres, atomic upsert-increment). */
+export const rateLimitWindow = pgTable("rate_limit_window", {
+  id: uuid("id").primaryKey().defaultRandom(),
+  profileId: uuid("profile_id").notNull().references(() => profile.id, { onDelete: "cascade" }),
+  route: text("route").notNull(),
+  windowStart: timestamp("window_start", { withTimezone: true }).notNull(),
+  count: integer("count").notNull().default(0)
+}, (t) => [uniqueIndex("rate_window_uniq").on(t.profileId, t.route, t.windowStart)]);
