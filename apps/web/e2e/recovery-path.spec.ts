@@ -121,6 +121,12 @@ test("signup -> diagnostic -> session -> teacher chat -> locale switch (fake mod
   await page.getByTestId("locale-switch").click();
   await page.waitForURL(/\/en\/app$/);
   await expect(page.getByText("XP today")).toBeVisible();
+
+  // --- parent page: progress report (Task 11) — activity chart + weekly summary render for
+  // the child, driven by the session activity completed above ---
+  await page.goto("/it/app/parent");
+  await expect(page.locator("svg").first()).toBeVisible();
+  await expect(page.getByText("Questa settimana", { exact: true })).toBeVisible();
 });
 
 /** Waits for the diagnostic's "Domanda N" counter to show the expected question number (exact
