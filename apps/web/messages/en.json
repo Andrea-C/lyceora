@@ -1,7 +1,7 @@
 {
   "landing": { "title": "Lyceora", "tagline": "Your personal math teacher", "login": "Log in", "signup": "Create account", "email": "Email", "password": "Password", "name": "Name" },
   "auth": { "invalidCredentials": "Incorrect email or password.", "emailInUse": "That email is already registered — try logging in instead.", "genericError": "Something went wrong. Please try again soon." },
-  "profiles": { "title": "Who's studying today?", "create": "Add profile", "displayName": "Name", "birthYear": "Birth year", "start": "Start" },
+  "profiles": { "title": "Who's studying today?", "create": "Add profile", "displayName": "Name", "birthYear": "Birth year", "start": "Start", "xpGoalLabel": "Daily XP goal", "xpGoalSave": "Save" },
   "dashboard": { "title": "Hi {name}!", "intro": "Let's start with a few questions to find out where to begin.", "startSession": "Start session", "startDiagnostic": "Find out where to start", "xpToday": "XP today", "streak": "Day streak", "progress": "Path progress" },
   "domains": { "powersRoots": "Powers & Roots", "numberTheory": "Number Theory", "fractions": "Fractions", "measurement": "Measurement", "coordinateGeometry": "Coordinate Geometry", "geometry": "Geometry" },
   "diagnostic": { "title": "Let's see what you already know", "intro": "A few quick questions — no grades!", "done": "Done! Your path is ready.", "question": "Question {n}", "retry": "Something didn't work — try again!", "error": "We can't load questions right now." },
