@@ -100,7 +100,7 @@ describe("assessment failure routes to remediation with derived evidence", () =>
       item: { kind: "assessment", topicId: "pitagora", difficulty: 2 },
       servedExerciseId: served.id,
       answer: "25" // wrong
-    });
+    }, ["pitagora"]);
     expect(r.graded.correct).toBe(false);
     expect(r.routeDecision?.action).toBe("remediate");
     const rows = await rawDb.select().from(masteryState).where(eq(masteryState.profileId, profileId));
@@ -122,7 +122,7 @@ describe("completeActivity advance branch", () => {
       item: { kind: "assessment", topicId: "avanzamento", difficulty: 2 },
       servedExerciseId: served.id,
       answer: "8" // correct -> consecutiveCorrectAtLevel 1 -> 2 -> mastered -> routeNext "advance"
-    });
+    }, ["avanzamento"]);
     expect(r.graded.correct).toBe(true);
     expect(r.routeDecision?.action).toBe("advance");
 
@@ -148,7 +148,7 @@ describe("completeActivity review item", () => {
       item: { kind: "review", topicId: "ripasso", reason: "due", difficulty: 2 },
       servedExerciseId: served.id,
       answer: "8" // correct
-    });
+    }, ["ripasso"]);
     expect(r.graded.correct).toBe(true);
 
     const [row] = await rawDb.select().from(reviewQueue)
@@ -175,7 +175,7 @@ describe("served-exercise custody", () => {
       item: { kind: "exercise", topicId: "custodyA", difficulty: 2 },
       servedExerciseId: foreign.id,
       answer: "8"
-    })).rejects.toBeInstanceOf(ConflictError);
+    }, ["custodyA"])).rejects.toBeInstanceOf(ConflictError);
 
     // confirm it truly was never touched: the other profile can still claim/grade it themselves
     const otherResult = await completeActivity(db, graph, fakeAssessor, "parent", {
@@ -183,7 +183,7 @@ describe("served-exercise custody", () => {
       item: { kind: "exercise", topicId: "custodyA", difficulty: 2 },
       servedExerciseId: foreign.id,
       answer: "8"
-    });
+    }, ["custodyA"]);
     expect(otherResult.graded.correct).toBe(true);
   });
 
@@ -196,7 +196,7 @@ describe("served-exercise custody", () => {
       item: { kind: "exercise", topicId: "custodyB", difficulty: 2 }, // topic mismatch
       servedExerciseId: servedForA.id,
       answer: "8"
-    })).rejects.toBeInstanceOf(ConflictError);
+    }, ["custodyA", "custodyB"])).rejects.toBeInstanceOf(ConflictError);
   });
 
   it("rejects re-grading an already-consumed servedExercise (atomic claim closes the race too)", async () => {
@@ -208,7 +208,7 @@ describe("served-exercise custody", () => {
       item: { kind: "exercise", topicId: "custodyB", difficulty: 2 },
       servedExerciseId: served.id,
       answer: "8"
-    });
+    }, ["custodyB"]);
     expect(first.graded.correct).toBe(true);
 
     const evidenceBefore = await rawDb.select().from(evidenceRecord)
@@ -222,7 +222,7 @@ describe("served-exercise custody", () => {
       item: { kind: "exercise", topicId: "custodyB", difficulty: 2 },
       servedExerciseId: served.id, // same row, already consumed
       answer: "8"
-    })).rejects.toBeInstanceOf(ConflictError);
+    }, ["custodyB"])).rejects.toBeInstanceOf(ConflictError);
 
     const evidenceAfter = await rawDb.select().from(evidenceRecord)
       .where(and(eq(evidenceRecord.profileId, profileId), eq(evidenceRecord.sessionId, sessionId)));
@@ -238,7 +238,7 @@ describe("served-exercise custody", () => {
       item: { kind: "exercise", topicId: "custodyC", difficulty: 2 }, // client claims difficulty 2
       servedExerciseId: served.id,
       answer: "8"
-    })).rejects.toBeInstanceOf(ConflictError);
+    }, ["custodyC"])).rejects.toBeInstanceOf(ConflictError);
 
     const rows = await rawDb.select().from(masteryState)
       .where(and(eq(masteryState.profileId, profileId), eq(masteryState.topicId, "custodyC")));
@@ -257,7 +257,7 @@ describe("served-exercise custody", () => {
       item: { kind: "assessment", topicId: "custodyD", difficulty: 2 },
       servedExerciseId: served.id,
       answer: "8"
-    })).rejects.toBeInstanceOf(ConflictError);
+    }, ["custodyD"])).rejects.toBeInstanceOf(ConflictError);
 
     const rows = await rawDb.select().from(masteryState)
       .where(and(eq(masteryState.profileId, profileId), eq(masteryState.topicId, "custodyD")));
@@ -285,7 +285,7 @@ describe("awardXp goal + streak accounting", () => {
 
     const first = await completeActivity(db, graph, fakeAssessor, "parent", {
       profileId: isolatedProfileId, sessionId, item: { kind: "lesson", topicId: "streakA" }
-    });
+    }, ["streakA", "streakB"]);
     expect(first.xp).toBe(5);
     const [afterFirst] = await rawDb.select().from(dailyActivity)
       .where(and(eq(dailyActivity.profileId, isolatedProfileId), eq(dailyActivity.activityDate, today)));
@@ -297,7 +297,7 @@ describe("awardXp goal + streak accounting", () => {
 
     const second = await completeActivity(db, graph, fakeAssessor, "parent", {
       profileId: isolatedProfileId, sessionId, item: { kind: "lesson", topicId: "streakB" }
-    });
+    }, ["streakA", "streakB"]);
     expect(second.xp).toBe(5);
     const [afterSecond] = await rawDb.select().from(dailyActivity)
       .where(and(eq(dailyActivity.profileId, isolatedProfileId), eq(dailyActivity.activityDate, today)));
@@ -315,7 +315,7 @@ describe("lesson plan-membership + idempotency (CRITICAL 1)", () => {
     const { sessionId } = await startSession(db, graph, "parent", isolatedProfileId, ["replayLesson"]);
     await expect(completeActivity(db, graph, fakeAssessor, "parent", {
       profileId: isolatedProfileId, sessionId, item: { kind: "lesson", topicId: "not-on-any-plan" }
-    })).rejects.toBeInstanceOf(ConflictError);
+    }, ["replayLesson"])).rejects.toBeInstanceOf(ConflictError);
   });
 
   it("rejects a replayed lesson POST (409) and awards exactly one lessonComplete xp_event", async () => {
@@ -323,12 +323,12 @@ describe("lesson plan-membership + idempotency (CRITICAL 1)", () => {
 
     const first = await completeActivity(db, graph, fakeAssessor, "parent", {
       profileId: isolatedProfileId, sessionId, item: { kind: "lesson", topicId: "replayLesson" }
-    });
+    }, ["replayLesson"]);
     expect(first.xp).toBe(5);
 
     await expect(completeActivity(db, graph, fakeAssessor, "parent", {
       profileId: isolatedProfileId, sessionId, item: { kind: "lesson", topicId: "replayLesson" }
-    })).rejects.toBeInstanceOf(ConflictError);
+    }, ["replayLesson"])).rejects.toBeInstanceOf(ConflictError);
 
     const xpRows = await rawDb.select().from(xpEvent)
       .where(and(eq(xpEvent.profileId, isolatedProfileId), eq(xpEvent.sessionId, sessionId), eq(xpEvent.reason, "lessonComplete")));
@@ -341,7 +341,7 @@ describe("lesson plan-membership + idempotency (CRITICAL 1)", () => {
 
     await expect(completeActivity(db, graph, fakeAssessor, "parent", {
       profileId: isolatedProfileId, sessionId, item: { kind: "lesson", topicId: "replayLesson" }
-    })).rejects.toBeInstanceOf(ConflictError);
+    }, ["replayLesson"])).rejects.toBeInstanceOf(ConflictError);
   });
 });
 
@@ -356,7 +356,7 @@ describe("gradeable-item XP consumption (CRITICAL 2)", () => {
       profileId: isolatedProfileId, sessionId,
       item: { kind: "exercise", topicId: "reserveTopic", difficulty: 1 },
       servedExerciseId: served1.id, answer: "8" // correct
-    });
+    }, ["reserveTopic"]);
     expect(first.graded.correct).toBe(true);
     expect(first.xp).toBe(2); // XP_AMOUNTS.exerciseCorrect
 
@@ -369,7 +369,7 @@ describe("gradeable-item XP consumption (CRITICAL 2)", () => {
       profileId: isolatedProfileId, sessionId,
       item: { kind: "exercise", topicId: "reserveTopic", difficulty: 1 },
       servedExerciseId: served2.id, answer: "8" // also correct
-    });
+    }, ["reserveTopic"]);
     expect(second.graded.correct).toBe(true); // honest feedback, still graded
     expect(second.xp).toBe(0); // but the plan slot was already consumed — no second payout
 
@@ -404,7 +404,7 @@ describe("implicit review + streak promotion in the grade path (Task 7)", () => 
       item: { kind: "exercise", topicId: "pitagora", difficulty: 1 },
       servedExerciseId: served.id,
       answer: "8" // correct
-    });
+    }, ["pitagora"]);
     expect(r.graded.correct).toBe(true);
 
     const radici = await getReviewRow(pid, "radici");
@@ -443,7 +443,7 @@ describe("implicit review + streak promotion in the grade path (Task 7)", () => 
       item: { kind: "exercise", topicId: "pitagora", difficulty: 1 },
       servedExerciseId: served.id,
       answer: "8" // correct
-    });
+    }, ["pitagora"]);
     expect(r.graded.correct).toBe(true);
 
     const radici = await getReviewRow(pid, "radici");
@@ -470,7 +470,7 @@ describe("implicit review + streak promotion in the grade path (Task 7)", () => 
       item: { kind: "review", topicId: "ripasso", reason: "due", difficulty: 2 },
       servedExerciseId: served.id,
       answer: "8" // correct
-    });
+    }, ["ripasso"]);
     expect(r.graded.correct).toBe(true);
 
     const row = await getReviewRow(pid, "ripasso");

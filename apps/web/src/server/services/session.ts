@@ -10,6 +10,7 @@ import {
 } from "@lyceora/engine";
 import type { Exercise } from "@lyceora/agents";
 import * as repo from "../repo";
+import { checkAndAwardBadges } from "./badges";
 
 export interface AssessorPort {
   generate(topicId: string, locale: Locale, difficulty: 1 | 2 | 3, count: number): Promise<Exercise[]>;
@@ -67,7 +68,8 @@ export async function startSession(db: Db, graph: TopicGraph, userId: string, pr
 
 export async function completeActivity(
   db: Db, graph: TopicGraph, assessor: AssessorPort, userId: string,
-  args: { profileId: string; sessionId: string; item: SessionItem; servedExerciseId?: string; answer?: string }
+  args: { profileId: string; sessionId: string; item: SessionItem; servedExerciseId?: string; answer?: string },
+  pathTopicIds: string[]
 ) {
   const p = await repo.getOwnedProfile(db, userId, args.profileId);
   // IMPORTANT: gates every write below keyed by sessionId. Nothing in this function or in
@@ -99,7 +101,8 @@ export async function completeActivity(
       throw new repo.ConflictError(`lesson ${item.topicId} was already completed for this session`);
     }
     await awardXp(db, args, XP_AMOUNTS.lessonComplete, "lessonComplete", today, p);
-    return { xp: XP_AMOUNTS.lessonComplete };
+    const newBadges = await checkAndAwardBadges(db, graph, pathTopicIds, p.id);
+    return { xp: XP_AMOUNTS.lessonComplete, newBadges };
   }
 
   // defensive: the discriminated union + the route's zod schema already guarantee this, but a
@@ -235,7 +238,8 @@ export async function completeActivity(
       }
     }
   }
-  return { graded, xp, masteryAfter: after.status, routeDecision };
+  const newBadges = await checkAndAwardBadges(db, graph, pathTopicIds, p.id);
+  return { graded, xp, masteryAfter: after.status, routeDecision, newBadges };
 }
 
 async function awardXp(

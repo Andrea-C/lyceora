@@ -180,3 +180,11 @@ export const rateLimitWindow = pgTable("rate_limit_window", {
   windowStart: timestamp("window_start", { withTimezone: true }).notNull(),
   count: integer("count").notNull().default(0)
 }, (t) => [uniqueIndex("rate_window_uniq").on(t.profileId, t.route, t.windowStart)]);
+
+/** One row per badge a profile has earned. Award is permanent and idempotent (UNIQUE profile+badge). */
+export const awardedBadge = pgTable("awarded_badge", {
+  id: uuid("id").primaryKey().defaultRandom(),
+  profileId: uuid("profile_id").notNull().references(() => profile.id, { onDelete: "cascade" }),
+  badgeId: text("badge_id").notNull(),
+  awardedAt: timestamp("awarded_at", { withTimezone: true }).notNull().defaultNow()
+}, (t) => [uniqueIndex("awarded_badge_uniq").on(t.profileId, t.badgeId)]);
