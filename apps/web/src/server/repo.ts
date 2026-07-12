@@ -1,6 +1,6 @@
 import { and, eq, lte, desc, isNull, sql } from "drizzle-orm";
 import type { Db } from "@lyceora/db";
-import { profile, masteryState, evidenceRecord, reviewQueue, enrollment, learningSession, servedExercise } from "@lyceora/db";
+import { profile, masteryState, evidenceRecord, reviewQueue, enrollment, learningSession, servedExercise, rateLimitWindow } from "@lyceora/db";
 import type { MasteryState, SessionPlan } from "@lyceora/engine";
 import { EMPTY_MASTERY_STATE } from "@lyceora/engine";
 import type { Exercise } from "@lyceora/agents";
@@ -190,4 +190,22 @@ export async function claimServedExercise(
   }
   const { itemKind, ...exercise } = row.exerciseJson as unknown as (Exercise & { itemKind: string });
   return { sessionId: row.sessionId, topicId: row.topicId, difficulty: row.difficulty, itemKind, exercise: exercise as Exercise };
+}
+
+export const RATE_LIMITS = { agent: 30, signals: 120 } as const;
+
+/** Fixed 1h-window counter. Atomic upsert-increment; returns whether this call is within limit.
+ * The increment happens even when refused — harmless (row is already over) and keeps it one query. */
+export async function consumeRateLimit(
+  db: Db, profileId: string, route: string, limit: number, now: Date = new Date()
+): Promise<boolean> {
+  const windowStart = new Date(Math.floor(now.getTime() / 3_600_000) * 3_600_000);
+  const [row] = await db.insert(rateLimitWindow)
+    .values({ profileId, route, windowStart, count: 1 })
+    .onConflictDoUpdate({
+      target: [rateLimitWindow.profileId, rateLimitWindow.route, rateLimitWindow.windowStart],
+      set: { count: sql`${rateLimitWindow.count} + 1` }
+    })
+    .returning({ count: rateLimitWindow.count });
+  return (row?.count ?? limit + 1) <= limit;
 }
