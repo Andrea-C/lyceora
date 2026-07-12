@@ -35,6 +35,26 @@ export function resourceIdFor(topicId: string, url: string): string {
   return `res_${topicId}_${createHash("sha256").update(url).digest("hex").slice(0, 8)}`;
 }
 
+export interface Budget {
+  spend(usd: number): boolean;
+  total(): number;
+}
+
+/** Tracks estimated USD spend against a hard cap. `spend` refuses (leaving `total` unchanged) when committing would push the running total past `capUsd`. */
+export function createBudget(capUsd: number): Budget {
+  let total = 0;
+  return {
+    spend(usd: number): boolean {
+      if (total + usd > capUsd) return false;
+      total += usd;
+      return true;
+    },
+    total(): number {
+      return total;
+    }
+  };
+}
+
 export async function curateTopic(
   topic: Topic,
   ports: {

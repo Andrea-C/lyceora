@@ -21,3 +21,6 @@ test-results/
 
 # Translation script resumability checkpoint (regenerable, not source data)
 packages/taxonomy/data/.translate-progress.json
+
+# Curator CLI resumability checkpoint (regenerable, not source data)
+packages/taxonomy/data/.curator-progress.json
