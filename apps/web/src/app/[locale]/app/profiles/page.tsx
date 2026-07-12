@@ -41,7 +41,7 @@ export default async function ProfilesPage({
     "use server";
     const profileId = String(formData.get("profileId") ?? "");
     const goal = Number(formData.get("goal"));
-    if (!profileId || !Number.isFinite(goal)) return;
+    if (!profileId || !Number.isInteger(goal) || goal < XP_GOAL_MIN || goal > XP_GOAL_MAX) return;
 
     const parentSession = await getSessionOrRedirect(locale);
     await setDailyXpGoal(db, parentSession.user.id, profileId, goal);
