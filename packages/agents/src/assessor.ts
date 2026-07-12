@@ -1,4 +1,4 @@
-import { generateObject } from "ai";
+import { generateObject, NoObjectGeneratedError } from "ai";
 import { z } from "zod";
 import type { Topic, Locale } from "@lyceora/taxonomy";
 import type { Registry } from "./registry";
@@ -10,12 +10,22 @@ export async function generateExercises(
   opts: { count: number; difficulty: 1 | 2 | 3 }
 ): Promise<Exercise[]> {
   return reg.withFallback("assessor", async ({ model }) => {
-    const { object } = await generateObject({
-      model,
-      schema: exerciseSetSchema,
-      prompt: exerciseGenPrompt(topic, locale, opts.count, opts.difficulty)
-    });
-    return object.exercises;
+    const attempt = async (): Promise<Exercise[]> => {
+      const { object } = await generateObject({
+        model,
+        schema: exerciseSetSchema,
+        prompt: exerciseGenPrompt(topic, locale, opts.count, opts.difficulty)
+      });
+      return object.exercises;
+    };
+    try {
+      return await attempt();
+    } catch (err) {
+      // schema-mismatch is a stochastic model flub, not a provider fault: withFallback won't
+      // (and shouldn't) fail over on it, so give the same model one more chance before erroring
+      if (NoObjectGeneratedError.isInstance(err)) return attempt();
+      throw err;
+    }
   });
 }
 

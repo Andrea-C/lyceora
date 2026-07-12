@@ -9,7 +9,8 @@ export function exerciseGenPrompt(topic: Topic, locale: Locale, count: number, d
     KID_SAFETY_GUARDRAILS,
     `Topic: ${topic.name[locale]} — ${topic.description[locale]}`,
     `Mastery evidence this must probe: ${topic.evidence.map((e) => e[locale]).join("; ")}`,
-    `Write ${count} exercises in ${langName[locale]}, difficulty ${difficulty}/3.`,
+    `Write ${count} exercises in ${langName[locale]} at difficulty ${difficulty} of 3 (1 = introductory, single step; 2 = standard, two steps; 3 = challenging, multi-step or applied).`,
+    `Calibrate every exercise to difficulty ${difficulty} exactly — not easier, not harder — and set each exercise's "difficulty" field to ${difficulty}.`,
     `Prefer kind "mcq" (3-4 plausible choices; correctAnswer = index of the right choice as a string) or "numeric" (correctAnswer = the number as a string). Use "open" at most once.`,
     `Each explanation teaches the step-by-step path to the answer, warmly and without jargon.`,
     `Give each exercise a unique short id.`
