@@ -5,7 +5,11 @@ import { resourceSchema } from "../src/index.js";
 
 const read = (f: string) => JSON.parse(readFileSync(new URL(`../data/${f}`, import.meta.url), "utf-8"));
 const resources = z.array(resourceSchema).parse(read("math-it-media/resources.json").resources);
-const topicIds = new Set(read("math-it-media/topics.json").topics.map((t: { id: string }) => t.id));
+const topicIds = new Set([
+  ...read("math-it-media/topics.json").topics.map((t: { id: string }) => t.id),
+  ...read("math-junior.json").topics.map((t: { id: string }) => t.id),
+  ...read("math-core.json").topics.map((t: { id: string }) => t.id),
+]);
 
 const CLUSTERS: Record<string, string[]> = {
   potenze: ["lyc_potenze"],
@@ -19,7 +23,7 @@ const CLUSTERS: Record<string, string[]> = {
 };
 
 describe("curated resources", () => {
-  it("has >= 30 records, all https, all referencing existing lyc_ topics", () => {
+  it("has >= 30 records, all https, all referencing existing topics", () => {
     expect(resources.length).toBeGreaterThanOrEqual(30);
     for (const r of resources) {
       expect(r.url).toMatch(/^https:\/\//);
