@@ -11,5 +11,5 @@
   "common": { "retry": "Riprova", "backToDashboard": "Torna alla home", "loading": "Caricamento…", "genericError": "Qualcosa è andato storto. Riprova tra poco.", "switchLanguage": "Cambia lingua" },
   "agent": { "budgetExceeded": "Facciamo una pausa dalla chat e torniamo a esercitarci — potrai chiedere di nuovo al maestro nella prossima sessione!", "rateLimited": "Hai chattato tantissimo! Il maestro torna disponibile tra poco.", "topicNotInPlan": "Questo argomento non fa parte della sessione di oggi." },
   "footer": { "attribution": "Contenuti tassonomici derivati da Marble os-taxonomy (ODbL 1.0)" },
-  "admin": { "title": "Dashboard", "users": "Utenti", "impersonate": "Impersona", "stagePending": "diagnostica da fare", "stageActive": "in percorso", "countUsers": "Utenti", "countProfiles": "Profili", "countSessions7d": "Sessioni (7g)", "countActive7d": "Profili attivi (7g)" }
+  "admin": { "title": "Dashboard", "users": "Utenti", "impersonate": "Impersona", "stagePending": "diagnostica da fare", "stageActive": "in percorso", "countUsers": "Utenti", "countProfiles": "Profili", "countSessions7d": "Sessioni (7g)", "countActive7d": "Profili attivi (7g)", "impersonating": "Stai impersonando {email}", "stopImpersonating": "Torna admin" }
 }

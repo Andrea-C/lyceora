@@ -3,6 +3,7 @@ import { getTranslations } from "next-intl/server";
 import { db } from "@/lib/db";
 import { requireAdminOrNotFound } from "@/lib/session";
 import { getAdminDashboard } from "@/server/services/admin";
+import { ImpersonateButton } from "@/components/ImpersonateButton";
 
 export default async function AdminPage({
   params
@@ -43,11 +44,13 @@ export default async function AdminPage({
         <ul className="flex flex-col gap-4">
           {users.map((u) => (
             <li key={u.id} className="rounded-2xl border border-black/[.08] p-5 dark:border-white/[.15]">
-              <h3 className="text-xl font-semibold">{u.email}</h3>
+              <div className="flex items-center justify-between gap-3">
+                <h3 className="text-xl font-semibold">{u.email}</h3>
+                <ImpersonateButton userId={u.id} locale={locale} label={t("impersonate")} />
+              </div>
               <ul className="mt-3 flex flex-col gap-2">
                 {u.profiles.map((p) => (
                   <li key={p.id}>
-                    {/* Drill-in page lands in Task 6 — dead link until then. */}
                     <Link
                       href={`/${locale}/app/admin/profile/${p.id}`}
                       className="flex items-center justify-between gap-3 rounded-xl border border-black/[.08] p-3 text-sm transition-colors hover:bg-black/[.02] dark:border-white/[.15] dark:hover:bg-white/[.04]"

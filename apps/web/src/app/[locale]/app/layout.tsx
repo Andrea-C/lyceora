@@ -1,10 +1,12 @@
 import { cookies, headers } from "next/headers";
 import { redirect } from "next/navigation";
+import { getTranslations } from "next-intl/server";
 import { auth } from "@/lib/auth";
 import { getSessionOrRedirect, isAdmin } from "@/lib/session";
 import { db } from "@/lib/db";
 import * as repo from "@/server/repo";
 import { AppNav } from "@/components/AppNav";
+import { ImpersonationBanner } from "@/components/ImpersonationBanner";
 
 export default async function AppLayout({
   children,
@@ -36,8 +38,21 @@ export default async function AppLayout({
     redirect(`/${locale}`);
   }
 
+  let banner: React.ReactNode = null;
+  if (session.session.impersonatedBy) {
+    const t = await getTranslations("admin");
+    banner = (
+      <ImpersonationBanner
+        label={t("impersonating", { email: session.user.email })}
+        stopLabel={t("stopImpersonating")}
+        locale={locale}
+      />
+    );
+  }
+
   return (
     <>
+      {banner}
       <AppNav
         locale={locale}
         isAdminUser={isAdmin(session.user)}

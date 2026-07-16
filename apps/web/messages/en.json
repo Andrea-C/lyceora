@@ -11,5 +11,5 @@
   "common": { "retry": "Try again", "backToDashboard": "Back to home", "loading": "Loading…", "genericError": "Something went wrong. Please try again soon.", "switchLanguage": "Switch language" },
   "agent": { "budgetExceeded": "Let's take a break from chatting and get back to practicing — you can ask the teacher again next session!", "rateLimited": "So much chatting! The teacher will be back shortly.", "topicNotInPlan": "This topic is not part of today's session." },
   "footer": { "attribution": "Taxonomy content derived from Marble os-taxonomy (ODbL 1.0)" },
-  "admin": { "title": "Dashboard", "users": "Users", "impersonate": "Impersonate", "stagePending": "diagnostic pending", "stageActive": "on path", "countUsers": "Users", "countProfiles": "Profiles", "countSessions7d": "Sessions (7d)", "countActive7d": "Active profiles (7d)" }
+  "admin": { "title": "Dashboard", "users": "Users", "impersonate": "Impersonate", "stagePending": "diagnostic pending", "stageActive": "on path", "countUsers": "Users", "countProfiles": "Profiles", "countSessions7d": "Sessions (7d)", "countActive7d": "Active profiles (7d)", "impersonating": "Impersonating {email}", "stopImpersonating": "Back to admin" }
 }
