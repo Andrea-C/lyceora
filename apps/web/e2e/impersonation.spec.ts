@@ -9,7 +9,9 @@ import { E2E_DB_PORT } from "./global-setup";
  * admin dashboard, see the banner while browsing as them (ImpersonationBanner), stop
  * impersonating via its plain form POST (/api/admin/stop-impersonating), and land back on the
  * admin dashboard with the httpOnly lyceora_profile cookie cleared and the admin session
- * genuinely restored (not just logged out).
+ * genuinely restored (not just logged out). Also covers the profile drill-in page itself
+ * (admin/profile/[id]/page.tsx), both the happy path (ProfileReport renders for a real profile
+ * id, admin browsing as themself) and an unknown id (getProfileReport throws -> notFound()).
  *
  * There's no UI to self-promote to admin, so this promotes a freshly-signed-up account by
  * writing directly to the E2E run's own database (the same PGlite-over-Postgres-wire instance
@@ -48,6 +50,19 @@ test("admin impersonates a parent, banner shows, stop-impersonating restores the
   await page.goto("/it/app/admin");
   const targetRow = page.locator("li").filter({ hasText: targetEmail });
   await expect(targetRow).toBeVisible();
+
+  // --- drill-in page (Task 6 review gap): as the admin, NOT impersonating, follow the profile
+  // link straight through to the report — ProfileReport renders with the profile's own data ---
+  await targetRow.getByRole("link", { name: /Bimbo Target/ }).click();
+  await page.waitForURL(/\/it\/app\/admin\/profile\/[0-9a-f-]+$/);
+  await expect(page.getByRole("heading", { name: "Bimbo Target" })).toBeVisible();
+  await expect(page.getByText("Questa settimana", { exact: true })).toBeVisible();
+
+  // --- unknown profile id -> getProfileReport throws -> the page catches it -> notFound() ---
+  const bogusResponse = await page.goto("/it/app/admin/profile/00000000-0000-0000-0000-000000000000");
+  expect(bogusResponse?.status()).toBe(404);
+
+  await page.goto("/it/app/admin");
   await targetRow.getByRole("button", { name: "Impersona" }).click();
   await page.waitForURL(/\/it\/app\/profiles$/);
 
