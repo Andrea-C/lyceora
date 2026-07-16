@@ -37,11 +37,9 @@ test("signup -> diagnostic -> session -> teacher chat -> locale switch (fake mod
   await page.getByRole("button", { name: "Crea account", exact: true }).click(); // submit
   await page.waitForURL(/\/it\/app\/profiles$/);
 
-  // --- create + pick child profile ---
+  // --- create child profile: creation now auto-enters the dashboard directly ---
   await page.getByLabel("Nome").fill(childDisplayName);
   await page.getByTestId("profile-create").click();
-  await expect(page.getByTestId("profile-pick")).toBeVisible();
-  await page.getByTestId("profile-pick").click();
   await page.waitForURL(/\/it\/app$/);
 
   // --- dashboard: no enrollment yet, start the diagnostic ---
@@ -138,6 +136,14 @@ test("signup -> diagnostic -> session -> teacher chat -> locale switch (fake mod
   // the child, driven by the session activity completed above ---
   await expect(page.locator("svg").first()).toBeVisible();
   await expect(page.getByText("Questa settimana", { exact: true })).toBeVisible();
+
+  // --- profile switching (Task 3): the nav chip goes to /profiles, re-picking a card
+  // re-selects it and lands back on the dashboard, same as the create-time auto-enter ---
+  await nav.getByRole("link", { name: childDisplayName }).click();
+  await page.waitForURL(/\/it\/app\/profiles$/);
+  await expect(page.getByTestId("profile-pick")).toBeVisible();
+  await page.getByTestId("profile-pick").click();
+  await page.waitForURL(/\/it\/app$/);
 
   // --- logout (Task 2): the nav's logout action signs out and redirects to the landing page ---
   await nav.getByRole("button", { name: "Esci" }).click();

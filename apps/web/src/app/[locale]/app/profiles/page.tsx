@@ -28,13 +28,21 @@ export default async function ProfilesPage({
     const birthYear = birthYearRaw && Number.isInteger(n) && n >= 2005 && n <= 2022 ? n : undefined;
 
     const parentSession = await getSessionOrRedirect(locale);
-    await db.insert(profile).values({
-      ownerUserId: parentSession.user.id,
-      displayName,
-      birthYear,
-      locale: locale === "en" ? "en" : "it"
+    const [created] = await db
+      .insert(profile)
+      .values({
+        ownerUserId: parentSession.user.id,
+        displayName,
+        birthYear,
+        locale: locale === "en" ? "en" : "it"
+      })
+      .returning();
+
+    const cookieStore = await cookies();
+    cookieStore.set("lyceora_profile", created!.id, {
+      httpOnly: true, path: "/", sameSite: "lax", secure: process.env.NODE_ENV === "production"
     });
-    revalidatePath(`/${locale}/app/profiles`);
+    redirect(`/${locale}/app`);
   }
 
   async function updateDailyXpGoal(formData: FormData) {

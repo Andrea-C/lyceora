@@ -1,7 +1,7 @@
 {
   "landing": { "title": "Lyceora", "tagline": "Il tuo insegnante di matematica personale", "login": "Accedi", "signup": "Crea account", "email": "Email", "password": "Password", "name": "Nome" },
   "auth": { "invalidCredentials": "Email o password non corrette.", "emailInUse": "Questa email è già registrata — prova ad accedere.", "genericError": "Qualcosa è andato storto. Riprova tra poco." },
-  "profiles": { "title": "Chi studia oggi?", "create": "Aggiungi profilo", "displayName": "Nome", "birthYear": "Anno di nascita", "start": "Inizia", "xpGoalLabel": "Obiettivo XP giornaliero", "xpGoalSave": "Salva" },
+  "profiles": { "title": "Chi studia oggi?", "create": "Aggiungi profilo", "displayName": "Nome", "birthYear": "Anno di nascita (2005–2022, facoltativo)", "start": "Inizia", "xpGoalLabel": "Obiettivo XP giornaliero", "xpGoalSave": "Salva" },
   "dashboard": { "title": "Ciao {name}!", "intro": "Iniziamo con qualche domanda per capire da dove partire.", "startSession": "Inizia la sessione", "startDiagnostic": "Scopri da dove partire", "xpToday": "XP di oggi", "streak": "Giorni di fila", "progress": "Progresso del percorso", "badges": "I tuoi distintivi" },
   "domains": { "powersRoots": "Potenze e radici", "numberTheory": "Teoria dei numeri", "fractions": "Frazioni", "measurement": "Misure", "coordinateGeometry": "Geometria analitica", "geometry": "Geometria" },
   "diagnostic": { "title": "Vediamo cosa sai già", "intro": "Qualche domanda veloce — niente voti!", "done": "Fatto! Il tuo percorso è pronto.", "question": "Domanda {n}", "retry": "Qualcosa non ha funzionato — riprova!", "error": "Non riusciamo a caricare le domande adesso." },
