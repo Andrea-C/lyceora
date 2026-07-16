@@ -37,11 +37,9 @@ test("signup -> diagnostic -> session -> teacher chat -> locale switch (fake mod
   await page.getByRole("button", { name: "Crea account", exact: true }).click(); // submit
   await page.waitForURL(/\/it\/app\/profiles$/);
 
-  // --- create + pick child profile ---
+  // --- create child profile: creation now auto-enters the dashboard directly ---
   await page.getByLabel("Nome").fill(childDisplayName);
   await page.getByTestId("profile-create").click();
-  await expect(page.getByTestId("profile-pick")).toBeVisible();
-  await page.getByTestId("profile-pick").click();
   await page.waitForURL(/\/it\/app$/);
 
   // --- dashboard: no enrollment yet, start the diagnostic ---
@@ -122,11 +120,34 @@ test("signup -> diagnostic -> session -> teacher chat -> locale switch (fake mod
   await page.waitForURL(/\/en\/app$/);
   await expect(page.getByText("XP today")).toBeVisible();
 
+  // --- back to Italian for the rest of the flow ---
+  await page.getByTestId("locale-switch").click();
+  await page.waitForURL(/\/it\/app$/);
+
+  // --- app nav (Task 2): visible on every /app page, role-aware items, navigate via its links ---
+  const nav = page.getByRole("navigation");
+  await expect(nav).toBeVisible();
+  const parentNavLink = nav.getByRole("link", { name: "Area genitori" });
+  await expect(parentNavLink).toBeVisible();
+  await parentNavLink.click();
+  await page.waitForURL(/\/it\/app\/parent$/);
+
   // --- parent page: progress report (Task 11) — activity chart + weekly summary render for
   // the child, driven by the session activity completed above ---
-  await page.goto("/it/app/parent");
   await expect(page.locator("svg").first()).toBeVisible();
   await expect(page.getByText("Questa settimana", { exact: true })).toBeVisible();
+
+  // --- profile switching (Task 3): the nav chip goes to /profiles, re-picking a card
+  // re-selects it and lands back on the dashboard, same as the create-time auto-enter ---
+  await nav.getByRole("link", { name: childDisplayName }).click();
+  await page.waitForURL(/\/it\/app\/profiles$/);
+  await expect(page.getByTestId("profile-pick")).toBeVisible();
+  await page.getByTestId("profile-pick").click();
+  await page.waitForURL(/\/it\/app$/);
+
+  // --- logout (Task 2): the nav's logout action signs out and redirects to the landing page ---
+  await nav.getByRole("button", { name: "Esci" }).click();
+  await page.waitForURL(/\/it$/);
 });
 
 /** Waits for the diagnostic's "Domanda N" counter to show the expected question number (exact
