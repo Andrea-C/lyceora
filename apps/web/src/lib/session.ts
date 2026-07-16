@@ -1,5 +1,5 @@
 import { cookies, headers } from "next/headers";
-import { redirect } from "next/navigation";
+import { notFound, redirect } from "next/navigation";
 import { auth } from "./auth";
 import { db } from "./db";
 import * as repo from "@/server/repo";
@@ -7,6 +7,17 @@ import * as repo from "@/server/repo";
 export async function getSessionOrRedirect(locale: string) {
   const session = await auth.api.getSession({ headers: await headers() });
   if (!session) redirect(`/${locale}`);
+  return session;
+}
+
+export function isAdmin(user: { role?: string | null }): boolean {
+  return user.role === "admin";
+}
+
+/** Admin pages 404 for everyone else — don't advertise the route's existence. */
+export async function requireAdminOrNotFound(locale: string) {
+  const session = await getSessionOrRedirect(locale);
+  if (!isAdmin(session.user)) notFound();
   return session;
 }
 

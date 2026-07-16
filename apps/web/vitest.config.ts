@@ -1,8 +1,14 @@
+import { fileURLToPath } from "node:url";
 import { defineConfig } from "vitest/config";
 import react from "@vitejs/plugin-react";
 
 export default defineConfig({
   plugins: [react()],
+  resolve: {
+    // Mirrors tsconfig.json's "@/*" -> "./src/*" path mapping; needed once a test imports a
+    // module (e.g. src/lib/session.ts) that itself uses the "@/..." alias internally.
+    alias: { "@": fileURLToPath(new URL("./src", import.meta.url)) }
+  },
   test: {
     environment: "node",
     // .test.tsx files (component tests) run under jsdom; everything else (service/unit tests
