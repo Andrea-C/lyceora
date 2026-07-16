@@ -4,7 +4,6 @@ import { NextIntlClientProvider } from "next-intl";
 import { getMessages, getTranslations, setRequestLocale } from "next-intl/server";
 import { notFound } from "next/navigation";
 import { routing } from "@/i18n/routing";
-import { LocaleSwitch } from "@/components/LocaleSwitch";
 import "../globals.css";
 
 const geistSans = Geist({
@@ -49,9 +48,6 @@ export default async function LocaleLayout({
     <html lang={locale} className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}>
       <body className="min-h-full flex flex-col">
         <NextIntlClientProvider messages={messages}>
-          <header className="flex justify-end px-6 py-4">
-            <LocaleSwitch />
-          </header>
           <div className="flex flex-1 flex-col">{children}</div>
           <footer className="border-t border-black/[.08] py-4 text-center text-xs text-zinc-500 dark:border-white/[.145] dark:text-zinc-400">
             {t("attribution")}

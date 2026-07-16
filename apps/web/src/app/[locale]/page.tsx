@@ -4,6 +4,7 @@ import { useState, type FormEvent } from "react";
 import { useRouter } from "next/navigation";
 import { useLocale, useTranslations } from "next-intl";
 import { authClient } from "@/lib/auth-client";
+import { LocaleSwitch } from "@/components/LocaleSwitch";
 
 /** Maps a better-auth failure `code` (e.g. "INVALID_EMAIL_OR_PASSWORD",
  * "USER_ALREADY_EXISTS_USE_ANOTHER_EMAIL") to one of our own bilingual message keys — the raw
@@ -49,64 +50,69 @@ export default function LandingPage() {
   }
 
   return (
-    <main className="flex flex-1 flex-col items-center justify-center gap-8 px-6 py-16">
-      <div className="text-center">
-        <h1 className="text-4xl font-semibold tracking-tight">{t("title")}</h1>
-        <p className="mt-2 text-lg text-zinc-600 dark:text-zinc-400">{t("tagline")}</p>
-      </div>
+    <>
+      <header className="flex justify-end px-6 py-4">
+        <LocaleSwitch />
+      </header>
+      <main className="flex flex-1 flex-col items-center justify-center gap-8 px-6 py-16">
+        <div className="text-center">
+          <h1 className="text-4xl font-semibold tracking-tight">{t("title")}</h1>
+          <p className="mt-2 text-lg text-zinc-600 dark:text-zinc-400">{t("tagline")}</p>
+        </div>
 
-      <form onSubmit={handleSubmit} className="flex w-full max-w-sm flex-col gap-4">
-        {mode === "signup" && (
+        <form onSubmit={handleSubmit} className="flex w-full max-w-sm flex-col gap-4">
+          {mode === "signup" && (
+            <label className="flex flex-col gap-1 text-sm">
+              {t("name")}
+              <input
+                className="rounded-md border border-black/[.1] px-3 py-2 dark:border-white/[.15] dark:bg-black"
+                value={name}
+                onChange={(event) => setName(event.target.value)}
+                required
+              />
+            </label>
+          )}
           <label className="flex flex-col gap-1 text-sm">
-            {t("name")}
+            {t("email")}
             <input
+              type="email"
               className="rounded-md border border-black/[.1] px-3 py-2 dark:border-white/[.15] dark:bg-black"
-              value={name}
-              onChange={(event) => setName(event.target.value)}
+              value={email}
+              onChange={(event) => setEmail(event.target.value)}
               required
             />
           </label>
-        )}
-        <label className="flex flex-col gap-1 text-sm">
-          {t("email")}
-          <input
-            type="email"
-            className="rounded-md border border-black/[.1] px-3 py-2 dark:border-white/[.15] dark:bg-black"
-            value={email}
-            onChange={(event) => setEmail(event.target.value)}
-            required
-          />
-        </label>
-        <label className="flex flex-col gap-1 text-sm">
-          {t("password")}
-          <input
-            type="password"
-            className="rounded-md border border-black/[.1] px-3 py-2 dark:border-white/[.15] dark:bg-black"
-            value={password}
-            onChange={(event) => setPassword(event.target.value)}
-            required
-            minLength={8}
-          />
-        </label>
+          <label className="flex flex-col gap-1 text-sm">
+            {t("password")}
+            <input
+              type="password"
+              className="rounded-md border border-black/[.1] px-3 py-2 dark:border-white/[.15] dark:bg-black"
+              value={password}
+              onChange={(event) => setPassword(event.target.value)}
+              required
+              minLength={8}
+            />
+          </label>
 
-        {error && <p className="text-sm text-red-600">{error}</p>}
+          {error && <p className="text-sm text-red-600">{error}</p>}
 
-        <button
-          type="submit"
-          disabled={pending}
-          className="rounded-full bg-foreground px-5 py-2 text-background transition-colors hover:bg-[#383838] disabled:opacity-50 dark:hover:bg-[#ccc]"
-        >
-          {mode === "signup" ? t("signup") : t("login")}
-        </button>
+          <button
+            type="submit"
+            disabled={pending}
+            className="rounded-full bg-foreground px-5 py-2 text-background transition-colors hover:bg-[#383838] disabled:opacity-50 dark:hover:bg-[#ccc]"
+          >
+            {mode === "signup" ? t("signup") : t("login")}
+          </button>
 
-        <button
-          type="button"
-          onClick={() => setMode(mode === "signup" ? "login" : "signup")}
-          className="text-sm text-zinc-600 underline dark:text-zinc-400"
-        >
-          {mode === "signup" ? t("login") : t("signup")}
-        </button>
-      </form>
-    </main>
+          <button
+            type="button"
+            onClick={() => setMode(mode === "signup" ? "login" : "signup")}
+            className="text-sm text-zinc-600 underline dark:text-zinc-400"
+          >
+            {mode === "signup" ? t("login") : t("signup")}
+          </button>
+        </form>
+      </main>
+    </>
   );
 }
