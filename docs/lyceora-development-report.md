@@ -126,3 +126,34 @@ Mid-session resumption (pushed to **M2.5**); email/digest parent reports; non-ma
 
 - A **spot-review of ~20 translated topics** from the model-assisted Italian overlay — the lint gate checks structure, not pedagogy quality.
 - A **curated-resource batch review**: the curator's proposals in `packages/taxonomy/data/curated-review/` are ready to read and promote (`curate:promote`) into `resources.json`.
+
+## 10. M2.1 addendum (2026-07-16)
+
+**State:** M2.1 built on `feature/m2.1` off M2 merged to `main`. Spec at `docs/superpowers/specs/2026-07-16-lyceora-m2.1-usability-design.md`, plan at `docs/superpowers/plans/2026-07-16-lyceora-m2.1.md` — same process (6 tasks + reviews on `feature/m2.1`). Tests grew **153 → 160** (+2 E2E specs); fakes and audit suite stable.
+
+### What M2.1 shipped
+
+- **Roles & admin plugin**: integrated Better Auth admin plugin + required `nextCookies` plugin for server-side cookie writes (key integration finding); admin role schema via new migration 0005.
+- **AppNav with role-aware items**: navigation layout renders conditional links (admin dashboard for admins only) and logout action tied to role.
+- **Birth-year hint & auto-enter-on-create fix**: signup form profile creation pre-fills current year, auto-selects on confirmation.
+- **ProfileReport extraction**: shared report component leveraging parent and admin dashboards for localized, focused reuse.
+- **Admin dashboard**: live counters (total users, active this week), drill-down users table with sort/filter, stage overview with drill-in to topic detail, all computed at request time.
+- **Impersonation with banner**: admin can impersonate a parent from the users table; a sticky banner displays the impersonated user with a "Torna admin" link; session context carries the impersonation state.
+- **Stop-impersonating route handler**: clean exit from impersonation back to admin view.
+
+### Decisions that supersede the M2.1 plan
+
+(None; execution tracked with plan.)
+
+### Deferred (per the M2.1 design's out-of-scope list)
+
+- **Typed NotFoundError for drill-in**: drill-in links currently rely on 404 fallback; explicit error type deferred.
+- **Stop-impersonating graceful non-impersonating response**: only impersonated sessions see the stop handler; a non-impersonating admin hitting it falls through; can formalize in M2.2.
+- **Hide Impersona on own row**: admin viewing their own row in the users table sees the impersonate button (no-op); deferred cosmetic fix.
+- **`activeProfiles7d` timezone boundary**: activity window uses UTC; per-locale midnight boundary deferred to when usage patterns demand it.
+- **Per-clause rimonta probes**: detailed test probes for topic retry-restart cycles (carried from M2).
+- **Student login role**: student users with their own independent role (separate from child profiles); deferred to **M3**.
+
+### Flagged for Andrea
+
+(None at this time.)
