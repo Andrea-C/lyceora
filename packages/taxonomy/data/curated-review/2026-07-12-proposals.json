@@ -1,0 +1,1129 @@
+{
+  "proposals": [
+    {
+      "id": "res_mt_e8CZ7E5qW7_b9a3d9a9",
+      "topicIds": [
+        "mt_e8CZ7E5qW7"
+      ],
+      "kind": "exercises",
+      "provider": "All Kids Network",
+      "title": {
+        "it": "Complementi a 9 | All Kids Network",
+        "en": "Number 9 Bonds | All Kids Network"
+      },
+      "url": "https://www.allkidsnetwork.com/math/number-bonds/1st-grade/number-nine-bonds-worksheet",
+      "lang": "en",
+      "validationNotes": "curated 2026-07-12T22:27:38.913Z via run-curator.ts (topic mt_e8CZ7E5qW7); verify safety, liveness and licence before promoting."
+    },
+    {
+      "id": "res_mt_7XcCG43ZZW_43580811",
+      "topicIds": [
+        "mt_7XcCG43ZZW"
+      ],
+      "kind": "exercises",
+      "provider": "portalebambini.it",
+      "title": {
+        "it": "Numeri Amici del 10: elenco, schede e idee",
+        "en": "Friend Numbers up to 10: lists, worksheets and ideas"
+      },
+      "url": "https://portalebambini.it/schede-matematica-numeri-amici-10/",
+      "lang": "it",
+      "validationNotes": "curated 2026-07-12T22:28:28.679Z via run-curator.ts (topic mt_7XcCG43ZZW); verify safety, liveness and licence before promoting."
+    },
+    {
+      "id": "res_mt_7XcCG43ZZW_f4e3a59d",
+      "topicIds": [
+        "mt_7XcCG43ZZW"
+      ],
+      "kind": "exercises",
+      "provider": "Lapappadolce",
+      "title": {
+        "it": "Composizione e scomposizione di numeri – Lapappadolce",
+        "en": "Composition and Decomposition of Numbers – Lapappadolce"
+      },
+      "url": "https://www.lapappadolce.net/composizione-e-scomposizione-di-numeri/",
+      "lang": "it",
+      "validationNotes": "curated 2026-07-12T22:28:28.679Z via run-curator.ts (topic mt_7XcCG43ZZW); verify safety, liveness and licence before promoting."
+    },
+    {
+      "id": "res_mt_7XcCG43ZZW_7fdd0df4",
+      "topicIds": [
+        "mt_7XcCG43ZZW"
+      ],
+      "kind": "exercises",
+      "provider": "Mammarum",
+      "title": {
+        "it": "Gli amici del 10 gioco",
+        "en": "The Friends of 10 Game"
+      },
+      "url": "http://mammarum.com/2021/02/gli-amici-del-10-gioco.html",
+      "lang": "it",
+      "validationNotes": "curated 2026-07-12T22:28:28.679Z via run-curator.ts (topic mt_7XcCG43ZZW); verify safety, liveness and licence before promoting."
+    },
+    {
+      "id": "res_mt_7XcCG43ZZW_2ea90203",
+      "topicIds": [
+        "mt_7XcCG43ZZW"
+      ],
+      "kind": "exercises",
+      "provider": "Virgilio Sapere",
+      "title": {
+        "it": "I numeri da 1 a 10: la linea dei numeri",
+        "en": "Numbers from 1 to 10: the number line"
+      },
+      "url": "https://sapere.virgilio.it/scuola/elementari/matematica-aritmetica/numeri/linea-numeri-1-10",
+      "lang": "it",
+      "validationNotes": "curated 2026-07-12T22:28:28.679Z via run-curator.ts (topic mt_7XcCG43ZZW); verify safety, liveness and licence before promoting."
+    },
+    {
+      "id": "res_mt_7XcCG43ZZW_b3821d70",
+      "topicIds": [
+        "mt_7XcCG43ZZW"
+      ],
+      "kind": "video",
+      "provider": "SofaTutor",
+      "title": {
+        "it": "Coppie di numeri che formano 10",
+        "en": "Pairs of Numbers that Add to 10"
+      },
+      "url": "https://us.sofatutor.com/math/videos/number-pairs-to-10",
+      "lang": "en",
+      "validationNotes": "curated 2026-07-12T22:28:28.679Z via run-curator.ts (topic mt_7XcCG43ZZW); verify safety, liveness and licence before promoting."
+    },
+    {
+      "id": "res_mt_7XcCG43ZZW_79fc98ea",
+      "topicIds": [
+        "mt_7XcCG43ZZW"
+      ],
+      "kind": "exercises",
+      "provider": "House of Math",
+      "title": {
+        "it": "Che cosa sono le coppie di numeri fino a 10?",
+        "en": "What Are Number Pairs to 10?"
+      },
+      "url": "https://www.houseofmath.com/encyclopedia/numbers-and-quantities/numbers/sets-and-systems/what-are-number-pairs-to-10",
+      "lang": "en",
+      "validationNotes": "curated 2026-07-12T22:28:28.679Z via run-curator.ts (topic mt_7XcCG43ZZW); verify safety, liveness and licence before promoting."
+    },
+    {
+      "id": "res_mt_7XcCG43ZZW_a500a417",
+      "topicIds": [
+        "mt_7XcCG43ZZW"
+      ],
+      "kind": "exercises",
+      "provider": "Math Salamanders",
+      "title": {
+        "it": "Schede di lavoro sui numeri amici fino a 10",
+        "en": "Number Bonds to 10 Worksheets"
+      },
+      "url": "https://www.math-salamanders.com/number-bonds-to-10.html",
+      "lang": "en",
+      "validationNotes": "curated 2026-07-12T22:28:28.679Z via run-curator.ts (topic mt_7XcCG43ZZW); verify safety, liveness and licence before promoting."
+    },
+    {
+      "id": "res_mt_7XcCG43ZZW_aa8dd834",
+      "topicIds": [
+        "mt_7XcCG43ZZW"
+      ],
+      "kind": "exercises",
+      "provider": "NRICH, Millennium Mathematics Project",
+      "title": {
+        "it": "Coppie di Numeri - NRICH, Millennium Mathematics Project",
+        "en": "Pairs of Numbers - NRICH, Millennium Mathematics Project"
+      },
+      "url": "https://nrich.maths.org/problems/pairs-numbers",
+      "lang": "en",
+      "validationNotes": "curated 2026-07-12T22:28:28.679Z via run-curator.ts (topic mt_7XcCG43ZZW); verify safety, liveness and licence before promoting."
+    },
+    {
+      "id": "res_mt_zuKAX6lcYR_ffc07ae5",
+      "topicIds": [
+        "mt_zuKAX6lcYR"
+      ],
+      "kind": "exercises",
+      "provider": "MaMa (Portale cantonale ticinese)",
+      "title": {
+        "it": "Sottrazione | MaMa",
+        "en": "Subtraction | MaMa"
+      },
+      "url": "https://mama.edu.ti.ch/numeri-e-calcolo/operazioni/sottrazione/",
+      "lang": "it",
+      "validationNotes": "curated 2026-07-12T22:29:13.238Z via run-curator.ts (topic mt_zuKAX6lcYR); verify safety, liveness and licence before promoting."
+    },
+    {
+      "id": "res_mt_zuKAX6lcYR_08ec4830",
+      "topicIds": [
+        "mt_zuKAX6lcYR"
+      ],
+      "kind": "exercises",
+      "provider": "portalebambini.it",
+      "title": {
+        "it": "La sottrazione | portalebambini.it",
+        "en": "Subtraction | portalebambini.it"
+      },
+      "url": "https://portalebambini.it/schede-sottrazione/",
+      "lang": "it",
+      "validationNotes": "curated 2026-07-12T22:29:13.238Z via run-curator.ts (topic mt_zuKAX6lcYR); verify safety, liveness and licence before promoting."
+    },
+    {
+      "id": "res_mt_ghF3Vv6taM_0b380364",
+      "topicIds": [
+        "mt_ghF3Vv6taM"
+      ],
+      "kind": "exercises",
+      "provider": "Giochidimatematica.it",
+      "title": {
+        "it": "Pratica le addizioni e sottrazioni fino a 5 su Giochidimatematica.it",
+        "en": "Practice Addition and Subtraction up to 5 on Giochidimatematica.it"
+      },
+      "url": "https://www.giochidimatematica.it/addizione-e-sottrazione-fino-a-5.html",
+      "lang": "it",
+      "validationNotes": "curated 2026-07-12T22:30:02.559Z via run-curator.ts (topic mt_ghF3Vv6taM); verify safety, liveness and licence before promoting."
+    },
+    {
+      "id": "res_mt_ghF3Vv6taM_15732b80",
+      "topicIds": [
+        "mt_ghF3Vv6taM"
+      ],
+      "kind": "exercises",
+      "provider": "Zanichelli",
+      "title": {
+        "it": "Addizione e sottrazione - Prove ed esercizi Zanichelli",
+        "en": "Addition and subtraction - Exercises and tests Zanichelli"
+      },
+      "url": "https://esercizi.zanichelli.it/argomento/Addizione-e-sottrazione/x2ribw-x2riez-hv05o",
+      "lang": "it",
+      "validationNotes": "curated 2026-07-12T22:30:02.559Z via run-curator.ts (topic mt_ghF3Vv6taM); verify safety, liveness and licence before promoting."
+    },
+    {
+      "id": "res_mt_ghF3Vv6taM_b7c4fde3",
+      "topicIds": [
+        "mt_ghF3Vv6taM"
+      ],
+      "kind": "video",
+      "provider": "Virgilio Sapere",
+      "title": {
+        "it": "Addizioni e sottrazioni: trucchi e segreti per velocizzarle",
+        "en": "Addition and Subtraction: Tricks and Secrets to Speed Them Up"
+      },
+      "url": "https://sapere.virgilio.it/scuola/elementari/matematica-aritmetica/le-quattro-operazioni/velocizzare-addizioni-sottrazioni",
+      "lang": "it",
+      "validationNotes": "curated 2026-07-12T22:30:02.559Z via run-curator.ts (topic mt_ghF3Vv6taM); verify safety, liveness and licence before promoting."
+    },
+    {
+      "id": "res_mt_ghF3Vv6taM_fec5e70e",
+      "topicIds": [
+        "mt_ghF3Vv6taM"
+      ],
+      "kind": "exercises",
+      "provider": "SPONGYKIDS",
+      "title": {
+        "it": "Speedy Math: Addizione e Sottrazione entro il 5",
+        "en": "Speedy Math: Addition and Subtraction within 5"
+      },
+      "url": "https://spongykids.com/math-k/speedy-math-challenge",
+      "lang": "en",
+      "validationNotes": "curated 2026-07-12T22:30:02.559Z via run-curator.ts (topic mt_ghF3Vv6taM); verify safety, liveness and licence before promoting."
+    },
+    {
+      "id": "res_mt_ghF3Vv6taM_d8863b0d",
+      "topicIds": [
+        "mt_ghF3Vv6taM"
+      ],
+      "kind": "exercises",
+      "provider": "SplashLearn",
+      "title": {
+        "it": "Addizionare e sottrarre con fluidità entro il 5 - Piani di Lezione Matematici",
+        "en": "Fluently Add and Subtract within 5 - Math Lesson Plans"
+      },
+      "url": "https://www.splashlearn.com/s/math-lesson-plans/fluently-add-and-subtract-within-5",
+      "lang": "en",
+      "validationNotes": "curated 2026-07-12T22:30:02.559Z via run-curator.ts (topic mt_ghF3Vv6taM); verify safety, liveness and licence before promoting."
+    },
+    {
+      "id": "res_mt_ghF3Vv6taM_10c9f416",
+      "topicIds": [
+        "mt_ghF3Vv6taM"
+      ],
+      "kind": "exercises",
+      "provider": "Matific",
+      "title": {
+        "it": "Addizionare e sottrarre fluentemente entro il 5 - Matific",
+        "en": "Fluently add and subtract within 5 - Matific"
+      },
+      "url": "https://www.matific.com/eg/en-us/home/maths/all-grades/curriculums/common-core/operations-and-algebraic-thinking/understand-addition-as-putting-together-and-adding-to-and-understand-subtraction-as-taking-apart-and-taking-from/fluently-add-and-subtract-within-5/",
+      "lang": "en",
+      "validationNotes": "curated 2026-07-12T22:30:02.559Z via run-curator.ts (topic mt_ghF3Vv6taM); verify safety, liveness and licence before promoting."
+    },
+    {
+      "id": "res_mt_ghF3Vv6taM_46a62785",
+      "topicIds": [
+        "mt_ghF3Vv6taM"
+      ],
+      "kind": "exercises",
+      "provider": "Community Roots Charter School",
+      "title": {
+        "it": "Giochi di Fluidità in Addizione e Sottrazione",
+        "en": "Addition and Subtraction Fact Fluency Games"
+      },
+      "url": "https://communityroots.org/addition-and-subtraction-fact-fluency-games/",
+      "lang": "en",
+      "validationNotes": "curated 2026-07-12T22:30:02.559Z via run-curator.ts (topic mt_ghF3Vv6taM); verify safety, liveness and licence before promoting."
+    },
+    {
+      "id": "res_mt_8RmpkDxT9L_c17343a9",
+      "topicIds": [
+        "mt_8RmpkDxT9L"
+      ],
+      "kind": "exercises",
+      "provider": "mama.edu.ti.ch",
+      "title": {
+        "it": "I SIMBOLI >, < E = (scheda esercizi)",
+        "en": "The Symbols >, < and = (exercise sheet)"
+      },
+      "url": "https://mama.edu.ti.ch/wp-content/uploads/2022/03/4.020_III_Ordinamento_I-simboli-maggiore-minore-e-uguale.pdf",
+      "lang": "it",
+      "validationNotes": "curated 2026-07-12T22:30:50.065Z via run-curator.ts (topic mt_8RmpkDxT9L); verify safety, liveness and licence before promoting."
+    },
+    {
+      "id": "res_mt_8RmpkDxT9L_f403ab0f",
+      "topicIds": [
+        "mt_8RmpkDxT9L"
+      ],
+      "kind": "video",
+      "provider": "Khan Academy",
+      "title": {
+        "it": "Il simbolo di uguaglianza | Addizione e sottrazione",
+        "en": "Equal sign | Addition and subtraction"
+      },
+      "url": "https://www.khanacademy.org/math/cc-1st-grade-math/cc-1st-add-subtract/cc-1st-equal-sign/v/equal-sign",
+      "lang": "en",
+      "validationNotes": "curated 2026-07-12T22:30:50.065Z via run-curator.ts (topic mt_8RmpkDxT9L); verify safety, liveness and licence before promoting."
+    },
+    {
+      "id": "res_mt_8RmpkDxT9L_472a0220",
+      "topicIds": [
+        "mt_8RmpkDxT9L"
+      ],
+      "kind": "exercises",
+      "provider": "7ESL",
+      "title": {
+        "it": "Schede di Esercizi sui Simboli Matematici: PDF Stampabili Gratuiti per Bambini",
+        "en": "Math Symbols Worksheets: Free Printable PDF for Kids"
+      },
+      "url": "https://7esl.com/math-symbols-worksheets/",
+      "lang": "en",
+      "validationNotes": "curated 2026-07-12T22:30:50.065Z via run-curator.ts (topic mt_8RmpkDxT9L); verify safety, liveness and licence before promoting."
+    },
+    {
+      "id": "res_mt_8RmpkDxT9L_b6df105e",
+      "topicIds": [
+        "mt_8RmpkDxT9L"
+      ],
+      "kind": "exercises",
+      "provider": "Kids Academy",
+      "title": {
+        "it": "Fogli di lavoro gratuiti per comprendere i simboli matematici per bambini",
+        "en": "Free Understand math symbols Worksheets for Kids"
+      },
+      "url": "https://www.kidsacademy.mobi/printable-worksheets/learning-skills/understand-math-symbols/",
+      "lang": "en",
+      "validationNotes": "curated 2026-07-12T22:30:50.065Z via run-curator.ts (topic mt_8RmpkDxT9L); verify safety, liveness and licence before promoting."
+    },
+    {
+      "id": "res_mt_glPPG-kTQY_1f09c866",
+      "topicIds": [
+        "mt_glPPG-kTQY"
+      ],
+      "kind": "exercises",
+      "provider": "Khan Academy",
+      "title": {
+        "it": "Addizione e sottrazione entro il 100 | Matematica elementare",
+        "en": "Addition and Subtraction within 100 | Elementary Math"
+      },
+      "url": "https://it.khanacademy.org/math/early-math/cc-early-math-add-sub-100",
+      "lang": "it",
+      "validationNotes": "curated 2026-07-12T22:31:31.900Z via run-curator.ts (topic mt_glPPG-kTQY); verify safety, liveness and licence before promoting."
+    },
+    {
+      "id": "res_mt_glPPG-kTQY_5dc37300",
+      "topicIds": [
+        "mt_glPPG-kTQY"
+      ],
+      "kind": "video",
+      "provider": "YouTube",
+      "title": {
+        "it": "Calcolo mentale entro il 100",
+        "en": "Mental arithmetic within 100"
+      },
+      "url": "https://www.youtube.com/watch?v=17BG5gtn0E8",
+      "lang": "it",
+      "validationNotes": "curated 2026-07-12T22:31:31.900Z via run-curator.ts (topic mt_glPPG-kTQY); verify safety, liveness and licence before promoting."
+    },
+    {
+      "id": "res_mt_glPPG-kTQY_7b3cf1f2",
+      "topicIds": [
+        "mt_glPPG-kTQY"
+      ],
+      "kind": "exercises",
+      "provider": "Giochidimatematica.it",
+      "title": {
+        "it": "Esercitati con le addizioni su Giochidimatematica.it",
+        "en": "Practice Addition Exercises on Giochidimatematica.it"
+      },
+      "url": "https://www.giochidimatematica.it/addizione/",
+      "lang": "it",
+      "validationNotes": "curated 2026-07-12T22:31:31.900Z via run-curator.ts (topic mt_glPPG-kTQY); verify safety, liveness and licence before promoting."
+    },
+    {
+      "id": "res_mt_glPPG-kTQY_9e3fb3ed",
+      "topicIds": [
+        "mt_glPPG-kTQY"
+      ],
+      "kind": "exercises",
+      "provider": "Virgilio Sapere",
+      "title": {
+        "it": "Addizioni e sottrazioni fino al 100: come risolverle",
+        "en": "Addition and subtraction up to 100: how to solve them"
+      },
+      "url": "https://sapere.virgilio.it/scuola/elementari/matematica-aritmetica/le-quattro-operazioni/addizioni-sottrazioni-fino-al-100",
+      "lang": "it",
+      "validationNotes": "curated 2026-07-12T22:31:31.900Z via run-curator.ts (topic mt_glPPG-kTQY); verify safety, liveness and licence before promoting."
+    },
+    {
+      "id": "res_mt_glPPG-kTQY_de43c7db",
+      "topicIds": [
+        "mt_glPPG-kTQY"
+      ],
+      "kind": "exercises",
+      "provider": "Risorse Didattiche",
+      "title": {
+        "it": "Verifica: numeri entro 100 per scuola elementare materia matematica",
+        "en": "Assessment: Numbers within 100 for primary school mathematics"
+      },
+      "url": "https://www.risorsedidattiche.net/3549-scuola_verifiche-numeri-entro-100.php",
+      "lang": "it",
+      "validationNotes": "curated 2026-07-12T22:31:31.900Z via run-curator.ts (topic mt_glPPG-kTQY); verify safety, liveness and licence before promoting."
+    },
+    {
+      "id": "res_mt_glPPG-kTQY_67098d9e",
+      "topicIds": [
+        "mt_glPPG-kTQY"
+      ],
+      "kind": "exercises",
+      "provider": "Khan Academy",
+      "title": {
+        "it": "Selezionare strategie per addizionare entro il 100 (pratica)",
+        "en": "Select strategies for adding within 100 (practice)"
+      },
+      "url": "https://www.khanacademy.org/math/cc-2nd-grade-math/cc-2nd-add-subtract-100/cc-2nd-math-strategies-for-adding-within-100/e/select-strategies-for-adding-within-100",
+      "lang": "en",
+      "validationNotes": "curated 2026-07-12T22:31:31.900Z via run-curator.ts (topic mt_glPPG-kTQY); verify safety, liveness and licence before promoting."
+    },
+    {
+      "id": "res_mt_glPPG-kTQY_efb929fa",
+      "topicIds": [
+        "mt_glPPG-kTQY"
+      ],
+      "kind": "video",
+      "provider": "Generation Genius",
+      "title": {
+        "it": "Addizionare e Sottrarre Entro il 100 - Video di Matematica per Bambini",
+        "en": "Add & Subtract Within 100 Math Video for Kids"
+      },
+      "url": "https://www.generationgenius.com/videolessons/add-subtract-within-100/",
+      "lang": "en",
+      "validationNotes": "curated 2026-07-12T22:31:31.900Z via run-curator.ts (topic mt_glPPG-kTQY); verify safety, liveness and licence before promoting."
+    },
+    {
+      "id": "res_mt_glPPG-kTQY_25e23bd5",
+      "topicIds": [
+        "mt_glPPG-kTQY"
+      ],
+      "kind": "exercises",
+      "provider": "SplashLearn",
+      "title": {
+        "it": "Addizionare entro il 100 - Schede di lavoro matematiche - SplashLearn",
+        "en": "Add Within 100 - Math Worksheets - SplashLearn"
+      },
+      "url": "https://www.splashlearn.com/s/math-worksheets/add-within-100",
+      "lang": "en",
+      "validationNotes": "curated 2026-07-12T22:31:31.900Z via run-curator.ts (topic mt_glPPG-kTQY); verify safety, liveness and licence before promoting."
+    },
+    {
+      "id": "res_mt_m1W6nTQJ2b_919f3647",
+      "topicIds": [
+        "mt_m1W6nTQJ2b"
+      ],
+      "kind": "exercises",
+      "provider": "Virgilio Sapere",
+      "title": {
+        "it": "Le addizioni e le sottrazioni fino al 20",
+        "en": "Addition and subtraction within 20"
+      },
+      "url": "https://sapere.virgilio.it/scuola/elementari/matematica-aritmetica/le-quattro-operazioni/addizioni-sottrazioni-20",
+      "lang": "it",
+      "validationNotes": "curated 2026-07-12T22:32:19.943Z via run-curator.ts (topic mt_m1W6nTQJ2b); verify safety, liveness and licence before promoting."
+    },
+    {
+      "id": "res_mt_m1W6nTQJ2b_5ea5db6d",
+      "topicIds": [
+        "mt_m1W6nTQJ2b"
+      ],
+      "kind": "exercises",
+      "provider": "Twinkl",
+      "title": {
+        "it": "Addizioni e Sottrazioni sulla Linea dei Numeri entro il 20",
+        "en": "Addition and Subtraction on the Number Line within 20"
+      },
+      "url": "https://www.twinkl.it/resource/it-t-n-3022-addizione-e-sottrazione-fino-a-20-con-la-linea-dei-numeri-attivita",
+      "lang": "it",
+      "validationNotes": "curated 2026-07-12T22:32:19.943Z via run-curator.ts (topic mt_m1W6nTQJ2b); verify safety, liveness and licence before promoting."
+    },
+    {
+      "id": "res_mt_m1W6nTQJ2b_c0275ef5",
+      "topicIds": [
+        "mt_m1W6nTQJ2b"
+      ],
+      "kind": "exercises",
+      "provider": "Portale Bambini",
+      "title": {
+        "it": "Addizioni entro il 20 (Esercizi)",
+        "en": "Addition within 20 (Exercises)"
+      },
+      "url": "https://portalebambini.it/schede-matematica-addizioni-20/",
+      "lang": "it",
+      "validationNotes": "curated 2026-07-12T22:32:19.943Z via run-curator.ts (topic mt_m1W6nTQJ2b); verify safety, liveness and licence before promoting."
+    },
+    {
+      "id": "res_mt_m1W6nTQJ2b_88f5dacf",
+      "topicIds": [
+        "mt_m1W6nTQJ2b"
+      ],
+      "kind": "exercises",
+      "provider": "Virgilio Sapere",
+      "title": {
+        "it": "Come risolvere i problemi con i numeri fino al 20",
+        "en": "How to solve problems with numbers up to 20"
+      },
+      "url": "https://sapere.virgilio.it/scuola/elementari/matematica-aritmetica/problemi/problemi-numeri-20",
+      "lang": "it",
+      "validationNotes": "curated 2026-07-12T22:32:19.943Z via run-curator.ts (topic mt_m1W6nTQJ2b); verify safety, liveness and licence before promoting."
+    },
+    {
+      "id": "res_mt_m1W6nTQJ2b_223dbfc4",
+      "topicIds": [
+        "mt_m1W6nTQJ2b"
+      ],
+      "kind": "exercises",
+      "provider": "Khan Academy",
+      "title": {
+        "it": "Addizione entro 20 (esercizi) | Khan Academy",
+        "en": "Add within 20 (practice) | Khan Academy"
+      },
+      "url": "https://www.khanacademy.org/math/cc-2nd-grade-math/x3184e0ec:add-and-subtract-within-20/x3184e0ec:add-within-20/e/addition_2",
+      "lang": "en",
+      "validationNotes": "curated 2026-07-12T22:32:19.943Z via run-curator.ts (topic mt_m1W6nTQJ2b); verify safety, liveness and licence before promoting."
+    },
+    {
+      "id": "res_mt_m1W6nTQJ2b_2c29f156",
+      "topicIds": [
+        "mt_m1W6nTQJ2b"
+      ],
+      "kind": "exercises",
+      "provider": "Math Salamanders",
+      "title": {
+        "it": "Addizione e sottrazione entro il 20 - Math Salamanders",
+        "en": "Add and Subtract Within 20 - Math Salamanders"
+      },
+      "url": "https://www.math-salamanders.com/add-and-subtract-within-20.html",
+      "lang": "en",
+      "validationNotes": "curated 2026-07-12T22:32:19.943Z via run-curator.ts (topic mt_m1W6nTQJ2b); verify safety, liveness and licence before promoting."
+    },
+    {
+      "id": "res_mt_m1W6nTQJ2b_5f687140",
+      "topicIds": [
+        "mt_m1W6nTQJ2b"
+      ],
+      "kind": "exercises",
+      "provider": "Common Core Sheets",
+      "title": {
+        "it": "Foglio di esercizi: Addizione e sottrazione entro il 20",
+        "en": "Adding and Subtracting within 20 Worksheet Download"
+      },
+      "url": "https://www.commoncoresheets.com/adding-and-subtracting-within-20/11/download",
+      "lang": "en",
+      "validationNotes": "curated 2026-07-12T22:32:19.943Z via run-curator.ts (topic mt_m1W6nTQJ2b); verify safety, liveness and licence before promoting."
+    },
+    {
+      "id": "res_mt_m1W6nTQJ2b_5b325b59",
+      "topicIds": [
+        "mt_m1W6nTQJ2b"
+      ],
+      "kind": "exercises",
+      "provider": "Snappy Maths",
+      "title": {
+        "it": "Addizione e Sottrazione (entro 20) - Snappy Maths",
+        "en": "Addition and Subtraction (within 20) - Snappy Maths"
+      },
+      "url": "https://www.snappymaths.com/calculations/addition-subtraction/addition-subtraction-within-20/",
+      "lang": "en",
+      "validationNotes": "curated 2026-07-12T22:32:19.943Z via run-curator.ts (topic mt_m1W6nTQJ2b); verify safety, liveness and licence before promoting."
+    },
+    {
+      "id": "res_mt_m1W6nTQJ2b_1433c067",
+      "topicIds": [
+        "mt_m1W6nTQJ2b"
+      ],
+      "kind": "exercises",
+      "provider": "Alien Schooler",
+      "title": {
+        "it": "Esercizi di Addizione e Sottrazione entro il 20 - Alien Schooler",
+        "en": "Addition And Subtraction Within 20 Worksheets - Alien Schooler"
+      },
+      "url": "https://alienschooler.com/math/kindergarten/basic-operations/k-addition/addition-and-subtraction-within-20/",
+      "lang": "en",
+      "validationNotes": "curated 2026-07-12T22:32:19.943Z via run-curator.ts (topic mt_m1W6nTQJ2b); verify safety, liveness and licence before promoting."
+    },
+    {
+      "id": "res_mt__we2TDqnJx_26123fc3",
+      "topicIds": [
+        "mt__we2TDqnJx"
+      ],
+      "kind": "exercises",
+      "provider": "Giochidimatematica.it",
+      "title": {
+        "it": "Pratica addizioni e sottrazioni fino a 10 su Giochidimatematica.it",
+        "en": "Practice addition and subtraction up to 10 on Giochidimatematica.it"
+      },
+      "url": "https://www.giochidimatematica.it/addizioni-e-sottrazioni-fino-a-10.html",
+      "lang": "it",
+      "validationNotes": "curated 2026-07-12T22:33:10.053Z via run-curator.ts (topic mt__we2TDqnJx); verify safety, liveness and licence before promoting."
+    },
+    {
+      "id": "res_mt__we2TDqnJx_09fe1694",
+      "topicIds": [
+        "mt__we2TDqnJx"
+      ],
+      "kind": "exercises",
+      "provider": "Giochidimatematica.it",
+      "title": {
+        "it": "Sottrazioni fino a 10 - programma a 5 step",
+        "en": "Subtractions up to 10 - 5-step program"
+      },
+      "url": "https://www.giochidimatematica.it/sottrazioni-fino-a-10/",
+      "lang": "it",
+      "validationNotes": "curated 2026-07-12T22:33:10.053Z via run-curator.ts (topic mt__we2TDqnJx); verify safety, liveness and licence before promoting."
+    },
+    {
+      "id": "res_mt__we2TDqnJx_1193ed75",
+      "topicIds": [
+        "mt__we2TDqnJx"
+      ],
+      "kind": "exercises",
+      "provider": "Redooc",
+      "title": {
+        "it": "Addizioni e sottrazioni fino al 9: come funzionano",
+        "en": "Addition and Subtraction up to 9: How They Work"
+      },
+      "url": "https://redooc.com/it/elementari/matematica-aritmetica/addizioni-sottrazioni/fino-al-9",
+      "lang": "it",
+      "validationNotes": "curated 2026-07-12T22:33:10.053Z via run-curator.ts (topic mt__we2TDqnJx); verify safety, liveness and licence before promoting."
+    },
+    {
+      "id": "res_mt__we2TDqnJx_5f884c1e",
+      "topicIds": [
+        "mt__we2TDqnJx"
+      ],
+      "kind": "exercises",
+      "provider": "portalebambini.it",
+      "title": {
+        "it": "Addizioni fino a 10 (Schede didattiche)",
+        "en": "Adding up to 10 (Worksheets)"
+      },
+      "url": "https://portalebambini.it/schede-matematica-addizioni-10/",
+      "lang": "it",
+      "validationNotes": "curated 2026-07-12T22:33:10.053Z via run-curator.ts (topic mt__we2TDqnJx); verify safety, liveness and licence before promoting."
+    },
+    {
+      "id": "res_mt__we2TDqnJx_e7002ee3",
+      "topicIds": [
+        "mt__we2TDqnJx"
+      ],
+      "kind": "exercises",
+      "provider": "risorsedidattiche.net",
+      "title": {
+        "it": "Scheda: addizioni entro il 10 per scuola elementare",
+        "en": "Worksheet: Addition within 10 for elementary school"
+      },
+      "url": "https://www.risorsedidattiche.net/3463-scuola_schede-addizioni-entro-il-10.php",
+      "lang": "it",
+      "validationNotes": "curated 2026-07-12T22:33:10.053Z via run-curator.ts (topic mt__we2TDqnJx); verify safety, liveness and licence before promoting."
+    },
+    {
+      "id": "res_mt__we2TDqnJx_f2d03c02",
+      "topicIds": [
+        "mt__we2TDqnJx"
+      ],
+      "kind": "video",
+      "provider": "Khan Academy",
+      "title": {
+        "it": "Addizione e sottrazione entro il 10",
+        "en": "Addition and subtraction within 10"
+      },
+      "url": "https://www.khanacademy.org/math/cc-kindergarten-math/cc-kindergarten-add-subtract/kindergarten-together-apart/v/addition-and-subtraction-within-10",
+      "lang": "en",
+      "validationNotes": "curated 2026-07-12T22:33:10.053Z via run-curator.ts (topic mt__we2TDqnJx); verify safety, liveness and licence before promoting."
+    },
+    {
+      "id": "res_mt__we2TDqnJx_47fb0da3",
+      "topicIds": [
+        "mt__we2TDqnJx"
+      ],
+      "kind": "exercises",
+      "provider": "Khan Academy",
+      "title": {
+        "it": "Addizionare entro il 10 (esercizi) | Khan Academy",
+        "en": "Add within 10 (practice) | Khan Academy"
+      },
+      "url": "https://www.khanacademy.org/math/cc-kindergarten-math/cc-kindergarten-add-subtract/kindergarten-together-apart/e/put-together",
+      "lang": "en",
+      "validationNotes": "curated 2026-07-12T22:33:10.053Z via run-curator.ts (topic mt__we2TDqnJx); verify safety, liveness and licence before promoting."
+    },
+    {
+      "id": "res_mt__we2TDqnJx_4fee2e13",
+      "topicIds": [
+        "mt__we2TDqnJx"
+      ],
+      "kind": "exercises",
+      "provider": "K5 Learning",
+      "title": {
+        "it": "Fogli di lavoro per addizionare e sottrarre entro il 10",
+        "en": "Add & subtract within 10 worksheets"
+      },
+      "url": "https://www.k5learning.com/free-math-worksheets/math-drills/mixed-math-facts/add-subtract-within-10",
+      "lang": "en",
+      "validationNotes": "curated 2026-07-12T22:33:10.053Z via run-curator.ts (topic mt__we2TDqnJx); verify safety, liveness and licence before promoting."
+    },
+    {
+      "id": "res_mt__we2TDqnJx_b10585ec",
+      "topicIds": [
+        "mt__we2TDqnJx"
+      ],
+      "kind": "exercises",
+      "provider": "Fish Tank Learning",
+      "title": {
+        "it": "Matematica 1ª elementare | Addizionare e sottrarre entro il 10 | Piani di lezione gratuiti",
+        "en": "1st Grade Mathematics | Adding and Subtracting Within 10 | Free Lesson Plans"
+      },
+      "url": "https://www.fishtanklearning.org/curriculum/math/1st-grade/adding-and-subtracting-within-10/",
+      "lang": "en",
+      "validationNotes": "curated 2026-07-12T22:33:10.053Z via run-curator.ts (topic mt__we2TDqnJx); verify safety, liveness and licence before promoting."
+    },
+    {
+      "id": "res_mt_SrrsLiJkr3_83a4c7a3",
+      "topicIds": [
+        "mt_SrrsLiJkr3"
+      ],
+      "kind": "exercises",
+      "provider": "NRICH (University of Cambridge)",
+      "title": {
+        "it": "Addizione e Sottrazione: Età 7-11 | NRICH",
+        "en": "Addition and Subtraction: Age 7-11 | NRICH"
+      },
+      "url": "https://nrich.maths.org/addition-and-subtraction-age-7-11",
+      "lang": "en",
+      "validationNotes": "curated 2026-07-12T22:33:56.116Z via run-curator.ts (topic mt_SrrsLiJkr3); verify safety, liveness and licence before promoting."
+    },
+    {
+      "id": "res_mt_SrrsLiJkr3_e8926be4",
+      "topicIds": [
+        "mt_SrrsLiJkr3"
+      ],
+      "kind": "exercises",
+      "provider": "Kids Academy",
+      "title": {
+        "it": "Lezioni di matematica per bambini di 7 anni | Addizione e sottrazione 20-100",
+        "en": "Math Lessons for 7-Year-Olds | Addition and Subtraction 20-100"
+      },
+      "url": "https://www.kidsacademy.mobi/lessons/age-7/math/addition-and-subtraction-20-100/",
+      "lang": "en",
+      "validationNotes": "curated 2026-07-12T22:33:56.116Z via run-curator.ts (topic mt_SrrsLiJkr3); verify safety, liveness and licence before promoting."
+    },
+    {
+      "id": "res_mt_SrrsLiJkr3_de46171d",
+      "topicIds": [
+        "mt_SrrsLiJkr3"
+      ],
+      "kind": "exercises",
+      "provider": "Kids Academy",
+      "title": {
+        "it": "Esercizi gratuiti di addizione e sottrazione per bambini di 7 anni",
+        "en": "Free Addition & Subtraction worksheets activities for 7-Year-Olds"
+      },
+      "url": "https://www.kidsacademy.mobi/printable-worksheets/answer-key/activities/age-7/knowledge-check/addition-subtraction/",
+      "lang": "en",
+      "validationNotes": "curated 2026-07-12T22:33:56.116Z via run-curator.ts (topic mt_SrrsLiJkr3); verify safety, liveness and licence before promoting."
+    },
+    {
+      "id": "res_mt_SrrsLiJkr3_707dc611",
+      "topicIds": [
+        "mt_SrrsLiJkr3"
+      ],
+      "kind": "exercises",
+      "provider": "NRICH (University of Cambridge)",
+      "title": {
+        "it": "Addizione e Sottrazione: Età 5-7 | NRICH",
+        "en": "Addition and Subtraction: Age 5-7 | NRICH"
+      },
+      "url": "https://nrich.maths.org/addition-and-subtraction-age-5-7",
+      "lang": "en",
+      "validationNotes": "curated 2026-07-12T22:33:56.116Z via run-curator.ts (topic mt_SrrsLiJkr3); verify safety, liveness and licence before promoting."
+    },
+    {
+      "id": "res_mt_ewmuMMPAzP_0ebc6ba2",
+      "topicIds": [
+        "mt_ewmuMMPAzP"
+      ],
+      "kind": "exercises",
+      "provider": "Giochidimatematica.it",
+      "title": {
+        "it": "Pratica le addizioni fino a 1000 - Giochidimatematica.it",
+        "en": "Practice Addition up to 1000 - Giochidimatematica.it"
+      },
+      "url": "https://www.giochidimatematica.it/esercizi-sulla-addizioni-fino-a-1000.html",
+      "lang": "it",
+      "validationNotes": "curated 2026-07-12T22:34:37.312Z via run-curator.ts (topic mt_ewmuMMPAzP); verify safety, liveness and licence before promoting."
+    },
+    {
+      "id": "res_mt_ewmuMMPAzP_80a2ae42",
+      "topicIds": [
+        "mt_ewmuMMPAzP"
+      ],
+      "kind": "exercises",
+      "provider": "Quipo Base5",
+      "title": {
+        "it": "Esercizi su addizioni e sottrazioni - Addizioni in colonna (numeri interi)",
+        "en": "Exercises on addition and subtraction - Column addition (whole numbers)"
+      },
+      "url": "https://utenti.quipo.it/base5/scuola_1/add_sottr_numeri.pdf",
+      "lang": "it",
+      "validationNotes": "curated 2026-07-12T22:34:37.312Z via run-curator.ts (topic mt_ewmuMMPAzP); verify safety, liveness and licence before promoting."
+    },
+    {
+      "id": "res_mt_ewmuMMPAzP_727fca45",
+      "topicIds": [
+        "mt_ewmuMMPAzP"
+      ],
+      "kind": "video",
+      "provider": "Generation Genius",
+      "title": {
+        "it": "Addizione e sottrazione entro il 1000",
+        "en": "Addition & Subtraction Within 1000"
+      },
+      "url": "https://www.generationgenius.com/videolessons/addition-subtraction-within-1000/",
+      "lang": "en",
+      "validationNotes": "curated 2026-07-12T22:34:37.312Z via run-curator.ts (topic mt_ewmuMMPAzP); verify safety, liveness and licence before promoting."
+    },
+    {
+      "id": "res_mt_ewmuMMPAzP_b24e235f",
+      "topicIds": [
+        "mt_ewmuMMPAzP"
+      ],
+      "kind": "video",
+      "provider": "Boddle Learning",
+      "title": {
+        "it": "Addizione e sottrazione entro il 1000 | Boddle Learning",
+        "en": "Add & Subtract with 1000 | Boddle Learning"
+      },
+      "url": "https://www.boddlelearning.com/2nd-grade/add-subtract-with-1000",
+      "lang": "en",
+      "validationNotes": "curated 2026-07-12T22:34:37.312Z via run-curator.ts (topic mt_ewmuMMPAzP); verify safety, liveness and licence before promoting."
+    },
+    {
+      "id": "res_mt_ewmuMMPAzP_c43bdd92",
+      "topicIds": [
+        "mt_ewmuMMPAzP"
+      ],
+      "kind": "exercises",
+      "provider": "Snappy Maths",
+      "title": {
+        "it": "Addizione e Sottrazione (entro 1000) - Fogli di lavoro Snappy Maths",
+        "en": "Addition and Subtraction (within 1000) Year 3 Worksheets - Snappy Maths"
+      },
+      "url": "https://www.snappymaths.com/calculations/addition-subtraction/addition-subtraction-within-1000/",
+      "lang": "en",
+      "validationNotes": "curated 2026-07-12T22:34:37.312Z via run-curator.ts (topic mt_ewmuMMPAzP); verify safety, liveness and licence before promoting."
+    },
+    {
+      "id": "res_mt_ewmuMMPAzP_2bd117af",
+      "topicIds": [
+        "mt_ewmuMMPAzP"
+      ],
+      "kind": "exercises",
+      "provider": "Math Worksheets Land",
+      "title": {
+        "it": "Fogli di lavoro per l'addizione e la sottrazione entro il 1000",
+        "en": "Adding and Subtracting Within 1000 Worksheets"
+      },
+      "url": "https://www.mathworksheetsland.com/2/11add1000.html",
+      "lang": "en",
+      "validationNotes": "curated 2026-07-12T22:34:37.312Z via run-curator.ts (topic mt_ewmuMMPAzP); verify safety, liveness and licence before promoting."
+    },
+    {
+      "id": "res_mt_ewmuMMPAzP_36e1e77a",
+      "topicIds": [
+        "mt_ewmuMMPAzP"
+      ],
+      "kind": "exercises",
+      "provider": "2ndgradeworksheets.net",
+      "title": {
+        "it": "Fogli di lavoro CCSS 2.NBT.7 - Addizione e sottrazione entro 1000",
+        "en": "CCSS 2.NBT.7 Worksheets, Addition and Subtraction Within 1000"
+      },
+      "url": "https://www.2ndgradeworksheets.net/ccss2NBT7.htm",
+      "lang": "en",
+      "validationNotes": "curated 2026-07-12T22:34:37.312Z via run-curator.ts (topic mt_ewmuMMPAzP); verify safety, liveness and licence before promoting."
+    },
+    {
+      "id": "res_mt_cChv2j_-Da_f9931be4",
+      "topicIds": [
+        "mt_cChv2j_-Da"
+      ],
+      "kind": "exercises",
+      "provider": "Khan Academy",
+      "title": {
+        "it": "Problemi entro il 100 con addizione e sottrazione 1 (esercitazione)",
+        "en": "Addition and Subtraction Word Problems Within 100 Level 1 (Practice)"
+      },
+      "url": "https://it.khanacademy.org/math/arithmetic/arith-review-add-subtract/arith-review-add-sub-100-word-problems/e/addition-and-subtraction-word-problems--within-100--level-1",
+      "lang": "it",
+      "validationNotes": "curated 2026-07-12T22:35:09.346Z via run-curator.ts (topic mt_cChv2j_-Da); verify safety, liveness and licence before promoting."
+    },
+    {
+      "id": "res_mt_cChv2j_-Da_a33fe156",
+      "topicIds": [
+        "mt_cChv2j_-Da"
+      ],
+      "kind": "exercises",
+      "provider": "Khan Academy",
+      "title": {
+        "it": "Addizione e sottrazione entro il 100 | 2° elementare USA | Khan Academy",
+        "en": "Addition and subtraction within 100 | 2nd grade USA | Khan Academy"
+      },
+      "url": "https://it.khanacademy.org/math/cc-2nd-grade-math/cc-2nd-add-subtract-100",
+      "lang": "it",
+      "validationNotes": "curated 2026-07-12T22:35:09.346Z via run-curator.ts (topic mt_cChv2j_-Da); verify safety, liveness and licence before promoting."
+    },
+    {
+      "id": "res_mt_cChv2j_-Da_f362cf98",
+      "topicIds": [
+        "mt_cChv2j_-Da"
+      ],
+      "kind": "video",
+      "provider": "Boddle Learning",
+      "title": {
+        "it": "Strategie per l'addizione e la sottrazione entro il 100",
+        "en": "Strategies for Adding & Subtracting within 100"
+      },
+      "url": "https://www.boddlelearning.com/2nd-grade/strategies-for-adding-subtracting-within-100",
+      "lang": "en",
+      "validationNotes": "curated 2026-07-12T22:35:09.346Z via run-curator.ts (topic mt_cChv2j_-Da); verify safety, liveness and licence before promoting."
+    },
+    {
+      "id": "res_mt_cChv2j_-Da_e296ff54",
+      "topicIds": [
+        "mt_cChv2j_-Da"
+      ],
+      "kind": "exercises",
+      "provider": "TeachSimple",
+      "title": {
+        "it": "Addizioni e Sottrazioni entro il 100 – Foglio di Esercitazione",
+        "en": "Adding & Subtracting Within 100 – Practice Worksheet"
+      },
+      "url": "https://teachsimple.com/product/adding-and-subtracting-within-100-worksheet",
+      "lang": "en",
+      "validationNotes": "curated 2026-07-12T22:35:09.346Z via run-curator.ts (topic mt_cChv2j_-Da); verify safety, liveness and licence before promoting."
+    },
+    {
+      "id": "res_mt_cChv2j_-Da_53abcefd",
+      "topicIds": [
+        "mt_cChv2j_-Da"
+      ],
+      "kind": "exercises",
+      "provider": "2ndgradeworksheets.net",
+      "title": {
+        "it": "Fogli di lavoro CCSS 2.NBT.5 - Addizione e sottrazione a due cifre entro 100",
+        "en": "CCSS 2.NBT.5 Worksheets. Two Digit Addition and Subtraction Within 100"
+      },
+      "url": "https://2ndgradeworksheets.net/ccss2NBT5.htm",
+      "lang": "en",
+      "validationNotes": "curated 2026-07-12T22:35:09.346Z via run-curator.ts (topic mt_cChv2j_-Da); verify safety, liveness and licence before promoting."
+    },
+    {
+      "id": "res_mt__t4afSyZRm_eb5ce69b",
+      "topicIds": [
+        "mt__t4afSyZRm"
+      ],
+      "kind": "exercises",
+      "provider": "Giochidimatematica.it",
+      "title": {
+        "it": "Pratica addizioni e sottrazioni fino a 20 su Giochidimatematica.it",
+        "en": "Practice additions and subtractions up to 20 on Giochidimatematica.it"
+      },
+      "url": "https://www.giochidimatematica.it/addizioni-e-sottrazioni-fino-a-20.html",
+      "lang": "it",
+      "validationNotes": "curated 2026-07-12T22:35:47.705Z via run-curator.ts (topic mt__t4afSyZRm); verify safety, liveness and licence before promoting."
+    },
+    {
+      "id": "res_mt__t4afSyZRm_09e873b0",
+      "topicIds": [
+        "mt__t4afSyZRm"
+      ],
+      "kind": "exercises",
+      "provider": "Wordwall",
+      "title": {
+        "it": "Esercizi entro il 20 - Risorse didattiche",
+        "en": "Exercises within 20 - Teaching Resources"
+      },
+      "url": "https://wordwall.net/it-it/community/esercizi-entro-il-20",
+      "lang": "it",
+      "validationNotes": "curated 2026-07-12T22:35:47.705Z via run-curator.ts (topic mt__t4afSyZRm); verify safety, liveness and licence before promoting."
+    },
+    {
+      "id": "res_mt__t4afSyZRm_15e9ace7",
+      "topicIds": [
+        "mt__t4afSyZRm"
+      ],
+      "kind": "video",
+      "provider": "Maestra di Matematica",
+      "title": {
+        "it": "RIPASSO DEI NUMERI ENTRO IL 20 → Addizioni e sottrazioni",
+        "en": "REVIEW OF NUMBERS WITHIN 20 → Additions and subtractions"
+      },
+      "url": "https://maestradimatematica.it/courses/ripasso-dei-numeri-entro-il-20/lessons/addizioni-e-sottrazioni/",
+      "lang": "it",
+      "validationNotes": "curated 2026-07-12T22:35:47.705Z via run-curator.ts (topic mt__t4afSyZRm); verify safety, liveness and licence before promoting."
+    },
+    {
+      "id": "res_mt__t4afSyZRm_b7e97506",
+      "topicIds": [
+        "mt__t4afSyZRm"
+      ],
+      "kind": "exercises",
+      "provider": "Khan Academy",
+      "title": {
+        "it": "Addizionare e sottrarre entro il 20 | Matematica 2ª elementare | Khan Academy",
+        "en": "Add and subtract within 20 | 2nd grade math | Khan Academy"
+      },
+      "url": "https://www.khanacademy.org/math/cc-2nd-grade-math/x3184e0ec:add-and-subtract-within-20",
+      "lang": "en",
+      "validationNotes": "curated 2026-07-12T22:35:47.705Z via run-curator.ts (topic mt__t4afSyZRm); verify safety, liveness and licence before promoting."
+    },
+    {
+      "id": "res_mt__t4afSyZRm_b0f999d0",
+      "topicIds": [
+        "mt__t4afSyZRm"
+      ],
+      "kind": "exercises",
+      "provider": "Khan Academy",
+      "title": {
+        "it": "Sottrarre entro il 20 (esercizi) | Khan Academy",
+        "en": "Subtract within 20 (practice) | Khan Academy"
+      },
+      "url": "https://www.khanacademy.org/math/cc-2nd-grade-math/x3184e0ec:add-and-subtract-within-20/x3184e0ec:subtract-within-20/e/subtraction_2",
+      "lang": "en",
+      "validationNotes": "curated 2026-07-12T22:35:47.705Z via run-curator.ts (topic mt__t4afSyZRm); verify safety, liveness and licence before promoting."
+    },
+    {
+      "id": "res_mt__t4afSyZRm_ec5d3c1d",
+      "topicIds": [
+        "mt__t4afSyZRm"
+      ],
+      "kind": "exercises",
+      "provider": "Education.com",
+      "title": {
+        "it": "Addizione e Sottrazione Fluente Entro il 20",
+        "en": "Addition and Subtraction Fluency Within 20"
+      },
+      "url": "https://www.education.com/worksheet/article/addition-and-subtraction-fluency-within-20/",
+      "lang": "en",
+      "validationNotes": "curated 2026-07-12T22:35:47.705Z via run-curator.ts (topic mt__t4afSyZRm); verify safety, liveness and licence before promoting."
+    },
+    {
+      "id": "res_mt__t4afSyZRm_d44abbfa",
+      "topicIds": [
+        "mt__t4afSyZRm"
+      ],
+      "kind": "exercises",
+      "provider": "Boddle Learning",
+      "title": {
+        "it": "Addizionare e sottrarre entro il 20",
+        "en": "Add and Subtract within 20"
+      },
+      "url": "https://www.boddlelearning.com/2nd-grade/add-and-subtract-within-20",
+      "lang": "en",
+      "validationNotes": "curated 2026-07-12T22:35:47.705Z via run-curator.ts (topic mt__t4afSyZRm); verify safety, liveness and licence before promoting."
+    },
+    {
+      "id": "res_mt_mpS-JK_p_m_7de8d839",
+      "topicIds": [
+        "mt_mpS-JK_p_m"
+      ],
+      "kind": "exercises",
+      "provider": "Catalfamo",
+      "title": {
+        "it": "Esercizi di matematica scuola media inferiore – Livello 1 ARITMETICA",
+        "en": "Mathematics Exercises Lower Secondary School – Level 1 ARITHMETIC"
+      },
+      "url": "https://www.catalfamo.edu.it/wp-content/uploads/2020/03/Esercizi-di-matematica-1.pdf",
+      "lang": "it",
+      "validationNotes": "curated 2026-07-12T22:36:35.669Z via run-curator.ts (topic mt_mpS-JK_p_m); verify safety, liveness and licence before promoting."
+    },
+    {
+      "id": "res_mt_mpS-JK_p_m_cf3e20fe",
+      "topicIds": [
+        "mt_mpS-JK_p_m"
+      ],
+      "kind": "exercises",
+      "provider": "Khan Academy",
+      "title": {
+        "it": "Addizione, sottrazione e stima | Matematica per la 3ª elementare | Khan Academy",
+        "en": "Addition, subtraction, and estimation | 3rd grade math | Khan Academy"
+      },
+      "url": "https://www.khanacademy.org/math/cc-third-grade-math/imp-addition-and-subtraction",
+      "lang": "en",
+      "validationNotes": "curated 2026-07-12T22:36:35.669Z via run-curator.ts (topic mt_mpS-JK_p_m); verify safety, liveness and licence before promoting."
+    },
+    {
+      "id": "res_mt_mpS-JK_p_m_5750ecd6",
+      "topicIds": [
+        "mt_mpS-JK_p_m"
+      ],
+      "kind": "exercises",
+      "provider": "Khan Academy",
+      "title": {
+        "it": "Addizione e sottrazione | Khan Academy",
+        "en": "Addition and subtraction | Khan Academy"
+      },
+      "url": "https://www.khanacademy.org/math/arithmetic-home/addition-subtraction",
+      "lang": "en",
+      "validationNotes": "curated 2026-07-12T22:36:35.669Z via run-curator.ts (topic mt_mpS-JK_p_m); verify safety, liveness and licence before promoting."
+    },
+    {
+      "id": "res_mt_Yw1_4Nfsql_b08038aa",
+      "topicIds": [
+        "mt_Yw1_4Nfsql"
+      ],
+      "kind": "exercises",
+      "provider": "risorsedidattiche.net",
+      "title": {
+        "it": "Addizioni e sottrazioni insieme Q - mappa concettuale per matematica scuola media",
+        "en": "Addition and subtraction together Q - conceptual map for middle school mathematics"
+      },
+      "url": "https://www.risorsedidattiche.net/3163-scuola_mappe_concettuali-addizioni-e-sottrazioni-insieme-q.php",
+      "lang": "it",
+      "validationNotes": "curated 2026-07-12T22:37:06.941Z via run-curator.ts (topic mt_Yw1_4Nfsql); verify safety, liveness and licence before promoting."
+    }
+  ]
+}

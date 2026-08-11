@@ -64,3 +64,9 @@ The platform must organize it's way or working base on the best and modern resea
 Can you design an app, similar to mathacademy, using the os-taxonomy repository?
 
 claude --resume baad2a35-22da-41df-93e5-d3dea2937999
+
+claude --resume c29968bd-3428-45a3-acee-00566d90e124
+---
+
+
+
