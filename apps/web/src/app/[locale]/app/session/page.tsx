@@ -31,12 +31,12 @@ export default async function SessionPage({
   for (const topic of graph.topics.values()) topicNames[topic.id] = topic.name[loc];
 
   const lessonTopicIds = [...new Set(plan.items.filter((i) => i.kind === "lesson").map((i) => i.topicId))];
-  const lessonContent: Record<string, { description: string; resources: { title: string; provider: string; kind: string; lang: "it" | "en"; url: string }[] }> = {};
+  const lessonContent: Record<string, { description: string; resources: { title: string; provider: string; kind: string; lang: "it" | "en"; url: string; summary?: string }[] }> = {};
   for (const topicId of lessonTopicIds) {
     const topic = graph.topics.get(topicId)!;
     lessonContent[topicId] = {
       description: topic.description[loc],
-      resources: getResources(topicId).map((r) => ({ title: r.title[loc], provider: r.provider, kind: r.kind, lang: r.lang, url: r.url }))
+      resources: getResources(topicId).map((r) => ({ title: r.title[loc], provider: r.provider, kind: r.kind, lang: r.lang, url: r.url, summary: r.summary?.[loc] }))
     };
   }
 

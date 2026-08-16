@@ -52,7 +52,7 @@ export async function POST(req: Request) {
     const topic = getTopic(topicId);
     const mastery = await repo.getMasteryOrEmpty(db, p.id, topicId);
     const recentErrors = await repo.getRecentErrors(db, p.id, topicId);
-    const resources = getResources(topicId).map((r) => ({ title: r.title[p.locale], url: r.url, kind: r.kind }));
+    const resources = getResources(topicId).map((r) => ({ title: r.title[p.locale], url: r.url, kind: r.kind, summary: r.summary?.[p.locale] }));
     const ctx: TeacherContext = {
       studentName: p.displayName, locale: p.locale, topic,
       masteryStatus: mastery.status, recentErrors, resources

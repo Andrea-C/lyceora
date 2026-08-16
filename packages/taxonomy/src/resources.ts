@@ -8,7 +8,12 @@ export const resourceSchema = z.object({
   provider: z.string().min(1),
   title: localizedTextSchema,
   url: z.string().url(),
-  lang: z.enum(["it", "en"])
+  lang: z.enum(["it", "en"]),
+  summary: localizedTextSchema.optional(),
+  addedAt: z
+    .string()
+    .regex(/^\d{4}-\d{2}-\d{2}$/)
+    .optional()
 });
 
 export type CuratedResource = z.infer<typeof resourceSchema>;

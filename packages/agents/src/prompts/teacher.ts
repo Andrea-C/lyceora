@@ -7,7 +7,7 @@ export interface TeacherContext {
   topic: Topic;
   masteryStatus: MasteryStatus;
   recentErrors: string[];
-  resources: { title: string; url: string; kind: string }[];
+  resources: { title: string; url: string; kind: string; summary?: string }[];
 }
 
 const langName = { it: "Italian", en: "English" } as const;
@@ -24,7 +24,7 @@ export function buildTeacherSystemPrompt(ctx: TeacherContext): string {
     `CURRENT TOPIC: ${ctx.topic.name[ctx.locale]} — ${ctx.topic.description[ctx.locale]}`,
     `MASTERY EVIDENCE TO BUILD: ${ctx.topic.evidence.map((e) => e[ctx.locale]).join("; ")}`,
     ctx.resources.length
-      ? `RESOURCES YOU MAY SUGGEST (only these): ${ctx.resources.map((r) => `${r.title} (${r.kind}): ${r.url}`).join(" | ")}`
+      ? `RESOURCES YOU MAY SUGGEST (only these): ${ctx.resources.map((r) => `${r.title} (${r.kind}): ${r.url}${r.summary ? ` — ${r.summary}` : ""}`).join(" | ")}`
       : "RESOURCES: none available — do not invent any."
   ].join("\n");
   const volatile = [

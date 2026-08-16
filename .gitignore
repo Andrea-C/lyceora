@@ -1,6 +1,9 @@
 # Machine-local Claude Code settings
 .claude/settings.local.json
 
+# macOS
+.DS_Store
+
 # Node
 node_modules/
 .next/
@@ -24,3 +27,6 @@ packages/taxonomy/data/.translate-progress.json
 
 # Curator CLI resumability checkpoint (regenerable, not source data)
 packages/taxonomy/data/.curator-progress.json
+
+# Research-merge inbox (regenerable, not source data — raw web-researcher subagent output)
+packages/taxonomy/data/curated-review/.research-inbox/

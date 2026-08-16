@@ -6,12 +6,12 @@ import { useTranslations } from "next-intl";
 import type { RouteDecision, SessionItem, SessionPlan } from "@lyceora/engine";
 import { ExerciseCard, type RedactedExercise } from "@/components/ExerciseCard";
 import { TeacherChat } from "@/components/TeacherChat";
-import { VideoList, type VideoResource } from "@/components/VideoList";
+import { ResourceList, type ResourceItem } from "@/components/ResourceList";
 import { BadgeToast } from "@/components/BadgeToast";
 
 interface LessonContent {
   description: string;
-  resources: VideoResource[];
+  resources: ResourceItem[];
 }
 
 export interface SessionClientProps {
@@ -144,7 +144,7 @@ export function SessionClient({ profileId, sessionId, plan, topicNames, lessonCo
               <h1 className="text-2xl font-semibold">{topicNames[item.topicId]}</h1>
               <p className="mt-2 text-lg">{lessonContent[item.topicId]?.description}</p>
             </div>
-            <VideoList resources={lessonContent[item.topicId]?.resources ?? []} />
+            <ResourceList resources={lessonContent[item.topicId]?.resources ?? []} />
             <div>
               <h2 className="mb-2 text-lg font-semibold">{t("askTeacher")}</h2>
               <TeacherChat profileId={profileId} topicId={item.topicId} threadId={`${sessionId}-${item.topicId}`} />
