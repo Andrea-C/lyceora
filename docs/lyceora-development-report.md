@@ -157,3 +157,38 @@ Mid-session resumption (pushed to **M2.5**); email/digest parent reports; non-ma
 ### Flagged for Andrea
 
 (None at this time.)
+
+---
+## 11. Resource-research pipeline addendum (2026-08-16)
+
+**State:** built directly on `main` in a single orchestrated session (first session on the macOS machine — see DevOps notes below). No formal spec/plan pair; the approved plan lived in the session planning file. Tests grew **160 → 167** (taxonomy 24, agents 39, web 56 all green); full `pnpm -r build` verified.
+
+### What shipped
+
+- **Resource schema extension** (`packages/taxonomy/src/resources.ts`): optional `summary` (bilingual abstract, {it,en}) and `addedAt` (date-only) on `CuratedResource`. All existing records remain valid; `promote.ts` needed no changes (verified passthrough).
+- **`web-researcher` Claude Code subagent** (`.claude/agents/web-researcher.md`): Haiku-powered, WebSearch+WebFetch only, one topic per invocation, fanned out in parallel by the orchestrator. Italian-first kind-targeted queries, kid-safety/level-fit vetting distilled from the runtime curator judge, bilingual abstracts, strict JSON output contract, prompt-injection hygiene section. Routed in `CLAUDE.md`.
+- **`research-merge` CLI** (`packages/agents/curate/research-merge.ts`, `pnpm --filter @lyceora/agents run research`): `--gaps` computes per-topic missing kinds + priority (1 = path target, 2 = missing all kinds, 3 = partial) for the 60 `lyc_*` topics; `--merge --in <inbox>` Zod-validates subagent output, computes deterministic ids via `resourceIdFor`, enforces https/blocklist/URL-dedupe, re-checks liveness (HEAD-then-GET), and appends to a dated promote-compatible proposals file. Inbox dir `packages/taxonomy/data/curated-review/.research-inbox/` is gitignored. 7 new tests model curator-cli.test.ts (offline, `--no-liveness`).
+- **ResourceList replaces VideoList** (`apps/web/src/components/ResourceList.tsx`): lesson page now renders ALL curated kinds grouped — video lessons, "Esercizi e schede", "Mettiti alla prova" — with abstracts under each link. Previously 53 of 71 curated resources (all non-video) were hydrated and silently dropped. New i18n keys `resourceExercises`/`resourceAssessments`/`noResources`; `noVideos` removed. 4 new component tests.
+- **Teacher prompt enrichment** (`packages/agents/src/prompts/teacher.ts`): the resource allowlist now carries each abstract so the tutor can explain why a link helps; allowlist contract unchanged; cached stable prefix untouched.
+- **Wave-1 research run**: 23 Haiku researchers covered all 37 priority-1/2 topics → **137 proposals in `packages/taxonomy/data/curated-review/2026-08-15-proposals.json`** (48 video / 65 exercises / 24 assessment; 136 IT, 1 EN). 10 rejections by the merge gates: 4 eduboom.it liveness failures (site bot-blocks; re-add manually if wanted) and 6 cross-topic duplicate URLs (reviewer can add the second topicId to the surviving record instead).
+
+### Decisions that supersede prior docs
+
+- `kind` enum deliberately NOT widened: lesson/explanation pages with worked examples map to `exercises` (existing data precedent); revisit only if review shows the mapping confusing.
+- The subagent emits neither `id` nor `validationNotes` — the merge script computes both (ids need sha256; notes composed from `evidenceFit` + `checks`).
+- Local env files keep `DATABASE_URL=localhost` so `db:migrate` cannot hit production by accident; the Neon URL is exported per-shell only when intentionally migrating prod.
+
+### Deferred
+
+- **Wave 2**: the 23 priority-3 topics (partial gaps) — same pipeline, run `research --gaps` for the current list.
+- **Assessment-kind gaps**: ~5 wave-1 topics found no free login-less assessment (noted in each proposal file's notes).
+- The 37 pending July proposals (`2026-07-12-proposals.json`, all `mt_*` topics) — untouched, still awaiting review.
+- Root `pnpm typecheck` still unwired (no root tsconfig).
+
+### DevOps migration (Windows → macOS)
+
+The project now builds and deploys from the macOS machine: workspace installed (`npx --yes pnpm@10.0.0` — pnpm not on PATH), full build verified, local env + secrets recovered from the WD Elements clone of the Windows machine (`apps/web/.env.local`, `packages/db/.env`, gitignored `docs/setup-notes.md` with Neon URLs + Anthropic key, `.vercel/project.json` linkage), GitHub push auth verified via macOS keychain. Deployment is unchanged: push to `main` → Vercel. Firebase/GCloud CLIs are not requirements of this project. See the DevOps section in `CLAUDE.md`.
+
+### Flagged for Andrea
+
+- **Review & promote the 137 wave-1 proposals** — scrutinize first the 39 records whose `validationNotes` say "page fetch unverified" (YouTube consent walls) and the level-fit flags in the inbox notes (one primary-school worksheet set, one leaderboard-style quiz, one possibly-above-level GeoGebra activity). Promote with `pnpm --filter @lyceora/agents run curate:promote -- --file ../taxonomy/data/curated-review/2026-08-15-proposals.json --accept id1,id2`. Promoted records surface immediately in the lesson UI and the teacher allowlist.
