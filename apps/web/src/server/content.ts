@@ -19,7 +19,11 @@ const { topics, dependencies } = loadTaxonomy(
 const graph: TopicGraph = buildGraph(topics, dependencies);
 assertAcyclic(graph);
 
+const authoredTopicIds: ReadonlySet<string> = new Set(extTopics.topics.map((t) => t.id));
+
 export function getGraph(): TopicGraph { return graph; }
+/** Ids of the hand-authored math-it-media extension topics — the recovery-path content layer. */
+export function getAuthoredTopicIds(): ReadonlySet<string> { return authoredTopicIds; }
 export function getTopic(id: string): Topic {
   const t = graph.topics.get(id);
   if (!t) throw new Error(`Unknown topic ${id}`);

@@ -2,7 +2,7 @@ import { redirect } from "next/navigation";
 import type { Locale } from "@lyceora/taxonomy";
 import { getActiveProfileOrRedirect } from "@/lib/session";
 import { db } from "@/lib/db";
-import { getGraph, getPath, getResources } from "@/server/content";
+import { getGraph, getPath, getResources, getAuthoredTopicIds } from "@/server/content";
 import * as repo from "@/server/repo";
 import { startSession } from "@/server/services/session";
 import { SessionClient } from "./session-client";
@@ -21,7 +21,7 @@ export default async function SessionPage({
 
   const graph = getGraph();
   const targetTopicIds = getPath(enrollment.pathId).targetTopicIds;
-  const { sessionId, plan } = await startSession(db, graph, session.user.id, profile.id, targetTopicIds);
+  const { sessionId, plan } = await startSession(db, graph, session.user.id, profile.id, targetTopicIds, getAuthoredTopicIds());
 
   // Hydrate content the client needs to render the plan without a dedicated content API:
   // every topic's localized name (routing decisions can reference a prerequisite topic that

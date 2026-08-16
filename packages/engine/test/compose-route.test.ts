@@ -13,6 +13,7 @@ const t = (id: string): Topic => ({
   evidence: [{ it: "e", en: "e" }], assessmentPrompt: { it: "{{name}}?", en: "{{name}}?" }, standards: []
 });
 const hard = (topicId: string, prerequisiteId: string): Dependency => ({ topicId, prerequisiteId, strength: "hard", reason: "t" });
+const soft = (topicId: string, prerequisiteId: string): Dependency => ({ topicId, prerequisiteId, strength: "soft", reason: "t" });
 
 // pitagora -> radici -> potenze (hard chain)
 const graph = buildGraph([t("pitagora"), t("radici"), t("potenze")], [hard("pitagora", "radici"), hard("radici", "potenze")]);
@@ -148,5 +149,85 @@ describe("routeNext — deepest-first prerequisite selection (Finding 2)", () =>
     expect(decision).toEqual({
       action: "remediate", blockedTopicId: "z", remediationTopicId: "y", demotePrereq: false
     });
+  });
+});
+
+describe("composeSessionPlan — recovery-path priority (authoredTopicIds)", () => {
+  // Fixture A: lyc_x depends HARD on lyc_base and SOFT on mt_soft (an imported core topic pulled
+  // into scope only via the soft edge). mt_soft has no prereqs, so it's a scope root and — pre-fix —
+  // wins topoOrder's ready-queue tie-break over lyc_x, crowding out the authored path topic.
+  const graphA = buildGraph(
+    [t("lyc_base"), t("lyc_x"), t("mt_soft")],
+    [hard("lyc_x", "lyc_base"), soft("lyc_x", "mt_soft")]
+  );
+  const masteryA = new Map<string, MasteryState>([["lyc_base", mastered]]);
+
+  it("(recovery-path priority) an imported soft-closure topic outranks the authored target without the preference set", () => {
+    const plan = composeSessionPlan({ graph: graphA, targetTopicIds: ["lyc_x"], mastery: masteryA, dueReviews: [], dailyXpGoal: 30 });
+    const lessons = plan.items.filter((i) => i.kind === "lesson").map((i) => i.topicId);
+    expect(lessons[0]).toBe("mt_soft"); // locks the pre-fix baseline
+  });
+
+  it("(recovery-path priority) serves the authored path topic before an imported soft-closure topic", () => {
+    const plan = composeSessionPlan({
+      graph: graphA, targetTopicIds: ["lyc_x"], mastery: masteryA, dueReviews: [], dailyXpGoal: 30,
+      authoredTopicIds: new Set(["lyc_x", "lyc_base"])
+    });
+    const lessons = plan.items.filter((i) => i.kind === "lesson").map((i) => i.topicId);
+    expect(lessons).toEqual(["lyc_x", "mt_soft"]);
+  });
+
+  it("(recovery-path priority) never overtakes a hard prerequisite", () => {
+    const graph = buildGraph([t("lyc_y"), t("mt_pre")], [hard("lyc_y", "mt_pre")]);
+    const mastery = new Map<string, MasteryState>();
+    const plan = composeSessionPlan({
+      graph, targetTopicIds: ["lyc_y"], mastery, dueReviews: [], dailyXpGoal: 30,
+      authoredTopicIds: new Set(["lyc_y"])
+    });
+    const lessons = plan.items.filter((i) => i.kind === "lesson").map((i) => i.topicId);
+    expect(lessons).toEqual(["mt_pre"]);
+    expect(plan.items.some((i) => i.topicId === "lyc_y")).toBe(false);
+  });
+
+  it("(recovery-path priority) falls back to imported topics when no authored topic is on the frontier", () => {
+    const mastery = new Map<string, MasteryState>([["lyc_base", mastered], ["lyc_x", mastered]]);
+    const plan = composeSessionPlan({
+      graph: graphA, targetTopicIds: ["lyc_x"], mastery, dueReviews: [], dailyXpGoal: 30,
+      authoredTopicIds: new Set(["lyc_x", "lyc_base"])
+    });
+    const lessons = plan.items.filter((i) => i.kind === "lesson").map((i) => i.topicId);
+    expect(lessons).toEqual(["mt_soft"]);
+  });
+
+  it("(recovery-path priority) preserves topo order inside the authored group", () => {
+    // lyc_a's only prereq (lyc_a_pre) is already mastered, so lyc_a resolves in the topo ready-queue
+    // before lyc_b (an unrelated root) — distinct topo positions, both authored, both unknown status.
+    const graph = buildGraph(
+      [t("lyc_a_pre"), t("lyc_a"), t("lyc_b")],
+      [hard("lyc_a", "lyc_a_pre")]
+    );
+    const mastery = new Map<string, MasteryState>([["lyc_a_pre", mastered]]);
+    const plan = composeSessionPlan({
+      graph, targetTopicIds: ["lyc_a", "lyc_b"], mastery, dueReviews: [], dailyXpGoal: 30,
+      authoredTopicIds: new Set(["lyc_a", "lyc_b"])
+    });
+    const lessons = plan.items.filter((i) => i.kind === "lesson").map((i) => i.topicId);
+    expect(lessons).toEqual(["lyc_a", "lyc_b"]);
+  });
+
+  it("(design §4b) prefers an inProgress frontier topic over an unknown one", () => {
+    // Same topo shape as above (lyc_a topo-earlier, lyc_b topo-later), but lyc_b is inProgress
+    // while lyc_a has no mastery row (unknown) — inProgress must win despite its later topo rank.
+    const graph = buildGraph(
+      [t("lyc_a_pre"), t("lyc_a"), t("lyc_b")],
+      [hard("lyc_a", "lyc_a_pre")]
+    );
+    const mastery = new Map<string, MasteryState>([["lyc_a_pre", mastered], ["lyc_b", inProgress]]);
+    const plan = composeSessionPlan({
+      graph, targetTopicIds: ["lyc_a", "lyc_b"], mastery, dueReviews: [], dailyXpGoal: 30,
+      authoredTopicIds: new Set(["lyc_a", "lyc_b"])
+    });
+    const lessons = plan.items.filter((i) => i.kind === "lesson").map((i) => i.topicId);
+    expect(lessons).toEqual(["lyc_b", "lyc_a"]);
   });
 });

@@ -28,6 +28,9 @@ export interface ComposeInputs {
   mastery: ReadonlyMap<string, MasteryState>;
   dueReviews: ReviewRow[];
   dailyXpGoal: number;
+  /** Ids of the hand-authored path topics (the math-it-media extension dataset). Tier-3 "new
+   * content" prefers these over imported core topics. Absent/empty == no preference. */
+  authoredTopicIds?: ReadonlySet<string>;
 }
 
 const MAX_DUE_REVIEWS = 6;
@@ -108,11 +111,23 @@ export function composeSessionPlan(inputs: ComposeInputs): SessionPlan {
   // 1 new topic (2 only when tiers 1-2 are empty), excluding anything already scheduled above
   const dueIds = new Set(due.map((r) => r.topicId));
   const newCount = remediation.length === 0 && due.length === 0 ? 2 : 1;
-  const newTopics = front
-    .filter((id) => {
-      const status = statuses.get(id) ?? "unknown";
-      return (status === "unknown" || status === "inProgress") && !remediation.includes(id) && !dueIds.has(id);
-    })
+  const candidates = front.filter((id) => {
+    const status = statuses.get(id) ?? "unknown";
+    return (status === "unknown" || status === "inProgress") && !remediation.includes(id) && !dueIds.has(id);
+  });
+  // Authored path topics first, then inProgress before unknown. `front` is the ALL-strength
+  // prerequisite closure of the path targets, so it also carries imported core topics pulled in
+  // only by SOFT edges. Those are outside the diagnostic's scope (the HARD closure), so they are
+  // never labeled, sit at "unknown" forever, and — being roots of the scope DAG — win topoOrder's
+  // tie-break and crowd out the authored recovery content the path exists to teach. Every
+  // frontier topic already has all its hard prerequisites mastered, so this preference can never
+  // skip a blocker; with no authored topic eligible and uniform status, behavior is unchanged.
+  const authored = inputs.authoredTopicIds ?? new Set<string>();
+  const rank = (id: string) => (authored.has(id) ? 0 : 2) + (statuses.get(id) === "inProgress" ? 0 : 1);
+  const newTopics = candidates
+    .map((id, i) => ({ id, i }))
+    .sort((a, b) => (rank(a.id) - rank(b.id)) || (a.i - b.i))
+    .map((o) => o.id)
     .slice(0, newCount);
 
   // assemble as whole blocks and cap at MAX_ITEMS without ever truncating a block mid-way;

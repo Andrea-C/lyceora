@@ -1,6 +1,6 @@
 import { z } from "zod";
 import { db } from "@/lib/db";
-import { getGraph, getPath } from "@/server/content";
+import { getGraph, getPath, getAuthoredTopicIds } from "@/server/content";
 import * as repo from "@/server/repo";
 import { startSession } from "@/server/services/session";
 import { requireUserId, guarded } from "@/server/http";
@@ -22,7 +22,7 @@ export async function POST(req: Request) {
     if (!enr) return Response.json({ error: "No active enrollment for this profile." }, { status: 400 });
 
     const targetTopicIds = getPath(enr.pathId).targetTopicIds;
-    const { sessionId, plan } = await startSession(db, getGraph(), userId, parsed.data.profileId, targetTopicIds);
+    const { sessionId, plan } = await startSession(db, getGraph(), userId, parsed.data.profileId, targetTopicIds, getAuthoredTopicIds());
     return Response.json({ sessionId, plan });
   });
 }

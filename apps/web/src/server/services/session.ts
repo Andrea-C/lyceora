@@ -51,7 +51,7 @@ function matchingPlanKeys(keys: string[], item: SessionItem): string[] {
   return keys.filter((k) => k.startsWith(prefix));
 }
 
-export async function startSession(db: Db, graph: TopicGraph, userId: string, profileId: string, targetTopicIds: string[]) {
+export async function startSession(db: Db, graph: TopicGraph, userId: string, profileId: string, targetTopicIds: string[], authoredTopicIds?: ReadonlySet<string>) {
   const p = await repo.getOwnedProfile(db, userId, profileId);
   const today = localToday(p.timezone);
   const plan: SessionPlan = composeSessionPlan({
@@ -60,7 +60,8 @@ export async function startSession(db: Db, graph: TopicGraph, userId: string, pr
     dueReviews: (await repo.getDueReviews(db, profileId, today)).map((r) => ({
       topicId: r.topicId, intervalRung: r.intervalRung, dueOn: r.dueOn, lapses: r.lapses, suspended: r.suspended
     })),
-    dailyXpGoal: p.dailyXpGoal
+    dailyXpGoal: p.dailyXpGoal,
+    authoredTopicIds
   });
   const [s] = await db.insert(learningSession).values({ profileId, kind: "daily", planJson: plan }).returning();
   return { sessionId: s!.id, plan };

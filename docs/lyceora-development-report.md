@@ -174,6 +174,7 @@ Mid-session resumption (pushed to **M2.5**); email/digest parent reports; non-ma
 
 ### Decisions that supersede prior docs
 
+- **Composer tier-3 prefers hand-authored path topics (2026-08-16).** `frontier()` scopes on the *all-strength* prerequisite closure of the path targets (`packages/taxonomy/src/graph.ts`) while `initDiagnostic` probes only the *hard* closure — 288 vs 171 topics for `path_recupero_media`. The 117 soft-only imports are never probed, stay `unknown`, and being roots of the scope DAG they take `topoOrder` ranks 0-1 and monopolise the new-content tier (observed in production: a failed potenze/radici diagnostic was served `mt_ATYLKt0je-` and `mt_ESgc4YBw-a` — resource-less vocabulary topics). `composeSessionPlan` now accepts an optional `authoredTopicIds` set (extension-dataset membership, supplied by `apps/web/src/server/content.ts:getAuthoredTopicIds`) and orders tier-3 candidates authored-first, then `inProgress` before `unknown` (partially restoring the design's §composer sort spec — `topoLevel`/`centrality` keys remain unimplemented), stable within equal ranks. Safe by construction: frontier membership already requires all hard prereqs mastered, so the preference can never skip a blocker; with no authored topic eligible and uniform status, behavior is unchanged.
 - `kind` enum deliberately NOT widened: lesson/explanation pages with worked examples map to `exercises` (existing data precedent); revisit only if review shows the mapping confusing.
 - The subagent emits neither `id` nor `validationNotes` — the merge script computes both (ids need sha256; notes composed from `evidenceFit` + `checks`).
 - Local env files keep `DATABASE_URL=localhost` so `db:migrate` cannot hit production by accident; the Neon URL is exported per-shell only when intentionally migrating prod.
@@ -185,6 +186,8 @@ Mid-session resumption (pushed to **M2.5**); email/digest parent reports; non-ma
 - The 37 pending July proposals (`2026-07-12-proposals.json`, all `mt_*` topics) — untouched, still awaiting review.
 - Root `pnpm typecheck` still unwired (no root tsconfig).
 - **Resource feedback buttons** (thumbs up/down on each curated resource so users/testers validate content in situ; feeds the curation loop, natural fit for the `learning_signal` table) — requested by Andrea 2026-08-16.
+- **Composer/diagnostic scope mismatch** (root cause behind the tier-3 preference fix, unfixed): the composer's frontier uses the all-strength closure, the diagnostic the hard closure; narrowing the composer to hard-only would drop 19 soft-reachable authored topics from the teachable set, so it needs a real design decision. Related: `routeNext`'s "next up" hint still uses unpreferenced `frontier()` (cosmetic mismatch); 37 of the 40 imported topics frontier-eligible on `path_recupero_media` have zero curated resources (the pending July `mt_*` proposals batch would help).
+- **Diagnostic question counter** — show "Domanda 6 · max 25" instead of a bare count (total is adaptive; display the hard cap) — requested by Andrea 2026-08-16.
 
 ### DevOps migration (Windows → macOS)
 
