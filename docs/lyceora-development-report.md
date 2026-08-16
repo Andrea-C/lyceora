@@ -184,6 +184,7 @@ Mid-session resumption (pushed to **M2.5**); email/digest parent reports; non-ma
 - **Assessment-kind gaps**: ~5 wave-1 topics found no free login-less assessment (noted in each proposal file's notes).
 - The 37 pending July proposals (`2026-07-12-proposals.json`, all `mt_*` topics) — untouched, still awaiting review.
 - Root `pnpm typecheck` still unwired (no root tsconfig).
+- **Resource feedback buttons** (thumbs up/down on each curated resource so users/testers validate content in situ; feeds the curation loop, natural fit for the `learning_signal` table) — requested by Andrea 2026-08-16.
 
 ### DevOps migration (Windows → macOS)
 
