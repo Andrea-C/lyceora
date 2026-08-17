@@ -42,7 +42,9 @@ test("signup -> diagnostic -> session -> teacher chat -> locale switch (fake mod
   await page.getByTestId("profile-create").click();
   await page.waitForURL(/\/it\/app$/);
 
-  // --- dashboard: no enrollment yet, start the diagnostic ---
+  // --- journey home: no enrollment yet -> subject selection (phase 1), then the diagnostic ---
+  await page.getByTestId("choose-subject").click();
+  await page.waitForURL(/\/it\/app\/subjects$/);
   await page.getByTestId("start-diagnostic").click();
   await page.waitForURL(/\/it\/app\/diagnostic$/);
 
@@ -60,12 +62,31 @@ test("signup -> diagnostic -> session -> teacher chat -> locale switch (fake mod
   await page.getByRole("link", { name: "Torna alla home" }).click();
   await page.waitForURL(/\/it\/app$/);
 
-  // --- dashboard: enrollment active, path progress visible ---
-  await expect(page.getByText("Progresso del percorso")).toBeVisible();
+  // --- journey home: enrollment active, path progress line visible ---
+  await expect(page.getByText(/argomenti già tuoi/)).toBeVisible();
 
-  // --- dashboard: "Primi passi" badge earned from the diagnostic (full-color, not muted) ---
+  // --- journey home: "Primi passi" badge earned from the diagnostic (full-color, not muted) ---
   const primiPassiBadge = page.getByText("Primi passi", { exact: true }).locator("xpath=ancestor::li[1]");
   await expect(primiPassiBadge).not.toHaveClass(/opacity-40/);
+
+  // --- learning path (browse mode): topics visible, one still "Da scoprire" (19 of the 60
+  // authored topics sit outside the diagnostic's hard closure, so they are always unknown) ---
+  const xpAfterDiagnostic = await readXpValue(page);
+  await page.getByRole("navigation").getByRole("link", { name: "Percorso" }).click();
+  await page.waitForURL(/\/it\/app\/path$/);
+  await expect(page.getByRole("heading", { name: "Il tuo percorso" })).toBeVisible();
+  await expect(page.getByText("Da scoprire").first()).toBeVisible();
+
+  // --- open a topic: view-only lesson page with the teacher chat available (browse-scope gate) ---
+  await page.locator("main a[href*='/app/path/']").first().click();
+  await page.waitForURL(/\/it\/app\/path\/.+$/);
+  await expect(page.getByText("Torna al percorso")).toBeVisible();
+  await expect(page.getByTestId("teacher-input")).toBeVisible();
+
+  // --- view-only invariant: browsing topics earns zero XP ---
+  await page.getByRole("navigation").getByRole("link", { name: "Inizio" }).click();
+  await page.waitForURL(/\/it\/app$/);
+  expect(await readXpValue(page)).toBe(xpAfterDiagnostic);
 
   // --- daily session: lesson item (+ teacher chat) and at least one gradeable exercise item ---
   await page.getByTestId("start-session").click();

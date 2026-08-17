@@ -1,5 +1,5 @@
-import { render, screen, cleanup } from "@testing-library/react";
-import { describe, it, expect, afterEach } from "vitest";
+import { render, screen, cleanup, fireEvent } from "@testing-library/react";
+import { describe, it, expect, afterEach, vi } from "vitest";
 import { NextIntlClientProvider } from "next-intl";
 import it_ from "../messages/it.json";
 import { ResourceList, type ResourceItem } from "../src/components/ResourceList";
@@ -61,5 +61,43 @@ describe("ResourceList", () => {
     expect(link).toHaveAttribute("href", "https://example.com/video");
     expect(link).toHaveAttribute("target", "_blank");
     expect(link).toHaveAttribute("rel", "noreferrer");
+  });
+
+  it("shows the suggested chip when true, the alternative chip when false, and neither when undefined", () => {
+    wrap(
+      <ResourceList
+        resources={[
+          { title: "Consigliato", provider: "Khan Academy", lang: "it", url: "https://example.com/sug", kind: "video", suggested: true },
+          { title: "In alternativa", provider: "Khan Academy", lang: "it", url: "https://example.com/alt", kind: "video", suggested: false },
+          { title: "Neutro", provider: "Khan Academy", lang: "it", url: "https://example.com/neutral", kind: "video" }
+        ]}
+      />
+    );
+    expect(screen.getByText(it_.session.suggested)).toBeInTheDocument();
+    expect(screen.getByText(it_.session.alternative)).toBeInTheDocument();
+    expect(screen.queryAllByText(it_.session.suggested)).toHaveLength(1);
+  });
+
+  it("shows the viewed chip when viewed is true", () => {
+    wrap(
+      <ResourceList resources={[{ title: "Già visto", provider: "Khan Academy", lang: "it", url: "https://example.com/viewed", kind: "video", viewed: true }]} />
+    );
+    expect(screen.getByText(it_.session.viewed)).toBeInTheDocument();
+  });
+
+  it("fires onOpen with the clicked item without blocking the default link navigation", () => {
+    const onOpen = vi.fn();
+    wrap(<ResourceList resources={mixedResources} onOpen={onOpen} />);
+    const link = screen.getByRole("link", { name: /^Frazioni in video/ });
+    const event = fireEvent.click(link);
+    expect(onOpen).toHaveBeenCalledWith(mixedResources[0]);
+    expect(event).toBe(true); // fireEvent.click returns false only if preventDefault was called
+  });
+
+  it("renders with no chips when used the way session-client does (no new props)", () => {
+    wrap(<ResourceList resources={mixedResources} />);
+    expect(screen.queryByText(it_.session.suggested)).not.toBeInTheDocument();
+    expect(screen.queryByText(it_.session.alternative)).not.toBeInTheDocument();
+    expect(screen.queryByText(it_.session.viewed)).not.toBeInTheDocument();
   });
 });

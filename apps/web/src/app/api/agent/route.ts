@@ -4,6 +4,7 @@ import { db } from "@/lib/db";
 import { learningSignal } from "@lyceora/db";
 import { getTopic, getResources } from "@/server/content";
 import * as repo from "@/server/repo";
+import { isBrowsableTopic } from "@/server/services/journey";
 import { teacherStream } from "@/server/registry";
 import { aguiSSE, type TeacherContext } from "@lyceora/agents";
 import { requireUserId, guarded } from "@/server/http";
@@ -39,7 +40,8 @@ export async function POST(req: Request) {
     if (!(await repo.consumeRateLimit(db, p.id, "agent", repo.RATE_LIMITS.agent))) {
       return Response.json({ error: t("rateLimited") }, { status: 429 });
     }
-    if (!(await repo.isTopicInActivePlan(db, p.id, topicId))) {
+    const allowed = (await repo.isTopicInActivePlan(db, p.id, topicId)) || (await isBrowsableTopic(db, p.id, topicId));
+    if (!allowed) {
       return Response.json({ error: t("topicNotInPlan") }, { status: 403 });
     }
 

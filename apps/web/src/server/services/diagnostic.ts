@@ -48,7 +48,7 @@ export async function startDiagnostic(
   if (step.kind === "done") {
     // degenerate: nothing to ask (e.g. an already-fully-known target set) — finalize immediately
     const result = await finalizeDiagnostic(db, graph, p, s!.id, pathId, targetTopicIds, step.result);
-    return { sessionId: s!.id, done: true as const, result };
+    return { sessionId: s!.id, done: true as const, result, pathId };
   }
 
   const [generated] = await assessor.generate(step.topicId, p.locale, 2, 1);
@@ -120,7 +120,7 @@ export async function answerDiagnostic(
   const result = await finalizeDiagnostic(
     db, graph, p, args.sessionId, stored.pathId, stored.diagnosticState.targetTopicIds, step.result
   );
-  return { done: true as const, result };
+  return { done: true as const, result, pathId: stored.pathId };
 }
 
 async function finalizeDiagnostic(

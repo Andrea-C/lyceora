@@ -188,3 +188,19 @@ export const awardedBadge = pgTable("awarded_badge", {
   badgeId: text("badge_id").notNull(),
   awardedAt: timestamp("awarded_at", { withTimezone: true }).notNull().defaultNow()
 }, (t) => [uniqueIndex("awarded_badge_uniq").on(t.profileId, t.badgeId)]);
+
+/**
+ * Browse-mode view markers for the journey/path pages. VIEW-ONLY channel: never feeds
+ * mastery, XP, streaks, or the evidence ledger — that invariant is structural (browsing
+ * writes only here). resourceId '' = the topic lesson page itself; otherwise a curated
+ * resource id (the sentinel keeps the unique index upsert-friendly; Postgres unique
+ * indexes treat NULLs as distinct, which would break onConflictDoUpdate).
+ */
+export const browseView = pgTable("browse_view", {
+  id: uuid("id").primaryKey().defaultRandom(),
+  profileId: uuid("profile_id").notNull().references(() => profile.id, { onDelete: "cascade" }),
+  topicId: text("topic_id").notNull(),
+  resourceId: text("resource_id").notNull().default(""),
+  firstViewedAt: timestamp("first_viewed_at", { withTimezone: true }).notNull().defaultNow(),
+  lastViewedAt: timestamp("last_viewed_at", { withTimezone: true }).notNull().defaultNow()
+}, (t) => [uniqueIndex("browse_view_uniq").on(t.profileId, t.topicId, t.resourceId)]);

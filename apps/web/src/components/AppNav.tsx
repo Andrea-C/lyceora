@@ -25,6 +25,7 @@ export function AppNav({
       {activeProfileName && (
         <>
           <Link href={base}>{t("home")}</Link>
+          <Link href={`${base}/path`}>{t("path")}</Link>
           <Link href={`${base}/session`}>{t("session")}</Link>
         </>
       )}

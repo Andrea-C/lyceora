@@ -1,6 +1,6 @@
 import { z } from "zod";
 import { db } from "@/lib/db";
-import { getGraph, getPath } from "@/server/content";
+import { getGraph, getPath, getBrowsableTopicIds } from "@/server/content";
 import { redactExercise } from "@/server/exercise";
 import * as repo from "@/server/repo";
 import { startDiagnostic, answerDiagnostic } from "@/server/services/diagnostic";
@@ -13,6 +13,15 @@ const answerSchema = z.object({
   sessionId: z.string().min(1), exerciseId: z.string().min(1), answer: z.string().min(1)
 });
 const bodySchema = z.union([startSchema, answerSchema]);
+
+/** known = browsable topics that tested (or were pruned) mastered; toLearn = the rest of the
+ * browsable scope. Computed here, not in the engine — DiagnosticResult itself stays
+ * subject-agnostic. */
+function diagnosticSummary(result: { mastered: string[]; assumedMastered: string[] }, pathId: string) {
+  const browsable = getBrowsableTopicIds(pathId);
+  const knownSet = new Set([...result.mastered, ...result.assumedMastered].filter((id) => browsable.has(id)));
+  return { known: knownSet.size, toLearn: browsable.size - knownSet.size };
+}
 
 export async function POST(req: Request) {
   const userId = await requireUserId(req);
@@ -35,7 +44,7 @@ export async function POST(req: Request) {
       const targetTopicIds = getPath(enr.pathId).targetTopicIds;
       const r = await startDiagnostic(db, graph, liveAssessor, userId, parsed.data.profileId, enr.pathId, targetTopicIds);
       return r.done
-        ? Response.json({ sessionId: r.sessionId, done: true, result: r.result })
+        ? Response.json({ sessionId: r.sessionId, done: true, result: r.result, summary: diagnosticSummary(r.result, r.pathId) })
         : Response.json({ sessionId: r.sessionId, question: { topicId: r.question.topicId, exercise: redactExercise(r.question.exercise) } });
     }
 
@@ -46,7 +55,7 @@ export async function POST(req: Request) {
       exerciseId: parsed.data.exerciseId, answer: parsed.data.answer
     });
     return r.done
-      ? Response.json({ done: true, result: r.result })
+      ? Response.json({ done: true, result: r.result, summary: diagnosticSummary(r.result, r.pathId) })
       : Response.json({ question: { topicId: r.question.topicId, exercise: redactExercise(r.question.exercise) } });
   });
 }

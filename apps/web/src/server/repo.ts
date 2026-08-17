@@ -1,6 +1,9 @@
-import { and, eq, lte, desc, isNull, sql, inArray } from "drizzle-orm";
+import { and, eq, lte, desc, isNull, isNotNull, sql, inArray } from "drizzle-orm";
 import type { Db } from "@lyceora/db";
-import { profile, masteryState, evidenceRecord, reviewQueue, enrollment, learningSession, servedExercise, rateLimitWindow } from "@lyceora/db";
+import {
+  profile, masteryState, evidenceRecord, reviewQueue, enrollment, learningSession,
+  servedExercise, rateLimitWindow, xpEvent, browseView
+} from "@lyceora/db";
 import type { MasteryState, SessionPlan } from "@lyceora/engine";
 import { EMPTY_MASTERY_STATE } from "@lyceora/engine";
 import type { Exercise } from "@lyceora/agents";
@@ -77,6 +80,36 @@ export async function createEnrollment(db: Db, profileId: string, pathId: string
     .onConflictDoUpdate({ target: [enrollment.profileId, enrollment.pathId], set: { status: "active" } })
     .returning();
   return e!;
+}
+
+/** Idempotent view marker: re-viewing the same (profile, topic, resource) just bumps
+ * lastViewedAt, leaving firstViewedAt untouched. resourceId defaults to "" (the topic-page
+ * sentinel — see browse_view's doc comment in schema.ts). VIEW-ONLY: this is the only repo
+ * function that ever writes to browse_view; it must never touch mastery, XP, streaks, or the
+ * evidence ledger. */
+export async function upsertBrowseView(db: Db, profileId: string, topicId: string, resourceId = ""): Promise<void> {
+  await db.insert(browseView).values({ profileId, topicId, resourceId })
+    .onConflictDoUpdate({
+      target: [browseView.profileId, browseView.topicId, browseView.resourceId],
+      set: { lastViewedAt: new Date() }
+    });
+}
+
+export async function getBrowseViews(
+  db: Db, profileId: string
+): Promise<{ topicId: string; resourceId: string; firstViewedAt: Date; lastViewedAt: Date }[]> {
+  return db.select({
+    topicId: browseView.topicId, resourceId: browseView.resourceId,
+    firstViewedAt: browseView.firstViewedAt, lastViewedAt: browseView.lastViewedAt
+  }).from(browseView).where(eq(browseView.profileId, profileId));
+}
+
+/** Distinct topicIds with a lessonComplete xp_event — "lesson done" for path-overview's completed
+ * flag. Ignores every other xp_reason. */
+export async function getLessonCompletedTopicIds(db: Db, profileId: string): Promise<Set<string>> {
+  const rows = await db.selectDistinct({ topicId: xpEvent.topicId }).from(xpEvent)
+    .where(and(eq(xpEvent.profileId, profileId), eq(xpEvent.reason, "lessonComplete"), isNotNull(xpEvent.topicId)));
+  return new Set(rows.map((r) => r.topicId!));
 }
 
 /**

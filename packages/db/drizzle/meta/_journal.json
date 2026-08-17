@@ -43,6 +43,13 @@
       "when": 1784205862769,
       "tag": "0005_open_tyger_tiger",
       "breakpoints": true
+    },
+    {
+      "idx": 6,
+      "version": "7",
+      "when": 1786955421129,
+      "tag": "0006_outstanding_katie_power",
+      "breakpoints": true
     }
   ]
 }

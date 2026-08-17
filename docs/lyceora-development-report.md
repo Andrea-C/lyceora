@@ -196,3 +196,28 @@ The project now builds and deploys from the macOS machine: workspace installed (
 ### Flagged for Andrea
 
 - **Review & promote the 137 wave-1 proposals** — scrutinize first the 39 records whose `validationNotes` say "page fetch unverified" (YouTube consent walls) and the level-fit flags in the inbox notes (one primary-school worksheet set, one leaderboard-style quiz, one possibly-above-level GeoGebra activity). Promote with `pnpm --filter @lyceora/agents run curate:promote -- --file ../taxonomy/data/curated-review/2026-08-15-proposals.json --accept id1,id2`. Promoted records surface immediately in the lesson UI and the teacher allowlist.
+
+---
+## 12. Journey & browsable-path addendum (2026-08-17)
+
+**State:** built on `main` from [docs/lyceora-improve-ui-and-navigation.md](lyceora-improve-ui-and-navigation.md), scoped to the journey map + material browser (voting, results history, parent mirror, final assessment/certificate deferred — plug-in points documented in the plan). Tests **167 → 213** (web 90, engine 52, taxonomy 24, agents 39, db 6, +2 e2e); full build + Playwright green.
+
+### What shipped
+
+- **The journey replaced the dashboard** (`/app`): five-phase stepper (`JourneyPhases`) — Scegli la materia → Quiz di partenza → Il tuo percorso → Prova finale/Certificato (locked, "Presto!") — one state-derived CTA, compact XpBar/badges strip. Phase state from `services/journey.ts:getJourneyState` (single `phaseFourUnlocked()` flip-point for the future milestone).
+- **Subject selection** (`/app/subjects`): Math card enrolls via the `server/subjects.ts` catalog (absorbed the dashboard's hardcoded action), generic coming-soon row.
+- **Browsable path** (`/app/path` → `/app/path/[topicId]`): all 60 authored topics grouped by domain in topo order (`services/path-overview.ts:getPathOverview`, now also feeding profile-report — progress denominators moved from the 8 targets to the 60-topic scope); mastered gray-but-openable, unknown highlighted "Da scoprire"; topic page = description + `LessonBrowser` (language filter, suggested-per-kind via `content.ts:pickSuggested` locale-first heuristic, viewed markers) + TeacherChat + prev/next.
+- **View-only browsing, structural**: browsing writes ONLY to the new `browse_view` table (migration 0006; '' sentinel = topic-page view) via `POST /api/browse/view`; invariant test asserts zero rows in mastery/evidence/XP/daily-activity. "Fatto in sessione" chips derive from existing `xp_event lessonComplete` rows.
+- **Teacher-chat gate widened to path scope**: `isTopicInActivePlan || isBrowsableTopic` (enrollment + authored set; rate limits unchanged; other graph topics still 403).
+- **Diagnostic done screen**: server now returns `summary {known, toLearn}` (counted in the authored scope) — "Sai già {known} argomenti!" + CTA to the path.
+
+### Decisions that supersede prior docs
+
+- Browse scope = authored extension set (`getAuthoredTopicIds`), NOT the path targets (8) nor the closure (288): the closure misses nothing a child should see and the hard closure would drop 19 authored topics.
+- Subjects page enrolls straight into the diagnostic (fewest clicks), not back to the journey page as the IA draft suggested.
+- `suggested` is a pure locale-first-in-file-order heuristic; the future voting milestone replaces only that ordering.
+
+### Flagged for Andrea
+
+- Progress numbers on the journey/parent pages now use the 60-topic denominator (previously 8 targets) — same data, more honest scale; expect smaller-looking fractions.
+- The diagnostic question counter now has recorded copy ("Domanda 6 · max 25") in Deferred §11 but is still NOT implemented.

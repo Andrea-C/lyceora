@@ -3,8 +3,11 @@ import { PGlite } from "@electric-sql/pglite";
 import { drizzle } from "drizzle-orm/pglite";
 import { migrate } from "drizzle-orm/pglite/migrator";
 import { fileURLToPath } from "node:url";
-import { user, profile, learningSession } from "@lyceora/db";
-import { getOwnedProfile, ForbiddenError, createServedExerciseCapped, ConflictError, MAX_SERVED_PER_ITEM, consumeRateLimit, isTopicInActivePlan } from "../src/server/repo";
+import { user, profile, learningSession, xpEvent } from "@lyceora/db";
+import {
+  getOwnedProfile, ForbiddenError, createServedExerciseCapped, ConflictError, MAX_SERVED_PER_ITEM,
+  consumeRateLimit, isTopicInActivePlan, upsertBrowseView, getBrowseViews, getLessonCompletedTopicIds
+} from "../src/server/repo";
 
 let db: never;
 let profileA: { id: string };
@@ -85,5 +88,39 @@ describe("isTopicInActivePlan", () => {
     });
     expect(await isTopicInActivePlan(db, profileA.id, "radici")).toBe(true);
     expect(await isTopicInActivePlan(db, profileA.id, "not-in-plan")).toBe(false);
+  });
+});
+
+describe("browse_view upsert (idempotent)", () => {
+  it("upserting the same (profile, topic, resource) twice yields one row; lastViewedAt advances, firstViewedAt stays put", async () => {
+    await upsertBrowseView(db, profileA.id, "browse-topic");
+    const [firstRow] = (await getBrowseViews(db, profileA.id)).filter((r) => r.topicId === "browse-topic");
+
+    await upsertBrowseView(db, profileA.id, "browse-topic");
+    const rows = (await getBrowseViews(db, profileA.id)).filter((r) => r.topicId === "browse-topic" && r.resourceId === "");
+    expect(rows).toHaveLength(1);
+    expect(rows[0]!.firstViewedAt.getTime()).toBe(firstRow!.firstViewedAt.getTime());
+    expect(rows[0]!.lastViewedAt.getTime()).toBeGreaterThanOrEqual(firstRow!.lastViewedAt.getTime());
+  });
+
+  it("a topic-page view (resourceId '') and a resource view coexist as separate rows", async () => {
+    await upsertBrowseView(db, profileA.id, "browse-topic-2");
+    await upsertBrowseView(db, profileA.id, "browse-topic-2", "res-1");
+    const rows = (await getBrowseViews(db, profileA.id)).filter((r) => r.topicId === "browse-topic-2");
+    expect(rows.map((r) => r.resourceId).sort()).toEqual(["", "res-1"]);
+  });
+});
+
+describe("getLessonCompletedTopicIds", () => {
+  it("returns distinct topicIds for lessonComplete xp_events and ignores other reasons", async () => {
+    const [session] = await db.insert(learningSession).values({ profileId: profileA.id, kind: "daily" }).returning();
+    await db.insert(xpEvent).values([
+      { profileId: profileA.id, sessionId: session!.id, topicId: "lesson-topic-a", reason: "lessonComplete", amount: 5 },
+      { profileId: profileA.id, sessionId: session!.id, topicId: "lesson-topic-a", reason: "lessonComplete", amount: 5 },
+      { profileId: profileA.id, sessionId: session!.id, topicId: "lesson-topic-b", reason: "lessonComplete", amount: 5 },
+      { profileId: profileA.id, sessionId: session!.id, topicId: "lesson-topic-c", reason: "exerciseCorrect", amount: 2 }
+    ]);
+    const ids = await getLessonCompletedTopicIds(db, profileA.id);
+    expect([...ids].sort()).toEqual(["lesson-topic-a", "lesson-topic-b"]);
   });
 });

@@ -5,9 +5,9 @@ import {
   dailyActivity, learningSession, evidenceRecord
 } from "@lyceora/db";
 import type { TopicGraph, Locale } from "@lyceora/taxonomy";
-import { getPath } from "../content";
 import * as repo from "../repo";
 import { localToday } from "./session";
+import { getPathOverview } from "./path-overview";
 
 const RECENT_BADGES_LIMIT = 5;
 const REVIEW_TOGETHER_LIMIT = 5;
@@ -57,25 +57,15 @@ export async function getProfileReport(
   const recentBadges = recentBadgeRows.map((b) => ({ badgeId: b.badgeId, awardedAt: b.awardedAt }));
 
   // Domain bars: only for children with an active enrollment — an unenrolled child has no
-  // target topic list to bucket by domain, so the section is skipped entirely (empty array).
+  // browsable topic scope to bucket by domain, so the section is skipped entirely (empty array).
   let domains: { domain: string; mastered: number; total: number }[] = [];
   const enrollment = await repo.getActiveEnrollment(db, profileId);
   if (enrollment) {
-    const path = getPath(enrollment.pathId);
-    const masteryByTopic = new Map(masteryRows.map((r) => [r.topicId, r]));
-    const domainTotals = new Map<string, { mastered: number; total: number }>();
-    for (const topicId of path.targetTopicIds) {
-      const topic = graph.topics.get(topicId);
-      if (!topic) continue;
-      const bucket = domainTotals.get(topic.domain) ?? { mastered: 0, total: 0 };
-      bucket.total += 1;
-      if (masteryByTopic.get(topicId)?.status === "mastered") bucket.mastered += 1;
-      domainTotals.set(topic.domain, bucket);
-    }
+    const overview = await getPathOverview(db, graph, profileId, enrollment.pathId, locale);
     // Domain labels are translated at render time (ProfileReport component) via domainLabel —
     // keeping this service free of next-intl/server also keeps it directly unit-testable (no
     // "react-server" module condition needed outside a real Next.js request).
-    domains = [...domainTotals.entries()].map(([domain, v]) => ({ domain, ...v }));
+    domains = overview.groups.map((g) => ({ domain: g.domain, mastered: g.mastered, total: g.total }));
   }
 
   // 14-day activity chart — daily_activity rows for the last 14 local dates, zero-filled where

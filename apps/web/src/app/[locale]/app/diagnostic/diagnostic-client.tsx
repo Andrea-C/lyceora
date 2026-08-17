@@ -25,6 +25,7 @@ export function DiagnosticClient({ profileId, locale }: Props) {
   const [sessionId, setSessionId] = useState<string | null>(null);
   const [exercise, setExercise] = useState<RedactedExercise | null>(null);
   const [questionNumber, setQuestionNumber] = useState(0);
+  const [summary, setSummary] = useState<{ known: number; toLearn: number } | null>(null);
   const [message, setMessage] = useState<string | null>(null);
   const [submitting, setSubmitting] = useState(false);
   const hasStarted = useRef(false);
@@ -42,6 +43,7 @@ export function DiagnosticClient({ profileId, locale }: Props) {
       const data = await res.json();
       setSessionId(data.sessionId);
       if (data.done) {
+        setSummary(data.summary ?? null);
         setPhase("done");
       } else {
         setExercise(data.question.exercise);
@@ -89,6 +91,7 @@ export function DiagnosticClient({ profileId, locale }: Props) {
       const data = await res.json();
       setMessage(null);
       if (data.done) {
+        setSummary(data.summary ?? null);
         setPhase("done");
       } else {
         setExercise(data.question.exercise);
@@ -129,7 +132,15 @@ export function DiagnosticClient({ profileId, locale }: Props) {
     return (
       <main className="mx-auto flex w-full max-w-2xl flex-1 flex-col items-center justify-center gap-6 px-6 py-16 text-center">
         <h1 className="text-3xl font-semibold">🎉 {t("done")}</h1>
-        <Link href={`/${locale}/app`} className="rounded-full bg-foreground px-8 py-4 text-xl text-background">
+        {summary && (
+          <p className="text-lg text-zinc-600 dark:text-zinc-400">
+            {t("doneSummary", { known: summary.known, toLearn: summary.toLearn })}
+          </p>
+        )}
+        <Link href={`/${locale}/app/path`} data-testid="see-path" className="rounded-full bg-foreground px-8 py-4 text-xl text-background">
+          {t("seePath")}
+        </Link>
+        <Link href={`/${locale}/app`} className="text-sm underline underline-offset-4">
           {tCommon("backToDashboard")}
         </Link>
       </main>

@@ -38,3 +38,24 @@ export function getPath(pathId: string): { id: string; name: { it: string; en: s
 export function getResources(topicId: string): CuratedResource[] {
   return resources.resources.filter((r) => r.topicIds.includes(topicId));
 }
+
+/** Ids of topics browsable in journey/browse mode for a path. `_pathId` is reserved for future
+ * multi-path support — today every path resolves to the same authored extension topic set. */
+export function getBrowsableTopicIds(_pathId: string): ReadonlySet<string> {
+  return authoredTopicIds;
+}
+
+/** Picks one "suggested" resource per kind (video/exercises/assessment): the first resource in
+ * `locale`, in input order; if a kind has no resource in that locale, the first of any language.
+ * All other resources of that kind are unsuggested. Pure — preserves input order in the output. */
+export function pickSuggested(
+  resources: CuratedResource[], locale: "it" | "en"
+): (CuratedResource & { suggested: boolean })[] {
+  const picked = new Set<CuratedResource>();
+  for (const kind of new Set(resources.map((r) => r.kind))) {
+    const ofKind = resources.filter((r) => r.kind === kind);
+    const pick = ofKind.find((r) => r.lang === locale) ?? ofKind[0];
+    if (pick) picked.add(pick);
+  }
+  return resources.map((r) => ({ ...r, suggested: picked.has(r) }));
+}
